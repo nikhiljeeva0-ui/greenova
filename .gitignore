@@ -1,0 +1,32 @@
+# Environment and secrets - never commit
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+.venv/
+campus-env/
+env/
+
+# Node
+node_modules/
+data/
+
+# Build artifacts
+artifacts/
+*.teal
+*.arc56.json
+
+# IDE
+.idea/
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db

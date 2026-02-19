@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampusCarbon | Green College Score System</title>
+    <meta name="description"
+        content="Blockchain-powered sustainability verification for educational institutions. Track usage, upload proofs, and mint rewards on Algorand.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="vendor/perawallet.js"></script>
+    <script src="https://unpkg.com/algosdk@2.7.0/dist/browser/algosdk.min.js"
+        integrity="sha384-OP8U0zDUgTdYdeyxnrhicwju6SuPxm2tx4WaTYDeP5JiMS/OyifldTK5Y3vzPK9K"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <!-- Particle Canvas Background -->
+    <canvas id="particle-canvas"></canvas>
+
+    <!-- Toast Notification Container -->
+    <div id="toast-container"></div>
+
+    <!-- Result/Success Modal -->
+    <div id="result-modal" class="modal-overlay hidden">
+        <div class="glass-panel modal-card">
+            <div class="modal-icon">🎉</div>
+            <h2 class="modal-title">Submission Successful!</h2>
+            <div class="modal-body">
+                <div class="result-row">
+                    <span class="result-label">Carbon Saved</span>
+                    <span class="result-value" id="modal-carbon">0 kg</span>
+                </div>
+                <div class="result-row">
+                    <span class="result-label">Green Score</span>
+                    <span class="result-value" id="modal-score">0%</span>
+                </div>
+                <div class="result-row">
+                    <span class="result-label">Tokens Earned</span>
+                    <span class="result-value accent" id="modal-tokens">0 CT</span>
+                </div>
+                <div class="result-divider"></div>
+                <div class="result-hash-section">
+                    <div class="result-hash">
+                        <span class="hash-label">📄 Bill Hash</span>
+                        <code id="modal-bill-hash">—</code>
+                    </div>
+                    <div class="result-hash">
+                        <span class="hash-label">☀️ Solar Hash</span>
+                        <code id="modal-solar-hash">—</code>
+                    </div>
+                </div>
+                <div class="chain-badge">
+                    <span class="chain-dot"></span> Verified on Algorand Blockchain
+                </div>
+            </div>
+            <button onclick="app.closeResultModal()" class="btn-primary" style="margin-top: 1.5rem;">
+                Back to Dashboard ✨
+            </button>
+        </div>
+    </div>
+
+    <!-- Unified Navbar -->
+    <nav class="navbar">
+        <a href="#" class="nav-logo" onclick="app.showHome()">
+            <span>⚡</span> CampusCarbon
+        </a>
+
+        <!-- Mobile Hamburger -->
+        <button class="hamburger" id="hamburger-btn" onclick="app.toggleMobileMenu()">
+            <span></span><span></span><span></span>
+        </button>
+
+        <div class="nav-menu" id="nav-menu">
+            <a onclick="app.showHome()" class="nav-link">Home</a>
+            <a onclick="app.showLeaderboard(true)" class="nav-link">Leaderboard</a>
+
+            <!-- Ultra Web3 Connect Button -->
+            <button onclick="app.connectWallet()" class="btn-connect" id="connectWalletBtn">
+                <div class="status-dot" id="walletStatusDot"></div>
+                <span id="walletBtnText">Connect Wallet</span>
+            </button>
+
+            <button onclick="app.showLogin()" class="btn-connect"
+                style="border-color: var(--accent-cyan); color: var(--accent-cyan);">
+                <span>Login</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- 1️⃣ HOME PAGE -->
+    <section id="home-page">
+        <div class="hero-glow-bg"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">
+                CampusCarbon <br>
+                <span class="hero-gradient-text">Future of Green Trust</span>
+            </h1>
+            <p class="hero-subtitle">
+                The world's first blockchain-powered sustainability verification protocol for educational institutions.
+                Track usage, Upload proofs, and Mint rewards.
+            </p>
+
+            <div class="hero-cards">
+                <div class="glass-panel hero-mini-card">
+                    <div class="hero-mini-icon" style="background: rgba(0,255,136,0.1);">📄</div>
+                    <div>
+                        <div class="hero-mini-label">Upload Data</div>
+                        <div class="hero-mini-value">Utility Bills</div>
+                    </div>
+                </div>
+                <div class="glass-panel hero-mini-card">
+                    <div class="hero-mini-icon" style="background: rgba(59,130,246,0.1);">⛓️</div>
+                    <div>
+                        <div class="hero-mini-label">Verify</div>
+                        <div class="hero-mini-value">On-Chain</div>
+                    </div>
+                </div>
+                <div class="glass-panel hero-mini-card">
+                    <div class="hero-mini-icon" style="background: rgba(255,215,0,0.1);">🏆</div>
+                    <div>
+                        <div class="hero-mini-label">Earn</div>
+                        <div class="hero-mini-value">Rewards</div>
+                    </div>
+                </div>
+            </div>
+
+            <button onclick="app.showLogin()" class="btn-hero">
+                Launch Dashboard 🚀
+            </button>
+        </div>
+
+        <!-- How It Works Section -->
+        <div class="section-container">
+            <h2 class="section-heading">How It Works</h2>
+            <div class="features-grid">
+                <div class="glass-panel feature-card">
+                    <div class="feature-icon">📄</div>
+                    <h3 class="feature-title">1. Upload Proofs</h3>
+                    <p class="feature-desc">Submit your campus electricity bills and solar generation reports via the
+                        Dashboard.</p>
+                    <div class="feature-badge">Supported: PDF, IMG</div>
+                </div>
+                <div class="glass-panel feature-card">
+                    <div class="feature-icon">🔍</div>
+                    <h3 class="feature-title">2. Verified by Smart Contract</h3>
+                    <p class="feature-desc">Our smart contract validates your energy ratio and calculates your Green
+                        Score.</p>
+                </div>
+                <div class="glass-panel feature-card">
+                    <div class="feature-icon">🎁</div>
+                    <h3 class="feature-title">3. Get Rewarded</h3>
+                    <p class="feature-desc">Automatically receive Carbon Tokens and NFT Badges in your Pera Wallet.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-container">
+            <h2 class="section-heading">Reward Tiers</h2>
+            <div class="features-grid">
+                <div class="glass-panel feature-card">
+                    <div class="feature-icon">🥇</div>
+                    <h3 class="feature-title">Carbon Champion</h3>
+                    <p class="feature-desc">Gold NFT Badge & Top Leaderboard Rank</p>
+                </div>
+                <div class="glass-panel feature-card">
+                    <div class="feature-icon">🥈</div>
+                    <h3 class="feature-title">Green Impact Leader</h3>
+                    <p class="feature-desc">Silver NFT Badge & Verified Status</p>
+                </div>
+                <div class="glass-panel feature-card">
+                    <div class="feature-icon">🥉</div>
+                    <h3 class="feature-title">Sustainable Growth</h3>
+                    <p class="feature-desc">Bronze NFT Badge & Participation Certificate</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2️⃣ LOGIN PAGE -->
+    <section id="login-page" class="hidden">
+        <div class="glass-panel login-card">
+            <div class="demo-badge">
+                <strong>Demo mode:</strong> Authentication is simulated. Any credentials grant access for demonstration
+                purposes.
+            </div>
+            <h2 class="login-title">Welcome Back</h2>
+            <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">Access your sustainability dashboard</p>
+
+            <form id="login-form" style="width: 100%;">
+                <div class="input-group" style="margin-bottom: 1rem;">
+                    <label class="form-label">Select Institution</label>
+                    <select id="college-select" class="form-input" required>
+                        <option value="1">Green Valley Institute</option>
+                        <option value="2">Tech City College</option>
+                        <option value="3">Metro University</option>
+                        <option value="4">North Hills Academy</option>
+                    </select>
+                </div>
+                <div class="input-group" style="margin-bottom: 1rem;">
+                    <input type="email" id="login-email" class="form-input" placeholder="Email Address" required>
+                </div>
+                <div class="input-group" style="margin-bottom: 1.5rem;">
+                    <input type="password" class="form-input" placeholder="Password" required>
+                </div>
+                <button type="submit" class="btn-primary" id="login-btn">Login to Dashboard</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- 3️⃣ DASHBOARD PAGE -->
+    <section id="dashboard-page" class="hidden">
+
+        <!-- Dashboard Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="avatar-container" onclick="document.getElementById('logo-upload').click()">
+                    <img src="https://via.placeholder.com/120/00ff88/000000?text=GVI" class="college-logo"
+                        id="dash-logo">
+                    <div class="avatar-overlay">
+                        <span>📷 Upload</span>
+                    </div>
+                </div>
+                <input type="file" id="logo-upload" accept="image/png, image/jpeg, image/jpg, image/webp"
+                    style="display: none;" onchange="app.handleLogoUpload(this)">
+
+                <h3 class="sidebar-college-name" id="dash-college-name" style="margin-top: 1rem;">Green Valley Inst.
+                </h3>
+            </div>
+            <nav style="display: flex; flex-direction: column; gap: 0.5rem; flex: 1;">
+                <a onclick="app.showDashboardTab('overview')" class="sidebar-link active" id="nav-overview">📊
+                    Dashboard</a>
+                <a onclick="app.showDashboardTab('submit')" class="sidebar-link" id="nav-submit">📝 Submit Data</a>
+                <a onclick="app.showLeaderboard(false)" class="sidebar-link">🏆 Leaderboard</a>
+            </nav>
+            <button onclick="app.logout()" class="sidebar-logout">
+                🚪 Logout
+            </button>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Overview Tab -->
+            <div id="tab-overview">
+                <div class="overview-header-group">
+                    <div class="header-content">
+                        <div class="header-left">
+                            <h2 class="page-title" style="margin-bottom: 0.2rem;">Dashboard Overview</h2>
+                            <span class="date-display" id="current-date">Today</span>
+                        </div>
+                        <button class="btn-refresh-pill" onclick="app.fetchLeaderboard()">
+                            ↻ Refresh
+                        </button>
+                    </div>
+
+                    <!-- Summary Bar -->
+                    <div class="summary-bar">
+                        <div class="summary-item">
+                            <span class="summary-label">⚡ Total Energy</span>
+                            <span class="summary-value" id="sum-energy">0 kWh</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">☀️ Solar Ratio</span>
+                            <span class="summary-value" id="sum-solar-ratio">0%</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">🌱 Carbon Impact</span>
+                            <span class="summary-value" id="sum-impact" style="color: var(--accent-green);">Low</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stats-grid">
+                    <!-- Card 1: Electricity -->
+                    <div class="stat-card">
+                        <div class="stat-emoji">⚡</div>
+                        <span class="stat-label">Electricity Usage</span>
+                        <div class="stat-value" id="electricityValue">0</div>
+                        <span class="stat-unit">Kilowatt-hours (kWh)</span>
+                    </div>
+
+                    <!-- Card 2: Solar -->
+                    <div class="stat-card">
+                        <div class="stat-emoji" style="filter: drop-shadow(0 0 10px rgba(255,215,0,0.3));">☀️</div>
+                        <span class="stat-label">Solar Generation</span>
+                        <div class="stat-value" id="solarValue">0</div>
+                        <span class="stat-unit">Kilowatt-hours (kWh)</span>
+                    </div>
+
+                    <!-- Card 3: Carbon Saved -->
+                    <div class="stat-card">
+                        <div class="stat-emoji" style="filter: drop-shadow(0 0 10px rgba(16,185,129,0.3));">🌱</div>
+                        <span class="stat-label">Carbon Saved</span>
+                        <div class="stat-value" id="carbonValue">0</div>
+                        <span class="stat-unit">Kilograms of CO₂</span>
+                    </div>
+
+                    <!-- Card 4: Green Score (Circular Progress) -->
+                    <div class="stat-card">
+                        <span class="stat-label">Overall Green Score</span>
+                        <div class="progress-ring">
+                            <svg width="120" height="120">
+                                <circle class="bg-ring" cx="60" cy="60" r="54"></circle>
+                                <circle class="progress-value-ring" id="score-ring-circle" cx="60" cy="60" r="54">
+                                </circle>
+                            </svg>
+                            <div class="score-text" id="scoreValue">0%</div>
+                        </div>
+                        <div class="stat-unit" id="score-status-text">Calculating...</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Submit Tab -->
+            <div id="tab-submit" class="hidden">
+                <div class="page-header" style="margin-bottom: 2rem;">
+                    <h2 class="page-title">Submit Monthly Data</h2>
+                    <p style="color: var(--text-secondary);">Input your campus energy/resource consumption.</p>
+                </div>
+
+                <div class="submit-layout">
+                    <!-- Left: Form -->
+                    <div class="premium-form">
+                        <form id="energyForm">
+                            <h3 style="margin-bottom: 1.5rem; color: #fff;">📝 Energy Details</h3>
+
+                            <div class="floating-input-group">
+                                <select class="floating-input" style="appearance: none;">
+                                    <option>October 2026</option>
+                                    <option>September 2026</option>
+                                </select>
+                                <label class="floating-label"
+                                    style="top: -0.6rem; left: 0.8rem; font-size: 0.8rem; color: var(--accent-green); background: #0a0a0a;">Reporting
+                                    Month</label>
+                            </div>
+
+                            <div class="floating-input-group">
+                                <input type="number" id="electricity" class="floating-input" placeholder=" " required
+                                    oninput="app.updatePreview()">
+                                <label class="floating-label">Electricity Used (kWh)</label>
+                                <div id="electricity-error" class="field-error"></div>
+                            </div>
+
+                            <div class="floating-input-group">
+                                <input type="number" id="solar" class="floating-input" placeholder=" " required
+                                    oninput="app.updatePreview()">
+                                <label class="floating-label">Solar Generated (kWh)</label>
+                                <div id="solar-error" class="field-error"></div>
+                            </div>
+
+                            <h3 style="margin: 2rem 0 1rem; color: #fff;">📄 Proof Verification</h3>
+
+                            <div class="floating-input-group" style="margin-bottom: 0;">
+                                <label class="file-section-label">Upload Utility Bills & Solar Reports (PDF)</label>
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                                    <div>
+                                        <input type="file" id="bill-upload" accept=".pdf" class="floating-input"
+                                            style="padding: 0.5rem;">
+                                        <div id="bill-error" class="field-error"></div>
+                                    </div>
+                                    <div>
+                                        <input type="file" id="solar-upload" accept=".pdf" class="floating-input"
+                                            style="padding: 0.5rem;">
+                                        <div id="solar-error-file" class="field-error"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="general-error" class="general-error"></div>
+
+                            <button type="submit" class="btn-primary btn-submit" id="submit-btn">
+                                <span class="btn-text">Calculate & Mint Tokens 🌿</span>
+                                <span class="btn-spinner hidden">↻</span>
+                            </button>
+
+                            <div id="loading-indicator" class="loading-indicator hidden">
+                                <span class="spinner">↻</span> Processing On-Chain...
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Right: Live Preview -->
+                    <div class="preview-card">
+                        <h3 style="margin-bottom: 1.5rem; color: var(--accent-green);">Live Estimation</h3>
+
+                        <div class="preview-item">
+                            <span style="color: var(--text-secondary);">Carbon Saved</span>
+                            <strong style="color: #fff; font-size: 1.2rem;" id="prev-carbon">0 kg</strong>
+                        </div>
+
+                        <div class="preview-item">
+                            <span style="color: var(--text-secondary);">Green Score</span>
+                            <strong style="color: #fff; font-size: 1.2rem;" id="prev-score">0%</strong>
+                        </div>
+
+                        <div class="preview-item">
+                            <span style="color: var(--text-secondary);">Tokens Earned</span>
+                            <strong style="color: var(--accent-green); font-size: 1.2rem;" id="prev-tokens">0
+                                CT</strong>
+                        </div>
+
+                        <div class="preview-note">
+                            ℹ️ <strong>Note:</strong> Values are estimates. Final Green Score & Token rewards are
+                            verified on-chain upon submission.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </section>
+
+    <!-- 5️⃣ LEADERBOARD PAGE -->
+    <section id="leaderboard-page" class="hidden">
+        <div style="text-align: center; margin-bottom: 3rem;">
+            <h2 class="page-title" style="margin-bottom: 1rem;">Global Green Ranking</h2>
+            <p style="color: var(--text-secondary);">Top performing institutions based on verified blockchain data.</p>
+        </div>
+
+        <div class="leaderboard-list" id="leaderboard-list">
+            <div style="text-align: center; color: var(--text-secondary); padding: 2rem;">
+                <span class="spinner">↻</span> Loading on-chain data...
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 3rem;">
+            <button onclick="app.showHome()" class="btn-back">
+                ← Back to Home
+            </button>
+        </div>
+    </section>
+
+    <!-- PREMIUM FOOTER -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <div class="footer-logo">
+                    <span>⚡</span> CampusCarbon
+                </div>
+                <p class="footer-desc">
+                    CampusCarbon is a blockchain-powered sustainability tracking system, empowering educational
+                    institutions to transparently verify and showcase their green impact.
+                </p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <div class="footer-links">
+                    <a onclick="app.showHome()" class="footer-link">Home</a>
+                    <a onclick="app.showLogin()" class="footer-link">Login</a>
+                    <a onclick="app.showLeaderboard(true)" class="footer-link">Leaderboard</a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Features</h4>
+                <div class="footer-links">
+                    <a href="#" class="footer-link">Carbon Tracking</a>
+                    <a href="#" class="footer-link">Blockchain Transparency</a>
+                    <a href="#" class="footer-link">Green Ranking</a>
+                    <a href="#" class="footer-link">Smart Contracts</a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <div class="footer-links">
+                    <a href="mailto:demo@campuscarbon.io" class="footer-link">demo@campuscarbon.io</a>
+                    <a href="#" class="footer-link">Twitter / X</a>
+                    <a href="#" class="footer-link">LinkedIn</a>
+                    <a href="#" class="footer-link">GitHub</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2026 CampusCarbon. </span>
+            <span class="footer-algo-badge">
+                <span class="algo-dot"></span>
+                Powered by Algorand Blockchain
+            </span>
+        </div>
+    </footer>
+
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
