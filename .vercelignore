@@ -1,0 +1,19 @@
+# Vercel Ignore - exclude large/unnecessary directories from deployment
+venv/
+.venv/
+campus-env/
+campus-carbon/
+hacaton/
+hackaton/
+node_modules/
+data/
+smart_contracts/.venv/
+smart_contracts/__pycache__/
+*.pyc
+__pycache__/
+.git/
+.DS_Store
+pera-diagnostic-tool.js
+pera-wallet-advanced.js
+pera-wallet-minimal.html
+pera-wallet-setup.html
