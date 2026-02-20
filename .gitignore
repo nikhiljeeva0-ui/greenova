@@ -27,6 +27,11 @@ artifacts/
 .idea/
 .vscode/
 
+# Local nested repos / submodule worktrees (not part of deployment)
+campus-carbon/
+hacaton/
+hackaton/
+
 # OS
 .DS_Store
 Thumbs.db
