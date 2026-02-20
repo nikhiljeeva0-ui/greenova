@@ -1,4 +1,4 @@
-# Vercel Ignore — exclude everything except frontend files
+# Vercel Ignore — exclude non-deployment files
 venv/
 .venv/
 campus-env/
@@ -7,7 +7,6 @@ hacaton/
 hackaton/
 node_modules/
 data/
-api/
 smart_contracts/
 __pycache__/
 *.pyc
@@ -17,8 +16,6 @@ __pycache__/
 .env.*
 !.env.example
 server.js
-package.json
-package-lock.json
 pera-diagnostic-tool.js
 pera-wallet-advanced.js
 pera-wallet-minimal.html
