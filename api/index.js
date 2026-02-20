@@ -21,63 +21,10 @@ app.use((req, res, next) => {
 // In-Memory Data Store (Serverless-safe)
 // Vercel serverless has NO persistent filesystem
 // ═══════════════════════════════════════
-const seedSubmissions = [
-    {
-        id: "seed-1",
-        collegeId: 1,
-        collegeName: "Green Valley Institute",
-        electricity: 1200,
-        solar: 600,
-        carbonSaved: 492,
-        greenScore: 82,
-        tokens: 4,
-        timestamp: new Date().toISOString(),
-        electricityHash: "a1b2c3d4e5f6789012345678abcdef0123456789abcdef0123456789abcdef01",
-        solarHash: "b2c3d4e5f6789012345678abcdef0123456789abcdef0123456789abcdef0102"
-    },
-    {
-        id: "seed-2",
-        collegeId: 2,
-        collegeName: "Tech City College",
-        electricity: 1800,
-        solar: 500,
-        carbonSaved: 410,
-        greenScore: 65,
-        tokens: 4,
-        timestamp: new Date().toISOString(),
-        electricityHash: "c3d4e5f6789012345678abcdef0123456789abcdef0123456789abcdef010203",
-        solarHash: "d4e5f6789012345678abcdef0123456789abcdef0123456789abcdef01020304"
-    },
-    {
-        id: "seed-3",
-        collegeId: 3,
-        collegeName: "Metro University",
-        electricity: 2200,
-        solar: 400,
-        carbonSaved: 328,
-        greenScore: 45,
-        tokens: 3,
-        timestamp: new Date().toISOString(),
-        electricityHash: "e5f6789012345678abcdef0123456789abcdef0123456789abcdef0102030405",
-        solarHash: "f6789012345678abcdef0123456789abcdef0123456789abcdef010203040506"
-    },
-    {
-        id: "seed-4",
-        collegeId: 4,
-        collegeName: "North Hills Academy",
-        electricity: 900,
-        solar: 700,
-        carbonSaved: 574,
-        greenScore: 91,
-        tokens: 5,
-        timestamp: new Date().toISOString(),
-        electricityHash: "789012345678abcdef0123456789abcdef0123456789abcdef01020304050607",
-        solarHash: "89012345678abcdef0123456789abcdef0123456789abcdef0102030405060708"
-    }
-];
 
 // In-memory stores (reset on cold start — acceptable for demo/hackathon)
-let submissions = [...seedSubmissions];
+// No seed/dummy data — starts empty, populated by real submissions
+let submissions = [];
 let sessions = {};
 
 // ─── API Routes ───
@@ -94,16 +41,16 @@ app.get('/api/health', (req, res) => {
 
 // Login (demo — any credentials work)
 app.post('/api/login', (req, res) => {
-    const { email, collegeId } = req.body;
+    const { email, collegeName } = req.body;
 
-    if (!email || !collegeId) {
-        return res.status(400).json({ error: 'Email and college selection required' });
+    if (!email || !collegeName) {
+        return res.status(400).json({ error: 'Email and college name required' });
     }
 
     const token = crypto.randomBytes(32).toString('hex');
     sessions[token] = {
         email,
-        collegeId: parseInt(collegeId),
+        collegeName: collegeName.trim(),
         createdAt: new Date().toISOString()
     };
 
@@ -111,7 +58,7 @@ app.post('/api/login', (req, res) => {
         success: true,
         token,
         message: 'Login successful',
-        collegeId: parseInt(collegeId)
+        collegeName: collegeName.trim()
     });
 });
 
@@ -119,7 +66,7 @@ app.post('/api/login', (req, res) => {
 app.post('/api/submit', (req, res) => {
     const {
         electricity, solar, carbonSaved, greenScore,
-        collegeId, collegeName, electricityHash, solarHash, walletAddress
+        collegeName, electricityHash, solarHash, walletAddress
     } = req.body;
 
     // Validation
@@ -135,12 +82,14 @@ app.post('/api/submit', (req, res) => {
     if (electricity > 50000) {
         return res.status(400).json({ error: 'Electricity exceeds realistic campus cap (50,000 kWh)' });
     }
+    if (!collegeName || !collegeName.trim()) {
+        return res.status(400).json({ error: 'College name is required' });
+    }
 
     const tokens = Math.floor((carbonSaved || 0) / 100);
     const submission = {
         id: crypto.randomUUID(),
-        collegeId: parseInt(collegeId) || 1,
-        collegeName: collegeName || 'Unknown Campus',
+        collegeName: collegeName.trim(),
         electricity: parseFloat(electricity),
         solar: parseFloat(solar),
         carbonSaved: parseFloat(carbonSaved) || 0,
@@ -174,7 +123,6 @@ app.get('/api/leaderboard', (req, res) => {
     const leaderboard = Object.values(collegeMap)
         .map(s => ({
             collegeName: s.collegeName,
-            collegeId: s.collegeId,
             greenScore: s.greenScore,
             carbonSaved: s.carbonSaved,
             electricity: s.electricity,
@@ -188,10 +136,10 @@ app.get('/api/leaderboard', (req, res) => {
 });
 
 // Get submissions for a specific college
-app.get('/api/submissions/:collegeId', (req, res) => {
-    const collegeId = parseInt(req.params.collegeId);
+app.get('/api/submissions/:collegeName', (req, res) => {
+    const name = decodeURIComponent(req.params.collegeName);
     const filtered = submissions
-        .filter(s => s.collegeId === collegeId)
+        .filter(s => s.collegeName.toLowerCase() === name.toLowerCase())
         .sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
 
     res.json({ success: true, submissions: filtered });

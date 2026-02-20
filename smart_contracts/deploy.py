@@ -14,25 +14,24 @@ from algokit_utils import (
 from algosdk.atomic_transaction_composer import AccountTransactionSigner
 from dotenv import load_dotenv
 
-from carbon_contract import app  # Import the Beaker app
+from carbon_contract import app  # Import the enhanced Beaker app
 
 load_dotenv()
 
-# Setup logging
 logger = logging.getLogger(__name__)
 
 
 def deploy(use_localnet: bool = False):
+    """Deploy the CampusCarbon smart contract."""
     # 1. Initialize Algod Client
     if use_localnet:
-        # Use LocalNet defaults (requires: algokit localnet start)
         algod_config = get_default_localnet_config("algod")
         indexer_config = get_default_localnet_config("indexer")
         algod_client = get_algod_client(algod_config)
         indexer_client = get_indexer_client(indexer_config)
         deployer = get_localnet_default_account(algod_client)
     else:
-        # Use env vars - set defaults for Testnet (Algonode) if not configured
+        # Testnet (Algonode)
         if not os.environ.get("ALGOD_SERVER"):
             os.environ.setdefault("ALGOD_SERVER", "https://testnet-api.algonode.cloud")
             os.environ.setdefault("ALGOD_TOKEN", "")
@@ -51,21 +50,34 @@ def deploy(use_localnet: bool = False):
 
     signer = AccountTransactionSigner(deployer.private_key)
 
-    # 3. Create Application Client (Beaker)
+    # 2. Create Application Client
     app_client = ApplicationClient(
         algod_client,
         app,
         signer=signer,
     )
 
-    # 4. Deploy App
-    print("Deploying CampusCarbon Smart Contract...")
+    # 3. Deploy
+    print("=" * 50)
+    print("🚀 Deploying CampusCarbon Smart Contract...")
+    print("=" * 50)
+
     app_id, app_addr, tx_id = app_client.create()
 
-    print(f"Deployed successfully! Application ID: {app_id}")
-    print(f"Application Address: {app_addr}")
-    print(f"Transaction ID: {tx_id}")
-    print(f"\nUpdate config.js: APP_ID: {app_id}")
+    print(f"\n✅ Deployed successfully!")
+    print(f"   Application ID:      {app_id}")
+    print(f"   Application Address: {app_addr}")
+    print(f"   Transaction ID:      {tx_id}")
+    print(f"\n📝 NEXT STEP: Update config.js with:")
+    print(f"   APP_ID: {app_id}")
+    print("=" * 50)
+
+    # 4. Export contract ABI
+    try:
+        app.build().export("./artifacts")
+        print("📦 ABI artifacts exported to ./artifacts/")
+    except Exception as e:
+        print(f"⚠️ Could not export artifacts: {e}")
 
     return app_id
 

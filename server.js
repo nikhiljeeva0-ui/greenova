@@ -20,7 +20,7 @@ app.get('*', (req, res) => {
 app.listen(PORT, () => {
     console.log(`
 ╔══════════════════════════════════════════╗
-║   ⚡ CampusCarbon Server Running        ║
+║   ⚡ Greenova Server Running            ║
 ║   🌐 http://localhost:${PORT}              ║
 ║   📊 API: http://localhost:${PORT}/api     ║
 ║   🌿 Environment: development           ║

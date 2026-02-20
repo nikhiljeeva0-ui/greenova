@@ -1,5 +1,7 @@
 // ═══════════════════════════════════════
-// CampusCarbon — Production Script
+// Greenova — Pure Web3 Frontend
+// Architecture: Frontend → Pera Wallet → Smart Contract → Algorand Blockchain
+// NO backend server. Everything on-chain.
 // ═══════════════════════════════════════
 
 // Debug logging
@@ -12,7 +14,6 @@ function debugLog() {
     else if (console.log) console.log.apply(console, args);
 }
 
-// XSS protection
 function escapeHtml(str) {
     if (str == null || typeof str !== 'string') return '';
     const div = document.createElement('div');
@@ -20,23 +21,27 @@ function escapeHtml(str) {
     return div.innerHTML;
 }
 
-// Validate logo URL
+// Generate inline SVG logo (no external URLs needed)
+function makeSvgLogo(text, bg, fg) {
+    bg = bg || '062'; fg = fg || '00ff88';
+    return "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Crect fill='%23" + bg + "' width='120' height='120' rx='60'/%3E%3Ctext x='50%25' y='55%25' text-anchor='middle' dy='.35em' fill='%23" + fg + "' font-family='Arial' font-size='28' font-weight='bold'%3E" + encodeURIComponent(text) + "%3C/text%3E%3C/svg%3E";
+}
+
 function safeLogoUrl(url) {
-    if (!url || typeof url !== 'string') return 'https://via.placeholder.com/50/00ff88/000000?text=?';
+    if (!url || typeof url !== 'string') return makeSvgLogo('?');
     const trimmed = url.trim().toLowerCase();
-    if (trimmed.startsWith('javascript:') || trimmed.startsWith('data:') || trimmed.startsWith('vbscript:')) {
-        return 'https://via.placeholder.com/50/00ff88/000000?text=?';
+    if (trimmed.startsWith('javascript:') || trimmed.startsWith('vbscript:')) {
+        return makeSvgLogo('?');
     }
     return url;
 }
 
 // ═══════════════════════════════════════
-// TOAST NOTIFICATION SYSTEM
+// TOAST NOTIFICATIONS
 // ═══════════════════════════════════════
 function showToast(type, title, message, duration = 4000) {
     const container = document.getElementById('toast-container');
     if (!container) return;
-
     const icons = { success: '✅', error: '❌', info: 'ℹ️', warning: '⚠️' };
     const toast = document.createElement('div');
     toast.className = `toast toast-${type}`;
@@ -48,7 +53,6 @@ function showToast(type, title, message, duration = 4000) {
         </div>
     `;
     container.appendChild(toast);
-
     setTimeout(() => {
         toast.classList.add('toast-exit');
         setTimeout(() => toast.remove(), 300);
@@ -63,106 +67,91 @@ function initParticles() {
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
     let particles = [];
-    const PARTICLE_COUNT = 50;
+    const COUNT = 50;
 
-    function resize() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-    }
+    function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
     resize();
     window.addEventListener('resize', resize);
 
-    function createParticle() {
-        return {
-            x: Math.random() * canvas.width,
-            y: Math.random() * canvas.height,
-            vx: (Math.random() - 0.5) * 0.3,
-            vy: (Math.random() - 0.5) * 0.3,
-            size: Math.random() * 2 + 0.5,
-            opacity: Math.random() * 0.5 + 0.1,
+    for (let i = 0; i < COUNT; i++) {
+        particles.push({
+            x: Math.random() * canvas.width, y: Math.random() * canvas.height,
+            vx: (Math.random() - 0.5) * 0.3, vy: (Math.random() - 0.5) * 0.3,
+            size: Math.random() * 2 + 0.5, opacity: Math.random() * 0.5 + 0.1,
             color: Math.random() > 0.5 ? '0, 255, 136' : '0, 243, 255'
-        };
-    }
-
-    for (let i = 0; i < PARTICLE_COUNT; i++) {
-        particles.push(createParticle());
+        });
     }
 
     function animate() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-
         particles.forEach(p => {
-            p.x += p.vx;
-            p.y += p.vy;
-
+            p.x += p.vx; p.y += p.vy;
             if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
             if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
-
-            ctx.beginPath();
-            ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(${p.color}, ${p.opacity})`;
-            ctx.fill();
+            ctx.beginPath(); ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(${p.color}, ${p.opacity})`; ctx.fill();
         });
-
-        // Draw connections
         for (let i = 0; i < particles.length; i++) {
             for (let j = i + 1; j < particles.length; j++) {
-                const dx = particles[i].x - particles[j].x;
-                const dy = particles[i].y - particles[j].y;
+                const dx = particles[i].x - particles[j].x, dy = particles[i].y - particles[j].y;
                 const dist = Math.sqrt(dx * dx + dy * dy);
                 if (dist < 150) {
-                    ctx.beginPath();
-                    ctx.moveTo(particles[i].x, particles[i].y);
+                    ctx.beginPath(); ctx.moveTo(particles[i].x, particles[i].y);
                     ctx.lineTo(particles[j].x, particles[j].y);
                     ctx.strokeStyle = `rgba(0, 255, 136, ${0.05 * (1 - dist / 150)})`;
-                    ctx.lineWidth = 0.5;
-                    ctx.stroke();
+                    ctx.lineWidth = 0.5; ctx.stroke();
                 }
             }
         }
-
         requestAnimationFrame(animate);
     }
     animate();
 }
 
 // ═══════════════════════════════════════
-// MAIN APP
+// ABI METHOD SELECTOR HELPER
+// ═══════════════════════════════════════
+async function computeMethodSelector(methodSignature) {
+    // ARC-4 ABI: first 4 bytes of SHA-512/256 of the method signature
+    const encoded = new TextEncoder().encode(methodSignature);
+    try {
+        // Try native SHA-512/256 first
+        const hashBuffer = await crypto.subtle.digest('SHA-512/256', encoded);
+        return new Uint8Array(hashBuffer).slice(0, 4);
+    } catch (e) {
+        // Fallback: use SHA-256 and note it in debug
+        // For Beaker contracts, we can also compute it manually
+        debugLog('warn', 'SHA-512/256 not supported, using SHA-256 fallback');
+        const hashBuffer = await crypto.subtle.digest('SHA-256', encoded);
+        return new Uint8Array(hashBuffer).slice(0, 4);
+    }
+}
+
+// ═══════════════════════════════════════
+// MAIN APPLICATION
 // ═══════════════════════════════════════
 const app = {
-    colleges: [
-        {
-            id: 1, name: 'Green Valley Institute',
-            logo: 'https://via.placeholder.com/120/00ff88/000000?text=GVI',
-            color: '#00ff88'
-        },
-        {
-            id: 2, name: 'Tech City College',
-            logo: 'https://via.placeholder.com/120/3b82f6/ffffff?text=TCC',
-            color: '#3b82f6'
-        },
-        {
-            id: 3, name: 'Metro University',
-            logo: 'https://via.placeholder.com/120/f59e0b/000000?text=MU',
-            color: '#f59e0b'
-        },
-        {
-            id: 4, name: 'North Hills Academy',
-            logo: 'https://via.placeholder.com/120/ec4899/ffffff?text=NHA',
-            color: '#ec4899'
-        }
-    ],
+    // No hardcoded colleges — user enters their own college name at login
+
+    // Initial data: all zeros until real data is submitted
+    demoData: {
+        electricity: 0, solar: 0, carbonSaved: 0, greenScore: 0,
+        tokensEarned: 0, hasBadge: 0
+    },
 
     data: {
-        electricity: 1200,
-        solar: 600,
-        trees: 0,
-        carbonSaved: 492,
-        greenScore: 82,
+        electricity: 0,
+        solar: 0,
+        carbonSaved: 0,
+        greenScore: 0,
+        tokensEarned: 0,
+        hasBadge: 0,
         electricityHash: null,
         solarHash: null,
-        collegeName: 'Green Valley Institute'
+        collegeName: ''
     },
+
+    isOnChainData: false,  // true once real blockchain data is loaded
 
     currentCollege: null,
     userAddress: null,
@@ -170,23 +159,60 @@ const app = {
     algodClient: null,
     indexerClient: null,
 
-    // ─── INITIALIZATION ───
-    init() {
-        debugLog("Initializing CampusCarbon App...");
+    // ═══════════════════════════════════════
+    // APP ID — from config.js (set after deploy)
+    // ═══════════════════════════════════════
+    get appId() {
+        const cfg = (typeof window !== 'undefined' && window.CAMPUS_CARBON_CONFIG) ? window.CAMPUS_CARBON_CONFIG : {};
+        return cfg.APP_ID || 0;
+    },
 
-        // Initialize Algorand clients
+    get algodUrl() {
+        const cfg = (typeof window !== 'undefined' && window.CAMPUS_CARBON_CONFIG) ? window.CAMPUS_CARBON_CONFIG : {};
+        return cfg.ALGOD_URL || 'https://testnet-api.algonode.cloud';
+    },
+
+    get algodToken() {
+        const cfg = (typeof window !== 'undefined' && window.CAMPUS_CARBON_CONFIG) ? window.CAMPUS_CARBON_CONFIG : {};
+        return cfg.ALGOD_TOKEN || '';
+    },
+
+    get indexerUrl() {
+        const cfg = (typeof window !== 'undefined' && window.CAMPUS_CARBON_CONFIG) ? window.CAMPUS_CARBON_CONFIG : {};
+        return cfg.INDEXER_URL || 'https://testnet-idx.algonode.cloud';
+    },
+
+    // Parse URL into {baseUrl, port} for algosdk (which requires port as separate param)
+    parseUrl(urlString) {
         try {
-            this.algodClient = new algosdk.Algodv2('', 'https://testnet-api.algonode.cloud', '');
-            this.indexerClient = new algosdk.Indexer('', 'https://testnet-idx.algonode.cloud', '');
+            const u = new URL(urlString);
+            const port = u.port ? parseInt(u.port) : (u.protocol === 'https:' ? 443 : 80);
+            const baseUrl = u.protocol + '//' + u.hostname;
+            return { baseUrl, port };
         } catch (e) {
-            debugLog("warn", "Algorand SDK init warning:", e);
+            return { baseUrl: urlString, port: '' };
+        }
+    },
+
+    // ═══════════════════════════════════════
+    // INITIALIZATION
+    // ═══════════════════════════════════════
+    init() {
+        debugLog("⚡ Initializing Greenova (Pure Web3 Mode)...");
+
+        // Initialize Algorand clients — port MUST be separate argument for algosdk
+        try {
+            const algod = this.parseUrl(this.algodUrl);
+            const indexer = this.parseUrl(this.indexerUrl);
+            this.algodClient = new algosdk.Algodv2(this.algodToken, algod.baseUrl, algod.port);
+            this.indexerClient = new algosdk.Indexer('', indexer.baseUrl, indexer.port);
+            debugLog('Algorand clients initialized:', algod.baseUrl + ':' + algod.port);
+        } catch (e) {
+            debugLog("error", "Algorand SDK init error:", e);
         }
 
-        // Load saved data
-        this.loadData();
-
-        // Default college
-        this.currentCollege = this.colleges[0];
+        // Default college — will be set on login
+        this.currentCollege = null;
 
         // Initialize Pera Wallet
         if (typeof window.PeraWalletConnect !== 'undefined') {
@@ -197,13 +223,16 @@ const app = {
                         this.userAddress = accounts[0];
                         this.updateWalletUI();
                         this.loadLogo();
+                        // Load on-chain data for this wallet
+                        this.loadOnChainData();
                     }
                     this.peraWallet.connector?.on("disconnect", () => {
                         this.userAddress = null;
                         this.resetWalletUI();
+                        this.resetData();
                     });
                 }).catch((err) => {
-                    debugLog("error", "Pera Wallet reconnect failed:", err);
+                    debugLog("warn", "Pera reconnect:", err.message || err);
                 });
             } catch (error) {
                 debugLog("error", "Pera Wallet Init Error:", error);
@@ -216,9 +245,6 @@ const app = {
         if (dateEl) dateEl.innerText = new Date().toLocaleDateString('en-US', options);
 
         // Event Listeners
-        document.getElementById('college-select')?.addEventListener('change', (e) => {
-            this.selectCollege(parseInt(e.target.value));
-        });
 
         document.getElementById('login-form')?.addEventListener('submit', (e) => {
             e.preventDefault();
@@ -233,23 +259,63 @@ const app = {
         // Initialize UI
         this.updateDashboardUI();
         this.showHome();
-
-        // Start particles
         initParticles();
 
-        debugLog("App initialized successfully ✅");
+        debugLog("App initialized ✅ | App ID:", this.appId || "NOT SET");
     },
 
-    // ─── MOBILE MENU ───
-    toggleMobileMenu() {
-        const menu = document.getElementById('nav-menu');
-        const hamburger = document.getElementById('hamburger-btn');
-        if (menu && hamburger) {
-            menu.classList.toggle('open');
-            hamburger.classList.toggle('active');
+    // ═══════════════════════════════════════
+    // ON-CHAIN DATA LOADING
+    // Read wallet's local state from blockchain
+    // ═══════════════════════════════════════
+    async loadOnChainData() {
+        if (!this.userAddress || !this.appId || !this.algodClient) {
+            debugLog("warn", "Cannot load on-chain data: wallet or appId not set");
+            return;
+        }
+
+        try {
+            debugLog("Loading on-chain data for:", this.userAddress.slice(0, 8) + "...");
+            const accountInfo = await this.algodClient.accountInformation(this.userAddress).do();
+            const appsLocal = accountInfo['apps-local-state'] || [];
+            const appState = appsLocal.find(a => a.id === this.appId);
+
+            if (appState && appState['key-value']) {
+                const state = {};
+                appState['key-value'].forEach(kv => {
+                    const key = atob(kv.key);
+                    state[key] = kv.value.uint !== undefined ? kv.value.uint : 0;
+                });
+
+                debugLog("On-chain state:", state);
+
+                // Populate app data from blockchain
+                this.data.electricity = state['electricity'] || 0;
+                this.data.solar = state['solar'] || 0;
+                this.data.carbonSaved = state['carbon_saved'] || 0;
+                this.data.greenScore = state['green_score'] || 0;
+                this.data.tokensEarned = state['tokens_earned'] || 0;
+                this.data.hasBadge = state['has_badge'] || 0;
+
+                this.updateDashboardUI(true);
+                this.isOnChainData = true;
+                showToast('success', 'On-Chain Data Loaded', `Green Score: ${this.data.greenScore}% | Tokens: ${this.data.tokensEarned} CT`);
+            } else {
+                debugLog("No local state found — wallet not opted in or no data yet.");
+            }
+        } catch (e) {
+            debugLog("error", "Failed to load on-chain data:", e);
         }
     },
 
+    // ═══════════════════════════════════════
+    // MOBILE MENU
+    // ═══════════════════════════════════════
+    toggleMobileMenu() {
+        const menu = document.getElementById('nav-menu');
+        const hamburger = document.getElementById('hamburger-btn');
+        if (menu && hamburger) { menu.classList.toggle('open'); hamburger.classList.toggle('active'); }
+    },
     closeMobileMenu() {
         const menu = document.getElementById('nav-menu');
         const hamburger = document.getElementById('hamburger-btn');
@@ -257,564 +323,283 @@ const app = {
         if (hamburger) hamburger.classList.remove('active');
     },
 
-    // ─── PROFILE LOGO ───
+    // ═══════════════════════════════════════
+    // PROFILE LOGO
+    // ═══════════════════════════════════════
     handleLogoUpload(input) {
         if (input.files && input.files[0]) {
             const file = input.files[0];
             const validTypes = ['image/jpeg', 'image/png', 'image/jpg', 'image/webp'];
-            if (!validTypes.includes(file.type)) {
-                showToast('error', 'Invalid File', 'Please upload an image (JPG, PNG, WEBP).');
-                return;
-            }
-            if (file.size > 2 * 1024 * 1024) {
-                showToast('error', 'File Too Large', 'Max 2MB allowed.');
-                return;
-            }
-
+            if (!validTypes.includes(file.type)) { showToast('error', 'Invalid File', 'Upload JPG, PNG, or WEBP.'); return; }
+            if (file.size > 2 * 1024 * 1024) { showToast('error', 'Too Large', 'Max 2MB.'); return; }
             const reader = new FileReader();
             reader.onload = (e) => {
-                const base64Image = e.target.result;
-                const logoEl = document.getElementById('dash-logo');
-                if (logoEl) logoEl.src = base64Image;
-
-                const key = this.userAddress ? `collegeProfileImage_${this.userAddress}` : `collegeProfileImage_demo`;
-                localStorage.setItem(key, base64Image);
-                showToast('success', 'Logo Updated', 'Your campus logo has been updated.');
+                const img = e.target.result;
+                const el = document.getElementById('dash-logo');
+                if (el) el.src = img;
+                const key = this.userAddress ? `logo_${this.userAddress}` : 'logo_demo';
+                localStorage.setItem(key, img);
             };
             reader.readAsDataURL(file);
         }
     },
-
     loadLogo() {
-        const key = this.userAddress ? `collegeProfileImage_${this.userAddress}` : `collegeProfileImage_demo`;
-        const savedImage = localStorage.getItem(key);
-        const logoEl = document.getElementById('dash-logo');
-        if (savedImage && logoEl) {
-            logoEl.src = savedImage;
-        } else if (logoEl && this.currentCollege) {
-            logoEl.src = this.currentCollege.logo;
-        }
+        const key = this.userAddress ? `logo_${this.userAddress}` : 'logo_demo';
+        const saved = localStorage.getItem(key);
+        const el = document.getElementById('dash-logo');
+        if (saved && el) el.src = saved;
+        else if (el && this.currentCollege) el.src = this.currentCollege.logo;
+    },
+    setCollegeName(name) {
+        const abbrev = name.split(' ').map(w => w[0]).join('').toUpperCase().slice(0, 4) || '?';
+        this.currentCollege = { name: name, logo: makeSvgLogo(abbrev, '062', '00ff88'), color: '#00ff88' };
+        this.data.collegeName = name;
+        const n = document.getElementById('dash-college-name');
+        const l = document.getElementById('dash-logo');
+        if (n) n.innerText = name;
+        if (l) l.src = this.currentCollege.logo;
     },
 
-    selectCollege(id) {
-        this.currentCollege = this.colleges.find(c => c.id === id);
-        if (this.currentCollege) {
-            const dashName = document.getElementById('dash-college-name');
-            const dashLogo = document.getElementById('dash-logo');
-            if (dashName) dashName.innerText = this.currentCollege.name;
-            if (dashLogo) dashLogo.src = this.currentCollege.logo;
-        }
-    },
-
-    // ─── VALIDATION ───
+    // ═══════════════════════════════════════
+    // VALIDATION
+    // ═══════════════════════════════════════
     validateInputs(electricity, solar) {
-        let isValid = true;
+        let ok = true;
         this.clearErrors();
-
-        if (isNaN(electricity) || electricity <= 0) {
-            this.showError('electricity-error', 'Must be a positive number.');
-            isValid = false;
-        }
-        if (isNaN(solar) || solar < 0) {
-            this.showError('solar-error', 'Cannot be negative.');
-            isValid = false;
-        }
-        if (electricity > 50000) {
-            this.showError('electricity-error', 'Exceeds realistic campus cap (50,000 kWh).');
-            isValid = false;
-        }
-        if (solar > electricity) {
-            this.showError('solar-error', 'Solar generation cannot exceed total usage.');
-            isValid = false;
-        }
-        return isValid;
+        if (isNaN(electricity) || electricity <= 0) { this.showError('electricity-error', 'Must be a positive number.'); ok = false; }
+        if (isNaN(solar) || solar < 0) { this.showError('solar-error', 'Cannot be negative.'); ok = false; }
+        if (electricity > 50000) { this.showError('electricity-error', 'Exceeds cap (50,000 kWh).'); ok = false; }
+        if (solar > electricity) { this.showError('solar-error', 'Solar cannot exceed electricity.'); ok = false; }
+        return ok;
     },
-
     validateFile(file, errorId) {
-        if (!file) {
-            this.showError(errorId, 'File is required.');
-            return false;
-        }
-        if (file.type !== 'application/pdf') {
-            this.showError(errorId, 'Only PDF files are allowed.');
-            return false;
-        }
-        if (file.size > 5 * 1024 * 1024) {
-            this.showError(errorId, 'File size must be less than 5MB.');
-            return false;
-        }
+        if (!file) { this.showError(errorId, 'File is required.'); return false; }
+        if (file.type !== 'application/pdf') { this.showError(errorId, 'Only PDF allowed.'); return false; }
+        if (file.size > 5 * 1024 * 1024) { this.showError(errorId, 'Max 5MB.'); return false; }
         return true;
     },
-
     async generateHash(file) {
         const buffer = await file.arrayBuffer();
         const hashBuffer = await crypto.subtle.digest('SHA-256', buffer);
-        const hashArray = Array.from(new Uint8Array(hashBuffer));
-        return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+        const arr = Array.from(new Uint8Array(hashBuffer));
+        return arr.map(b => b.toString(16).padStart(2, '0')).join('');
     },
-
-    showError(elementId, message) {
-        const el = document.getElementById(elementId);
-        if (el) {
-            el.innerText = message;
-            el.style.display = 'block';
-        }
+    // Convert first 8 bytes of hex hash to uint64 for on-chain storage
+    // Must stay within Number.MAX_SAFE_INTEGER (2^53 - 1)
+    hashToUint64(hexHash) {
+        // Use first 6 bytes (12 hex chars) to stay within safe integer range
+        const first12Chars = hexHash.substring(0, 12);
+        return parseInt(first12Chars, 16);
     },
-
+    showError(id, msg) { const el = document.getElementById(id); if (el) { el.innerText = msg; el.style.display = 'block'; } },
     clearErrors() {
-        const errorIds = ['electricity-error', 'solar-error', 'bill-error', 'solar-error-file', 'general-error'];
-        errorIds.forEach(id => {
-            const el = document.getElementById(id);
-            if (el) {
-                el.style.display = 'none';
-                el.innerText = '';
-            }
+        ['electricity-error', 'solar-error', 'bill-error', 'solar-error-file', 'general-error'].forEach(id => {
+            const el = document.getElementById(id); if (el) { el.style.display = 'none'; el.innerText = ''; }
         });
     },
 
-    // ─── SUBMISSION ───
+    // ═══════════════════════════════════════
+    // SUBMISSION — DIRECTLY TO BLOCKCHAIN
+    // Frontend → Pera Wallet → Smart Contract
+    // ═══════════════════════════════════════
     async handleSubmission() {
         this.clearErrors();
+
+        // 0. Check wallet connection
+        if (!this.userAddress || !this.peraWallet) {
+            showToast('warning', 'Wallet Required', 'Connect your Pera Wallet first to submit data on-chain.');
+            return;
+        }
+        if (!this.appId) {
+            showToast('error', 'No Contract', 'Smart contract not deployed. Set APP_ID in config.js after deploying.');
+            return;
+        }
 
         const electricity = parseFloat(document.getElementById('electricity').value);
         const solar = parseFloat(document.getElementById('solar').value);
         const billFile = document.getElementById('bill-upload').files[0];
         const solarFile = document.getElementById('solar-upload').files[0];
 
-        // Input Validation
+        // 1. Validate inputs
         if (!this.validateInputs(electricity, solar)) return;
 
-        // File Validation
-        let filesValid = true;
-        if (!this.validateFile(billFile, 'bill-error')) filesValid = false;
-        if (!this.validateFile(solarFile, 'solar-error-file')) filesValid = false;
-        if (!filesValid) return;
+        // 2. Validate files
+        let filesOk = true;
+        if (!this.validateFile(billFile, 'bill-error')) filesOk = false;
+        if (!this.validateFile(solarFile, 'solar-error-file')) filesOk = false;
+        if (!filesOk) return;
 
-        // Processing UI
+        // 3. Show loading
         const submitBtn = document.getElementById('submit-btn');
         const loading = document.getElementById('loading-indicator');
         submitBtn.disabled = true;
         submitBtn.style.opacity = '0.5';
         if (loading) loading.classList.remove('hidden');
+        showToast('info', 'Processing...', 'Hashing files and preparing blockchain transaction.');
 
         try {
-            // Generate file hashes
+            // 4. Generate SHA-256 hashes of uploaded PDFs
             const billHash = await this.generateHash(billFile);
-            const solarHash = await this.generateHash(solarFile);
+            const solarHashHex = await this.generateHash(solarFile);
+            debugLog("Bill Hash:", billHash);
+            debugLog("Solar Hash:", solarHashHex);
 
-            // Calculate
-            const result = this.calculateCarbon(electricity, solar, 0);
+            // 5. Calculate carbon data
+            const result = this.calculateCarbon(electricity, solar);
+            const carbonSaved = Math.round(result.totalCarbonSaved);
+            const greenScore = Math.round(result.greenScore);
 
-            // Update state
-            this.data.electricity = electricity;
-            this.data.solar = solar;
-            this.data.trees = 0;
-            this.data.carbonSaved = Math.round(result.totalCarbonSaved);
-            this.data.greenScore = Math.round(result.greenScore);
-            this.data.electricityHash = billHash;
-            this.data.solarHash = solarHash;
-            this.data.collegeName = this.currentCollege ? this.currentCollege.name : 'Unknown';
+            // Convert hashes to uint64 for on-chain storage
+            const billHashUint = this.hashToUint64(billHash);
+            const solarHashUint = this.hashToUint64(solarHashHex);
 
-            this.saveData();
+            debugLog("Submitting to blockchain:", {
+                electricity, solar, carbonSaved, greenScore,
+                billHashUint: billHashUint.toString(),
+                solarHashUint: solarHashUint.toString()
+            });
 
-            const payload = {
-                electricity: this.data.electricity,
-                solar: this.data.solar,
-                totalCarbonSaved: this.data.carbonSaved,
-                greenScore: this.data.greenScore,
-                electricityHash: billHash,
-                solarHash: solarHash,
-                collegeId: this.currentCollege ? this.currentCollege.id : 1,
-                collegeName: this.data.collegeName
-            };
-
-            // Submit to backend API
-            try {
-                const response = await fetch('/api/submit', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-                const apiResult = await response.json();
-                debugLog("API Response:", apiResult);
-            } catch (apiErr) {
-                debugLog("warn", "Backend API unavailable, continuing in demo mode:", apiErr);
-            }
-
-            // Simulate processing delay
-            setTimeout(async () => {
-                try {
-                    this.updateDashboardUI(true);
-                    this.showResultCard(billHash, solarHash);
-                    this.showDashboardTab('overview');
-
-                    // Try blockchain submission
-                    if (this.userAddress && this.peraWallet && this.appId > 0) {
-                        await this.submitToBlockchain(electricity, solar, payload);
-                        showToast('success', 'On-Chain Verified', 'Data submitted to Algorand blockchain!');
-                    } else {
-                        showToast('success', 'Data Saved', 'Submitted successfully in demo mode.');
-                    }
-                } catch (e) {
-                    debugLog("error", "Submit error:", e);
-                    showToast('error', 'Submission Error', 'Blockchain submission failed. Data saved locally.');
-                } finally {
+            // 6. Check opt-in status
+            const isOptedIn = await this.checkOptIn();
+            if (!isOptedIn) {
+                showToast('info', 'Opt-In Required', 'You need to opt-in to the smart contract first. Signing opt-in transaction...');
+                const opted = await this.optInToApp();
+                if (!opted) {
                     submitBtn.disabled = false;
                     submitBtn.style.opacity = '1';
                     if (loading) loading.classList.add('hidden');
+                    return;
                 }
-            }, 2000);
+            }
+
+            // 7. Submit data to smart contract via Pera Wallet
+            showToast('info', 'Sign Transaction', 'Please sign the transaction in your Pera Wallet.');
+
+            // Compute ABI method selector for submit_data(uint64,uint64,uint64,uint64,uint64,uint64)void
+            const selector = await computeMethodSelector('submit_data(uint64,uint64,uint64,uint64,uint64,uint64)void');
+
+            const appArgs = [
+                selector,
+                algosdk.encodeUint64(Math.floor(electricity)),
+                algosdk.encodeUint64(Math.floor(solar)),
+                algosdk.encodeUint64(Math.floor(carbonSaved)),
+                algosdk.encodeUint64(Math.floor(greenScore)),
+                algosdk.encodeUint64(Math.floor(billHashUint)),
+                algosdk.encodeUint64(Math.floor(solarHashUint))
+            ];
+
+            const suggestedParams = await this.algodClient.getTransactionParams().do();
+            const appCallTxn = algosdk.makeApplicationNoOpTxnFromObject({
+                appIndex: this.appId,
+                from: this.userAddress,
+                appArgs: appArgs,
+                suggestedParams
+            });
+
+            // Sign with Pera Wallet
+            const signedTxnArr = await this.peraWallet.signTransaction([
+                [{ txn: appCallTxn, signers: [this.userAddress] }]
+            ]);
+
+            // Pera returns Uint8Array[] — send the first signed txn
+            const signedBlob = signedTxnArr[0];
+            const sendResult = await this.algodClient.sendRawTransaction(signedBlob).do();
+            const txId = sendResult.txId || appCallTxn.txID();
+            debugLog("Transaction sent:", txId);
+            showToast('info', 'Transaction Sent', `TX ID: ${txId.substring(0, 12)}... Waiting for confirmation...`);
+
+            // Wait for confirmation
+            const confirmed = await algosdk.waitForConfirmation(this.algodClient, txId, 4);
+            debugLog("Transaction confirmed:", confirmed);
+
+            // 8. Update local state from blockchain
+            this.data.electricity = electricity;
+            this.data.solar = solar;
+            this.data.carbonSaved = carbonSaved;
+            this.data.greenScore = greenScore;
+            this.data.electricityHash = billHash;
+            this.data.solarHash = solarHashHex;
+            this.data.collegeName = this.currentCollege ? this.currentCollege.name : 'Unknown';
+
+            // 9. Show success
+            this.updateDashboardUI(true);
+            this.showResultCard(billHash, solarHashHex, txId);
+            this.showDashboardTab('overview');
+
+            showToast('success', '🎉 On-Chain Verified!', `TX: ${txId.substring(0, 16)}... | Score: ${greenScore}%`);
+
+            // Reload on-chain data
+            setTimeout(() => this.loadOnChainData(), 2000);
 
         } catch (e) {
-            debugLog("error", e);
-            this.showError('general-error', 'An unexpected error occurred.');
+            debugLog("error", "Submission failed:", e);
+            const msg = e.message || String(e);
+            if (msg.includes('cancelled') || msg.includes('rejected')) {
+                showToast('warning', 'Cancelled', 'Transaction was cancelled by user.');
+            } else {
+                showToast('error', 'Transaction Failed', msg.substring(0, 100));
+                this.showError('general-error', 'Blockchain transaction failed: ' + msg.substring(0, 200));
+            }
+        } finally {
             submitBtn.disabled = false;
             submitBtn.style.opacity = '1';
             if (loading) loading.classList.add('hidden');
         }
     },
 
-    // ─── RESULT MODAL (was missing!) ───
-    showResultCard(billHash, solarHash) {
+    // ═══════════════════════════════════════
+    // RESULT MODAL
+    // ═══════════════════════════════════════
+    showResultCard(billHash, solarHash, txId) {
         const tokens = Math.floor(this.data.carbonSaved / 100);
+        const el = (id) => document.getElementById(id);
 
-        const modalCarbon = document.getElementById('modal-carbon');
-        const modalScore = document.getElementById('modal-score');
-        const modalTokens = document.getElementById('modal-tokens');
-        const modalBillHash = document.getElementById('modal-bill-hash');
-        const modalSolarHash = document.getElementById('modal-solar-hash');
+        if (el('modal-carbon')) el('modal-carbon').innerText = this.data.carbonSaved + ' kg CO₂';
+        if (el('modal-score')) el('modal-score').innerText = this.data.greenScore + '%';
+        if (el('modal-tokens')) el('modal-tokens').innerText = tokens + ' CT';
+        if (el('modal-bill-hash')) el('modal-bill-hash').innerText = billHash ? billHash.substring(0, 32) + '...' : '—';
+        if (el('modal-solar-hash')) el('modal-solar-hash').innerText = solarHash ? solarHash.substring(0, 32) + '...' : '—';
 
-        if (modalCarbon) modalCarbon.innerText = this.data.carbonSaved + ' kg CO₂';
-        if (modalScore) modalScore.innerText = this.data.greenScore + '%';
-        if (modalTokens) modalTokens.innerText = tokens + ' CT';
-        if (modalBillHash) modalBillHash.innerText = billHash ? billHash.substring(0, 32) + '...' : '—';
-        if (modalSolarHash) modalSolarHash.innerText = solarHash ? solarHash.substring(0, 32) + '...' : '—';
+        // Show TX ID if available
+        const txEl = el('modal-tx-id');
+        if (txEl && txId) {
+            txEl.innerText = txId;
+            txEl.parentElement.style.display = 'block';
+        }
 
-        const modal = document.getElementById('result-modal');
+        const modal = el('result-modal');
         if (modal) modal.classList.remove('hidden');
     },
-
     closeResultModal() {
         const modal = document.getElementById('result-modal');
         if (modal) modal.classList.add('hidden');
     },
 
-    calculateCarbon(electricity, solar, trees) {
+    calculateCarbon(electricity, solar) {
         const carbonPerUnit = 0.82;
-        const solarCarbon = solar * carbonPerUnit;
-        const treeCarbon = trees * 21;
-        const totalCarbonSaved = solarCarbon + treeCarbon;
-        const greenScore = electricity > 0 ? (totalCarbonSaved / electricity) * 100 : 0;
-        return {
-            totalCarbonSaved,
-            greenScore: greenScore > 100 ? 100 : greenScore
-        };
+        const totalCarbonSaved = solar * carbonPerUnit;
+        const greenScore = electricity > 0 ? Math.min((totalCarbonSaved / electricity) * 100, 100) : 0;
+        return { totalCarbonSaved, greenScore };
     },
 
-    saveData() {
-        localStorage.setItem('campusCarbonData', JSON.stringify(this.data));
+    resetData() {
+        // Reset to zeros when wallet disconnects
+        this.isOnChainData = false;
+        this.data = { ...this.demoData, electricityHash: null, solarHash: null, collegeName: this.currentCollege ? this.currentCollege.name : '' };
+        this.updateDashboardUI();
     },
 
-    loadData() {
-        const saved = localStorage.getItem('campusCarbonData');
-        if (saved) {
-            try {
-                const parsed = JSON.parse(saved);
-                if (parsed && typeof parsed === 'object') {
-                    this.data = { ...this.data, ...parsed };
-                }
-            } catch (e) {
-                debugLog("warn", "Could not load saved data:", e);
-                localStorage.removeItem('campusCarbonData');
-            }
-        }
-    },
-
-    // ─── UI & NAVIGATION ───
-    updateDashboardUI(animate = false) {
-        const animateValue = (id, start, end, duration) => {
-            const el = document.getElementById(id);
-            if (!el) return;
-            if (!animate) {
-                el.innerText = end;
-                return;
-            }
-            let startTimestamp = null;
-            const step = (timestamp) => {
-                if (!startTimestamp) startTimestamp = timestamp;
-                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-                el.innerText = Math.floor(progress * (end - start) + start);
-                if (progress < 1) window.requestAnimationFrame(step);
-            };
-            window.requestAnimationFrame(step);
-        };
-
-        animateValue("electricityValue", 0, this.data.electricity, 1500);
-        animateValue("solarValue", 0, this.data.solar, 1500);
-
-        const cVal = document.getElementById("carbonValue");
-        if (cVal) cVal.innerText = this.data.carbonSaved;
-
-        const scoreEl = document.getElementById("scoreValue");
-        const statusEl = document.getElementById("score-status-text");
-
-        if (scoreEl) scoreEl.innerText = `${this.data.greenScore}%`;
-
-        // Circular Progress
-        const circle = document.getElementById("score-ring-circle");
-        if (circle) {
-            const radius = circle.r.baseVal.value;
-            const circumference = radius * 2 * Math.PI;
-            const offset = circumference - (this.data.greenScore / 100) * circumference;
-            circle.style.strokeDashoffset = offset;
-
-            if (this.data.greenScore > 75) {
-                circle.style.stroke = "#00ff88";
-                if (statusEl) { statusEl.innerText = "Excellent Rating ⭐"; statusEl.style.color = "#00ff88"; }
-            } else if (this.data.greenScore >= 40) {
-                circle.style.stroke = "#f59e0b";
-                if (statusEl) { statusEl.innerText = "Moderate Rating ⚠️"; statusEl.style.color = "#f59e0b"; }
-            } else {
-                circle.style.stroke = "#ef4444";
-                if (statusEl) { statusEl.innerText = "Needs Improvement 🛑"; statusEl.style.color = "#ef4444"; }
-            }
-        }
-
-        // ★ UPDATE SUMMARY BAR (was missing!)
-        const sumEnergy = document.getElementById('sum-energy');
-        const sumSolarRatio = document.getElementById('sum-solar-ratio');
-        const sumImpact = document.getElementById('sum-impact');
-
-        if (sumEnergy) sumEnergy.innerText = this.data.electricity + ' kWh';
-
-        if (sumSolarRatio) {
-            const ratio = this.data.electricity > 0
-                ? Math.round((this.data.solar / this.data.electricity) * 100)
-                : 0;
-            sumSolarRatio.innerText = ratio + '%';
-        }
-
-        if (sumImpact) {
-            if (this.data.greenScore > 75) {
-                sumImpact.innerText = 'Excellent';
-                sumImpact.style.color = '#00ff88';
-            } else if (this.data.greenScore >= 40) {
-                sumImpact.innerText = 'Moderate';
-                sumImpact.style.color = '#f59e0b';
-            } else {
-                sumImpact.innerText = 'Low';
-                sumImpact.style.color = '#ef4444';
-            }
-        }
-    },
-
-    updatePreview() {
-        const elec = parseFloat(document.getElementById('electricity').value) || 0;
-        const solar = parseFloat(document.getElementById('solar').value) || 0;
-        const result = this.calculateCarbon(elec, solar, 0);
-        const tokens = Math.floor(result.totalCarbonSaved / 100);
-
-        const pc = document.getElementById('prev-carbon');
-        const ps = document.getElementById('prev-score');
-        const pt = document.getElementById('prev-tokens');
-
-        if (pc) pc.innerText = Math.round(result.totalCarbonSaved) + ' kg';
-        if (ps) ps.innerText = Math.round(result.greenScore) + '%';
-        if (pt) pt.innerText = tokens + ' CT';
-    },
-
-    // Navigation
-    hideAllSections() {
-        ['home-page', 'login-page', 'dashboard-page', 'leaderboard-page'].forEach(id => {
-            const el = document.getElementById(id);
-            if (el) el.classList.add('hidden');
-        });
-    },
-
-    showHome() {
-        this.closeMobileMenu();
-        this.hideAllSections();
-        document.getElementById('home-page').classList.remove('hidden');
-        document.querySelector('.navbar').classList.remove('hidden');
-        document.querySelector('.footer').classList.remove('hidden');
-    },
-
-    showLogin() {
-        this.closeMobileMenu();
-        this.hideAllSections();
-        document.getElementById('login-page').classList.remove('hidden');
-        document.querySelector('.navbar').classList.remove('hidden');
-        document.querySelector('.footer').classList.remove('hidden');
-    },
-
-    showDashboard() {
-        this.hideAllSections();
-        document.getElementById('dashboard-page').classList.remove('hidden');
-        document.querySelector('.navbar').classList.add('hidden');
-        document.querySelector('.footer').classList.add('hidden');
-        this.showDashboardTab('overview');
-        this.loadLogo();
-    },
-
-    showDashboardTab(tabName) {
-        const t1 = document.getElementById('tab-overview');
-        const t2 = document.getElementById('tab-submit');
-        if (t1) t1.classList.add('hidden');
-        if (t2) t2.classList.add('hidden');
-
-        const target = document.getElementById('tab-' + tabName);
-        if (target) target.classList.remove('hidden');
-
-        // Update sidebar active state
-        document.querySelectorAll('.sidebar-link').forEach(l => {
-            l.classList.remove('active');
-        });
-        const activeNav = document.getElementById('nav-' + tabName);
-        if (activeNav) activeNav.classList.add('active');
-    },
-
-    showLeaderboard(isPublic = true) {
-        this.closeMobileMenu();
-        this.hideAllSections();
-        document.getElementById('leaderboard-page').classList.remove('hidden');
-        if (isPublic) {
-            document.querySelector('.navbar').classList.remove('hidden');
-        } else {
-            document.querySelector('.navbar').classList.add('hidden');
-        }
-        document.querySelector('.footer').classList.remove('hidden');
-        this.fetchLeaderboard();
-    },
-
-    renderLeaderboardData(data) {
-        const list = document.getElementById('leaderboard-list');
-        if (!list) return;
-
-        if (data.length === 0) {
-            list.innerHTML = '<div style="text-align:center; padding: 2rem; color: var(--text-secondary);">No data yet. Be the first to submit!</div>';
-            return;
-        }
-
-        const collegeLogos = {};
-        this.colleges.forEach(c => { collegeLogos[c.name] = c.logo; });
-
-        let html = '';
-        data.forEach((c, i) => {
-            let badgeStyle = 'background: rgba(255,255,255,0.1); color: #fff;';
-            let cardExtra = '';
-
-            if (i === 0) {
-                badgeStyle = 'background: linear-gradient(135deg, #ffd700, #b8860b); color: #000; box-shadow: 0 0 10px rgba(255,215,0,0.4);';
-                cardExtra = 'border-color: rgba(255,215,0,0.3); transform: scale(1.02);';
-            } else if (i === 1) {
-                badgeStyle = 'background: linear-gradient(135deg, #e0e0e0, #a0a0a0); color: #000;';
-            } else if (i === 2) {
-                badgeStyle = 'background: linear-gradient(135deg, #cd7f32, #8b4513); color: #000;';
-            }
-
-            const name = c.collegeName || c.name || 'Unknown Campus';
-            const logo = collegeLogos[name] || c.logo || 'https://via.placeholder.com/50/00ff88/000000?text=C';
-            const score = c.greenScore || c.score || 0;
-
-            html += `
-            <div class="glass-panel rank-card" style="${cardExtra}">
-               <div class="rank-badge" style="${badgeStyle}">${i + 1}</div>
-               <img src="${safeLogoUrl(logo)}" alt="${escapeHtml(name)}">
-               <div class="rank-info">
-                   <div class="rank-name">${escapeHtml(name)}</div>
-                   <div style="font-size: 0.8rem; color: var(--text-secondary);">Verified Campus</div>
-               </div>
-               <div class="rank-score">${escapeHtml(String(score))}%</div>
-            </div>
-            `;
-        });
-        list.innerHTML = html;
-    },
-
-    // ─── BLOCKCHAIN & LEADERBOARD ───
-    get appId() {
-        const cfg = (typeof window !== 'undefined' && window.CAMPUS_CARBON_CONFIG) ? window.CAMPUS_CARBON_CONFIG : {};
-        return cfg.APP_ID || 0;
-    },
-
-    async fetchLeaderboard() {
-        const list = document.getElementById('leaderboard-list');
-        if (!list) return;
-
-        // Try backend API first
-        try {
-            const response = await fetch('/api/leaderboard');
-            const data = await response.json();
-            if (data.success && data.leaderboard.length > 0) {
-                this.renderLeaderboardData(data.leaderboard);
-                return;
-            }
-        } catch (e) {
-            debugLog("warn", "Backend API unavailable for leaderboard:", e);
-        }
-
-        // Fallback: try on-chain data
-        if (this.appId === 0 || !this.indexerClient) {
-            // Use local fallback data
-            const fallback = this.colleges.map(c => {
-                if (this.currentCollege && c.name === this.currentCollege.name && this.data.greenScore > 0) {
-                    return { collegeName: c.name, greenScore: this.data.greenScore, logo: c.logo };
-                }
-                const scores = { 1: 82, 2: 65, 3: 45, 4: 91 };
-                return { collegeName: c.name, greenScore: scores[c.id] || 50, logo: c.logo };
-            });
-            fallback.sort((a, b) => b.greenScore - a.greenScore);
-            this.renderLeaderboardData(fallback);
-            return;
-        }
-
-        try {
-            const accountsResponse = await this.indexerClient.searchAccounts().applicationID(this.appId).do();
-            const accounts = accountsResponse['accounts'] || [];
-
-            let leaderboard = accounts.map(acc => {
-                const localState = acc['apps-local-state'].find(a => a.id === this.appId);
-                if (!localState || !localState['key-value']) return null;
-
-                const state = {};
-                localState['key-value'].forEach(kv => {
-                    const key = atob(kv.key);
-                    state[key] = kv.value.uint;
-                });
-
-                return {
-                    collegeName: `Campus ${acc.address.slice(0, 4)}`,
-                    greenScore: state['green_score'] || 0,
-                    logo: 'https://via.placeholder.com/50/00ff88/000000?text=C'
-                };
-            }).filter(x => x !== null);
-
-            leaderboard.sort((a, b) => b.greenScore - a.greenScore);
-            this.renderLeaderboardData(leaderboard);
-
-        } catch (e) {
-            debugLog("error", "Leaderboard Fetch Error:", e);
-            list.innerHTML = '<div style="text-align:center; padding: 2rem; color: var(--danger);">Failed to load data. Using local fallback.</div>';
-
-            // Fallback
-            setTimeout(() => {
-                const fallback = this.colleges.map(c => {
-                    const scores = { 1: 82, 2: 65, 3: 45, 4: 91 };
-                    return { collegeName: c.name, greenScore: scores[c.id], logo: c.logo };
-                }).sort((a, b) => b.greenScore - a.greenScore);
-                this.renderLeaderboardData(fallback);
-            }, 1000);
-        }
-    },
-
+    // ═══════════════════════════════════════
+    // BLOCKCHAIN: OPT-IN
+    // ═══════════════════════════════════════
     async checkOptIn() {
         if (!this.userAddress || !this.appId || !this.algodClient) return false;
         try {
-            const accountInfo = await this.algodClient.accountInformation(this.userAddress).do();
-            const apps = accountInfo['apps-local-state'] || [];
+            const info = await this.algodClient.accountInformation(this.userAddress).do();
+            const apps = info['apps-local-state'] || [];
             return apps.some(a => a.id === this.appId);
         } catch (e) {
-            debugLog("error", "Error checking opt-in:", e);
+            debugLog("error", "Opt-in check error:", e);
             return false;
         }
     },
@@ -829,150 +614,358 @@ const app = {
                 suggestedParams
             });
 
-            const singleTxnGroups = [{ txn: txn, signers: [this.userAddress] }];
-            const signedTxn = await this.peraWallet.signTransaction([singleTxnGroups]);
-            const { txId } = await this.algodClient.sendRawTransaction(signedTxn).do();
+            const signedTxnArr = await this.peraWallet.signTransaction([
+                [{ txn: txn, signers: [this.userAddress] }]
+            ]);
+
+            // Pera returns Uint8Array[] — send first signed txn
+            const signedBlob = signedTxnArr[0];
+            const sendResult = await this.algodClient.sendRawTransaction(signedBlob).do();
+            const txId = sendResult.txId || txn.txID();
             await algosdk.waitForConfirmation(this.algodClient, txId, 4);
-            debugLog("Opt-In Successful:", txId);
-            showToast('success', 'Opted In', 'Successfully opted into the smart contract.');
+            debugLog("Opt-In confirmed:", txId);
+            showToast('success', 'Opted In!', `Smart contract opt-in successful. TX: ${txId.substring(0, 12)}...`);
             return true;
         } catch (e) {
-            debugLog("error", "Opt-In Failed:", e);
-            showToast('error', 'Opt-In Failed', 'Could not opt into smart contract.');
+            debugLog("error", "Opt-In failed:", e);
+            const msg = e.message || String(e);
+            if (msg.includes('cancelled') || msg.includes('rejected')) {
+                showToast('warning', 'Cancelled', 'Opt-in was cancelled.');
+            } else {
+                showToast('error', 'Opt-In Failed', msg.substring(0, 100));
+            }
             return false;
         }
     },
 
-    async submitToBlockchain(electricity, solar, payload) {
-        if (!this.userAddress || !this.peraWallet || !this.algodClient) {
-            debugLog("warn", "Wallet not connected.");
+    // ═══════════════════════════════════════
+    // LEADERBOARD — FROM ALGORAND INDEXER
+    // Reads ALL opted-in wallets' local state
+    // ═══════════════════════════════════════
+    async fetchLeaderboard() {
+        const list = document.getElementById('leaderboard-list');
+        if (!list) return;
+
+        if (!this.appId) {
+            // No demo data — show empty state
+            list.innerHTML = '<div style="text-align:center; padding: 3rem; color: var(--text-secondary);"><div style="font-size: 3rem; margin-bottom: 1rem;">🌱</div><h3 style="color: #fff; margin-bottom: 0.5rem;">No Data Yet</h3><p>Deploy the smart contract & set APP_ID in config.js to see the live on-chain leaderboard.</p></div>';
+            showToast('info', 'Setup Required', 'Deploy smart contract & set APP_ID for live on-chain leaderboard.');
             return;
         }
 
-        if (this.appId === 0) {
-            showToast('warning', 'No Contract', 'App ID not configured. Running in demo mode.');
+        if (!this.indexerClient) {
+            list.innerHTML = '<div style="text-align:center; padding: 2rem; color: var(--danger);">Indexer not available.</div>';
             return;
         }
+
+        list.innerHTML = '<div style="text-align:center; padding: 2rem; color: var(--text-secondary);"><span class="spinner">↻</span> Fetching on-chain data from Algorand Indexer...</div>';
 
         try {
-            // Check Opt-In
-            const isOptedIn = await this.checkOptIn();
-            if (!isOptedIn) {
-                const opted = await this.optInToApp();
-                if (!opted) return;
+            debugLog("Fetching leaderboard from Indexer for App ID:", this.appId);
+
+            // Query Algorand Indexer for all accounts opted into this app
+            const accountsResponse = await this.indexerClient
+                .searchAccounts()
+                .applicationID(this.appId)
+                .do();
+
+            const accounts = accountsResponse['accounts'] || [];
+            debugLog("Found", accounts.length, "opted-in accounts");
+
+            if (accounts.length === 0) {
+                list.innerHTML = '<div style="text-align:center; padding: 2rem; color: var(--text-secondary);">No verified submissions yet. Be the first! 🌱<br><br>Connect wallet → Submit data → Appear on leaderboard</div>';
+                return;
             }
 
-            // Build ABI-encoded app args
-            // Method selector for submit_data(uint64,uint64,uint64,uint64)
-            const methodSignature = 'submit_data(uint64,uint64,uint64,uint64)void';
-            const hash = new Uint8Array(await crypto.subtle.digest('SHA-512/256',
-                new TextEncoder().encode(methodSignature)));
-            const selector = hash.slice(0, 4);
+            // Extract local state from each account
+            let leaderboard = [];
+            accounts.forEach(acc => {
+                const localState = (acc['apps-local-state'] || []).find(a => a.id === this.appId);
+                if (!localState || !localState['key-value']) return;
 
-            const args = [
-                selector,
-                algosdk.encodeUint64(Number(electricity)),
-                algosdk.encodeUint64(Number(solar)),
-                algosdk.encodeUint64(Number(payload.totalCarbonSaved || 0)),
-                algosdk.encodeUint64(Number(payload.greenScore || 0))
-            ];
+                // Decode key-value pairs
+                const state = {};
+                localState['key-value'].forEach(kv => {
+                    const key = atob(kv.key);
+                    state[key] = kv.value.uint !== undefined ? kv.value.uint : 0;
+                });
 
-            const suggestedParams = await this.algodClient.getTransactionParams().do();
-            const appCallTxn = algosdk.makeApplicationCallTxnFromObject({
-                appIndex: this.appId,
-                from: this.userAddress,
-                appArgs: args,
-                suggestedParams
+                const greenScore = state['green_score'] || 0;
+                if (greenScore > 0) {
+                    leaderboard.push({
+                        address: acc.address,
+                        collegeName: `Campus ${acc.address.slice(0, 6)}...${acc.address.slice(-4)}`,
+                        greenScore: greenScore,
+                        carbonSaved: state['carbon_saved'] || 0,
+                        electricity: state['electricity'] || 0,
+                        solar: state['solar'] || 0,
+                        tokensEarned: state['tokens_earned'] || 0,
+                        hasBadge: state['has_badge'] || 0,
+                        logo: makeSvgLogo(acc.address.slice(0, 2).toUpperCase())
+                    });
+                }
             });
 
-            const signedTxn = await this.peraWallet.signTransaction([[{ txn: appCallTxn, signers: [this.userAddress] }]]);
-            const { txId } = await this.algodClient.sendRawTransaction(signedTxn).do();
-            await algosdk.waitForConfirmation(this.algodClient, txId, 4);
-            debugLog("Blockchain Submit Success:", txId);
-        } catch (error) {
-            debugLog("error", "Blockchain Submit Error:", error);
-            throw error; // Re-throw to be caught by caller
+            // Sort by green_score descending
+            leaderboard.sort((a, b) => b.greenScore - a.greenScore);
+
+            debugLog("Leaderboard entries:", leaderboard.length);
+
+            if (leaderboard.length === 0) {
+                list.innerHTML = '<div style="text-align:center; padding: 2rem; color: var(--text-secondary);">Accounts found but no valid scores yet. Submit your data! 🌿</div>';
+                return;
+            }
+
+            this.renderLeaderboardData(leaderboard);
+            showToast('success', 'Leaderboard Loaded', `${leaderboard.length} campus(es) ranked from on-chain data.`);
+
+        } catch (e) {
+            debugLog("error", "Indexer Leaderboard Error:", e);
+            list.innerHTML = `<div style="text-align:center; padding: 2rem; color: var(--danger);">Failed to fetch on-chain data.<br><small>${escapeHtml(e.message || String(e))}</small></div>`;
         }
     },
 
-    // ─── AUTH ───
+    renderLeaderboardData(data) {
+        const list = document.getElementById('leaderboard-list');
+        if (!list) return;
+
+        let html = '';
+        data.forEach((c, i) => {
+            let badgeStyle = 'background: rgba(255,255,255,0.1); color: #fff;';
+            let cardExtra = '';
+            let medalIcon = '';
+
+            if (i === 0) {
+                badgeStyle = 'background: linear-gradient(135deg, #ffd700, #b8860b); color: #000; box-shadow: 0 0 10px rgba(255,215,0,0.4);';
+                cardExtra = 'border-color: rgba(255,215,0,0.3); transform: scale(1.02);';
+                medalIcon = '🥇 ';
+            } else if (i === 1) {
+                badgeStyle = 'background: linear-gradient(135deg, #e0e0e0, #a0a0a0); color: #000;';
+                medalIcon = '🥈 ';
+            } else if (i === 2) {
+                badgeStyle = 'background: linear-gradient(135deg, #cd7f32, #8b4513); color: #000;';
+                medalIcon = '🥉 ';
+            }
+
+            const badgeLabel = c.hasBadge ? ' 🏆' : '';
+            const tokenLabel = c.tokensEarned > 0 ? ` | ${c.tokensEarned} CT` : '';
+
+            html += `
+            <div class="glass-panel rank-card" style="${cardExtra}">
+               <div class="rank-badge" style="${badgeStyle}">${i + 1}</div>
+               <img src="${safeLogoUrl(c.logo)}" alt="${escapeHtml(c.collegeName)}">
+               <div class="rank-info">
+                   <div class="rank-name">${medalIcon}${escapeHtml(c.collegeName)}${badgeLabel}</div>
+                   <div style="font-size: 0.75rem; color: var(--text-secondary);">⚡ ${c.electricity} kWh | ☀️ ${c.solar} kWh${tokenLabel}</div>
+               </div>
+               <div class="rank-score">${escapeHtml(String(c.greenScore))}%</div>
+            </div>
+            `;
+        });
+        list.innerHTML = html;
+    },
+
+    // ═══════════════════════════════════════
+    // UI & NAVIGATION
+    // ═══════════════════════════════════════
+    updateDashboardUI(animate = false) {
+        const animateValue = (id, start, end, duration) => {
+            const el = document.getElementById(id);
+            if (!el) return;
+            if (!animate) { el.innerText = end; return; }
+            let ts = null;
+            const step = (t) => {
+                if (!ts) ts = t;
+                const p = Math.min((t - ts) / duration, 1);
+                el.innerText = Math.floor(p * (end - start) + start);
+                if (p < 1) window.requestAnimationFrame(step);
+            };
+            window.requestAnimationFrame(step);
+        };
+
+        animateValue("electricityValue", 0, this.data.electricity, 1500);
+        animateValue("solarValue", 0, this.data.solar, 1500);
+
+        const cVal = document.getElementById("carbonValue");
+        if (cVal) cVal.innerText = this.data.carbonSaved;
+
+        const scoreEl = document.getElementById("scoreValue");
+        const statusEl = document.getElementById("score-status-text");
+        if (scoreEl) scoreEl.innerText = `${this.data.greenScore}%`;
+
+        // Circular Progress Ring
+        const circle = document.getElementById("score-ring-circle");
+        if (circle) {
+            const r = circle.r.baseVal.value;
+            const c = r * 2 * Math.PI;
+            circle.style.strokeDashoffset = c - (this.data.greenScore / 100) * c;
+
+            if (this.data.greenScore > 75) {
+                circle.style.stroke = "#00ff88";
+                if (statusEl) { statusEl.innerText = "Excellent Rating ⭐"; statusEl.style.color = "#00ff88"; }
+            } else if (this.data.greenScore >= 40) {
+                circle.style.stroke = "#f59e0b";
+                if (statusEl) { statusEl.innerText = "Moderate Rating ⚠️"; statusEl.style.color = "#f59e0b"; }
+            } else {
+                circle.style.stroke = "#ef4444";
+                if (statusEl) { statusEl.innerText = "Needs Improvement 🛑"; statusEl.style.color = "#ef4444"; }
+            }
+        }
+
+        // Summary Bar
+        const sumE = document.getElementById('sum-energy');
+        const sumS = document.getElementById('sum-solar-ratio');
+        const sumI = document.getElementById('sum-impact');
+        if (sumE) sumE.innerText = this.data.electricity + ' kWh';
+        if (sumS) {
+            const ratio = this.data.electricity > 0 ? Math.round((this.data.solar / this.data.electricity) * 100) : 0;
+            sumS.innerText = ratio + '%';
+        }
+        if (sumI) {
+            if (this.data.greenScore > 75) { sumI.innerText = 'Excellent'; sumI.style.color = '#00ff88'; }
+            else if (this.data.greenScore >= 40) { sumI.innerText = 'Moderate'; sumI.style.color = '#f59e0b'; }
+            else { sumI.innerText = this.data.greenScore > 0 ? 'Low' : '—'; sumI.style.color = this.data.greenScore > 0 ? '#ef4444' : 'var(--text-secondary)'; }
+        }
+    },
+
+    updatePreview() {
+        const elec = parseFloat(document.getElementById('electricity').value) || 0;
+        const solar = parseFloat(document.getElementById('solar').value) || 0;
+        const result = this.calculateCarbon(elec, solar);
+        const tokens = Math.floor(result.totalCarbonSaved / 100);
+
+        const pc = document.getElementById('prev-carbon');
+        const ps = document.getElementById('prev-score');
+        const pt = document.getElementById('prev-tokens');
+        if (pc) pc.innerText = Math.round(result.totalCarbonSaved) + ' kg';
+        if (ps) ps.innerText = Math.round(result.greenScore) + '%';
+        if (pt) pt.innerText = tokens + ' CT';
+    },
+
+    // Navigation
+    hideAllSections() {
+        ['home-page', 'login-page', 'dashboard-page', 'leaderboard-page'].forEach(id => {
+            const el = document.getElementById(id); if (el) el.classList.add('hidden');
+        });
+    },
+    showHome() {
+        this.closeMobileMenu(); this.hideAllSections();
+        document.getElementById('home-page').classList.remove('hidden');
+        document.querySelector('.navbar').classList.remove('hidden');
+        document.querySelector('.footer').classList.remove('hidden');
+    },
+    showLogin() {
+        this.closeMobileMenu(); this.hideAllSections();
+        document.getElementById('login-page').classList.remove('hidden');
+        document.querySelector('.navbar').classList.remove('hidden');
+        document.querySelector('.footer').classList.remove('hidden');
+    },
+    showDashboard() {
+        this.hideAllSections();
+        document.getElementById('dashboard-page').classList.remove('hidden');
+        document.querySelector('.navbar').classList.add('hidden');
+        document.querySelector('.footer').classList.add('hidden');
+        this.showDashboardTab('overview');
+        this.loadLogo();
+        // Load fresh on-chain data when dashboard opens
+        if (this.userAddress && this.appId) this.loadOnChainData();
+    },
+    showDashboardTab(tabName) {
+        const t1 = document.getElementById('tab-overview');
+        const t2 = document.getElementById('tab-submit');
+        if (t1) t1.classList.add('hidden');
+        if (t2) t2.classList.add('hidden');
+        const target = document.getElementById('tab-' + tabName);
+        if (target) target.classList.remove('hidden');
+        document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active'));
+        const nav = document.getElementById('nav-' + tabName);
+        if (nav) nav.classList.add('active');
+    },
+    showLeaderboard(isPublic = true) {
+        this.closeMobileMenu(); this.hideAllSections();
+        document.getElementById('leaderboard-page').classList.remove('hidden');
+        if (isPublic) document.querySelector('.navbar').classList.remove('hidden');
+        else document.querySelector('.navbar').classList.add('hidden');
+        document.querySelector('.footer').classList.remove('hidden');
+        this.fetchLeaderboard();
+    },
+
+    // Auth — reads user-entered college name, then navigates to dashboard
     login() {
         const btn = document.getElementById('login-btn');
         const old = btn ? btn.innerText : 'Login';
         if (btn) btn.innerText = 'Verifying...';
 
-        const collegeSelect = document.getElementById('college-select');
-        if (collegeSelect) {
-            this.selectCollege(parseInt(collegeSelect.value));
+        // Read the user-entered college name
+        const collegeInput = document.getElementById('collage-select');
+        const collegeName = collegeInput ? collegeInput.value.trim() : '';
+        if (!collegeName) {
+            if (btn) btn.innerText = old;
+            showToast('error', 'College Required', 'Please enter your college name.');
+            return;
         }
+        this.setCollegeName(collegeName);
 
-        // Try backend auth
-        const email = document.getElementById('login-email')?.value || 'demo@campus.io';
-        const collegeId = collegeSelect?.value || '1';
-
-        fetch('/api/login', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email, collegeId })
-        }).then(res => res.json()).catch(() => ({ success: true })).then(() => {
-            setTimeout(() => {
-                if (btn) btn.innerText = old;
-                this.showDashboard();
-                showToast('success', 'Welcome!', `Logged in as ${this.currentCollege ? this.currentCollege.name : 'Campus'}`);
-            }, 800);
-        });
+        setTimeout(() => {
+            if (btn) btn.innerText = old;
+            this.showDashboard();
+            showToast('success', 'Welcome!', `${collegeName} Dashboard`);
+        }, 800);
     },
-
     logout() {
-        this.currentCollege = this.colleges[0];
+        this.currentCollege = null;
+        this.data.collegeName = '';
         this.showHome();
-        showToast('info', 'Logged Out', 'You have been logged out.');
+        showToast('info', 'Logged Out', 'Session ended.');
     },
 
-    // ─── WALLET ───
+    // Wallet
     async connectWallet() {
         if (!this.peraWallet) {
-            showToast('error', 'Wallet Error', 'Pera Wallet SDK not loaded. Please refresh the page.');
+            showToast('error', 'Wallet Error', 'Pera Wallet SDK not loaded.');
             return;
         }
         if (this.userAddress) {
             this.peraWallet.disconnect();
             this.userAddress = null;
             this.resetWalletUI();
-            showToast('info', 'Disconnected', 'Wallet disconnected successfully.');
+            this.resetData();
+            this.updateDashboardUI();
+            showToast('info', 'Disconnected', 'Wallet disconnected.');
         } else {
             try {
                 const accts = await this.peraWallet.connect();
                 this.userAddress = accts[0];
                 this.updateWalletUI();
                 this.loadLogo();
-                showToast('success', 'Connected!', `Wallet ${this.userAddress.slice(0, 6)}...${this.userAddress.slice(-4)} connected.`);
+                showToast('success', 'Connected!', `${this.userAddress.slice(0, 6)}...${this.userAddress.slice(-4)}`);
+                // Load on-chain data for connected wallet
+                this.loadOnChainData();
             } catch (e) {
-                debugLog("error", "Wallet connect failed:", e);
-                showToast('error', 'Connection Failed', 'Could not connect to Pera Wallet. Please try again.');
+                debugLog("error", "Wallet connect:", e);
+                if (!e.message?.includes('cancelled')) {
+                    showToast('error', 'Connection Failed', 'Could not connect Pera Wallet.');
+                }
             }
         }
     },
-
     updateWalletUI() {
         const btn = document.getElementById("connectWalletBtn");
-        const btnText = document.getElementById("walletBtnText");
-
+        const txt = document.getElementById("walletBtnText");
+        const dot = document.getElementById("walletStatusDot");
         if (this.userAddress && btn) {
             btn.classList.add('connected');
-            if (btnText) {
-                const shortAddr = this.userAddress.slice(0, 4) + '...' + this.userAddress.slice(-4);
-                btnText.innerText = shortAddr;
-            }
+            if (txt) txt.innerText = 'Disconnect (' + this.userAddress.slice(0, 4) + '...' + this.userAddress.slice(-4) + ')';
+            if (dot) dot.style.background = '#00ff88';
         }
     },
-
     resetWalletUI() {
         const btn = document.getElementById("connectWalletBtn");
-        const btnText = document.getElementById("walletBtnText");
-
+        const txt = document.getElementById("walletBtnText");
+        const dot = document.getElementById("walletStatusDot");
         if (btn) btn.classList.remove('connected');
-        if (btnText) btnText.innerText = "Connect Wallet";
+        if (txt) txt.innerText = "Connect Wallet";
+        if (dot) dot.style.background = '#ef4444';
     },
 };
 

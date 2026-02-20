@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CampusCarbon | Green College Score System</title>
+    <title>Greenova | Green College Score System</title>
     <meta name="description"
-        content="Blockchain-powered sustainability verification for educational institutions. Track usage, upload proofs, and mint rewards on Algorand.">
+        content="Greenova — Blockchain-powered sustainability verification for educational institutions. Track usage, upload proofs, and mint rewards on Algorand.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
@@ -55,6 +55,10 @@
                         <code id="modal-solar-hash">—</code>
                     </div>
                 </div>
+                <div class="result-hash" id="tx-id-row" style="display: none; margin-top: 0.75rem;">
+                    <span class="hash-label">🔗 Transaction ID</span>
+                    <code id="modal-tx-id">—</code>
+                </div>
                 <div class="chain-badge">
                     <span class="chain-dot"></span> Verified on Algorand Blockchain
                 </div>
@@ -68,7 +72,7 @@
     <!-- Unified Navbar -->
     <nav class="navbar">
         <a href="#" class="nav-logo" onclick="app.showHome()">
-            <span>⚡</span> CampusCarbon
+            <span>⚡</span> Greenova
         </a>
 
         <!-- Mobile Hamburger -->
@@ -98,7 +102,7 @@
         <div class="hero-glow-bg"></div>
         <div class="hero-content">
             <h1 class="hero-title">
-                CampusCarbon <br>
+                Greenova <br>
                 <span class="hero-gradient-text">Future of Green Trust</span>
             </h1>
             <p class="hero-subtitle">
@@ -195,12 +199,8 @@
             <form id="login-form" style="width: 100%;">
                 <div class="input-group" style="margin-bottom: 1rem;">
                     <label class="form-label">Select Institution</label>
-                    <select id="college-select" class="form-input" required>
-                        <option value="1">Green Valley Institute</option>
-                        <option value="2">Tech City College</option>
-                        <option value="3">Metro University</option>
-                        <option value="4">North Hills Academy</option>
-                    </select>
+                    <input type="text" id="collage-select" class="form-input" placeholder="Enter your college name"
+                        required>
                 </div>
                 <div class="input-group" style="margin-bottom: 1rem;">
                     <input type="email" id="login-email" class="form-input" placeholder="Email Address" required>
@@ -220,8 +220,8 @@
         <aside class="sidebar" id="sidebar">
             <div class="sidebar-header">
                 <div class="avatar-container" onclick="document.getElementById('logo-upload').click()">
-                    <img src="https://via.placeholder.com/120/00ff88/000000?text=GVI" class="college-logo"
-                        id="dash-logo">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Crect fill='%23062' width='120' height='120' rx='60'/%3E%3Ctext x='50%25' y='55%25' text-anchor='middle' dy='.35em' fill='%2300ff88' font-family='Arial' font-size='36' font-weight='bold'%3E%3F%3C/text%3E%3C/svg%3E"
+                        class="college-logo" id="dash-logo">
                     <div class="avatar-overlay">
                         <span>📷 Upload</span>
                     </div>
@@ -229,7 +229,7 @@
                 <input type="file" id="logo-upload" accept="image/png, image/jpeg, image/jpg, image/webp"
                     style="display: none;" onchange="app.handleLogoUpload(this)">
 
-                <h3 class="sidebar-college-name" id="dash-college-name" style="margin-top: 1rem;">Green Valley Inst.
+                <h3 class="sidebar-college-name" id="dash-college-name" style="margin-top: 1rem;">Your College
                 </h3>
             </div>
             <nav style="display: flex; flex-direction: column; gap: 0.5rem; flex: 1;">
@@ -270,7 +270,7 @@
                         </div>
                         <div class="summary-item">
                             <span class="summary-label">🌱 Carbon Impact</span>
-                            <span class="summary-value" id="sum-impact" style="color: var(--accent-green);">Low</span>
+                            <span class="summary-value" id="sum-impact" style="color: var(--text-secondary);">—</span>
                         </div>
                     </div>
                 </div>
@@ -311,7 +311,7 @@
                             </svg>
                             <div class="score-text" id="scoreValue">0%</div>
                         </div>
-                        <div class="stat-unit" id="score-status-text">Calculating...</div>
+                        <div class="stat-unit" id="score-status-text">—</div>
                     </div>
                 </div>
             </div>
@@ -335,8 +335,7 @@
                                     <option>September 2026</option>
                                 </select>
                                 <label class="floating-label"
-                                    
-                                style="top: -0.6rem; left: 0.8rem; font-size: 0.8rem; color: var(--accent-green); background: #0a0a0a;">Reporting
+                                    style="top: -0.6rem; left: 0.8rem; font-size: 0.8rem; color: var(--accent-green); background: #0a0a0a;">Reporting
                                     Month</label>
                             </div>
 
@@ -357,7 +356,7 @@
                             <h3 style="margin: 2rem 0 1rem; color: #fff;">📄 Proof Verification</h3>
 
                             <div class="floating-input-group" style="margin-bottom: 0;">
-                                <label class="file-section-label">Upload Utility Bills & Solar Reports (PDF)</label>
+                                <label class="file-section-label" >Upload Utility Bills report    Solar Reports (PDF)</label>
                                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
                                     <div>
                                         <input type="file" id="bill-upload" accept=".pdf" class="floating-input"
@@ -440,10 +439,10 @@
         <div class="footer-grid">
             <div class="footer-col">
                 <div class="footer-logo">
-                    <span>⚡</span> CampusCarbon
+                    <span>⚡</span> Greenova
                 </div>
                 <p class="footer-desc">
-                    CampusCarbon is a blockchain-powered sustainability tracking system, empowering educational
+                    Greenova is a blockchain-powered sustainability tracking system, empowering educational
                     institutions to transparently verify and showcase their green impact.
                 </p>
             </div>
@@ -467,7 +466,7 @@
             <div class="footer-col">
                 <h4>Contact</h4>
                 <div class="footer-links">
-                    <a href="mailto:demo@campuscarbon.io" class="footer-link">demo@campuscarbon.io</a>
+                    <a href="mailto:contact@greenova.io" class="footer-link">contact@greenova.io</a>
                     <a href="#" class="footer-link">Twitter / X</a>
                     <a href="#" class="footer-link">LinkedIn</a>
                     <a href="#" class="footer-link">GitHub</a>
@@ -475,7 +474,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <span>© 2026 CampusCarbon. </span>
+            <span>© 2026 Greenova. </span>
             <span class="footer-algo-badge">
                 <span class="algo-dot"></span>
                 Powered by Algorand Blockchain

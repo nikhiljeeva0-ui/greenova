@@ -1,15 +1,19 @@
 /**
- * CampusCarbon application configuration.
- * Update APP_ID after deploying the smart contract - see smart_contracts/INSTRUCTIONS.md
+ * Greenova Configuration
+ * 
+ * Set APP_ID after deploying your smart contract.
+ * Default endpoints point to Algorand Testnet (public nodes).
+ * For LocalNet development, change to localhost:4001 / localhost:8980.
  */
 window.CAMPUS_CARBON_CONFIG = {
-    // Application ID of the deployed CampusCarbon contract (0 = not deployed)
-    // After deploy.py --localnet: set to the printed App ID (e.g. 1002) for LocalNet testing
-    // After deploy.py (Testnet): set to your Testnet App ID
-    APP_ID: 1002,
-    // Set to true to enable console logging (default: false for production)
-    DEBUG: false,
-    // Algorand network endpoints (optional overrides)
+    // ═══ APP ID — Set this after deploying your smart contract ═══
+    APP_ID: 0,
+
+    // Enable console logging
+    DEBUG: true,
+
+    // Algorand Testnet endpoints (public, no token needed)
     ALGOD_URL: 'https://testnet-api.algonode.cloud',
+    ALGOD_TOKEN: '',
     INDEXER_URL: 'https://testnet-idx.algonode.cloud'
 };
