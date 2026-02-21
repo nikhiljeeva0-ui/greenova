@@ -36,6 +36,31 @@ function safeLogoUrl(url) {
     return url;
 }
 
+function base64ToUint8Array(b64) {
+    const binary = atob(b64);
+    const bytes = new Uint8Array(binary.length);
+    for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+    return bytes;
+}
+
+function withTimeout(promise, ms, label) {
+    return new Promise((resolve, reject) => {
+        const timeoutId = setTimeout(() => {
+            reject(new Error((label || 'Operation') + ` timed out after ${ms}ms`));
+        }, ms);
+
+        Promise.resolve(promise)
+            .then((value) => {
+                clearTimeout(timeoutId);
+                resolve(value);
+            })
+            .catch((error) => {
+                clearTimeout(timeoutId);
+                reject(error);
+            });
+    });
+}
+
 // ═══════════════════════════════════════
 // TOAST NOTIFICATIONS
 // ═══════════════════════════════════════
@@ -109,23 +134,31 @@ function initParticles() {
 }
 
 // ═══════════════════════════════════════
-// ABI METHOD SELECTOR HELPER
+// ABI METHOD SELECTOR — using algosdk.ABIMethod
+// (Correctly computes SHA-512/256 via algosdk's built-in impl)
 // ═══════════════════════════════════════
-async function computeMethodSelector(methodSignature) {
-    // ARC-4 ABI: first 4 bytes of SHA-512/256 of the method signature
-    const encoded = new TextEncoder().encode(methodSignature);
-    try {
-        // Try native SHA-512/256 first
-        const hashBuffer = await crypto.subtle.digest('SHA-512/256', encoded);
-        return new Uint8Array(hashBuffer).slice(0, 4);
-    } catch (e) {
-        // Fallback: use SHA-256 and note it in debug
-        // For Beaker contracts, we can also compute it manually
-        debugLog('warn', 'SHA-512/256 not supported, using SHA-256 fallback');
-        const hashBuffer = await crypto.subtle.digest('SHA-256', encoded);
-        return new Uint8Array(hashBuffer).slice(0, 4);
-    }
+function computeMethodSelector(methodSignature) {
+    // Parse method signature: "name(type1,type2,...)returnType"
+    const parenStart = methodSignature.indexOf('(');
+    const parenEnd = methodSignature.lastIndexOf(')');
+    const name = methodSignature.substring(0, parenStart);
+    const argsStr = methodSignature.substring(parenStart + 1, parenEnd);
+    const returnType = methodSignature.substring(parenEnd + 1) || 'void';
+
+    const argTypes = argsStr ? argsStr.split(',') : [];
+    const args = argTypes.map((t, i) => ({ type: t.trim(), name: `arg${i}` }));
+
+    const method = new algosdk.ABIMethod({
+        name: name,
+        args: args,
+        returns: { type: returnType }
+    });
+
+    const selector = method.getSelector();
+    debugLog('ABI Selector for', methodSignature, '→', Array.from(selector).map(b => b.toString(16).padStart(2, '0')).join(''));
+    return selector;
 }
+
 
 // ═══════════════════════════════════════
 // MAIN APPLICATION
@@ -156,6 +189,7 @@ const app = {
     currentCollege: null,
     userAddress: null,
     peraWallet: null,
+    peraWalletCtor: null,
     algodClient: null,
     indexerClient: null,
 
@@ -180,6 +214,26 @@ const app = {
     get indexerUrl() {
         const cfg = (typeof window !== 'undefined' && window.CAMPUS_CARBON_CONFIG) ? window.CAMPUS_CARBON_CONFIG : {};
         return cfg.INDEXER_URL || 'https://testnet-idx.algonode.cloud';
+    },
+
+    get walletChainId() {
+        const url = (this.algodUrl || '').toLowerCase();
+        // Algorand WalletConnect chain IDs: mainnet=416001, testnet=416002
+        return url.includes('testnet') ? 416002 : 416001;
+    },
+
+    createPeraWalletInstance() {
+        if (!this.peraWalletCtor) return null;
+        try {
+            // @perawallet/connect@1.3.x accepts { shouldShowSignTxnToast: true } or empty
+            return new this.peraWalletCtor({ shouldShowSignTxnToast: true });
+        } catch (e) {
+            try {
+                return new this.peraWalletCtor();
+            } catch (_) {
+                return null;
+            }
+        }
     },
 
     // Parse URL into {baseUrl, port} for algosdk (which requires port as separate param)
@@ -214,29 +268,46 @@ const app = {
         // Default college — will be set on login
         this.currentCollege = null;
 
-        // Initialize Pera Wallet
-        if (typeof window.PeraWalletConnect !== 'undefined') {
-            try {
-                this.peraWallet = new window.PeraWalletConnect.PeraWalletConnect();
+        // Initialize Pera Wallet — try multiple global variants
+        try {
+            let PeraWalletClass = null;
+
+            // @perawallet/connect UMD exports to window.PeraWalletConnect namespace
+            if (window.PeraWalletConnect && typeof window.PeraWalletConnect.PeraWalletConnect === 'function') {
+                PeraWalletClass = window.PeraWalletConnect.PeraWalletConnect;
+                debugLog('Pera SDK found via: PeraWalletConnect.PeraWalletConnect');
+            } else if (typeof window.PeraWalletConnect === 'function') {
+                PeraWalletClass = window.PeraWalletConnect;
+                debugLog('Pera SDK found via: PeraWalletConnect (direct)');
+            } else if (window.PeraWalletConnect && typeof window.PeraWalletConnect.default === 'function') {
+                PeraWalletClass = window.PeraWalletConnect.default;
+                debugLog('Pera SDK found via: PeraWalletConnect.default');
+            }
+
+            if (PeraWalletClass) {
+                this.peraWalletCtor = PeraWalletClass;
+                this.peraWallet = this.createPeraWalletInstance();
+                debugLog('✅ Pera Wallet initialized successfully');
+
                 this.peraWallet.reconnectSession().then((accounts) => {
                     if (accounts.length) {
                         this.userAddress = accounts[0];
+                        debugLog('Wallet reconnected:', this.userAddress);
                         this.updateWalletUI();
                         this.loadLogo();
-                        // Load on-chain data for this wallet
                         this.loadOnChainData();
                     }
-                    this.peraWallet.connector?.on("disconnect", () => {
-                        this.userAddress = null;
-                        this.resetWalletUI();
-                        this.resetData();
-                    });
                 }).catch((err) => {
                     debugLog("warn", "Pera reconnect:", err.message || err);
                 });
-            } catch (error) {
-                debugLog("error", "Pera Wallet Init Error:", error);
+            } else {
+                debugLog("error", "❌ Pera Wallet SDK not found! window.PeraWalletConnect =", typeof window.PeraWalletConnect, window.PeraWalletConnect);
+                if (window.PeraWalletConnect) {
+                    console.log('DEBUG — Available keys:', Object.keys(window.PeraWalletConnect));
+                }
             }
+        } catch (error) {
+            debugLog("error", "Pera Wallet Init Error:", error);
         }
 
         // Set Date
@@ -374,7 +445,8 @@ const app = {
     },
     validateFile(file, errorId) {
         if (!file) { this.showError(errorId, 'File is required.'); return false; }
-        if (file.type !== 'application/pdf') { this.showError(errorId, 'Only PDF allowed.'); return false; }
+        const allowed = ['application/pdf', 'image/png', 'image/jpeg', 'image/jpg'];
+        if (!allowed.includes(file.type)) { this.showError(errorId, 'Only PDF, PNG, or JPG allowed.'); return false; }
         if (file.size > 5 * 1024 * 1024) { this.showError(errorId, 'Max 5MB.'); return false; }
         return true;
     },
@@ -398,6 +470,79 @@ const app = {
         });
     },
 
+    ensureAlgoSdkReady() {
+        if (typeof algosdk === 'undefined') {
+            throw new Error('algosdk is not loaded. Check the script import order/CDN availability.');
+        }
+    },
+
+    encodeUnsignedTxn(txn) {
+        this.ensureAlgoSdkReady();
+        if (typeof algosdk.encodeUnsignedTransaction === 'function') {
+            return algosdk.encodeUnsignedTransaction(txn);
+        }
+        if (txn && typeof txn.toByte === 'function') {
+            return txn.toByte();
+        }
+        throw new Error('Unable to encode unsigned transaction with this algosdk version.');
+    },
+
+    normalizeSignedTxnResponse(signedTxnArr) {
+        const first = Array.isArray(signedTxnArr) ? signedTxnArr[0] : signedTxnArr;
+        const entry = Array.isArray(first) ? first[0] : first;
+
+        if (entry instanceof Uint8Array) return entry;
+        if (entry && entry.blob instanceof Uint8Array) return entry.blob;
+        if (entry && typeof entry.blob === 'string') return base64ToUint8Array(entry.blob);
+        if (typeof entry === 'string') return base64ToUint8Array(entry);
+
+        throw new Error('Unexpected wallet signature response format.');
+    },
+
+    async signTxnWithPera(txn) {
+        if (!this.peraWallet) {
+            throw new Error('Pera wallet is not initialized.');
+        }
+        if (!this.userAddress) {
+            throw new Error('Wallet address missing. Connect wallet first.');
+        }
+        if (!txn) {
+            throw new Error('Invalid Algorand transaction object for wallet signing.');
+        }
+
+        // @perawallet/connect@1.3.x signTransaction expects an array of
+        // SignerTransaction objects: [{ txn: Transaction }]
+        // The SDK handles encoding internally when given a Transaction object.
+        try {
+            const txnsToSign = [{ txn: txn }];
+            const signedTxnArr = await withTimeout(
+                this.peraWallet.signTransaction([txnsToSign]),
+                120000,
+                'Wallet signing'
+            );
+            return this.normalizeSignedTxnResponse(signedTxnArr);
+        } catch (err) {
+            const msg = err && err.message ? err.message : String(err);
+            // If the SDK can't encode, try passing encoded bytes
+            if (msg.includes('get_obj_for_encoding') || msg.includes('encodeUnsignedTransaction')) {
+                debugLog('warn', 'Retrying sign with pre-encoded txn...');
+                try {
+                    const encodedTxn = this.encodeUnsignedTxn(txn);
+                    const txnsToSign = [{ txn: encodedTxn }];
+                    const signedTxnArr = await withTimeout(
+                        this.peraWallet.signTransaction([txnsToSign]),
+                        120000,
+                        'Wallet signing (encoded)'
+                    );
+                    return this.normalizeSignedTxnResponse(signedTxnArr);
+                } catch (retryErr) {
+                    throw new Error('Wallet signing failed: ' + (retryErr.message || String(retryErr)));
+                }
+            }
+            throw err;
+        }
+    },
+
     // ═══════════════════════════════════════
     // SUBMISSION — DIRECTLY TO BLOCKCHAIN
     // Frontend → Pera Wallet → Smart Contract
@@ -408,6 +553,12 @@ const app = {
         // 0. Check wallet connection
         if (!this.userAddress || !this.peraWallet) {
             showToast('warning', 'Wallet Required', 'Connect your Pera Wallet first to submit data on-chain.');
+            return;
+        }
+        try {
+            this.ensureAlgoSdkReady();
+        } catch (e) {
+            showToast('error', 'SDK Missing', e.message || String(e));
             return;
         }
         if (!this.appId) {
@@ -463,7 +614,7 @@ const app = {
             const isOptedIn = await this.checkOptIn();
             if (!isOptedIn) {
                 showToast('info', 'Opt-In Required', 'You need to opt-in to the smart contract first. Signing opt-in transaction...');
-                const opted = await this.optInToApp();
+                const opted = await withTimeout(this.optInToApp(), 180000, 'Opt-in flow');
                 if (!opted) {
                     submitBtn.disabled = false;
                     submitBtn.style.opacity = '1';
@@ -476,7 +627,7 @@ const app = {
             showToast('info', 'Sign Transaction', 'Please sign the transaction in your Pera Wallet.');
 
             // Compute ABI method selector for submit_data(uint64,uint64,uint64,uint64,uint64,uint64)void
-            const selector = await computeMethodSelector('submit_data(uint64,uint64,uint64,uint64,uint64,uint64)void');
+            const selector = computeMethodSelector('submit_data(uint64,uint64,uint64,uint64,uint64,uint64)void');
 
             const appArgs = [
                 selector,
@@ -496,20 +647,23 @@ const app = {
                 suggestedParams
             });
 
-            // Sign with Pera Wallet
-            const signedTxnArr = await this.peraWallet.signTransaction([
-                [{ txn: appCallTxn, signers: [this.userAddress] }]
-            ]);
-
-            // Pera returns Uint8Array[] — send the first signed txn
-            const signedBlob = signedTxnArr[0];
-            const sendResult = await this.algodClient.sendRawTransaction(signedBlob).do();
-            const txId = sendResult.txId || appCallTxn.txID();
+            // Sign via wallet with robust handling across SDK/wallet versions
+            const signedBlob = await this.signTxnWithPera(appCallTxn);
+            const sendResult = await withTimeout(
+                this.algodClient.sendRawTransaction(signedBlob).do(),
+                45000,
+                'Transaction broadcast'
+            );
+            const txId = sendResult.txId || sendResult.txid || sendResult.txID || appCallTxn.txID();
             debugLog("Transaction sent:", txId);
             showToast('info', 'Transaction Sent', `TX ID: ${txId.substring(0, 12)}... Waiting for confirmation...`);
 
             // Wait for confirmation
-            const confirmed = await algosdk.waitForConfirmation(this.algodClient, txId, 4);
+            const confirmed = await withTimeout(
+                algosdk.waitForConfirmation(this.algodClient, txId, 8),
+                90000,
+                'Transaction confirmation'
+            );
             debugLog("Transaction confirmed:", confirmed);
 
             // 8. Update local state from blockchain
@@ -520,6 +674,11 @@ const app = {
             this.data.electricityHash = billHash;
             this.data.solarHash = solarHashHex;
             this.data.collegeName = this.currentCollege ? this.currentCollege.name : 'Unknown';
+
+            // Save wallet → college name mapping for leaderboard display
+            if (this.userAddress && this.currentCollege) {
+                this.saveCollegeMapping(this.userAddress, this.currentCollege.name);
+            }
 
             // 9. Show success
             this.updateDashboardUI(true);
@@ -607,22 +766,31 @@ const app = {
     async optInToApp() {
         if (!this.peraWallet || !this.userAddress || !this.algodClient) return false;
         try {
-            const suggestedParams = await this.algodClient.getTransactionParams().do();
+            this.ensureAlgoSdkReady();
+            const suggestedParams = await withTimeout(
+                this.algodClient.getTransactionParams().do(),
+                30000,
+                'Fetching network params'
+            );
             const txn = algosdk.makeApplicationOptInTxnFromObject({
                 from: this.userAddress,
                 appIndex: this.appId,
                 suggestedParams
             });
 
-            const signedTxnArr = await this.peraWallet.signTransaction([
-                [{ txn: txn, signers: [this.userAddress] }]
-            ]);
-
-            // Pera returns Uint8Array[] — send first signed txn
-            const signedBlob = signedTxnArr[0];
-            const sendResult = await this.algodClient.sendRawTransaction(signedBlob).do();
-            const txId = sendResult.txId || txn.txID();
-            await algosdk.waitForConfirmation(this.algodClient, txId, 4);
+            // Sign via wallet with robust handling across SDK/wallet versions
+            const signedBlob = await this.signTxnWithPera(txn);
+            const sendResult = await withTimeout(
+                this.algodClient.sendRawTransaction(signedBlob).do(),
+                45000,
+                'Opt-in broadcast'
+            );
+            const txId = sendResult.txId || sendResult.txid || sendResult.txID || txn.txID();
+            await withTimeout(
+                algosdk.waitForConfirmation(this.algodClient, txId, 8),
+                90000,
+                'Opt-in confirmation'
+            );
             debugLog("Opt-In confirmed:", txId);
             showToast('success', 'Opted In!', `Smart contract opt-in successful. TX: ${txId.substring(0, 12)}...`);
             return true;
@@ -631,6 +799,8 @@ const app = {
             const msg = e.message || String(e);
             if (msg.includes('cancelled') || msg.includes('rejected')) {
                 showToast('warning', 'Cancelled', 'Opt-in was cancelled.');
+            } else if (msg.includes('4100') || msg.toLowerCase().includes('network mismatch')) {
+                showToast('error', 'Network Mismatch', 'Set Pera Wallet to TestNet, disconnect wallet, reconnect, and retry opt-in.');
             } else {
                 showToast('error', 'Opt-In Failed', msg.substring(0, 100));
             }
@@ -692,16 +862,21 @@ const app = {
 
                 const greenScore = state['green_score'] || 0;
                 if (greenScore > 0) {
+                    // Look up saved college name from localStorage
+                    const savedName = this.getCollegeMapping(acc.address);
+                    const displayName = savedName || `Campus ${acc.address.slice(0, 6)}...${acc.address.slice(-4)}`;
+                    const logoText = savedName ? savedName.split(' ').map(w => w[0]).join('').toUpperCase().slice(0, 4) : acc.address.slice(0, 2).toUpperCase();
+
                     leaderboard.push({
                         address: acc.address,
-                        collegeName: `Campus ${acc.address.slice(0, 6)}...${acc.address.slice(-4)}`,
+                        collegeName: displayName,
                         greenScore: greenScore,
                         carbonSaved: state['carbon_saved'] || 0,
                         electricity: state['electricity'] || 0,
                         solar: state['solar'] || 0,
                         tokensEarned: state['tokens_earned'] || 0,
                         hasBadge: state['has_badge'] || 0,
-                        logo: makeSvgLogo(acc.address.slice(0, 2).toUpperCase())
+                        logo: makeSvgLogo(logoText)
                     });
                 }
             });
@@ -890,11 +1065,13 @@ const app = {
         this.fetchLeaderboard();
     },
 
+
+
     // Auth — reads user-entered college name, then navigates to dashboard
     login() {
         const btn = document.getElementById('login-btn');
         const old = btn ? btn.innerText : 'Login';
-        if (btn) btn.innerText = 'Verifying...';
+        if (btn) btn.innerText = 'Logging in...';
 
         // Read the user-entered college name
         const collegeInput = document.getElementById('collage-select');
@@ -919,14 +1096,62 @@ const app = {
         showToast('info', 'Logged Out', 'Session ended.');
     },
 
+    // ═══════════════════════════════════════
+    // COLLEGE NAME ↔ WALLET MAPPING
+    // Stored in localStorage for leaderboard display
+    // ═══════════════════════════════════════
+    saveCollegeMapping(walletAddress, collegeName) {
+        try {
+            const map = JSON.parse(localStorage.getItem('greenova_college_map') || '{}');
+            map[walletAddress] = collegeName;
+            localStorage.setItem('greenova_college_map', JSON.stringify(map));
+            debugLog('Saved college mapping:', walletAddress.slice(0, 8) + '... →', collegeName);
+        } catch (e) {
+            debugLog('warn', 'Failed to save college mapping:', e);
+        }
+    },
+    getCollegeMapping(walletAddress) {
+        try {
+            const map = JSON.parse(localStorage.getItem('greenova_college_map') || '{}');
+            return map[walletAddress] || null;
+        } catch (e) {
+            return null;
+        }
+    },
+
     // Wallet
     async connectWallet() {
+        // If peraWallet wasn't initialized during init(), try again now (late load)
         if (!this.peraWallet) {
-            showToast('error', 'Wallet Error', 'Pera Wallet SDK not loaded.');
+            debugLog('warn', 'Pera not initialized, attempting late init...');
+            try {
+                let PeraWalletClass = null;
+                if (window.PeraWalletConnect && typeof window.PeraWalletConnect.PeraWalletConnect === 'function') {
+                    PeraWalletClass = window.PeraWalletConnect.PeraWalletConnect;
+                } else if (typeof window.PeraWalletConnect === 'function') {
+                    PeraWalletClass = window.PeraWalletConnect;
+                } else if (window.PeraWalletConnect && typeof window.PeraWalletConnect.default === 'function') {
+                    PeraWalletClass = window.PeraWalletConnect.default;
+                }
+                if (PeraWalletClass) {
+                    this.peraWalletCtor = PeraWalletClass;
+                    this.peraWallet = this.createPeraWalletInstance();
+                    debugLog('✅ Pera late-initialized successfully');
+                }
+            } catch (e) {
+                debugLog('error', 'Late Pera init failed:', e);
+            }
+        }
+
+        if (!this.peraWallet) {
+            showToast('error', 'Wallet Error', 'Pera Wallet SDK not loaded. Please refresh the page.');
             return;
         }
         if (this.userAddress) {
-            this.peraWallet.disconnect();
+            // Disconnect flow
+            try {
+                await this.peraWallet.disconnect();
+            } catch (_) { }
             this.userAddress = null;
             this.resetWalletUI();
             this.resetData();
@@ -934,17 +1159,37 @@ const app = {
             showToast('info', 'Disconnected', 'Wallet disconnected.');
         } else {
             try {
-                const accts = await this.peraWallet.connect();
+                // Clear stale session so QR modal can open reliably
+                try {
+                    await this.peraWallet.disconnect();
+                } catch (_) { }
+
+                // Re-create instance for a clean connect
+                this.peraWallet = this.createPeraWalletInstance();
+
+                const accts = await withTimeout(this.peraWallet.connect(), 60000, 'Wallet connect');
                 this.userAddress = accts[0];
                 this.updateWalletUI();
                 this.loadLogo();
                 showToast('success', 'Connected!', `${this.userAddress.slice(0, 6)}...${this.userAddress.slice(-4)}`);
                 // Load on-chain data for connected wallet
                 this.loadOnChainData();
+
+                // Setup disconnect listener
+                this.peraWallet.connector?.on('disconnect', () => {
+                    this.userAddress = null;
+                    this.resetWalletUI();
+                    this.resetData();
+                });
             } catch (e) {
                 debugLog("error", "Wallet connect:", e);
-                if (!e.message?.includes('cancelled')) {
-                    showToast('error', 'Connection Failed', 'Could not connect Pera Wallet.');
+                const msg = e && e.message ? e.message : String(e);
+                if (!msg.includes('cancelled') && !msg.includes('CONNECT_MODAL_CLOSED')) {
+                    if (msg.includes('4100') || msg.toLowerCase().includes('network mismatch')) {
+                        showToast('error', 'Network Mismatch', 'Set Pera Wallet to TestNet, disconnect wallet, and reconnect.');
+                    } else {
+                        showToast('error', 'Connection Failed', msg.substring(0, 120));
+                    }
                 }
             }
         }

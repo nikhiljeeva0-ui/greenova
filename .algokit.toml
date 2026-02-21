@@ -1,0 +1,10 @@
+[algokit]
+min_version = "v1.12.1"
+
+[project]
+type = 'simple'
+name = 'greenova'
+deploy = 'python smart_contracts/deploy.py'
+
+[project.deploy]
+command = 'python smart_contracts/deploy.py'

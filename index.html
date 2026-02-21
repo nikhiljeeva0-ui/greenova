@@ -12,10 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <script src="vendor/perawallet.js"></script>
-    <script src="https://unpkg.com/algosdk@2.7.0/dist/browser/algosdk.min.js"
-        integrity="sha384-OP8U0zDUgTdYdeyxnrhicwju6SuPxm2tx4WaTYDeP5JiMS/OyifldTK5Y3vzPK9K"
-        crossorigin="anonymous"></script>
+
 </head>
 
 <body>
@@ -83,6 +80,7 @@
         <div class="nav-menu" id="nav-menu">
             <a onclick="app.showHome()" class="nav-link">Home</a>
             <a onclick="app.showLeaderboard(true)" class="nav-link">Leaderboard</a>
+
 
             <!-- Ultra Web3 Connect Button -->
             <button onclick="app.connectWallet()" class="btn-connect" id="connectWalletBtn">
@@ -237,6 +235,7 @@
                     Dashboard</a>
                 <a onclick="app.showDashboardTab('submit')" class="sidebar-link" id="nav-submit">📝 Submit Data</a>
                 <a onclick="app.showLeaderboard(false)" class="sidebar-link">🏆 Leaderboard</a>
+
             </nav>
             <button onclick="app.logout()" class="sidebar-logout">
                 🚪 Logout
@@ -356,16 +355,17 @@
                             <h3 style="margin: 2rem 0 1rem; color: #fff;">📄 Proof Verification</h3>
 
                             <div class="floating-input-group" style="margin-bottom: 0;">
-                                <label class="file-section-label" >Upload Utility Bills report    Solar Reports (PDF)</label>
+                                <label class="file-section-label">Upload Utility Bills & Solar Reports
+                                    (PDF, PNG, JPG)</label>
                                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
                                     <div>
-                                        <input type="file" id="bill-upload" accept=".pdf" class="floating-input"
-                                            style="padding: 0.5rem;">
+                                        <input type="file" id="bill-upload" accept=".pdf,.png,.jpg,.jpeg"
+                                            class="floating-input" style="padding: 0.5rem;">
                                         <div id="bill-error" class="field-error"></div>
                                     </div>
                                     <div>
-                                        <input type="file" id="solar-upload" accept=".pdf" class="floating-input"
-                                            style="padding: 0.5rem;">
+                                        <input type="file" id="solar-upload" accept=".pdf,.png,.jpg,.jpeg"
+                                            class="floating-input" style="padding: 0.5rem;">
                                         <div id="solar-error-file" class="field-error"></div>
                                     </div>
                                 </div>
@@ -434,6 +434,8 @@
         </div>
     </section>
 
+
+
     <!-- PREMIUM FOOTER -->
     <footer class="footer">
         <div class="footer-grid">
@@ -482,6 +484,8 @@
         </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/algosdk@2.7.0/dist/browser/algosdk.min.js"></script>
+    <script src="vendor/perawallet.js"></script>
     <script src="config.js"></script>
     <script src="script.js"></script>
 </body>
