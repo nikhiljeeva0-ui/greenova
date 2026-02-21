@@ -10,6 +10,7 @@ class CarbonState:
     green_score = LocalStateValue(stack_type=TealType.uint64, descr="Green score 0-100")
     bill_hash = LocalStateValue(stack_type=TealType.uint64, descr="Bill proof hash (first 8 bytes)")
     solar_hash = LocalStateValue(stack_type=TealType.uint64, descr="Solar proof hash (first 8 bytes)")
+    college_name = LocalStateValue(stack_type=TealType.bytes, descr="Campus/College name")
     tokens_earned = LocalStateValue(stack_type=TealType.uint64, descr="Carbon tokens earned")
     has_badge = LocalStateValue(stack_type=TealType.uint64, descr="1 if NFT badge earned")
 
@@ -36,6 +37,7 @@ def opt_in():
         app.state.green_score.set(Int(0)),
         app.state.bill_hash.set(Int(0)),
         app.state.solar_hash.set(Int(0)),
+        app.state.college_name.set(Bytes("")),
         app.state.tokens_earned.set(Int(0)),
         app.state.has_badge.set(Int(0)),
     )
@@ -49,6 +51,7 @@ def submit_data(
     green_score: abi.Uint64,
     bill_hash: abi.Uint64,
     solar_hash: abi.Uint64,
+    college_name: abi.DynamicBytes,
 ):
     """Submit campus energy data with anti-cheat validation."""
     # Calculate tokens: 1 token per 100 kg CO2 saved
@@ -65,6 +68,8 @@ def submit_data(
         Assert(green_score.get() <= Int(100)),
         # Carbon saved must be reasonable
         Assert(carbon_saved.get() <= Int(50000)),
+        # College name must not be empty (optional but good)
+        Assert(Len(college_name.get()) > Int(0)),
 
         # ─── Calculate Rewards ───
         tokens.store(carbon_saved.get() / Int(100)),
@@ -80,6 +85,7 @@ def submit_data(
         app.state.green_score.set(green_score.get()),
         app.state.bill_hash.set(bill_hash.get()),
         app.state.solar_hash.set(solar_hash.get()),
+        app.state.college_name.set(college_name.get()),
         app.state.tokens_earned.set(
             app.state.tokens_earned + tokens.load()
         ),

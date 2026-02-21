@@ -68,12 +68,15 @@ def deploy(use_localnet: bool = False):
     print(f"   Application ID:      {app_id}")
     print(f"   Application Address: {app_addr}")
     print(f"   Transaction ID:      {tx_id}")
-    print(f"\n📝 NEXT STEP: Update config.js with:")
+    print(f"\n📝 CRITICAL: Update config.js with:")
     print(f"   APP_ID: {app_id}")
+    print("\n   After updating config.js, refresh your browser to see the changes.")
     print("=" * 50)
 
     # 4. Export contract ABI
     try:
+        # Check if artifacts exists, if not create it
+        os.makedirs("./artifacts", exist_ok=True)
         app.build().export("./artifacts")
         print("📦 ABI artifacts exported to ./artifacts/")
     except Exception as e:

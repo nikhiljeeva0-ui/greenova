@@ -237,6 +237,10 @@
                 <a onclick="app.showLeaderboard(false)" class="sidebar-link">🏆 Leaderboard</a>
 
             </nav>
+            <button onclick="app.resetSession()" class="sidebar-link"
+                style="margin-top: auto; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.05); color: var(--text-secondary); font-size: 0.8rem; padding: 0.5rem; margin-bottom: 0.5rem;">
+                🛠️ Reset App Session
+            </button>
             <button onclick="app.logout()" class="sidebar-logout">
                 🚪 Logout
             </button>
@@ -418,7 +422,12 @@
     <section id="leaderboard-page" class="hidden">
         <div style="text-align: center; margin-bottom: 3rem;">
             <h2 class="page-title" style="margin-bottom: 1rem;">Global Green Ranking</h2>
-            <p style="color: var(--text-secondary);">Top performing institutions based on verified blockchain data.</p>
+            <p style="color: var(--text-secondary); margin-bottom: 2rem;">Top performing institutions based on verified
+                blockchain data.</p>
+            <button onclick="app.fetchLeaderboard()" class="btn-secondary"
+                style="margin: 0 auto; display: flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1.2rem; font-size: 0.9rem;">
+                <span id="refresh-icon">↻</span> Refresh On-Chain Data
+            </button>
         </div>
 
         <div class="leaderboard-list" id="leaderboard-list">

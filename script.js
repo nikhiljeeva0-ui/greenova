@@ -225,11 +225,16 @@ const app = {
     createPeraWalletInstance() {
         if (!this.peraWalletCtor) return null;
         try {
-            // @perawallet/connect@1.3.x accepts { shouldShowSignTxnToast: true } or empty
-            return new this.peraWalletCtor({ shouldShowSignTxnToast: true });
+            // @perawallet/connect@1.3.x accepts { shouldShowSignTxnToast: true, chainId: number }
+            return new this.peraWalletCtor({
+                shouldShowSignTxnToast: true,
+                chainId: this.walletChainId
+            });
         } catch (e) {
             try {
-                return new this.peraWalletCtor();
+                return new this.peraWalletCtor({
+                    chainId: this.walletChainId
+                });
             } catch (_) {
                 return null;
             }
@@ -355,7 +360,11 @@ const app = {
                 const state = {};
                 appState['key-value'].forEach(kv => {
                     const key = atob(kv.key);
-                    state[key] = kv.value.uint !== undefined ? kv.value.uint : 0;
+                    if (kv.value.type === 1) { // Type 1 is Bytes
+                        state[key] = atob(kv.value.bytes); // atob to get raw string
+                    } else {
+                        state[key] = kv.value.uint !== undefined ? kv.value.uint : 0;
+                    }
                 });
 
                 debugLog("On-chain state:", state);
@@ -522,23 +531,7 @@ const app = {
             );
             return this.normalizeSignedTxnResponse(signedTxnArr);
         } catch (err) {
-            const msg = err && err.message ? err.message : String(err);
-            // If the SDK can't encode, try passing encoded bytes
-            if (msg.includes('get_obj_for_encoding') || msg.includes('encodeUnsignedTransaction')) {
-                debugLog('warn', 'Retrying sign with pre-encoded txn...');
-                try {
-                    const encodedTxn = this.encodeUnsignedTxn(txn);
-                    const txnsToSign = [{ txn: encodedTxn }];
-                    const signedTxnArr = await withTimeout(
-                        this.peraWallet.signTransaction([txnsToSign]),
-                        120000,
-                        'Wallet signing (encoded)'
-                    );
-                    return this.normalizeSignedTxnResponse(signedTxnArr);
-                } catch (retryErr) {
-                    throw new Error('Wallet signing failed: ' + (retryErr.message || String(retryErr)));
-                }
-            }
+            debugLog('error', 'Wallet signing failed:', err);
             throw err;
         }
     },
@@ -626,8 +619,11 @@ const app = {
             // 7. Submit data to smart contract via Pera Wallet
             showToast('info', 'Sign Transaction', 'Please sign the transaction in your Pera Wallet.');
 
-            // Compute ABI method selector for submit_data(uint64,uint64,uint64,uint64,uint64,uint64)void
-            const selector = computeMethodSelector('submit_data(uint64,uint64,uint64,uint64,uint64,uint64)void');
+            // Compute ABI method selector for submit_data(uint64,uint64,uint64,uint64,uint64,uint64,byte[])void
+            const selector = computeMethodSelector('submit_data(uint64,uint64,uint64,uint64,uint64,uint64,byte[])void');
+
+            const collegeNameStr = this.currentCollege ? this.currentCollege.name : 'Unknown';
+            const collegeNameBytes = new TextEncoder().encode(collegeNameStr);
 
             const appArgs = [
                 selector,
@@ -636,7 +632,10 @@ const app = {
                 algosdk.encodeUint64(Math.floor(carbonSaved)),
                 algosdk.encodeUint64(Math.floor(greenScore)),
                 algosdk.encodeUint64(Math.floor(billHashUint)),
-                algosdk.encodeUint64(Math.floor(solarHashUint))
+                algosdk.encodeUint64(Math.floor(solarHashUint)),
+                // For dynamic bytes, We need to be careful with encoding.
+                // In simple NoOp, we can just pass the bytes.
+                collegeNameBytes
             ];
 
             const suggestedParams = await this.algodClient.getTransactionParams().do();
@@ -689,6 +688,9 @@ const app = {
 
             // Reload on-chain data
             setTimeout(() => this.loadOnChainData(), 2000);
+
+            // Refresh leaderboard after a longer delay (give indexer time to catch up)
+            setTimeout(() => this.fetchLeaderboard(), 5000);
 
         } catch (e) {
             debugLog("error", "Submission failed:", e);
@@ -780,19 +782,31 @@ const app = {
 
             // Sign via wallet with robust handling across SDK/wallet versions
             const signedBlob = await this.signTxnWithPera(txn);
-            const sendResult = await withTimeout(
-                this.algodClient.sendRawTransaction(signedBlob).do(),
-                45000,
-                'Opt-in broadcast'
-            );
-            const txId = sendResult.txId || sendResult.txid || sendResult.txID || txn.txID();
+            const txId = txn.txID(); // Pre-calculate TXID
+
+            try {
+                debugLog("Broadcasting Opt-In:", txId);
+                await withTimeout(
+                    this.algodClient.sendRawTransaction(signedBlob).do(),
+                    45000,
+                    'Opt-in broadcast'
+                );
+            } catch (broadcastErr) {
+                const bMsg = broadcastErr.message || String(broadcastErr);
+                if (bMsg.includes('TransactionPool.Remember')) {
+                    debugLog("Opt-In already in pool (duplicate), waiting for confirmation...");
+                } else {
+                    throw broadcastErr;
+                }
+            }
+
             await withTimeout(
                 algosdk.waitForConfirmation(this.algodClient, txId, 8),
                 90000,
                 'Opt-in confirmation'
             );
             debugLog("Opt-In confirmed:", txId);
-            showToast('success', 'Opted In!', `Smart contract opt-in successful. TX: ${txId.substring(0, 12)}...`);
+            showToast('success', 'Opted In!', `Smart contract opt-in successful.`);
             return true;
         } catch (e) {
             debugLog("error", "Opt-In failed:", e);
@@ -857,15 +871,22 @@ const app = {
                 const state = {};
                 localState['key-value'].forEach(kv => {
                     const key = atob(kv.key);
-                    state[key] = kv.value.uint !== undefined ? kv.value.uint : 0;
+                    if (kv.value.type === 1) { // Bytes
+                        state[key] = atob(kv.value.bytes);
+                    } else {
+                        state[key] = kv.value.uint !== undefined ? kv.value.uint : 0;
+                    }
                 });
 
                 const greenScore = state['green_score'] || 0;
                 if (greenScore > 0) {
-                    // Look up saved college name from localStorage
+                    // 1. Try on-chain name first
+                    // 2. Fallback to local storage mapping 
+                    // 3. Fallback to truncated address
+                    const onChainName = state['college_name'];
                     const savedName = this.getCollegeMapping(acc.address);
-                    const displayName = savedName || `Campus ${acc.address.slice(0, 6)}...${acc.address.slice(-4)}`;
-                    const logoText = savedName ? savedName.split(' ').map(w => w[0]).join('').toUpperCase().slice(0, 4) : acc.address.slice(0, 2).toUpperCase();
+                    const displayName = onChainName || savedName || `Campus ${acc.address.slice(0, 6)}...${acc.address.slice(-4)}`;
+                    const logoText = displayName.split(' ').map(w => w[0]).join('').toUpperCase().slice(0, 4);
 
                     leaderboard.push({
                         address: acc.address,
@@ -1186,7 +1207,13 @@ const app = {
                 const msg = e && e.message ? e.message : String(e);
                 if (!msg.includes('cancelled') && !msg.includes('CONNECT_MODAL_CLOSED')) {
                     if (msg.includes('4100') || msg.toLowerCase().includes('network mismatch')) {
-                        showToast('error', 'Network Mismatch', 'Set Pera Wallet to TestNet, disconnect wallet, and reconnect.');
+                        const networkName = this.walletChainId === 416002 ? 'TestNet' : 'MainNet';
+                        showToast('error', 'Network Mismatch', `Set Pera Wallet to ${networkName}, disconnect session, and try again.`);
+                        this.showError('general-error', `NETWORK MISMATCH: Your Pera Wallet is likely on MainNet. To fix: 
+                            1. Open Pera Wallet on your phone.
+                            2. Go to Settings > Developer Settings > Node Settings.
+                            3. Select 'TestNet'.
+                            4. Try connecting again.`);
                     } else {
                         showToast('error', 'Connection Failed', msg.substring(0, 120));
                     }
@@ -1211,6 +1238,20 @@ const app = {
         if (btn) btn.classList.remove('connected');
         if (txt) txt.innerText = "Connect Wallet";
         if (dot) dot.style.background = '#ef4444';
+    },
+
+    async resetSession() {
+        if (confirm("Reset App & Wallet Session? This will clear all local data and disconnect your wallet.")) {
+            try {
+                if (this.peraWallet) {
+                    await this.peraWallet.disconnect();
+                }
+            } catch (e) {
+                debugLog('warn', 'Session reset error:', e);
+            }
+            localStorage.clear();
+            window.location.reload();
+        }
     },
 };
 

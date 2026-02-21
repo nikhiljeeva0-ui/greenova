@@ -7,7 +7,7 @@ var PeraWalletConnect = (() => {
   var __hasOwnProp = Object.prototype.hasOwnProperty;
   var __require = /* @__PURE__ */ ((x) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x, {
     get: (a, b) => (typeof require !== "undefined" ? require : a)[b]
-  }) : x)(function(x) {
+  }) : x)(function (x) {
     if (typeof require !== "undefined") return require.apply(this, arguments);
     throw Error('Dynamic require of "' + x + '" is not supported');
   });
@@ -214,7 +214,7 @@ var PeraWalletConnect = (() => {
     return getNodeVersion();
   }
   function matchUserAgent(ua) {
-    return ua !== "" && userAgentRules.reduce(function(matched, _a) {
+    return ua !== "" && userAgentRules.reduce(function (matched, _a) {
       var browser = _a[0], regex = _a[1];
       if (matched) {
         return matched;
@@ -272,7 +272,7 @@ var PeraWalletConnect = (() => {
   var __spreadArrays, BrowserInfo, NodeInfo, SearchBotDeviceInfo, BotInfo, ReactNativeInfo, SEARCHBOX_UA_REGEX, SEARCHBOT_OS_REGEX, REQUIRED_VERSION_PARTS, userAgentRules, operatingSystemRules;
   var init_es = __esm({
     "node_modules/detect-browser/es/index.js"() {
-      __spreadArrays = function() {
+      __spreadArrays = function () {
         for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
         for (var r2 = Array(s), k = 0, i = 0; i < il; i++)
           for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
@@ -280,57 +280,57 @@ var PeraWalletConnect = (() => {
         return r2;
       };
       BrowserInfo = /** @class */
-      /* @__PURE__ */ (function() {
-        function BrowserInfo2(name, version, os) {
-          this.name = name;
-          this.version = version;
-          this.os = os;
-          this.type = "browser";
-        }
-        return BrowserInfo2;
-      })();
+      /* @__PURE__ */ (function () {
+          function BrowserInfo2(name, version, os) {
+            this.name = name;
+            this.version = version;
+            this.os = os;
+            this.type = "browser";
+          }
+          return BrowserInfo2;
+        })();
       NodeInfo = /** @class */
-      /* @__PURE__ */ (function() {
-        function NodeInfo2(version) {
-          this.version = version;
-          this.type = "node";
-          this.name = "node";
-          this.os = process.platform;
-        }
-        return NodeInfo2;
-      })();
+      /* @__PURE__ */ (function () {
+          function NodeInfo2(version) {
+            this.version = version;
+            this.type = "node";
+            this.name = "node";
+            this.os = process.platform;
+          }
+          return NodeInfo2;
+        })();
       SearchBotDeviceInfo = /** @class */
-      /* @__PURE__ */ (function() {
-        function SearchBotDeviceInfo2(name, version, os, bot) {
-          this.name = name;
-          this.version = version;
-          this.os = os;
-          this.bot = bot;
-          this.type = "bot-device";
-        }
-        return SearchBotDeviceInfo2;
-      })();
+      /* @__PURE__ */ (function () {
+          function SearchBotDeviceInfo2(name, version, os, bot) {
+            this.name = name;
+            this.version = version;
+            this.os = os;
+            this.bot = bot;
+            this.type = "bot-device";
+          }
+          return SearchBotDeviceInfo2;
+        })();
       BotInfo = /** @class */
-      /* @__PURE__ */ (function() {
-        function BotInfo2() {
-          this.type = "bot";
-          this.bot = true;
-          this.name = "bot";
-          this.version = null;
-          this.os = null;
-        }
-        return BotInfo2;
-      })();
+      /* @__PURE__ */ (function () {
+          function BotInfo2() {
+            this.type = "bot";
+            this.bot = true;
+            this.name = "bot";
+            this.version = null;
+            this.os = null;
+          }
+          return BotInfo2;
+        })();
       ReactNativeInfo = /** @class */
-      /* @__PURE__ */ (function() {
-        function ReactNativeInfo2() {
-          this.type = "react-native";
-          this.name = "react-native";
-          this.version = null;
-          this.os = null;
-        }
-        return ReactNativeInfo2;
-      })();
+      /* @__PURE__ */ (function () {
+          function ReactNativeInfo2() {
+            this.type = "react-native";
+            this.name = "react-native";
+            this.version = null;
+            this.os = null;
+          }
+          return ReactNativeInfo2;
+        })();
       SEARCHBOX_UA_REGEX = /alexa|bot|crawl(er|ing)|facebookexternalhit|feedburner|google web preview|nagios|postrank|pingdom|slurp|spider|yahoo!|yandex/;
       SEARCHBOT_OS_REGEX = /(nuhk|Googlebot|Yammybot|Openbot|Slurp|MSNBot|Ask\ Jeeves\/Teoma|ia_archiver)/;
       REQUIRED_VERSION_PARTS = 3;
@@ -576,14 +576,14 @@ var PeraWalletConnect = (() => {
   // node_modules/bn.js/lib/bn.js
   var require_bn = __commonJS({
     "node_modules/bn.js/lib/bn.js"(exports, module) {
-      (function(module2, exports2) {
+      (function (module2, exports2) {
         "use strict";
         function assert2(val, msg) {
           if (!val) throw new Error(msg || "Assertion failed");
         }
         function inherits(ctor, superCtor) {
           ctor.super_ = superCtor;
-          var TempCtor = function() {
+          var TempCtor = function () {
           };
           TempCtor.prototype = superCtor.prototype;
           ctor.prototype = new TempCtor();
@@ -2645,7 +2645,7 @@ var PeraWalletConnect = (() => {
           var yp = y.clone();
           var xp = x.clone();
           while (!x.isZero()) {
-            for (var i = 0, im = 1; (x.words[0] & im) === 0 && i < 26; ++i, im <<= 1) ;
+            for (var i = 0, im = 1; (x.words[0] & im) === 0 && i < 26; ++i, im <<= 1);
             if (i > 0) {
               x.iushrn(i);
               while (i-- > 0) {
@@ -2657,7 +2657,7 @@ var PeraWalletConnect = (() => {
                 B.iushrn(1);
               }
             }
-            for (var j = 0, jm = 1; (y.words[0] & jm) === 0 && j < 26; ++j, jm <<= 1) ;
+            for (var j = 0, jm = 1; (y.words[0] & jm) === 0 && j < 26; ++j, jm <<= 1);
             if (j > 0) {
               y.iushrn(j);
               while (j-- > 0) {
@@ -2699,7 +2699,7 @@ var PeraWalletConnect = (() => {
           var x2 = new BN2(0);
           var delta = b.clone();
           while (a.cmpn(1) > 0 && b.cmpn(1) > 0) {
-            for (var i = 0, im = 1; (a.words[0] & im) === 0 && i < 26; ++i, im <<= 1) ;
+            for (var i = 0, im = 1; (a.words[0] & im) === 0 && i < 26; ++i, im <<= 1);
             if (i > 0) {
               a.iushrn(i);
               while (i-- > 0) {
@@ -2709,7 +2709,7 @@ var PeraWalletConnect = (() => {
                 x1.iushrn(1);
               }
             }
-            for (var j = 0, jm = 1; (b.words[0] & jm) === 0 && j < 26; ++j, jm <<= 1) ;
+            for (var j = 0, jm = 1; (b.words[0] & jm) === 0 && j < 26; ++j, jm <<= 1);
             if (j > 0) {
               b.iushrn(j);
               while (j-- > 0) {
@@ -3538,7 +3538,7 @@ var PeraWalletConnect = (() => {
   // node_modules/js-sha3/src/sha3.js
   var require_sha3 = __commonJS({
     "node_modules/js-sha3/src/sha3.js"(exports, module) {
-      (function() {
+      (function () {
         "use strict";
         var INPUT_ERROR = "input is invalid type";
         var FINALIZE_ERROR = "finalize already called";
@@ -3621,84 +3621,84 @@ var PeraWalletConnect = (() => {
           "256": 136
         };
         if (root.JS_SHA3_NO_NODE_JS || !Array.isArray) {
-          Array.isArray = function(obj) {
+          Array.isArray = function (obj) {
             return Object.prototype.toString.call(obj) === "[object Array]";
           };
         }
         if (ARRAY_BUFFER && (root.JS_SHA3_NO_ARRAY_BUFFER_IS_VIEW || !ArrayBuffer.isView)) {
-          ArrayBuffer.isView = function(obj) {
+          ArrayBuffer.isView = function (obj) {
             return typeof obj === "object" && obj.buffer && obj.buffer.constructor === ArrayBuffer;
           };
         }
-        var createOutputMethod = function(bits2, padding, outputType) {
-          return function(message) {
+        var createOutputMethod = function (bits2, padding, outputType) {
+          return function (message) {
             return new Keccak(bits2, padding, bits2).update(message)[outputType]();
           };
         };
-        var createShakeOutputMethod = function(bits2, padding, outputType) {
-          return function(message, outputBits) {
+        var createShakeOutputMethod = function (bits2, padding, outputType) {
+          return function (message, outputBits) {
             return new Keccak(bits2, padding, outputBits).update(message)[outputType]();
           };
         };
-        var createCshakeOutputMethod = function(bits2, padding, outputType) {
-          return function(message, outputBits, n2, s) {
+        var createCshakeOutputMethod = function (bits2, padding, outputType) {
+          return function (message, outputBits, n2, s) {
             return methods["cshake" + bits2].update(message, outputBits, n2, s)[outputType]();
           };
         };
-        var createKmacOutputMethod = function(bits2, padding, outputType) {
-          return function(key, message, outputBits, s) {
+        var createKmacOutputMethod = function (bits2, padding, outputType) {
+          return function (key, message, outputBits, s) {
             return methods["kmac" + bits2].update(key, message, outputBits, s)[outputType]();
           };
         };
-        var createOutputMethods = function(method, createMethod2, bits2, padding) {
+        var createOutputMethods = function (method, createMethod2, bits2, padding) {
           for (var i2 = 0; i2 < OUTPUT_TYPES.length; ++i2) {
             var type = OUTPUT_TYPES[i2];
             method[type] = createMethod2(bits2, padding, type);
           }
           return method;
         };
-        var createMethod = function(bits2, padding) {
+        var createMethod = function (bits2, padding) {
           var method = createOutputMethod(bits2, padding, "hex");
-          method.create = function() {
+          method.create = function () {
             return new Keccak(bits2, padding, bits2);
           };
-          method.update = function(message) {
+          method.update = function (message) {
             return method.create().update(message);
           };
           return createOutputMethods(method, createOutputMethod, bits2, padding);
         };
-        var createShakeMethod = function(bits2, padding) {
+        var createShakeMethod = function (bits2, padding) {
           var method = createShakeOutputMethod(bits2, padding, "hex");
-          method.create = function(outputBits) {
+          method.create = function (outputBits) {
             return new Keccak(bits2, padding, outputBits);
           };
-          method.update = function(message, outputBits) {
+          method.update = function (message, outputBits) {
             return method.create(outputBits).update(message);
           };
           return createOutputMethods(method, createShakeOutputMethod, bits2, padding);
         };
-        var createCshakeMethod = function(bits2, padding) {
+        var createCshakeMethod = function (bits2, padding) {
           var w = CSHAKE_BYTEPAD[bits2];
           var method = createCshakeOutputMethod(bits2, padding, "hex");
-          method.create = function(outputBits, n2, s) {
+          method.create = function (outputBits, n2, s) {
             if (!n2 && !s) {
               return methods["shake" + bits2].create(outputBits);
             } else {
               return new Keccak(bits2, padding, outputBits).bytepad([n2, s], w);
             }
           };
-          method.update = function(message, outputBits, n2, s) {
+          method.update = function (message, outputBits, n2, s) {
             return method.create(outputBits, n2, s).update(message);
           };
           return createOutputMethods(method, createCshakeOutputMethod, bits2, padding);
         };
-        var createKmacMethod = function(bits2, padding) {
+        var createKmacMethod = function (bits2, padding) {
           var w = CSHAKE_BYTEPAD[bits2];
           var method = createKmacOutputMethod(bits2, padding, "hex");
-          method.create = function(key, outputBits, s) {
+          method.create = function (key, outputBits, s) {
             return new Kmac(bits2, padding, outputBits).bytepad(["KMAC", s], w).bytepad([key], w);
           };
-          method.update = function(key, message, outputBits, s) {
+          method.update = function (key, message, outputBits, s) {
             return method.create(key, outputBits, s).update(message);
           };
           return createOutputMethods(method, createKmacOutputMethod, bits2, padding);
@@ -3742,7 +3742,7 @@ var PeraWalletConnect = (() => {
             this.s[i2] = 0;
           }
         }
-        Keccak.prototype.update = function(message) {
+        Keccak.prototype.update = function (message) {
           if (this.finalized) {
             throw new Error(FINALIZE_ERROR);
           }
@@ -3812,7 +3812,7 @@ var PeraWalletConnect = (() => {
           }
           return this;
         };
-        Keccak.prototype.encode = function(x, right) {
+        Keccak.prototype.encode = function (x, right) {
           var o2 = x & 255, n2 = 1;
           var bytes = [o2];
           x = x >> 8;
@@ -3831,7 +3831,7 @@ var PeraWalletConnect = (() => {
           this.update(bytes);
           return bytes.length;
         };
-        Keccak.prototype.encodeString = function(str) {
+        Keccak.prototype.encodeString = function (str) {
           var notString, type = typeof str;
           if (type !== "string") {
             if (type === "object") {
@@ -3871,7 +3871,7 @@ var PeraWalletConnect = (() => {
           this.update(str);
           return bytes;
         };
-        Keccak.prototype.bytepad = function(strs, w) {
+        Keccak.prototype.bytepad = function (strs, w) {
           var bytes = this.encode(w);
           for (var i2 = 0; i2 < strs.length; ++i2) {
             bytes += this.encodeString(strs[i2]);
@@ -3882,7 +3882,7 @@ var PeraWalletConnect = (() => {
           this.update(zeros);
           return this;
         };
-        Keccak.prototype.finalize = function() {
+        Keccak.prototype.finalize = function () {
           if (this.finalized) {
             return;
           }
@@ -3901,7 +3901,7 @@ var PeraWalletConnect = (() => {
           }
           f(s);
         };
-        Keccak.prototype.toString = Keccak.prototype.hex = function() {
+        Keccak.prototype.toString = Keccak.prototype.hex = function () {
           this.finalize();
           var blockCount = this.blockCount, s = this.s, outputBlocks = this.outputBlocks, extraBytes = this.extraBytes, i2 = 0, j2 = 0;
           var hex = "", block;
@@ -3927,7 +3927,7 @@ var PeraWalletConnect = (() => {
           }
           return hex;
         };
-        Keccak.prototype.arrayBuffer = function() {
+        Keccak.prototype.arrayBuffer = function () {
           this.finalize();
           var blockCount = this.blockCount, s = this.s, outputBlocks = this.outputBlocks, extraBytes = this.extraBytes, i2 = 0, j2 = 0;
           var bytes = this.outputBits >> 3;
@@ -3953,7 +3953,7 @@ var PeraWalletConnect = (() => {
           return buffer;
         };
         Keccak.prototype.buffer = Keccak.prototype.arrayBuffer;
-        Keccak.prototype.digest = Keccak.prototype.array = function() {
+        Keccak.prototype.digest = Keccak.prototype.array = function () {
           this.finalize();
           var blockCount = this.blockCount, s = this.s, outputBlocks = this.outputBlocks, extraBytes = this.extraBytes, i2 = 0, j2 = 0;
           var array = [], offset, block;
@@ -3987,11 +3987,11 @@ var PeraWalletConnect = (() => {
           Keccak.call(this, bits2, padding, outputBits);
         }
         Kmac.prototype = new Keccak();
-        Kmac.prototype.finalize = function() {
+        Kmac.prototype.finalize = function () {
           this.encode(this.outputBits, true);
           return Keccak.prototype.finalize.call(this);
         };
-        var f = function(s) {
+        var f = function (s) {
           var h, l, n2, c0, c1, c2, c3, c4, c5, c6, c7, c8, c9, b0, b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11, b12, b13, b14, b15, b16, b17, b18, b19, b20, b21, b22, b23, b24, b25, b26, b27, b28, b29, b30, b31, b32, b33, b34, b35, b36, b37, b38, b39, b40, b41, b42, b43, b44, b45, b46, b47, b48, b49;
           for (n2 = 0; n2 < 48; n2 += 2) {
             c0 = s[0] ^ s[10] ^ s[20] ^ s[30] ^ s[40];
@@ -4175,7 +4175,7 @@ var PeraWalletConnect = (() => {
             root[methodNames[i]] = methods[methodNames[i]];
           }
           if (AMD) {
-            define(function() {
+            define(function () {
               return methods;
             });
           }
@@ -4316,7 +4316,7 @@ var PeraWalletConnect = (() => {
     return c > 3 && r2 && Object.defineProperty(target, key, r2), r2;
   }
   function __param(paramIndex, decorator) {
-    return function(target, key) {
+    return function (target, key) {
       decorator(target, key, paramIndex);
     };
   }
@@ -4325,11 +4325,11 @@ var PeraWalletConnect = (() => {
   }
   function __awaiter(thisArg, _arguments, P, generator) {
     function adopt(value) {
-      return value instanceof P ? value : new P(function(resolve) {
+      return value instanceof P ? value : new P(function (resolve) {
         resolve(value);
       });
     }
-    return new (P || (P = Promise))(function(resolve, reject) {
+    return new (P || (P = Promise))(function (resolve, reject) {
       function fulfilled(value) {
         try {
           step(generator.next(value));
@@ -4351,15 +4351,17 @@ var PeraWalletConnect = (() => {
     });
   }
   function __generator(thisArg, body) {
-    var _ = { label: 0, sent: function() {
-      if (t[0] & 1) throw t[1];
-      return t[1];
-    }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() {
+    var _ = {
+      label: 0, sent: function () {
+        if (t[0] & 1) throw t[1];
+        return t[1];
+      }, trys: [], ops: []
+    }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function () {
       return this;
     }), g;
     function verb(n2) {
-      return function(v) {
+      return function (v) {
         return step([n2, v]);
       };
     }
@@ -4430,7 +4432,7 @@ var PeraWalletConnect = (() => {
     var s = typeof Symbol === "function" && Symbol.iterator, m = s && o2[s], i = 0;
     if (m) return m.call(o2);
     if (o2 && typeof o2.length === "number") return {
-      next: function() {
+      next: function () {
         if (o2 && i >= o2.length) o2 = void 0;
         return { value: o2 && o2[i++], done: !o2 };
       }
@@ -4472,12 +4474,12 @@ var PeraWalletConnect = (() => {
   function __asyncGenerator(thisArg, _arguments, generator) {
     if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
     var g = generator.apply(thisArg, _arguments || []), i, q = [];
-    return i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function() {
+    return i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () {
       return this;
     }, i;
     function verb(n2) {
-      if (g[n2]) i[n2] = function(v) {
-        return new Promise(function(a, b) {
+      if (g[n2]) i[n2] = function (v) {
+        return new Promise(function (a, b) {
           q.push([n2, v, a, b]) > 1 || resume(n2, v);
         });
       };
@@ -4504,13 +4506,13 @@ var PeraWalletConnect = (() => {
   }
   function __asyncDelegator(o2) {
     var i, p;
-    return i = {}, verb("next"), verb("throw", function(e2) {
+    return i = {}, verb("next"), verb("throw", function (e2) {
       throw e2;
-    }), verb("return"), i[Symbol.iterator] = function() {
+    }), verb("return"), i[Symbol.iterator] = function () {
       return this;
     }, i;
     function verb(n2, f) {
-      i[n2] = o2[n2] ? function(v) {
+      i[n2] = o2[n2] ? function (v) {
         return (p = !p) ? { value: __await(o2[n2](v)), done: n2 === "return" } : f ? f(v) : v;
       } : f;
     }
@@ -4518,18 +4520,18 @@ var PeraWalletConnect = (() => {
   function __asyncValues(o2) {
     if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
     var m = o2[Symbol.asyncIterator], i;
-    return m ? m.call(o2) : (o2 = typeof __values2 === "function" ? __values2(o2) : o2[Symbol.iterator](), i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function() {
+    return m ? m.call(o2) : (o2 = typeof __values2 === "function" ? __values2(o2) : o2[Symbol.iterator](), i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () {
       return this;
     }, i);
     function verb(n2) {
-      i[n2] = o2[n2] && function(v) {
-        return new Promise(function(resolve, reject) {
+      i[n2] = o2[n2] && function (v) {
+        return new Promise(function (resolve, reject) {
           v = o2[n2](v), settle(resolve, reject, v.done, v.value);
         });
       };
     }
     function settle(resolve, reject, d, v) {
-      Promise.resolve(v).then(function(v2) {
+      Promise.resolve(v).then(function (v2) {
         resolve({ value: v2, done: d });
       }, reject);
     }
@@ -4570,15 +4572,15 @@ var PeraWalletConnect = (() => {
   var extendStatics, __assign;
   var init_tslib_es6 = __esm({
     "node_modules/tslib/tslib.es6.js"() {
-      extendStatics = function(d, b) {
-        extendStatics = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function(d2, b2) {
+      extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function (d2, b2) {
           d2.__proto__ = b2;
-        } || function(d2, b2) {
+        } || function (d2, b2) {
           for (var p in b2) if (b2.hasOwnProperty(p)) d2[p] = b2[p];
         };
         return extendStatics(d, b);
       };
-      __assign = function() {
+      __assign = function () {
         __assign = Object.assign || function __assign2(t) {
           for (var s, i = 1, n2 = arguments.length; i < n2; i++) {
             s = arguments[i];
@@ -5148,7 +5150,7 @@ var PeraWalletConnect = (() => {
         }
         return input;
       }
-      module.exports = function(encodedURI) {
+      module.exports = function (encodedURI) {
         if (typeof encodedURI !== "string") {
           throw new TypeError("Expected `encodedURI` to be of type `string`, got `" + typeof encodedURI + "`");
         }
@@ -5581,7 +5583,7 @@ var PeraWalletConnect = (() => {
   var require_browser = __commonJS({
     "node_modules/ws/browser.js"(exports, module) {
       "use strict";
-      module.exports = function() {
+      module.exports = function () {
         throw new Error(
           "ws does not work in the browser. Browser clients must use the native WebSocket object"
         );
@@ -7404,7 +7406,7 @@ var PeraWalletConnect = (() => {
   // node_modules/ieee754/index.js
   var require_ieee754 = __commonJS({
     "node_modules/ieee754/index.js"(exports) {
-      exports.read = function(buffer, offset, isLE, mLen, nBytes) {
+      exports.read = function (buffer, offset, isLE, mLen, nBytes) {
         var e2, m;
         var eLen = nBytes * 8 - mLen - 1;
         var eMax = (1 << eLen) - 1;
@@ -7434,7 +7436,7 @@ var PeraWalletConnect = (() => {
         }
         return (s ? -1 : 1) * m * Math.pow(2, e2 - mLen);
       };
-      exports.write = function(buffer, value, offset, isLE, mLen, nBytes) {
+      exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
         var e2, m, c;
         var eLen = nBytes * 8 - mLen - 1;
         var eMax = (1 << eLen) - 1;
@@ -7505,9 +7507,11 @@ var PeraWalletConnect = (() => {
       function typedArraySupport() {
         try {
           const arr = new Uint8Array(1);
-          const proto = { foo: function() {
-            return 42;
-          } };
+          const proto = {
+            foo: function () {
+              return 42;
+            }
+          };
           Object.setPrototypeOf(proto, Uint8Array.prototype);
           Object.setPrototypeOf(arr, proto);
           return arr.foo() === 42;
@@ -7517,14 +7521,14 @@ var PeraWalletConnect = (() => {
       }
       Object.defineProperty(Buffer2.prototype, "parent", {
         enumerable: true,
-        get: function() {
+        get: function () {
           if (!Buffer2.isBuffer(this)) return void 0;
           return this.buffer;
         }
       });
       Object.defineProperty(Buffer2.prototype, "offset", {
         enumerable: true,
-        get: function() {
+        get: function () {
           if (!Buffer2.isBuffer(this)) return void 0;
           return this.byteOffset;
         }
@@ -7585,7 +7589,7 @@ var PeraWalletConnect = (() => {
           "The first argument must be one of type string, Buffer, ArrayBuffer, Array, or Array-like Object. Received type " + typeof value
         );
       }
-      Buffer2.from = function(value, encodingOrOffset, length) {
+      Buffer2.from = function (value, encodingOrOffset, length) {
         return from(value, encodingOrOffset, length);
       };
       Object.setPrototypeOf(Buffer2.prototype, Uint8Array.prototype);
@@ -7607,17 +7611,17 @@ var PeraWalletConnect = (() => {
         }
         return createBuffer(size);
       }
-      Buffer2.alloc = function(size, fill, encoding) {
+      Buffer2.alloc = function (size, fill, encoding) {
         return alloc(size, fill, encoding);
       };
       function allocUnsafe(size) {
         assertSize(size);
         return createBuffer(size < 0 ? 0 : checked(size) | 0);
       }
-      Buffer2.allocUnsafe = function(size) {
+      Buffer2.allocUnsafe = function (size) {
         return allocUnsafe(size);
       };
-      Buffer2.allocUnsafeSlow = function(size) {
+      Buffer2.allocUnsafeSlow = function (size) {
         return allocUnsafe(size);
       };
       function fromString(string, encoding) {
@@ -7797,7 +7801,7 @@ var PeraWalletConnect = (() => {
         const mustMatch = arguments.length > 2 && arguments[2] === true;
         if (!mustMatch && len === 0) return 0;
         let loweredCase = false;
-        for (; ; ) {
+        for (; ;) {
           switch (encoding) {
             case "ascii":
             case "latin1":
@@ -8154,7 +8158,7 @@ var PeraWalletConnect = (() => {
         }
         if (!encoding) encoding = "utf8";
         let loweredCase = false;
-        for (; ; ) {
+        for (; ;) {
           switch (encoding) {
             case "hex":
               return hexWrite(this, string, offset, length);
@@ -8477,7 +8481,7 @@ var PeraWalletConnect = (() => {
           boundsError(offset, this.length - 8);
         }
         const val = (first << 24) + // Overflow
-        this[++offset] * 2 ** 16 + this[++offset] * 2 ** 8 + this[++offset];
+          this[++offset] * 2 ** 16 + this[++offset] * 2 ** 8 + this[++offset];
         return (BigInt(val) << BigInt(32)) + BigInt(this[++offset] * 2 ** 24 + this[++offset] * 2 ** 16 + this[++offset] * 2 ** 8 + last);
       });
       Buffer2.prototype.readFloatLE = function readFloatLE(offset, noAssert) {
@@ -8864,7 +8868,7 @@ var PeraWalletConnect = (() => {
       }
       E(
         "ERR_BUFFER_OUT_OF_BOUNDS",
-        function(name) {
+        function (name) {
           if (name) {
             return `${name} is outside of buffer bounds`;
           }
@@ -8874,14 +8878,14 @@ var PeraWalletConnect = (() => {
       );
       E(
         "ERR_INVALID_ARG_TYPE",
-        function(name, actual) {
+        function (name, actual) {
           return `The "${name}" argument must be of type number. Received type ${typeof actual}`;
         },
         TypeError
       );
       E(
         "ERR_OUT_OF_RANGE",
-        function(str, range, input) {
+        function (str, range, input) {
           let msg = `The value of "${str}" is out of range.`;
           let received = input;
           if (Number.isInteger(input) && Math.abs(input) > 2 ** 32) {
@@ -9056,7 +9060,7 @@ var PeraWalletConnect = (() => {
       function numberIsNaN(obj) {
         return obj !== obj;
       }
-      var hexSliceLookupTable = (function() {
+      var hexSliceLookupTable = (function () {
         const alphabet = "0123456789abcdef";
         const table = new Array(256);
         for (let i = 0; i < 16; ++i) {
@@ -9085,14 +9089,14 @@ var PeraWalletConnect = (() => {
   // node_modules/tweetnacl/nacl-fast.js
   var require_nacl_fast = __commonJS({
     "node_modules/tweetnacl/nacl-fast.js"(exports, module) {
-      (function(nacl) {
+      (function (nacl) {
         "use strict";
-        var gf = function(init) {
+        var gf = function (init) {
           var i, r2 = new Float64Array(16);
           if (init) for (i = 0; i < init.length; i++) r2[i] = init[i];
           return r2;
         };
-        var randombytes = function() {
+        var randombytes = function () {
           throw new Error("no PRNG");
         };
         var _0 = new Uint8Array(16);
@@ -9440,7 +9444,7 @@ var PeraWalletConnect = (() => {
           for (var i = 0; i < 8; i++) sn[i] = n2[i + 16];
           return crypto_stream_salsa20_xor(c, cpos, m, mpos, d, sn, s);
         }
-        var poly1305 = function(key) {
+        var poly1305 = function (key) {
           this.buffer = new Uint8Array(16);
           this.r = new Uint16Array(10);
           this.h = new Uint16Array(10);
@@ -9475,7 +9479,7 @@ var PeraWalletConnect = (() => {
           this.pad[6] = key[28] & 255 | (key[29] & 255) << 8;
           this.pad[7] = key[30] & 255 | (key[31] & 255) << 8;
         };
-        poly1305.prototype.blocks = function(m, mpos, bytes) {
+        poly1305.prototype.blocks = function (m, mpos, bytes) {
           var hibit = this.fin ? 0 : 1 << 11;
           var t0, t1, t2, t3, t4, t5, t6, t7, c;
           var d0, d1, d2, d3, d4, d5, d6, d7, d8, d9;
@@ -9680,7 +9684,7 @@ var PeraWalletConnect = (() => {
           this.h[8] = h8;
           this.h[9] = h9;
         };
-        poly1305.prototype.finish = function(mac, macpos) {
+        poly1305.prototype.finish = function (mac, macpos) {
           var g = new Uint16Array(10);
           var c, mask, f, i;
           if (this.leftover) {
@@ -9748,7 +9752,7 @@ var PeraWalletConnect = (() => {
           mac[macpos + 14] = this.h[7] >>> 0 & 255;
           mac[macpos + 15] = this.h[7] >>> 8 & 255;
         };
-        poly1305.prototype.update = function(m, mpos, bytes) {
+        poly1305.prototype.update = function (m, mpos, bytes) {
           var i, want;
           if (this.leftover) {
             want = 16 - this.leftover;
@@ -11117,12 +11121,12 @@ var PeraWalletConnect = (() => {
         function cleanup(arr) {
           for (var i = 0; i < arr.length; i++) arr[i] = 0;
         }
-        nacl.randomBytes = function(n2) {
+        nacl.randomBytes = function (n2) {
           var b = new Uint8Array(n2);
           randombytes(b, n2);
           return b;
         };
-        nacl.secretbox = function(msg, nonce, key) {
+        nacl.secretbox = function (msg, nonce, key) {
           checkArrayTypes(msg, nonce, key);
           checkLengths(key, nonce);
           var m = new Uint8Array(crypto_secretbox_ZEROBYTES + msg.length);
@@ -11131,7 +11135,7 @@ var PeraWalletConnect = (() => {
           crypto_secretbox(c, m, m.length, nonce, key);
           return c.subarray(crypto_secretbox_BOXZEROBYTES);
         };
-        nacl.secretbox.open = function(box, nonce, key) {
+        nacl.secretbox.open = function (box, nonce, key) {
           checkArrayTypes(box, nonce, key);
           checkLengths(key, nonce);
           var c = new Uint8Array(crypto_secretbox_BOXZEROBYTES + box.length);
@@ -11144,7 +11148,7 @@ var PeraWalletConnect = (() => {
         nacl.secretbox.keyLength = crypto_secretbox_KEYBYTES;
         nacl.secretbox.nonceLength = crypto_secretbox_NONCEBYTES;
         nacl.secretbox.overheadLength = crypto_secretbox_BOXZEROBYTES;
-        nacl.scalarMult = function(n2, p) {
+        nacl.scalarMult = function (n2, p) {
           checkArrayTypes(n2, p);
           if (n2.length !== crypto_scalarmult_SCALARBYTES) throw new Error("bad n size");
           if (p.length !== crypto_scalarmult_BYTES) throw new Error("bad p size");
@@ -11152,7 +11156,7 @@ var PeraWalletConnect = (() => {
           crypto_scalarmult(q, n2, p);
           return q;
         };
-        nacl.scalarMult.base = function(n2) {
+        nacl.scalarMult.base = function (n2) {
           checkArrayTypes(n2);
           if (n2.length !== crypto_scalarmult_SCALARBYTES) throw new Error("bad n size");
           var q = new Uint8Array(crypto_scalarmult_BYTES);
@@ -11161,11 +11165,11 @@ var PeraWalletConnect = (() => {
         };
         nacl.scalarMult.scalarLength = crypto_scalarmult_SCALARBYTES;
         nacl.scalarMult.groupElementLength = crypto_scalarmult_BYTES;
-        nacl.box = function(msg, nonce, publicKey, secretKey) {
+        nacl.box = function (msg, nonce, publicKey, secretKey) {
           var k = nacl.box.before(publicKey, secretKey);
           return nacl.secretbox(msg, nonce, k);
         };
-        nacl.box.before = function(publicKey, secretKey) {
+        nacl.box.before = function (publicKey, secretKey) {
           checkArrayTypes(publicKey, secretKey);
           checkBoxLengths(publicKey, secretKey);
           var k = new Uint8Array(crypto_box_BEFORENMBYTES);
@@ -11173,18 +11177,18 @@ var PeraWalletConnect = (() => {
           return k;
         };
         nacl.box.after = nacl.secretbox;
-        nacl.box.open = function(msg, nonce, publicKey, secretKey) {
+        nacl.box.open = function (msg, nonce, publicKey, secretKey) {
           var k = nacl.box.before(publicKey, secretKey);
           return nacl.secretbox.open(msg, nonce, k);
         };
         nacl.box.open.after = nacl.secretbox.open;
-        nacl.box.keyPair = function() {
+        nacl.box.keyPair = function () {
           var pk = new Uint8Array(crypto_box_PUBLICKEYBYTES);
           var sk = new Uint8Array(crypto_box_SECRETKEYBYTES);
           crypto_box_keypair(pk, sk);
           return { publicKey: pk, secretKey: sk };
         };
-        nacl.box.keyPair.fromSecretKey = function(secretKey) {
+        nacl.box.keyPair.fromSecretKey = function (secretKey) {
           checkArrayTypes(secretKey);
           if (secretKey.length !== crypto_box_SECRETKEYBYTES)
             throw new Error("bad secret key size");
@@ -11197,7 +11201,7 @@ var PeraWalletConnect = (() => {
         nacl.box.sharedKeyLength = crypto_box_BEFORENMBYTES;
         nacl.box.nonceLength = crypto_box_NONCEBYTES;
         nacl.box.overheadLength = nacl.secretbox.overheadLength;
-        nacl.sign = function(msg, secretKey) {
+        nacl.sign = function (msg, secretKey) {
           checkArrayTypes(msg, secretKey);
           if (secretKey.length !== crypto_sign_SECRETKEYBYTES)
             throw new Error("bad secret key size");
@@ -11205,7 +11209,7 @@ var PeraWalletConnect = (() => {
           crypto_sign(signedMsg, msg, msg.length, secretKey);
           return signedMsg;
         };
-        nacl.sign.open = function(signedMsg, publicKey) {
+        nacl.sign.open = function (signedMsg, publicKey) {
           checkArrayTypes(signedMsg, publicKey);
           if (publicKey.length !== crypto_sign_PUBLICKEYBYTES)
             throw new Error("bad public key size");
@@ -11216,13 +11220,13 @@ var PeraWalletConnect = (() => {
           for (var i = 0; i < m.length; i++) m[i] = tmp[i];
           return m;
         };
-        nacl.sign.detached = function(msg, secretKey) {
+        nacl.sign.detached = function (msg, secretKey) {
           var signedMsg = nacl.sign(msg, secretKey);
           var sig = new Uint8Array(crypto_sign_BYTES);
           for (var i = 0; i < sig.length; i++) sig[i] = signedMsg[i];
           return sig;
         };
-        nacl.sign.detached.verify = function(msg, sig, publicKey) {
+        nacl.sign.detached.verify = function (msg, sig, publicKey) {
           checkArrayTypes(msg, sig, publicKey);
           if (sig.length !== crypto_sign_BYTES)
             throw new Error("bad signature size");
@@ -11235,13 +11239,13 @@ var PeraWalletConnect = (() => {
           for (i = 0; i < msg.length; i++) sm[i + crypto_sign_BYTES] = msg[i];
           return crypto_sign_open(m, sm, sm.length, publicKey) >= 0;
         };
-        nacl.sign.keyPair = function() {
+        nacl.sign.keyPair = function () {
           var pk = new Uint8Array(crypto_sign_PUBLICKEYBYTES);
           var sk = new Uint8Array(crypto_sign_SECRETKEYBYTES);
           crypto_sign_keypair(pk, sk);
           return { publicKey: pk, secretKey: sk };
         };
-        nacl.sign.keyPair.fromSecretKey = function(secretKey) {
+        nacl.sign.keyPair.fromSecretKey = function (secretKey) {
           checkArrayTypes(secretKey);
           if (secretKey.length !== crypto_sign_SECRETKEYBYTES)
             throw new Error("bad secret key size");
@@ -11249,7 +11253,7 @@ var PeraWalletConnect = (() => {
           for (var i = 0; i < pk.length; i++) pk[i] = secretKey[32 + i];
           return { publicKey: pk, secretKey: new Uint8Array(secretKey) };
         };
-        nacl.sign.keyPair.fromSeed = function(seed) {
+        nacl.sign.keyPair.fromSeed = function (seed) {
           checkArrayTypes(seed);
           if (seed.length !== crypto_sign_SEEDBYTES)
             throw new Error("bad seed size");
@@ -11263,27 +11267,27 @@ var PeraWalletConnect = (() => {
         nacl.sign.secretKeyLength = crypto_sign_SECRETKEYBYTES;
         nacl.sign.seedLength = crypto_sign_SEEDBYTES;
         nacl.sign.signatureLength = crypto_sign_BYTES;
-        nacl.hash = function(msg) {
+        nacl.hash = function (msg) {
           checkArrayTypes(msg);
           var h = new Uint8Array(crypto_hash_BYTES);
           crypto_hash(h, msg, msg.length);
           return h;
         };
         nacl.hash.hashLength = crypto_hash_BYTES;
-        nacl.verify = function(x, y) {
+        nacl.verify = function (x, y) {
           checkArrayTypes(x, y);
           if (x.length === 0 || y.length === 0) return false;
           if (x.length !== y.length) return false;
           return vn(x, 0, y, 0, x.length) === 0 ? true : false;
         };
-        nacl.setPRNG = function(fn) {
+        nacl.setPRNG = function (fn) {
           randombytes = fn;
         };
-        (function() {
+        (function () {
           var crypto2 = typeof self !== "undefined" ? self.crypto || self.msCrypto : null;
           if (crypto2 && crypto2.getRandomValues) {
             var QUOTA = 65536;
-            nacl.setPRNG(function(x, n2) {
+            nacl.setPRNG(function (x, n2) {
               var i, v = new Uint8Array(n2);
               for (i = 0; i < n2; i += QUOTA) {
                 crypto2.getRandomValues(v.subarray(i, i + Math.min(n2 - i, QUOTA)));
@@ -11294,7 +11298,7 @@ var PeraWalletConnect = (() => {
           } else if (typeof __require !== "undefined") {
             crypto2 = require_crypto2();
             if (crypto2 && crypto2.randomBytes) {
-              nacl.setPRNG(function(x, n2) {
+              nacl.setPRNG(function (x, n2) {
                 var i, v = crypto2.randomBytes(n2);
                 for (i = 0; i < n2; i++) x[i] = v[i];
                 cleanup(v);
@@ -11309,7 +11313,7 @@ var PeraWalletConnect = (() => {
   // node_modules/js-sha512/src/sha512.js
   var require_sha512 = __commonJS({
     "node_modules/js-sha512/src/sha512.js"(exports, module) {
-      (function() {
+      (function () {
         "use strict";
         var INPUT_ERROR = "input is invalid type";
         var FINALIZE_ERROR = "finalize already called";
@@ -11496,26 +11500,26 @@ var PeraWalletConnect = (() => {
         var OUTPUT_TYPES = ["hex", "array", "digest", "arrayBuffer"];
         var blocks = [];
         if (root.JS_SHA512_NO_NODE_JS || !Array.isArray) {
-          Array.isArray = function(obj) {
+          Array.isArray = function (obj) {
             return Object.prototype.toString.call(obj) === "[object Array]";
           };
         }
         if (ARRAY_BUFFER && (root.JS_SHA512_NO_ARRAY_BUFFER_IS_VIEW || !ArrayBuffer.isView)) {
-          ArrayBuffer.isView = function(obj) {
+          ArrayBuffer.isView = function (obj) {
             return typeof obj === "object" && obj.buffer && obj.buffer.constructor === ArrayBuffer;
           };
         }
-        var createOutputMethod = function(outputType, bits) {
-          return function(message) {
+        var createOutputMethod = function (outputType, bits) {
+          return function (message) {
             return new Sha512(bits, true).update(message)[outputType]();
           };
         };
-        var createMethod = function(bits) {
+        var createMethod = function (bits) {
           var method = createOutputMethod("hex", bits);
-          method.create = function() {
+          method.create = function () {
             return new Sha512(bits);
           };
-          method.update = function(message) {
+          method.update = function (message) {
             return method.create().update(message);
           };
           for (var i = 0; i < OUTPUT_TYPES.length; ++i) {
@@ -11524,17 +11528,17 @@ var PeraWalletConnect = (() => {
           }
           return method;
         };
-        var createHmacOutputMethod = function(outputType, bits) {
-          return function(key, message) {
+        var createHmacOutputMethod = function (outputType, bits) {
+          return function (key, message) {
             return new HmacSha512(key, bits, true).update(message)[outputType]();
           };
         };
-        var createHmacMethod = function(bits) {
+        var createHmacMethod = function (bits) {
           var method = createHmacOutputMethod("hex", bits);
-          method.create = function(key) {
+          method.create = function (key) {
             return new HmacSha512(key, bits);
           };
-          method.update = function(key, message) {
+          method.update = function (key, message) {
             return method.create(key).update(message);
           };
           for (var i = 0; i < OUTPUT_TYPES.length; ++i) {
@@ -11623,7 +11627,7 @@ var PeraWalletConnect = (() => {
           this.block = this.start = this.bytes = this.hBytes = 0;
           this.finalized = this.hashed = false;
         }
-        Sha512.prototype.update = function(message) {
+        Sha512.prototype.update = function (message) {
           if (this.finalized) {
             throw new Error(FINALIZE_ERROR);
           }
@@ -11693,7 +11697,7 @@ var PeraWalletConnect = (() => {
           }
           return this;
         };
-        Sha512.prototype.finalize = function() {
+        Sha512.prototype.finalize = function () {
           if (this.finalized) {
             return;
           }
@@ -11713,7 +11717,7 @@ var PeraWalletConnect = (() => {
           blocks2[31] = this.bytes << 3;
           this.hash();
         };
-        Sha512.prototype.hash = function() {
+        Sha512.prototype.hash = function () {
           var h0h = this.h0h, h0l = this.h0l, h1h = this.h1h, h1l = this.h1l, h2h = this.h2h, h2l = this.h2l, h3h = this.h3h, h3l = this.h3l, h4h = this.h4h, h4l = this.h4l, h5h = this.h5h, h5l = this.h5l, h6h = this.h6h, h6l = this.h6l, h7h = this.h7h, h7l = this.h7l, blocks2 = this.blocks, j, s0h, s0l, s1h, s1l, c1, c2, c3, c4, abh, abl, dah, dal, cdh, cdl, bch, bcl, majh, majl, t1h, t1l, t2h, t2l, chh, chl;
           for (j = 32; j < 160; j += 2) {
             t1h = blocks2[j - 30];
@@ -11941,7 +11945,7 @@ var PeraWalletConnect = (() => {
           this.h7h = c4 << 16 | c3 & 65535;
           this.h7l = c2 << 16 | c1 & 65535;
         };
-        Sha512.prototype.hex = function() {
+        Sha512.prototype.hex = function () {
           this.finalize();
           var h0h = this.h0h, h0l = this.h0l, h1h = this.h1h, h1l = this.h1l, h2h = this.h2h, h2l = this.h2l, h3h = this.h3h, h3l = this.h3l, h4h = this.h4h, h4l = this.h4l, h5h = this.h5h, h5l = this.h5l, h6h = this.h6h, h6l = this.h6l, h7h = this.h7h, h7l = this.h7l, bits = this.bits;
           var hex = HEX_CHARS[h0h >> 28 & 15] + HEX_CHARS[h0h >> 24 & 15] + HEX_CHARS[h0h >> 20 & 15] + HEX_CHARS[h0h >> 16 & 15] + HEX_CHARS[h0h >> 12 & 15] + HEX_CHARS[h0h >> 8 & 15] + HEX_CHARS[h0h >> 4 & 15] + HEX_CHARS[h0h & 15] + HEX_CHARS[h0l >> 28 & 15] + HEX_CHARS[h0l >> 24 & 15] + HEX_CHARS[h0l >> 20 & 15] + HEX_CHARS[h0l >> 16 & 15] + HEX_CHARS[h0l >> 12 & 15] + HEX_CHARS[h0l >> 8 & 15] + HEX_CHARS[h0l >> 4 & 15] + HEX_CHARS[h0l & 15] + HEX_CHARS[h1h >> 28 & 15] + HEX_CHARS[h1h >> 24 & 15] + HEX_CHARS[h1h >> 20 & 15] + HEX_CHARS[h1h >> 16 & 15] + HEX_CHARS[h1h >> 12 & 15] + HEX_CHARS[h1h >> 8 & 15] + HEX_CHARS[h1h >> 4 & 15] + HEX_CHARS[h1h & 15] + HEX_CHARS[h1l >> 28 & 15] + HEX_CHARS[h1l >> 24 & 15] + HEX_CHARS[h1l >> 20 & 15] + HEX_CHARS[h1l >> 16 & 15] + HEX_CHARS[h1l >> 12 & 15] + HEX_CHARS[h1l >> 8 & 15] + HEX_CHARS[h1l >> 4 & 15] + HEX_CHARS[h1l & 15] + HEX_CHARS[h2h >> 28 & 15] + HEX_CHARS[h2h >> 24 & 15] + HEX_CHARS[h2h >> 20 & 15] + HEX_CHARS[h2h >> 16 & 15] + HEX_CHARS[h2h >> 12 & 15] + HEX_CHARS[h2h >> 8 & 15] + HEX_CHARS[h2h >> 4 & 15] + HEX_CHARS[h2h & 15] + HEX_CHARS[h2l >> 28 & 15] + HEX_CHARS[h2l >> 24 & 15] + HEX_CHARS[h2l >> 20 & 15] + HEX_CHARS[h2l >> 16 & 15] + HEX_CHARS[h2l >> 12 & 15] + HEX_CHARS[h2l >> 8 & 15] + HEX_CHARS[h2l >> 4 & 15] + HEX_CHARS[h2l & 15] + HEX_CHARS[h3h >> 28 & 15] + HEX_CHARS[h3h >> 24 & 15] + HEX_CHARS[h3h >> 20 & 15] + HEX_CHARS[h3h >> 16 & 15] + HEX_CHARS[h3h >> 12 & 15] + HEX_CHARS[h3h >> 8 & 15] + HEX_CHARS[h3h >> 4 & 15] + HEX_CHARS[h3h & 15];
@@ -11957,7 +11961,7 @@ var PeraWalletConnect = (() => {
           return hex;
         };
         Sha512.prototype.toString = Sha512.prototype.hex;
-        Sha512.prototype.digest = function() {
+        Sha512.prototype.digest = function () {
           this.finalize();
           var h0h = this.h0h, h0l = this.h0l, h1h = this.h1h, h1l = this.h1l, h2h = this.h2h, h2l = this.h2l, h3h = this.h3h, h3l = this.h3l, h4h = this.h4h, h4l = this.h4l, h5h = this.h5h, h5l = this.h5l, h6h = this.h6h, h6l = this.h6l, h7h = this.h7h, h7l = this.h7l, bits = this.bits;
           var arr = [
@@ -12036,7 +12040,7 @@ var PeraWalletConnect = (() => {
           return arr;
         };
         Sha512.prototype.array = Sha512.prototype.digest;
-        Sha512.prototype.arrayBuffer = function() {
+        Sha512.prototype.arrayBuffer = function () {
           this.finalize();
           var bits = this.bits;
           var buffer = new ArrayBuffer(bits / 8);
@@ -12065,12 +12069,12 @@ var PeraWalletConnect = (() => {
           }
           return buffer;
         };
-        Sha512.prototype.clone = function() {
+        Sha512.prototype.clone = function () {
           var hash = new Sha512(this.bits, false);
           this.copyTo(hash);
           return hash;
         };
-        Sha512.prototype.copyTo = function(hash) {
+        Sha512.prototype.copyTo = function (hash) {
           var i = 0, attrs = [
             "h0h",
             "h0l",
@@ -12160,7 +12164,7 @@ var PeraWalletConnect = (() => {
           this.sharedMemory = sharedMemory;
         }
         HmacSha512.prototype = new Sha512();
-        HmacSha512.prototype.finalize = function() {
+        HmacSha512.prototype.finalize = function () {
           Sha512.prototype.finalize.call(this);
           if (this.inner) {
             this.inner = false;
@@ -12171,7 +12175,7 @@ var PeraWalletConnect = (() => {
             Sha512.prototype.finalize.call(this);
           }
         };
-        HmacSha512.prototype.clone = function() {
+        HmacSha512.prototype.clone = function () {
           var hash = new HmacSha512([], this.bits, false);
           this.copyTo(hash);
           hash.inner = this.inner;
@@ -12197,7 +12201,7 @@ var PeraWalletConnect = (() => {
           root.sha512_256 = exports2.sha512_256;
           root.sha512_224 = exports2.sha512_224;
           if (AMD) {
-            define(function() {
+            define(function () {
               return exports2;
             });
           }
@@ -12209,7 +12213,7 @@ var PeraWalletConnect = (() => {
   // node_modules/bignumber.js/bignumber.js
   var require_bignumber = __commonJS({
     "node_modules/bignumber.js/bignumber.js"(exports, module) {
-      (function(globalObject) {
+      (function (globalObject) {
         "use strict";
         var BigNumber, isNumeric = /^-?(?:\d+(?:\.\d*)?|\.\d+)(?:e[+-]?\d+)?$/i, mathceil = Math.ceil, mathfloor = Math.floor, bignumberError = "[BigNumber Error] ", tooManyDigits = bignumberError + "Number primitive has more than 15 significant digits: ", BASE = 1e14, LOG_BASE = 14, MAX_SAFE_INTEGER = 9007199254740991, POWS_TEN = [1, 10, 100, 1e3, 1e4, 1e5, 1e6, 1e7, 1e8, 1e9, 1e10, 1e11, 1e12, 1e13], SQRT_BASE = 1e7, MAX = 1e9;
         function clone(configObject) {
@@ -12243,7 +12247,7 @@ var PeraWalletConnect = (() => {
               if ((isNum = typeof v == "number") && v * 0 == 0) {
                 x.s = 1 / v < 0 ? (v = -v, -1) : 1;
                 if (v === ~~v) {
-                  for (e2 = 0, i = v; i >= 10; i /= 10, e2++) ;
+                  for (e2 = 0, i = v; i >= 10; i /= 10, e2++);
                   if (e2 > MAX_EXP) {
                     x.c = x.e = null;
                   } else {
@@ -12306,8 +12310,8 @@ var PeraWalletConnect = (() => {
               if ((e2 = str.indexOf(".")) > -1) str = str.replace(".", "");
               else e2 = str.length;
             }
-            for (i = 0; str.charCodeAt(i) === 48; i++) ;
-            for (len = str.length; str.charCodeAt(--len) === 48; ) ;
+            for (i = 0; str.charCodeAt(i) === 48; i++);
+            for (len = str.length; str.charCodeAt(--len) === 48;);
             if (str = str.slice(i, ++len)) {
               len -= i;
               if (isNum && BigNumber2.DEBUG && len > 15 && (v > MAX_SAFE_INTEGER || v !== mathfloor(v))) {
@@ -12324,14 +12328,14 @@ var PeraWalletConnect = (() => {
                 if (e2 < 0) i += LOG_BASE;
                 if (i < len) {
                   if (i) x.c.push(+str.slice(0, i));
-                  for (len -= LOG_BASE; i < len; ) {
+                  for (len -= LOG_BASE; i < len;) {
                     x.c.push(+str.slice(i, i += LOG_BASE));
                   }
                   i = LOG_BASE - (str = str.slice(i)).length;
                 } else {
                   i -= len;
                 }
-                for (; i--; str += "0") ;
+                for (; i--; str += "0");
                 x.c.push(+str);
               }
             } else {
@@ -12349,7 +12353,7 @@ var PeraWalletConnect = (() => {
           BigNumber2.ROUND_HALF_CEIL = 7;
           BigNumber2.ROUND_HALF_FLOOR = 8;
           BigNumber2.EUCLID = 9;
-          BigNumber2.config = BigNumber2.set = function(obj) {
+          BigNumber2.config = BigNumber2.set = function (obj) {
             var p, v;
             if (obj != null) {
               if (typeof obj == "object") {
@@ -12448,7 +12452,7 @@ var PeraWalletConnect = (() => {
               ALPHABET
             };
           };
-          BigNumber2.isBigNumber = function(v) {
+          BigNumber2.isBigNumber = function (v) {
             if (!v || v._isBigNumber !== true) return false;
             if (!BigNumber2.DEBUG) return true;
             var i, n2, c = v.c, e2 = v.e, s = v.s;
@@ -12473,20 +12477,20 @@ var PeraWalletConnect = (() => {
             }
             throw Error(bignumberError + "Invalid BigNumber: " + v);
           };
-          BigNumber2.maximum = BigNumber2.max = function() {
+          BigNumber2.maximum = BigNumber2.max = function () {
             return maxOrMin(arguments, -1);
           };
-          BigNumber2.minimum = BigNumber2.min = function() {
+          BigNumber2.minimum = BigNumber2.min = function () {
             return maxOrMin(arguments, 1);
           };
-          BigNumber2.random = (function() {
+          BigNumber2.random = (function () {
             var pow2_53 = 9007199254740992;
-            var random53bitInt = Math.random() * pow2_53 & 2097151 ? function() {
+            var random53bitInt = Math.random() * pow2_53 & 2097151 ? function () {
               return mathfloor(Math.random() * pow2_53);
-            } : function() {
+            } : function () {
               return (Math.random() * 1073741824 | 0) * 8388608 + (Math.random() * 8388608 | 0);
             };
-            return function(dp) {
+            return function (dp) {
               var a, b, e2, k, v, i = 0, c = [], rand = new BigNumber2(ONE);
               if (dp == null) dp = DECIMAL_PLACES;
               else intCheck(dp, 0, MAX);
@@ -12494,7 +12498,7 @@ var PeraWalletConnect = (() => {
               if (CRYPTO) {
                 if (crypto.getRandomValues) {
                   a = crypto.getRandomValues(new Uint32Array(k *= 2));
-                  for (; i < k; ) {
+                  for (; i < k;) {
                     v = a[i] * 131072 + (a[i + 1] >>> 11);
                     if (v >= 9e15) {
                       b = crypto.getRandomValues(new Uint32Array(2));
@@ -12508,7 +12512,7 @@ var PeraWalletConnect = (() => {
                   i = k / 2;
                 } else if (crypto.randomBytes) {
                   a = crypto.randomBytes(k *= 7);
-                  for (; i < k; ) {
+                  for (; i < k;) {
                     v = (a[i] & 31) * 281474976710656 + a[i + 1] * 1099511627776 + a[i + 2] * 4294967296 + a[i + 3] * 16777216 + (a[i + 4] << 16) + (a[i + 5] << 8) + a[i + 6];
                     if (v >= 9e15) {
                       crypto.randomBytes(7).copy(a, i);
@@ -12524,7 +12528,7 @@ var PeraWalletConnect = (() => {
                 }
               }
               if (!CRYPTO) {
-                for (; i < k; ) {
+                for (; i < k;) {
                   v = random53bitInt();
                   if (v < 9e15) c[i++] = v % 1e14;
                 }
@@ -12535,12 +12539,12 @@ var PeraWalletConnect = (() => {
                 v = POWS_TEN[LOG_BASE - dp];
                 c[i] = mathfloor(k / v) * v;
               }
-              for (; c[i] === 0; c.pop(), i--) ;
+              for (; c[i] === 0; c.pop(), i--);
               if (i < 0) {
                 c = [e2 = 0];
               } else {
-                for (e2 = -1; c[0] === 0; c.splice(0, 1), e2 -= LOG_BASE) ;
-                for (i = 1, v = c[0]; v >= 10; v /= 10, i++) ;
+                for (e2 = -1; c[0] === 0; c.splice(0, 1), e2 -= LOG_BASE);
+                for (i = 1, v = c[0]; v >= 10; v /= 10, i++);
                 if (i < LOG_BASE) e2 -= LOG_BASE - i;
               }
               rand.e = e2;
@@ -12548,17 +12552,17 @@ var PeraWalletConnect = (() => {
               return rand;
             };
           })();
-          BigNumber2.sum = function() {
+          BigNumber2.sum = function () {
             var i = 1, args = arguments, sum = new BigNumber2(args[0]);
-            for (; i < args.length; ) sum = sum.plus(args[i++]);
+            for (; i < args.length;) sum = sum.plus(args[i++]);
             return sum;
           };
-          convertBase = /* @__PURE__ */ (function() {
+          convertBase = /* @__PURE__ */ (function () {
             var decimal = "0123456789";
             function toBaseOut(str, baseIn, baseOut, alphabet) {
               var j, arr = [0], arrL, i = 0, len = str.length;
-              for (; i < len; ) {
-                for (arrL = arr.length; arrL--; arr[arrL] *= baseIn) ;
+              for (; i < len;) {
+                for (arrL = arr.length; arrL--; arr[arrL] *= baseIn);
                 arr[0] += alphabet.indexOf(str.charAt(i++));
                 for (j = 0; j < arr.length; j++) {
                   if (arr[j] > baseOut - 1) {
@@ -12570,7 +12574,7 @@ var PeraWalletConnect = (() => {
               }
               return arr.reverse();
             }
-            return function(str, baseIn, baseOut, sign, callerIsToString) {
+            return function (str, baseIn, baseOut, sign, callerIsToString) {
               var alphabet, d, e2, k, r2, x, xc, y, i = str.indexOf("."), dp = DECIMAL_PLACES, rm = ROUNDING_MODE;
               if (i >= 0) {
                 k = POW_PRECISION;
@@ -12589,7 +12593,7 @@ var PeraWalletConnect = (() => {
               }
               xc = toBaseOut(str, baseIn, baseOut, callerIsToString ? (alphabet = ALPHABET, decimal) : (alphabet = decimal, ALPHABET));
               e2 = k = xc.length;
-              for (; xc[--k] == 0; xc.pop()) ;
+              for (; xc[--k] == 0; xc.pop());
               if (!xc[0]) return alphabet.charAt(0);
               if (i < 0) {
                 --e2;
@@ -12612,7 +12616,7 @@ var PeraWalletConnect = (() => {
               } else {
                 xc.length = d;
                 if (r2) {
-                  for (--baseOut; ++xc[--d] > baseOut; ) {
+                  for (--baseOut; ++xc[--d] > baseOut;) {
                     xc[d] = 0;
                     if (!d) {
                       ++e2;
@@ -12620,17 +12624,17 @@ var PeraWalletConnect = (() => {
                     }
                   }
                 }
-                for (k = xc.length; !xc[--k]; ) ;
-                for (i = 0, str = ""; i <= k; str += alphabet.charAt(xc[i++])) ;
+                for (k = xc.length; !xc[--k];);
+                for (i = 0, str = ""; i <= k; str += alphabet.charAt(xc[i++]));
                 str = toFixedPoint(str, e2, alphabet.charAt(0));
               }
               return str;
             };
           })();
-          div = /* @__PURE__ */ (function() {
+          div = /* @__PURE__ */ (function () {
             function multiply(x, k, base) {
               var m, temp, xlo, xhi, carry = 0, i = x.length, klo = k % SQRT_BASE, khi = k / SQRT_BASE | 0;
-              for (x = x.slice(); i--; ) {
+              for (x = x.slice(); i--;) {
                 xlo = x[i] % SQRT_BASE;
                 xhi = x[i] / SQRT_BASE | 0;
                 m = khi * xlo + xhi * klo;
@@ -12657,14 +12661,14 @@ var PeraWalletConnect = (() => {
             }
             function subtract(a, b, aL, base) {
               var i = 0;
-              for (; aL--; ) {
+              for (; aL--;) {
                 a[aL] -= i;
                 i = a[aL] < b[aL] ? 1 : 0;
                 a[aL] = i * base + a[aL] - b[aL];
               }
-              for (; !a[0] && a.length > 1; a.splice(0, 1)) ;
+              for (; !a[0] && a.length > 1; a.splice(0, 1));
             }
-            return function(x, y, dp, rm, base) {
+            return function (x, y, dp, rm, base) {
               var cmp, e2, i, more, n2, prod, prodL, q, qc, rem, remL, rem0, xi, xL, yc0, yL, yz, s = x.s == y.s ? 1 : -1, xc = x.c, yc = y.c;
               if (!xc || !xc[0] || !yc || !yc[0]) {
                 return new BigNumber2(
@@ -12684,7 +12688,7 @@ var PeraWalletConnect = (() => {
                 e2 = bitFloor(x.e / LOG_BASE) - bitFloor(y.e / LOG_BASE);
                 s = s / LOG_BASE | 0;
               }
-              for (i = 0; yc[i] == (xc[i] || 0); i++) ;
+              for (i = 0; yc[i] == (xc[i] || 0); i++);
               if (yc[i] > (xc[i] || 0)) e2--;
               if (s < 0) {
                 qc.push(1);
@@ -12704,7 +12708,7 @@ var PeraWalletConnect = (() => {
                 xi = yL;
                 rem = xc.slice(0, yL);
                 remL = rem.length;
-                for (; remL < yL; rem[remL++] = 0) ;
+                for (; remL < yL; rem[remL++] = 0);
                 yz = yc.slice();
                 yz = [0].concat(yz);
                 yc0 = yc[0];
@@ -12760,7 +12764,7 @@ var PeraWalletConnect = (() => {
                 if (!qc[0]) qc.splice(0, 1);
               }
               if (base == BASE) {
-                for (i = 1, s = qc[0]; s >= 10; s /= 10, i++) ;
+                for (i = 1, s = qc[0]; s >= 10; s /= 10, i++);
                 round(q, dp + (q.e = i + e2 * LOG_BASE - 1) + 1, rm, more);
               } else {
                 q.e = e2;
@@ -12785,18 +12789,18 @@ var PeraWalletConnect = (() => {
               str = coeffToString(n2.c);
               len = str.length;
               if (id == 1 || id == 2 && (i <= e2 || e2 <= TO_EXP_NEG)) {
-                for (; len < i; str += "0", len++) ;
+                for (; len < i; str += "0", len++);
                 str = toExponential(str, e2);
               } else {
                 i -= ne + (id === 2 && e2 > ne);
                 str = toFixedPoint(str, e2, "0");
                 if (e2 + 1 > len) {
-                  if (--i > 0) for (str += "."; i--; str += "0") ;
+                  if (--i > 0) for (str += "."; i--; str += "0");
                 } else {
                   i += e2 - len;
                   if (i > 0) {
                     if (e2 + 1 == len) str += ".";
-                    for (; i--; str += "0") ;
+                    for (; i--; str += "0");
                   }
                 }
               }
@@ -12815,8 +12819,8 @@ var PeraWalletConnect = (() => {
           }
           function normalise(n2, c, e2) {
             var i = 1, j = c.length;
-            for (; !c[--j]; c.pop()) ;
-            for (j = c[0]; j >= 10; j /= 10, i++) ;
+            for (; !c[--j]; c.pop());
+            for (j = c[0]; j >= 10; j /= 10, i++);
             if ((e2 = i + e2 * LOG_BASE - 1) > MAX_EXP) {
               n2.c = n2.e = null;
             } else if (e2 < MIN_EXP) {
@@ -12827,15 +12831,15 @@ var PeraWalletConnect = (() => {
             }
             return n2;
           }
-          parseNumeric = /* @__PURE__ */ (function() {
+          parseNumeric = /* @__PURE__ */ (function () {
             var basePrefix = /^(-?)0([xbo])(?=\w[\w.]*$)/i, dotAfter = /^([^.]+)\.$/, dotBefore = /^\.([^.]+)$/, isInfinityOrNaN = /^-?(Infinity|NaN)$/, whitespaceOrPlus = /^\s*\+(?=[\w.])|^\s+|\s+$/g;
-            return function(x, str, isNum, b) {
+            return function (x, str, isNum, b) {
               var base, s = isNum ? str : str.replace(whitespaceOrPlus, "");
               if (isInfinityOrNaN.test(s)) {
                 x.s = isNaN(s) ? null : s < 0 ? -1 : 1;
               } else {
                 if (!isNum) {
-                  s = s.replace(basePrefix, function(m, p1, p2) {
+                  s = s.replace(basePrefix, function (m, p1, p2) {
                     base = (p2 = p2.toLowerCase()) == "x" ? 16 : p2 == "b" ? 2 : 8;
                     return !b || b == base ? p1 : m;
                   });
@@ -12857,7 +12861,7 @@ var PeraWalletConnect = (() => {
             var d, i, j, k, n2, ni, rd, xc = x.c, pows10 = POWS_TEN;
             if (xc) {
               out: {
-                for (d = 1, k = xc[0]; k >= 10; k /= 10, d++) ;
+                for (d = 1, k = xc[0]; k >= 10; k /= 10, d++);
                 i = sd - d;
                 if (i < 0) {
                   i += LOG_BASE;
@@ -12868,7 +12872,7 @@ var PeraWalletConnect = (() => {
                   ni = mathceil((i + 1) / LOG_BASE);
                   if (ni >= xc.length) {
                     if (r2) {
-                      for (; xc.length <= ni; xc.push(0)) ;
+                      for (; xc.length <= ni; xc.push(0));
                       n2 = rd = 0;
                       d = 1;
                       i %= LOG_BASE;
@@ -12878,18 +12882,18 @@ var PeraWalletConnect = (() => {
                     }
                   } else {
                     n2 = k = xc[ni];
-                    for (d = 1; k >= 10; k /= 10, d++) ;
+                    for (d = 1; k >= 10; k /= 10, d++);
                     i %= LOG_BASE;
                     j = i - LOG_BASE + d;
                     rd = j < 0 ? 0 : mathfloor(n2 / pows10[d - j - 1] % 10);
                   }
                 }
                 r2 = r2 || sd < 0 || // Are there any non-zero digits after the rounding digit?
-                // The expression  n % pows10[d - j - 1]  returns all digits of n to the right
-                // of the digit at j, e.g. if n is 908714 and j is 2, the expression gives 714.
-                xc[ni + 1] != null || (j < 0 ? n2 : n2 % pows10[d - j - 1]);
+                  // The expression  n % pows10[d - j - 1]  returns all digits of n to the right
+                  // of the digit at j, e.g. if n is 908714 and j is 2, the expression gives 714.
+                  xc[ni + 1] != null || (j < 0 ? n2 : n2 % pows10[d - j - 1]);
                 r2 = rm < 4 ? (rd || r2) && (rm == 0 || rm == (x.s < 0 ? 3 : 2)) : rd > 5 || rd == 5 && (rm == 4 || r2 || rm == 6 && // Check whether the digit to the left of the rounding digit is odd.
-                (i > 0 ? j > 0 ? n2 / pows10[d - j] : 0 : xc[ni - 1]) % 10 & 1 || rm == (x.s < 0 ? 8 : 7));
+                  (i > 0 ? j > 0 ? n2 / pows10[d - j] : 0 : xc[ni - 1]) % 10 & 1 || rm == (x.s < 0 ? 8 : 7));
                 if (sd < 1 || !xc[0]) {
                   xc.length = 0;
                   if (r2) {
@@ -12911,11 +12915,11 @@ var PeraWalletConnect = (() => {
                   xc[ni] = j > 0 ? mathfloor(n2 / pows10[d - j] % pows10[j]) * k : 0;
                 }
                 if (r2) {
-                  for (; ; ) {
+                  for (; ;) {
                     if (ni == 0) {
-                      for (i = 1, j = xc[0]; j >= 10; j /= 10, i++) ;
+                      for (i = 1, j = xc[0]; j >= 10; j /= 10, i++);
                       j = xc[0] += k;
-                      for (k = 1; j >= 10; j /= 10, k++) ;
+                      for (k = 1; j >= 10; j /= 10, k++);
                       if (i != k) {
                         x.e++;
                         if (xc[0] == BASE) xc[0] = 1;
@@ -12929,7 +12933,7 @@ var PeraWalletConnect = (() => {
                     }
                   }
                 }
-                for (i = xc.length; xc[--i] === 0; xc.pop()) ;
+                for (i = xc.length; xc[--i] === 0; xc.pop());
               }
               if (x.e > MAX_EXP) {
                 x.c = x.e = null;
@@ -12946,15 +12950,15 @@ var PeraWalletConnect = (() => {
             str = e2 <= TO_EXP_NEG || e2 >= TO_EXP_POS ? toExponential(str, e2) : toFixedPoint(str, e2, "0");
             return n2.s < 0 ? "-" + str : str;
           }
-          P.absoluteValue = P.abs = function() {
+          P.absoluteValue = P.abs = function () {
             var x = new BigNumber2(this);
             if (x.s < 0) x.s = 1;
             return x;
           };
-          P.comparedTo = function(y, b) {
+          P.comparedTo = function (y, b) {
             return compare(this, new BigNumber2(y, b));
           };
-          P.decimalPlaces = P.dp = function(dp, rm) {
+          P.decimalPlaces = P.dp = function (dp, rm) {
             var c, n2, v, x = this;
             if (dp != null) {
               intCheck(dp, 0, MAX);
@@ -12964,17 +12968,17 @@ var PeraWalletConnect = (() => {
             }
             if (!(c = x.c)) return null;
             n2 = ((v = c.length - 1) - bitFloor(this.e / LOG_BASE)) * LOG_BASE;
-            if (v = c[v]) for (; v % 10 == 0; v /= 10, n2--) ;
+            if (v = c[v]) for (; v % 10 == 0; v /= 10, n2--);
             if (n2 < 0) n2 = 0;
             return n2;
           };
-          P.dividedBy = P.div = function(y, b) {
+          P.dividedBy = P.div = function (y, b) {
             return div(this, new BigNumber2(y, b), DECIMAL_PLACES, ROUNDING_MODE);
           };
-          P.dividedToIntegerBy = P.idiv = function(y, b) {
+          P.dividedToIntegerBy = P.idiv = function (y, b) {
             return div(this, new BigNumber2(y, b), 0, 1);
           };
-          P.exponentiatedBy = P.pow = function(n2, m) {
+          P.exponentiatedBy = P.pow = function (n2, m) {
             var half, isModExp, i, k, more, nIsBig, nIsNeg, nIsOdd, y, x = this;
             n2 = new BigNumber2(n2);
             if (n2.c && !n2.isInteger()) {
@@ -13007,7 +13011,7 @@ var PeraWalletConnect = (() => {
               nIsOdd = i % 2;
             }
             y = new BigNumber2(ONE);
-            for (; ; ) {
+            for (; ;) {
               if (nIsOdd) {
                 y = y.times(x);
                 if (!y.c) break;
@@ -13043,46 +13047,46 @@ var PeraWalletConnect = (() => {
             if (nIsNeg) y = ONE.div(y);
             return m ? y.mod(m) : k ? round(y, POW_PRECISION, ROUNDING_MODE, more) : y;
           };
-          P.integerValue = function(rm) {
+          P.integerValue = function (rm) {
             var n2 = new BigNumber2(this);
             if (rm == null) rm = ROUNDING_MODE;
             else intCheck(rm, 0, 8);
             return round(n2, n2.e + 1, rm);
           };
-          P.isEqualTo = P.eq = function(y, b) {
+          P.isEqualTo = P.eq = function (y, b) {
             return compare(this, new BigNumber2(y, b)) === 0;
           };
-          P.isFinite = function() {
+          P.isFinite = function () {
             return !!this.c;
           };
-          P.isGreaterThan = P.gt = function(y, b) {
+          P.isGreaterThan = P.gt = function (y, b) {
             return compare(this, new BigNumber2(y, b)) > 0;
           };
-          P.isGreaterThanOrEqualTo = P.gte = function(y, b) {
+          P.isGreaterThanOrEqualTo = P.gte = function (y, b) {
             return (b = compare(this, new BigNumber2(y, b))) === 1 || b === 0;
           };
-          P.isInteger = function() {
+          P.isInteger = function () {
             return !!this.c && bitFloor(this.e / LOG_BASE) > this.c.length - 2;
           };
-          P.isLessThan = P.lt = function(y, b) {
+          P.isLessThan = P.lt = function (y, b) {
             return compare(this, new BigNumber2(y, b)) < 0;
           };
-          P.isLessThanOrEqualTo = P.lte = function(y, b) {
+          P.isLessThanOrEqualTo = P.lte = function (y, b) {
             return (b = compare(this, new BigNumber2(y, b))) === -1 || b === 0;
           };
-          P.isNaN = function() {
+          P.isNaN = function () {
             return !this.s;
           };
-          P.isNegative = function() {
+          P.isNegative = function () {
             return this.s < 0;
           };
-          P.isPositive = function() {
+          P.isPositive = function () {
             return this.s > 0;
           };
-          P.isZero = function() {
+          P.isZero = function () {
             return !!this.c && this.c[0] == 0;
           };
-          P.minus = function(y, b) {
+          P.minus = function (y, b) {
             var i, j, t, xLTy, x = this, a = x.s;
             y = new BigNumber2(y, b);
             b = y.s;
@@ -13113,7 +13117,7 @@ var PeraWalletConnect = (() => {
                 t = yc;
               }
               t.reverse();
-              for (b = a; b--; t.push(0)) ;
+              for (b = a; b--; t.push(0));
               t.reverse();
             } else {
               j = (xLTy = (a = xc.length) < (b = yc.length)) ? a : b;
@@ -13131,17 +13135,17 @@ var PeraWalletConnect = (() => {
               y.s = -y.s;
             }
             b = (j = yc.length) - (i = xc.length);
-            if (b > 0) for (; b--; xc[i++] = 0) ;
+            if (b > 0) for (; b--; xc[i++] = 0);
             b = BASE - 1;
-            for (; j > a; ) {
+            for (; j > a;) {
               if (xc[--j] < yc[j]) {
-                for (i = j; i && !xc[--i]; xc[i] = b) ;
+                for (i = j; i && !xc[--i]; xc[i] = b);
                 --xc[i];
                 xc[j] += BASE;
               }
               xc[j] -= yc[j];
             }
-            for (; xc[0] == 0; xc.splice(0, 1), --ye) ;
+            for (; xc[0] == 0; xc.splice(0, 1), --ye);
             if (!xc[0]) {
               y.s = ROUNDING_MODE == 3 ? -1 : 1;
               y.c = [y.e = 0];
@@ -13149,7 +13153,7 @@ var PeraWalletConnect = (() => {
             }
             return normalise(y, xc, ye);
           };
-          P.modulo = P.mod = function(y, b) {
+          P.modulo = P.mod = function (y, b) {
             var q, s, x = this;
             y = new BigNumber2(y, b);
             if (!x.c || !y.s || y.c && !y.c[0]) {
@@ -13170,7 +13174,7 @@ var PeraWalletConnect = (() => {
             if (!y.c[0] && MODULO_MODE == 1) y.s = x.s;
             return y;
           };
-          P.multipliedBy = P.times = function(y, b) {
+          P.multipliedBy = P.times = function (y, b) {
             var c, e2, i, j, k, m, xcL, xlo, xhi, ycL, ylo, yhi, zc, base, sqrtBase, x = this, xc = x.c, yc = (y = new BigNumber2(y, b)).c;
             if (!xc || !yc || !xc[0] || !yc[0]) {
               if (!x.s || !y.s || xc && !xc[0] && !yc || yc && !yc[0] && !xc) {
@@ -13198,14 +13202,14 @@ var PeraWalletConnect = (() => {
               xcL = ycL;
               ycL = i;
             }
-            for (i = xcL + ycL, zc = []; i--; zc.push(0)) ;
+            for (i = xcL + ycL, zc = []; i--; zc.push(0));
             base = BASE;
             sqrtBase = SQRT_BASE;
-            for (i = ycL; --i >= 0; ) {
+            for (i = ycL; --i >= 0;) {
               c = 0;
               ylo = yc[i] % sqrtBase;
               yhi = yc[i] / sqrtBase | 0;
-              for (k = xcL, j = i + k; j > i; ) {
+              for (k = xcL, j = i + k; j > i;) {
                 xlo = xc[--k] % sqrtBase;
                 xhi = xc[k] / sqrtBase | 0;
                 m = yhi * xlo + xhi * ylo;
@@ -13222,12 +13226,12 @@ var PeraWalletConnect = (() => {
             }
             return normalise(y, zc, e2);
           };
-          P.negated = function() {
+          P.negated = function () {
             var x = new BigNumber2(this);
             x.s = -x.s || null;
             return x;
           };
-          P.plus = function(y, b) {
+          P.plus = function (y, b) {
             var t, x = this, a = x.s;
             y = new BigNumber2(y, b);
             b = y.s;
@@ -13253,7 +13257,7 @@ var PeraWalletConnect = (() => {
                 t = xc;
               }
               t.reverse();
-              for (; a--; t.push(0)) ;
+              for (; a--; t.push(0));
               t.reverse();
             }
             a = xc.length;
@@ -13264,7 +13268,7 @@ var PeraWalletConnect = (() => {
               xc = t;
               b = a;
             }
-            for (a = 0; b; ) {
+            for (a = 0; b;) {
               a = (xc[--b] = xc[b] + yc[b] + a) / BASE | 0;
               xc[b] = BASE === xc[b] ? 0 : xc[b] % BASE;
             }
@@ -13274,7 +13278,7 @@ var PeraWalletConnect = (() => {
             }
             return normalise(y, xc, ye);
           };
-          P.precision = P.sd = function(sd, rm) {
+          P.precision = P.sd = function (sd, rm) {
             var c, n2, v, x = this;
             if (sd != null && sd !== !!sd) {
               intCheck(sd, 1, MAX);
@@ -13286,17 +13290,17 @@ var PeraWalletConnect = (() => {
             v = c.length - 1;
             n2 = v * LOG_BASE + 1;
             if (v = c[v]) {
-              for (; v % 10 == 0; v /= 10, n2--) ;
-              for (v = c[0]; v >= 10; v /= 10, n2++) ;
+              for (; v % 10 == 0; v /= 10, n2--);
+              for (v = c[0]; v >= 10; v /= 10, n2++);
             }
             if (sd && x.e + 1 > n2) n2 = x.e + 1;
             return n2;
           };
-          P.shiftedBy = function(k) {
+          P.shiftedBy = function (k) {
             intCheck(k, -MAX_SAFE_INTEGER, MAX_SAFE_INTEGER);
             return this.times("1e" + k);
           };
-          P.squareRoot = P.sqrt = function() {
+          P.squareRoot = P.sqrt = function () {
             var m, n2, r2, rep, t, x = this, c = x.c, s = x.s, e2 = x.e, dp = DECIMAL_PLACES + 4, half = new BigNumber2("0.5");
             if (s !== 1 || !c || !c[0]) {
               return new BigNumber2(!s || s < 0 && (!c || c[0]) ? NaN : c ? x : 1 / 0);
@@ -13321,7 +13325,7 @@ var PeraWalletConnect = (() => {
               e2 = r2.e;
               s = e2 + dp;
               if (s < 3) s = 0;
-              for (; ; ) {
+              for (; ;) {
                 t = r2;
                 r2 = half.times(t.plus(div(x, t, dp, 1)));
                 if (coeffToString(t.c).slice(0, s) === (n2 = coeffToString(r2.c)).slice(0, s)) {
@@ -13350,21 +13354,21 @@ var PeraWalletConnect = (() => {
             }
             return round(r2, r2.e + DECIMAL_PLACES + 1, ROUNDING_MODE, m);
           };
-          P.toExponential = function(dp, rm) {
+          P.toExponential = function (dp, rm) {
             if (dp != null) {
               intCheck(dp, 0, MAX);
               dp++;
             }
             return format(this, dp, rm, 1);
           };
-          P.toFixed = function(dp, rm) {
+          P.toFixed = function (dp, rm) {
             if (dp != null) {
               intCheck(dp, 0, MAX);
               dp = dp + this.e + 1;
             }
             return format(this, dp, rm);
           };
-          P.toFormat = function(dp, rm, format2) {
+          P.toFormat = function (dp, rm, format2) {
             var str, x = this;
             if (format2 == null) {
               if (dp != null && rm && typeof rm == "object") {
@@ -13402,7 +13406,7 @@ var PeraWalletConnect = (() => {
             }
             return (format2.prefix || "") + str + (format2.suffix || "");
           };
-          P.toFraction = function(md) {
+          P.toFraction = function (md) {
             var d, d0, d1, d2, e2, exp, n2, n0, n1, q, r2, s, x = this, xc = x.c;
             if (md != null) {
               n2 = new BigNumber2(md);
@@ -13422,7 +13426,7 @@ var PeraWalletConnect = (() => {
             MAX_EXP = 1 / 0;
             n2 = new BigNumber2(s);
             n0.c[0] = 0;
-            for (; ; ) {
+            for (; ;) {
               q = div(n2, d, 0, 1);
               d2 = d0.plus(q.times(d1));
               if (d2.comparedTo(md) == 1) break;
@@ -13444,14 +13448,14 @@ var PeraWalletConnect = (() => {
             MAX_EXP = exp;
             return r2;
           };
-          P.toNumber = function() {
+          P.toNumber = function () {
             return +valueOf(this);
           };
-          P.toPrecision = function(sd, rm) {
+          P.toPrecision = function (sd, rm) {
             if (sd != null) intCheck(sd, 1, MAX);
             return format(this, sd, rm, 2);
           };
-          P.toString = function(b) {
+          P.toString = function (b) {
             var str, n2 = this, s = n2.s, e2 = n2.e;
             if (e2 === null) {
               if (s) {
@@ -13474,7 +13478,7 @@ var PeraWalletConnect = (() => {
             }
             return str;
           };
-          P.valueOf = P.toJSON = function() {
+          P.valueOf = P.toJSON = function () {
             return valueOf(this);
           };
           P._isBigNumber = true;
@@ -13487,13 +13491,13 @@ var PeraWalletConnect = (() => {
         }
         function coeffToString(a) {
           var s, z, i = 1, j = a.length, r2 = a[0] + "";
-          for (; i < j; ) {
+          for (; i < j;) {
             s = a[i++] + "";
             z = LOG_BASE - s.length;
-            for (; z--; s = "0" + s) ;
+            for (; z--; s = "0" + s);
             r2 += s;
           }
-          for (j = r2.length; r2.charCodeAt(--j) === 48; ) ;
+          for (j = r2.length; r2.charCodeAt(--j) === 48;);
           return r2.slice(0, j + 1 || 1);
         }
         function compare(x, y) {
@@ -13526,12 +13530,12 @@ var PeraWalletConnect = (() => {
         function toFixedPoint(str, e2, z) {
           var len, zs;
           if (e2 < 0) {
-            for (zs = z + "."; ++e2; zs += z) ;
+            for (zs = z + "."; ++e2; zs += z);
             str = zs + str;
           } else {
             len = str.length;
             if (++e2 > len) {
-              for (zs = z, e2 -= len; --e2; zs += z) ;
+              for (zs = z, e2 -= len; --e2; zs += z);
               str += zs;
             } else if (e2 < len) {
               str = str.slice(0, e2) + "." + str.slice(e2);
@@ -13542,7 +13546,7 @@ var PeraWalletConnect = (() => {
         BigNumber = clone();
         BigNumber["default"] = BigNumber.BigNumber = BigNumber;
         if (typeof define == "function" && define.amd) {
-          define(function() {
+          define(function () {
             return BigNumber;
           });
         } else if (typeof module != "undefined" && module.exports) {
@@ -13562,7 +13566,7 @@ var PeraWalletConnect = (() => {
     "node_modules/json-bigint/lib/stringify.js"(exports, module) {
       var BigNumber = require_bignumber();
       var JSON2 = module.exports;
-      (function() {
+      (function () {
         "use strict";
         function f(n2) {
           return n2 < 10 ? "0" + n2 : n2;
@@ -13579,7 +13583,7 @@ var PeraWalletConnect = (() => {
         }, rep;
         function quote(string) {
           escapable.lastIndex = 0;
-          return escapable.test(string) ? '"' + string.replace(escapable, function(a) {
+          return escapable.test(string) ? '"' + string.replace(escapable, function (a) {
             var c = meta[a];
             return typeof c === "string" ? c : "\\u" + ("0000" + a.charCodeAt(0).toString(16)).slice(-4);
           }) + '"' : '"' + string + '"';
@@ -13634,7 +13638,7 @@ var PeraWalletConnect = (() => {
                   }
                 }
               } else {
-                Object.keys(value).forEach(function(k2) {
+                Object.keys(value).forEach(function (k2) {
                   var v2 = str(k2, value);
                   if (v2) {
                     partial.push(quote(k2) + (gap ? ": " : ":") + v2);
@@ -13647,7 +13651,7 @@ var PeraWalletConnect = (() => {
           }
         }
         if (typeof JSON2.stringify !== "function") {
-          JSON2.stringify = function(value, replacer, space) {
+          JSON2.stringify = function (value, replacer, space) {
             var i;
             gap = "";
             indent = "";
@@ -13675,7 +13679,7 @@ var PeraWalletConnect = (() => {
       var BigNumber = null;
       var suspectProtoRx = /(?:_|\\u005[Ff])(?:_|\\u005[Ff])(?:p|\\u0070)(?:r|\\u0072)(?:o|\\u006[Ff])(?:t|\\u0074)(?:o|\\u006[Ff])(?:_|\\u005[Ff])(?:_|\\u005[Ff])/;
       var suspectConstructorRx = /(?:c|\\u0063)(?:o|\\u006[Ff])(?:n|\\u006[Ee])(?:s|\\u0073)(?:t|\\u0074)(?:r|\\u0072)(?:u|\\u0075)(?:c|\\u0063)(?:t|\\u0074)(?:o|\\u006[Ff])(?:r|\\u0072)/;
-      var json_parse = function(options) {
+      var json_parse = function (options) {
         "use strict";
         var _options = {
           strict: false,
@@ -13726,21 +13730,21 @@ var PeraWalletConnect = (() => {
           n: "\n",
           r: "\r",
           t: "	"
-        }, text, error = function(m) {
+        }, text, error = function (m) {
           throw {
             name: "SyntaxError",
             message: m,
             at,
             text
           };
-        }, next = function(c) {
+        }, next = function (c) {
           if (c && c !== ch) {
             error("Expected '" + c + "' instead of '" + ch + "'");
           }
           ch = text.charAt(at);
           at += 1;
           return ch;
-        }, number = function() {
+        }, number = function () {
           var number2, string2 = "";
           if (ch === "-") {
             string2 = "-";
@@ -13778,7 +13782,7 @@ var PeraWalletConnect = (() => {
             else
               return !_options.alwaysParseAsBig ? number2 : _options.useNativeBigInt ? BigInt(number2) : new BigNumber(number2);
           }
-        }, string = function() {
+        }, string = function () {
           var hex, i, string2 = "", uffff;
           if (ch === '"') {
             var startAt = at;
@@ -13811,11 +13815,11 @@ var PeraWalletConnect = (() => {
             }
           }
           error("Bad string");
-        }, white = function() {
+        }, white = function () {
           while (ch && ch <= " ") {
             next();
           }
-        }, word = function() {
+        }, word = function () {
           switch (ch) {
             case "t":
               next("t");
@@ -13838,7 +13842,7 @@ var PeraWalletConnect = (() => {
               return null;
           }
           error("Unexpected '" + ch + "'");
-        }, value, array = function() {
+        }, value, array = function () {
           var array2 = [];
           if (ch === "[") {
             next("[");
@@ -13859,7 +13863,7 @@ var PeraWalletConnect = (() => {
             }
           }
           error("Bad array");
-        }, object = function() {
+        }, object = function () {
           var key, object2 = /* @__PURE__ */ Object.create(null);
           if (ch === "{") {
             next("{");
@@ -13905,7 +13909,7 @@ var PeraWalletConnect = (() => {
           }
           error("Bad object");
         };
-        value = function() {
+        value = function () {
           white();
           switch (ch) {
             case "{":
@@ -13920,7 +13924,7 @@ var PeraWalletConnect = (() => {
               return ch >= "0" && ch <= "9" ? number() : word();
           }
         };
-        return function(source, reviver) {
+        return function (source, reviver) {
           var result;
           text = source + "";
           at = 0;
@@ -13933,7 +13937,7 @@ var PeraWalletConnect = (() => {
           return typeof reviver === "function" ? (function walk(holder, key) {
             var k, v, value2 = holder[key];
             if (value2 && typeof value2 === "object") {
-              Object.keys(value2).forEach(function(k2) {
+              Object.keys(value2).forEach(function (k2) {
                 v = walk(value2, k2);
                 if (v !== void 0) {
                   value2[k2] = v;
@@ -13955,7 +13959,7 @@ var PeraWalletConnect = (() => {
     "node_modules/json-bigint/index.js"(exports, module) {
       var json_stringify = require_stringify().stringify;
       var json_parse = require_parse();
-      module.exports = function(options) {
+      module.exports = function (options) {
         return {
           parse: json_parse(options),
           stringify: json_stringify
@@ -13972,7 +13976,7 @@ var PeraWalletConnect = (() => {
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       var IntDecoding;
-      (function(IntDecoding2) {
+      (function (IntDecoding2) {
         IntDecoding2["DEFAULT"] = "default";
         IntDecoding2["SAFE"] = "safe";
         IntDecoding2["MIXED"] = "mixed";
@@ -13986,7 +13990,7 @@ var PeraWalletConnect = (() => {
   var require_utils = __commonJS({
     "node_modules/algosdk/dist/cjs/utils/utils.js"(exports) {
       "use strict";
-      var __importDefault2 = exports && exports.__importDefault || function(mod) {
+      var __importDefault2 = exports && exports.__importDefault || function (mod) {
         return mod && mod.__esModule ? mod : { "default": mod };
       };
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -14069,7 +14073,7 @@ var PeraWalletConnect = (() => {
   var require_naclWrappers = __commonJS({
     "node_modules/algosdk/dist/cjs/nacl/naclWrappers.js"(exports) {
       "use strict";
-      var __importDefault2 = exports && exports.__importDefault || function(mod) {
+      var __importDefault2 = exports && exports.__importDefault || function (mod) {
         return mod && mod.__esModule ? mod : { "default": mod };
       };
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -14127,7 +14131,7 @@ var PeraWalletConnect = (() => {
   // node_modules/hi-base32/src/base32.js
   var require_base32 = __commonJS({
     "node_modules/hi-base32/src/base32.js"(exports, module) {
-      (function() {
+      (function () {
         "use strict";
         var root = typeof window === "object" ? window : {};
         var NODE_JS = !root.HI_BASE32_NO_NODE_JS && typeof process === "object" && process.versions && process.versions.node;
@@ -14172,7 +14176,7 @@ var PeraWalletConnect = (() => {
           "7": 31
         };
         var blocks = [0, 0, 0, 0, 0, 0, 0, 0];
-        var throwInvalidUtf8 = function(position, partial) {
+        var throwInvalidUtf8 = function (position, partial) {
           if (partial.length > 10) {
             partial = "..." + partial.substr(-10);
           }
@@ -14180,7 +14184,7 @@ var PeraWalletConnect = (() => {
           err.position = position;
           throw err;
         };
-        var toUtf8String = function(bytes) {
+        var toUtf8String = function (bytes) {
           var str = "", length = bytes.length, i = 0, followingChars = 0, b, c;
           while (i < length) {
             b = bytes[i++];
@@ -14223,7 +14227,7 @@ var PeraWalletConnect = (() => {
           }
           return str;
         };
-        var decodeAsBytes = function(base32Str) {
+        var decodeAsBytes = function (base32Str) {
           if (base32Str === "") {
             return [];
           } else if (!/^[A-Z2-7=]+$/.test(base32Str)) {
@@ -14231,7 +14235,7 @@ var PeraWalletConnect = (() => {
           }
           base32Str = base32Str.replace(/=/g, "");
           var v1, v2, v3, v4, v5, v6, v7, v8, bytes = [], index = 0, length = base32Str.length;
-          for (var i = 0, count = length >> 3 << 3; i < count; ) {
+          for (var i = 0, count = length >> 3 << 3; i < count;) {
             v1 = BASE32_DECODE_CHAR[base32Str.charAt(i++)];
             v2 = BASE32_DECODE_CHAR[base32Str.charAt(i++)];
             v3 = BASE32_DECODE_CHAR[base32Str.charAt(i++)];
@@ -14282,9 +14286,9 @@ var PeraWalletConnect = (() => {
           }
           return bytes;
         };
-        var encodeAscii = function(str) {
+        var encodeAscii = function (str) {
           var v1, v2, v3, v4, v5, base32Str = "", length = str.length;
-          for (var i = 0, count = parseInt(length / 5) * 5; i < count; ) {
+          for (var i = 0, count = parseInt(length / 5) * 5; i < count;) {
             v1 = str.charCodeAt(i++);
             v2 = str.charCodeAt(i++);
             v3 = str.charCodeAt(i++);
@@ -14314,7 +14318,7 @@ var PeraWalletConnect = (() => {
           }
           return base32Str;
         };
-        var encodeUtf8 = function(str) {
+        var encodeUtf8 = function (str) {
           var v1, v2, v3, v4, v5, code, end = false, base32Str = "", index = 0, i, start = 0, bytes = 0, length = str.length;
           if (str === "") {
             return base32Str;
@@ -14375,9 +14379,9 @@ var PeraWalletConnect = (() => {
           } while (!end);
           return base32Str;
         };
-        var encodeBytes = function(bytes) {
+        var encodeBytes = function (bytes) {
           var v1, v2, v3, v4, v5, base32Str = "", length = bytes.length;
-          for (var i = 0, count = parseInt(length / 5) * 5; i < count; ) {
+          for (var i = 0, count = parseInt(length / 5) * 5; i < count;) {
             v1 = bytes[i++];
             v2 = bytes[i++];
             v3 = bytes[i++];
@@ -14407,7 +14411,7 @@ var PeraWalletConnect = (() => {
           }
           return base32Str;
         };
-        var encode = function(input, asciiOnly) {
+        var encode = function (input, asciiOnly) {
           var notString = typeof input !== "string";
           if (notString && input.constructor === ArrayBuffer) {
             input = new Uint8Array(input);
@@ -14420,7 +14424,7 @@ var PeraWalletConnect = (() => {
             return encodeUtf8(input);
           }
         };
-        var decode = function(base32Str, asciiOnly) {
+        var decode = function (base32Str, asciiOnly) {
           if (!asciiOnly) {
             return toUtf8String(decodeAsBytes(base32Str));
           }
@@ -14433,7 +14437,7 @@ var PeraWalletConnect = (() => {
           if (length === -1) {
             length = base32Str.length;
           }
-          for (var i = 0, count = length >> 3 << 3; i < count; ) {
+          for (var i = 0, count = length >> 3 << 3; i < count;) {
             v1 = BASE32_DECODE_CHAR[base32Str.charAt(i++)];
             v2 = BASE32_DECODE_CHAR[base32Str.charAt(i++)];
             v3 = BASE32_DECODE_CHAR[base32Str.charAt(i++)];
@@ -14484,7 +14488,7 @@ var PeraWalletConnect = (() => {
         } else {
           root.base32 = exports2;
           if (AMD) {
-            define(function() {
+            define(function () {
               return exports2;
             });
           }
@@ -14542,25 +14546,27 @@ var PeraWalletConnect = (() => {
   var require_address = __commonJS({
     "node_modules/algosdk/dist/cjs/encoding/address.js"(exports) {
       "use strict";
-      var __createBinding2 = exports && exports.__createBinding || (Object.create ? (function(o2, m, k, k2) {
+      var __createBinding2 = exports && exports.__createBinding || (Object.create ? (function (o2, m, k, k2) {
         if (k2 === void 0) k2 = k;
         var desc = Object.getOwnPropertyDescriptor(m, k);
         if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-          desc = { enumerable: true, get: function() {
-            return m[k];
-          } };
+          desc = {
+            enumerable: true, get: function () {
+              return m[k];
+            }
+          };
         }
         Object.defineProperty(o2, k2, desc);
-      }) : (function(o2, m, k, k2) {
+      }) : (function (o2, m, k, k2) {
         if (k2 === void 0) k2 = k;
         o2[k2] = m[k];
       }));
-      var __setModuleDefault = exports && exports.__setModuleDefault || (Object.create ? (function(o2, v) {
+      var __setModuleDefault = exports && exports.__setModuleDefault || (Object.create ? (function (o2, v) {
         Object.defineProperty(o2, "default", { enumerable: true, value: v });
-      }) : function(o2, v) {
+      }) : function (o2, v) {
         o2["default"] = v;
       });
-      var __importStar2 = exports && exports.__importStar || function(mod) {
+      var __importStar2 = exports && exports.__importStar || function (mod) {
         if (mod && mod.__esModule) return mod;
         var result = {};
         if (mod != null) {
@@ -14569,7 +14575,7 @@ var PeraWalletConnect = (() => {
         __setModuleDefault(result, mod);
         return result;
       };
-      var __importDefault2 = exports && exports.__importDefault || function(mod) {
+      var __importDefault2 = exports && exports.__importDefault || function (mod) {
         return mod && mod.__esModule ? mod : { "default": mod };
       };
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -14674,77 +14680,77 @@ var PeraWalletConnect = (() => {
   // node_modules/algo-msgpack-with-bigint/dist.es5/msgpack.min.js
   var require_msgpack_min = __commonJS({
     "node_modules/algo-msgpack-with-bigint/dist.es5/msgpack.min.js"(exports, module) {
-      !(function(t, e2) {
+      !(function (t, e2) {
         "object" == typeof exports && "object" == typeof module ? module.exports = e2() : "function" == typeof define && define.amd ? define([], e2) : "object" == typeof exports ? exports.MessagePack = e2() : t.MessagePack = e2();
-      })(exports, (function() {
-        return (function(t) {
+      })(exports, (function () {
+        return (function (t) {
           var e2 = {};
           function r2(n2) {
             if (e2[n2]) return e2[n2].exports;
             var i = e2[n2] = { i: n2, l: false, exports: {} };
             return t[n2].call(i.exports, i, i.exports, r2), i.l = true, i.exports;
           }
-          return r2.m = t, r2.c = e2, r2.d = function(t2, e3, n2) {
+          return r2.m = t, r2.c = e2, r2.d = function (t2, e3, n2) {
             r2.o(t2, e3) || Object.defineProperty(t2, e3, { enumerable: true, get: n2 });
-          }, r2.r = function(t2) {
+          }, r2.r = function (t2) {
             "undefined" != typeof Symbol && Symbol.toStringTag && Object.defineProperty(t2, Symbol.toStringTag, { value: "Module" }), Object.defineProperty(t2, "__esModule", { value: true });
-          }, r2.t = function(t2, e3) {
+          }, r2.t = function (t2, e3) {
             if (1 & e3 && (t2 = r2(t2)), 8 & e3) return t2;
             if (4 & e3 && "object" == typeof t2 && t2 && t2.__esModule) return t2;
             var n2 = /* @__PURE__ */ Object.create(null);
-            if (r2.r(n2), Object.defineProperty(n2, "default", { enumerable: true, value: t2 }), 2 & e3 && "string" != typeof t2) for (var i in t2) r2.d(n2, i, function(e4) {
+            if (r2.r(n2), Object.defineProperty(n2, "default", { enumerable: true, value: t2 }), 2 & e3 && "string" != typeof t2) for (var i in t2) r2.d(n2, i, function (e4) {
               return t2[e4];
             }.bind(null, i));
             return n2;
-          }, r2.n = function(t2) {
-            var e3 = t2 && t2.__esModule ? function() {
+          }, r2.n = function (t2) {
+            var e3 = t2 && t2.__esModule ? function () {
               return t2.default;
-            } : function() {
+            } : function () {
               return t2;
             };
             return r2.d(e3, "a", e3), e3;
-          }, r2.o = function(t2, e3) {
+          }, r2.o = function (t2, e3) {
             return Object.prototype.hasOwnProperty.call(t2, e3);
           }, r2.p = "", r2(r2.s = 0);
-        })([function(t, e2, r2) {
+        })([function (t, e2, r2) {
           "use strict";
-          r2.r(e2), r2.d(e2, "encode", (function() {
+          r2.r(e2), r2.d(e2, "encode", (function () {
             return T;
-          })), r2.d(e2, "decode", (function() {
+          })), r2.d(e2, "decode", (function () {
             return V;
-          })), r2.d(e2, "decodeAsync", (function() {
+          })), r2.d(e2, "decodeAsync", (function () {
             return Y;
-          })), r2.d(e2, "decodeArrayStream", (function() {
+          })), r2.d(e2, "decodeArrayStream", (function () {
             return Z;
-          })), r2.d(e2, "decodeStream", (function() {
+          })), r2.d(e2, "decodeStream", (function () {
             return $;
-          })), r2.d(e2, "Decoder", (function() {
+          })), r2.d(e2, "Decoder", (function () {
             return O;
-          })), r2.d(e2, "Encoder", (function() {
+          })), r2.d(e2, "Encoder", (function () {
             return I;
-          })), r2.d(e2, "ExtensionCodec", (function() {
+          })), r2.d(e2, "ExtensionCodec", (function () {
             return S;
-          })), r2.d(e2, "ExtData", (function() {
+          })), r2.d(e2, "ExtData", (function () {
             return p;
-          })), r2.d(e2, "EXT_TIMESTAMP", (function() {
+          })), r2.d(e2, "EXT_TIMESTAMP", (function () {
             return w;
-          })), r2.d(e2, "encodeDateToTimeSpec", (function() {
+          })), r2.d(e2, "encodeDateToTimeSpec", (function () {
             return g;
-          })), r2.d(e2, "encodeTimeSpecToTimestamp", (function() {
+          })), r2.d(e2, "encodeTimeSpecToTimestamp", (function () {
             return v;
-          })), r2.d(e2, "decodeTimestampToTimeSpec", (function() {
+          })), r2.d(e2, "decodeTimestampToTimeSpec", (function () {
             return U;
-          })), r2.d(e2, "encodeTimestampExtension", (function() {
+          })), r2.d(e2, "encodeTimestampExtension", (function () {
             return b;
-          })), r2.d(e2, "decodeTimestampExtension", (function() {
+          })), r2.d(e2, "decodeTimestampExtension", (function () {
             return m;
           }));
-          var n2 = function(t2, e3) {
+          var n2 = function (t2, e3) {
             var r3 = "function" == typeof Symbol && t2[Symbol.iterator];
             if (!r3) return t2;
             var n3, i2, o3 = r3.call(t2), s2 = [];
             try {
-              for (; (void 0 === e3 || e3-- > 0) && !(n3 = o3.next()).done; ) s2.push(n3.value);
+              for (; (void 0 === e3 || e3-- > 0) && !(n3 = o3.next()).done;) s2.push(n3.value);
             } catch (t3) {
               i2 = { error: t3 };
             } finally {
@@ -14755,12 +14761,12 @@ var PeraWalletConnect = (() => {
               }
             }
             return s2;
-          }, i = function() {
+          }, i = function () {
             for (var t2 = [], e3 = 0; e3 < arguments.length; e3++) t2 = t2.concat(n2(arguments[e3]));
             return t2;
           }, o2 = "undefined" != typeof process && "undefined" != typeof TextEncoder && "undefined" != typeof TextDecoder;
           function s(t2) {
-            for (var e3 = t2.length, r3 = 0, n3 = 0; n3 < e3; ) {
+            for (var e3 = t2.length, r3 = 0, n3 = 0; n3 < e3;) {
               var i2 = t2.charCodeAt(n3++);
               if (0 != (4294967168 & i2)) if (0 == (4294965248 & i2)) r3 += 2;
               else {
@@ -14775,13 +14781,13 @@ var PeraWalletConnect = (() => {
             return r3;
           }
           var a = o2 ? new TextEncoder() : void 0, h = "undefined" != typeof process ? 200 : 0;
-          var u = (null == a ? void 0 : a.encodeInto) ? function(t2, e3, r3) {
+          var u = (null == a ? void 0 : a.encodeInto) ? function (t2, e3, r3) {
             a.encodeInto(t2, e3.subarray(r3));
-          } : function(t2, e3, r3) {
+          } : function (t2, e3, r3) {
             e3.set(a.encode(t2), r3);
           };
           function c(t2, e3, r3) {
-            for (var n3 = e3, o3 = n3 + r3, s2 = [], a2 = ""; n3 < o3; ) {
+            for (var n3 = e3, o3 = n3 + r3, s2 = [], a2 = ""; n3 < o3;) {
               var h2 = t2[n3++];
               if (0 == (128 & h2)) s2.push(h2);
               else if (192 == (224 & h2)) {
@@ -14800,7 +14806,7 @@ var PeraWalletConnect = (() => {
             return s2.length > 0 && (a2 += String.fromCharCode.apply(String, i(s2))), a2;
           }
           var f = o2 ? new TextDecoder() : null, l = "undefined" != typeof process ? 200 : 0;
-          var p = function(t2, e3) {
+          var p = function (t2, e3) {
             this.type = t2, this.data = e3;
           };
           function d(t2, e3, r3) {
@@ -14852,18 +14858,18 @@ var PeraWalletConnect = (() => {
             var e3 = U(t2);
             return new Date(1e3 * e3.sec + e3.nsec / 1e6);
           }
-          var x = { type: w, encode: b, decode: m }, S = (function() {
+          var x = { type: w, encode: b, decode: m }, S = (function () {
             function t2() {
               this.builtInEncoders = [], this.builtInDecoders = [], this.encoders = [], this.decoders = [], this.register(x);
             }
-            return t2.prototype.register = function(t3) {
+            return t2.prototype.register = function (t3) {
               var e3 = t3.type, r3 = t3.encode, n3 = t3.decode;
               if (e3 >= 0) this.encoders[e3] = r3, this.decoders[e3] = n3;
               else {
                 var i2 = 1 + e3;
                 this.builtInEncoders[i2] = r3, this.builtInDecoders[i2] = n3;
               }
-            }, t2.prototype.tryToEncode = function(t3, e3) {
+            }, t2.prototype.tryToEncode = function (t3, e3) {
               for (var r3 = 0; r3 < this.builtInEncoders.length; r3++) {
                 if (null != (n3 = this.builtInEncoders[r3])) {
                   if (null != (i2 = n3(t3, e3))) return new p(-1 - r3, i2);
@@ -14876,7 +14882,7 @@ var PeraWalletConnect = (() => {
                 }
               }
               return t3 instanceof p ? t3 : null;
-            }, t2.prototype.decode = function(t3, e3, r3) {
+            }, t2.prototype.decode = function (t3, e3, r3) {
               var n3 = e3 < 0 ? this.builtInDecoders[-1 - e3] : this.decoders[e3];
               return n3 ? n3(t3, e3, r3) : new p(e3, t3);
             }, t2.defaultCodec = new t2(), t2;
@@ -14884,41 +14890,43 @@ var PeraWalletConnect = (() => {
           function B(t2) {
             return t2 instanceof Uint8Array ? t2 : ArrayBuffer.isView(t2) ? new Uint8Array(t2.buffer, t2.byteOffset, t2.byteLength) : t2 instanceof ArrayBuffer ? new Uint8Array(t2) : Uint8Array.from(t2);
           }
-          var E = function(t2) {
+          var E = function (t2) {
             var e3 = "function" == typeof Symbol && Symbol.iterator, r3 = e3 && t2[e3], n3 = 0;
             if (r3) return r3.call(t2);
-            if (t2 && "number" == typeof t2.length) return { next: function() {
-              return t2 && n3 >= t2.length && (t2 = void 0), { value: t2 && t2[n3++], done: !t2 };
-            } };
+            if (t2 && "number" == typeof t2.length) return {
+              next: function () {
+                return t2 && n3 >= t2.length && (t2 = void 0), { value: t2 && t2[n3++], done: !t2 };
+              }
+            };
             throw new TypeError(e3 ? "Object is not iterable." : "Symbol.iterator is not defined.");
-          }, I = (function() {
+          }, I = (function () {
             function t2(t3, e3, r3, n3, i2, o3, s2, a2) {
               void 0 === t3 && (t3 = S.defaultCodec), void 0 === e3 && (e3 = void 0), void 0 === r3 && (r3 = 100), void 0 === n3 && (n3 = 2048), void 0 === i2 && (i2 = false), void 0 === o3 && (o3 = false), void 0 === s2 && (s2 = false), void 0 === a2 && (a2 = false), this.extensionCodec = t3, this.context = e3, this.maxDepth = r3, this.initialBufferSize = n3, this.sortKeys = i2, this.forceFloat32 = o3, this.ignoreUndefined = s2, this.forceIntegerToFloat = a2, this.pos = 0, this.view = new DataView(new ArrayBuffer(this.initialBufferSize)), this.bytes = new Uint8Array(this.view.buffer);
             }
-            return t2.prototype.getUint8Array = function() {
+            return t2.prototype.getUint8Array = function () {
               return this.bytes.subarray(0, this.pos);
-            }, t2.prototype.reinitializeState = function() {
+            }, t2.prototype.reinitializeState = function () {
               this.pos = 0;
-            }, t2.prototype.encode = function(t3) {
+            }, t2.prototype.encode = function (t3) {
               return this.reinitializeState(), this.doEncode(t3, 1), this.getUint8Array();
-            }, t2.prototype.doEncode = function(t3, e3) {
+            }, t2.prototype.doEncode = function (t3, e3) {
               if (e3 > this.maxDepth) throw new Error("Too deep objects in depth " + e3);
               null == t3 ? this.encodeNil() : "boolean" == typeof t3 ? this.encodeBoolean(t3) : "number" == typeof t3 ? this.encodeNumber(t3) : "string" == typeof t3 ? this.encodeString(t3) : "bigint" == typeof t3 ? this.encodebigint(t3) : this.encodeObject(t3, e3);
-            }, t2.prototype.ensureBufferSizeToWrite = function(t3) {
+            }, t2.prototype.ensureBufferSizeToWrite = function (t3) {
               var e3 = this.pos + t3;
               this.view.byteLength < e3 && this.resizeBuffer(2 * e3);
-            }, t2.prototype.resizeBuffer = function(t3) {
+            }, t2.prototype.resizeBuffer = function (t3) {
               var e3 = new ArrayBuffer(t3), r3 = new Uint8Array(e3), n3 = new DataView(e3);
               r3.set(this.bytes), this.view = n3, this.bytes = r3;
-            }, t2.prototype.encodeNil = function() {
+            }, t2.prototype.encodeNil = function () {
               this.writeU8(192);
-            }, t2.prototype.encodeBoolean = function(t3) {
+            }, t2.prototype.encodeBoolean = function (t3) {
               false === t3 ? this.writeU8(194) : this.writeU8(195);
-            }, t2.prototype.encodeNumber = function(t3) {
+            }, t2.prototype.encodeNumber = function (t3) {
               Number.isSafeInteger(t3) && !this.forceIntegerToFloat ? t3 >= 0 ? t3 < 128 ? this.writeU8(t3) : t3 < 256 ? (this.writeU8(204), this.writeU8(t3)) : t3 < 65536 ? (this.writeU8(205), this.writeU16(t3)) : t3 < 4294967296 ? (this.writeU8(206), this.writeU32(t3)) : (this.writeU8(207), this.writeU64(t3)) : t3 >= -32 ? this.writeU8(224 | t3 + 32) : t3 >= -128 ? (this.writeU8(208), this.writeI8(t3)) : t3 >= -32768 ? (this.writeU8(209), this.writeI16(t3)) : t3 >= -2147483648 ? (this.writeU8(210), this.writeI32(t3)) : (this.writeU8(211), this.writeI64(t3)) : this.forceFloat32 ? (this.writeU8(202), this.writeF32(t3)) : (this.writeU8(203), this.writeF64(t3));
-            }, t2.prototype.encodebigint = function(t3) {
+            }, t2.prototype.encodebigint = function (t3) {
               t3 >= BigInt(0) ? t3 < BigInt(128) ? this.writeU8(Number(t3)) : t3 < BigInt(256) ? (this.writeU8(204), this.writeU8(Number(t3))) : t3 < BigInt(65536) ? (this.writeU8(205), this.writeU16(Number(t3))) : t3 < BigInt(4294967296) ? (this.writeU8(206), this.writeU32(Number(t3))) : (this.writeU8(207), this.writeBig64(t3)) : t3 >= BigInt(-32) ? this.writeU8(224 | Number(t3) + 32) : t3 >= BigInt(-128) ? (this.writeU8(208), this.writeI8(Number(t3))) : t3 >= BigInt(-32768) ? (this.writeU8(209), this.writeI16(Number(t3))) : t3 >= BigInt(-2147483648) ? (this.writeU8(210), this.writeI32(Number(t3))) : (this.writeU8(211), this.writeBig64(t3));
-            }, t2.prototype.writeStringHeader = function(t3) {
+            }, t2.prototype.writeStringHeader = function (t3) {
               if (t3 < 32) this.writeU8(160 + t3);
               else if (t3 < 256) this.writeU8(217), this.writeU8(t3);
               else if (t3 < 65536) this.writeU8(218), this.writeU16(t3);
@@ -14926,15 +14934,15 @@ var PeraWalletConnect = (() => {
                 if (!(t3 < 4294967296)) throw new Error("Too long string: " + t3 + " bytes in UTF-8");
                 this.writeU8(219), this.writeU32(t3);
               }
-            }, t2.prototype.encodeString = function(t3) {
+            }, t2.prototype.encodeString = function (t3) {
               var e3 = t3.length;
               if (o2 && e3 > h) {
                 var r3 = s(t3);
                 this.ensureBufferSizeToWrite(5 + r3), this.writeStringHeader(r3), u(t3, this.bytes, this.pos), this.pos += r3;
               } else {
                 r3 = s(t3);
-                this.ensureBufferSizeToWrite(5 + r3), this.writeStringHeader(r3), (function(t4, e4, r4) {
-                  for (var n3 = t4.length, i2 = r4, o3 = 0; o3 < n3; ) {
+                this.ensureBufferSizeToWrite(5 + r3), this.writeStringHeader(r3), (function (t4, e4, r4) {
+                  for (var n3 = t4.length, i2 = r4, o3 = 0; o3 < n3;) {
                     var s2 = t4.charCodeAt(o3++);
                     if (0 != (4294967168 & s2)) {
                       if (0 == (4294965248 & s2)) e4[i2++] = s2 >> 6 & 31 | 192;
@@ -14950,7 +14958,7 @@ var PeraWalletConnect = (() => {
                   }
                 })(t3, this.bytes, this.pos), this.pos += r3;
               }
-            }, t2.prototype.encodeObject = function(t3, e3) {
+            }, t2.prototype.encodeObject = function (t3, e3) {
               var r3 = this.extensionCodec.tryToEncode(t3, this.context);
               if (null != r3) this.encodeExtension(r3);
               else if (Array.isArray(t3)) this.encodeArray(t3, e3);
@@ -14959,7 +14967,7 @@ var PeraWalletConnect = (() => {
                 if ("object" != typeof t3) throw new Error("Unrecognized object: " + Object.prototype.toString.apply(t3));
                 this.encodeMap(t3, e3);
               }
-            }, t2.prototype.encodeBinary = function(t3) {
+            }, t2.prototype.encodeBinary = function (t3) {
               var e3 = t3.byteLength;
               if (e3 < 256) this.writeU8(196), this.writeU8(e3);
               else if (e3 < 65536) this.writeU8(197), this.writeU16(e3);
@@ -14969,7 +14977,7 @@ var PeraWalletConnect = (() => {
               }
               var r3 = B(t3);
               this.writeU8a(r3);
-            }, t2.prototype.encodeArray = function(t3, e3) {
+            }, t2.prototype.encodeArray = function (t3, e3) {
               var r3, n3, i2 = t3.length;
               if (i2 < 16) this.writeU8(144 + i2);
               else if (i2 < 65536) this.writeU8(220), this.writeU16(i2);
@@ -14991,7 +14999,7 @@ var PeraWalletConnect = (() => {
                   if (r3) throw r3.error;
                 }
               }
-            }, t2.prototype.countWithoutUndefined = function(t3, e3) {
+            }, t2.prototype.countWithoutUndefined = function (t3, e3) {
               var r3, n3, i2 = 0;
               try {
                 for (var o3 = E(e3), s2 = o3.next(); !s2.done; s2 = o3.next()) {
@@ -15007,7 +15015,7 @@ var PeraWalletConnect = (() => {
                 }
               }
               return i2;
-            }, t2.prototype.encodeMap = function(t3, e3) {
+            }, t2.prototype.encodeMap = function (t3, e3) {
               var r3, n3, i2 = Object.keys(t3);
               this.sortKeys && i2.sort();
               var o3 = this.ignoreUndefined ? this.countWithoutUndefined(t3, i2) : i2.length;
@@ -15031,7 +15039,7 @@ var PeraWalletConnect = (() => {
                   if (r3) throw r3.error;
                 }
               }
-            }, t2.prototype.encodeExtension = function(t3) {
+            }, t2.prototype.encodeExtension = function (t3) {
               var e3 = t3.data.length;
               if (1 === e3) this.writeU8(212);
               else if (2 === e3) this.writeU8(213);
@@ -15045,34 +15053,34 @@ var PeraWalletConnect = (() => {
                 this.writeU8(201), this.writeU32(e3);
               }
               this.writeI8(t3.type), this.writeU8a(t3.data);
-            }, t2.prototype.writeU8 = function(t3) {
+            }, t2.prototype.writeU8 = function (t3) {
               this.ensureBufferSizeToWrite(1), this.view.setUint8(this.pos, t3), this.pos++;
-            }, t2.prototype.writeU8a = function(t3) {
+            }, t2.prototype.writeU8a = function (t3) {
               var e3 = t3.length;
               this.ensureBufferSizeToWrite(e3), this.bytes.set(t3, this.pos), this.pos += e3;
-            }, t2.prototype.writeI8 = function(t3) {
+            }, t2.prototype.writeI8 = function (t3) {
               this.ensureBufferSizeToWrite(1), this.view.setInt8(this.pos, t3), this.pos++;
-            }, t2.prototype.writeU16 = function(t3) {
+            }, t2.prototype.writeU16 = function (t3) {
               this.ensureBufferSizeToWrite(2), this.view.setUint16(this.pos, t3), this.pos += 2;
-            }, t2.prototype.writeI16 = function(t3) {
+            }, t2.prototype.writeI16 = function (t3) {
               this.ensureBufferSizeToWrite(2), this.view.setInt16(this.pos, t3), this.pos += 2;
-            }, t2.prototype.writeU32 = function(t3) {
+            }, t2.prototype.writeU32 = function (t3) {
               this.ensureBufferSizeToWrite(4), this.view.setUint32(this.pos, t3), this.pos += 4;
-            }, t2.prototype.writeI32 = function(t3) {
+            }, t2.prototype.writeI32 = function (t3) {
               this.ensureBufferSizeToWrite(4), this.view.setInt32(this.pos, t3), this.pos += 4;
-            }, t2.prototype.writeF32 = function(t3) {
+            }, t2.prototype.writeF32 = function (t3) {
               this.ensureBufferSizeToWrite(4), this.view.setFloat32(this.pos, t3), this.pos += 4;
-            }, t2.prototype.writeF64 = function(t3) {
+            }, t2.prototype.writeF64 = function (t3) {
               this.ensureBufferSizeToWrite(8), this.view.setFloat64(this.pos, t3), this.pos += 8;
-            }, t2.prototype.writeU64 = function(t3) {
-              this.ensureBufferSizeToWrite(8), (function(t4, e3, r3) {
+            }, t2.prototype.writeU64 = function (t3) {
+              this.ensureBufferSizeToWrite(8), (function (t4, e3, r3) {
                 var n3 = r3 / 4294967296, i2 = r3;
                 t4.setUint32(e3, n3), t4.setUint32(e3 + 4, i2);
               })(this.view, this.pos, t3), this.pos += 8;
-            }, t2.prototype.writeI64 = function(t3) {
+            }, t2.prototype.writeI64 = function (t3) {
               this.ensureBufferSizeToWrite(8), d(this.view, this.pos, t3), this.pos += 8;
-            }, t2.prototype.writeBig64 = function(t3) {
-              this.ensureBufferSizeToWrite(8), (function(t4, e3, r3) {
+            }, t2.prototype.writeBig64 = function (t3) {
+              this.ensureBufferSizeToWrite(8), (function (t4, e3, r3) {
                 var n3 = Number(r3 / BigInt(4294967296)), i2 = Number(r3 % BigInt(4294967296));
                 n3 < 0 && 0 !== i2 && (n3 -= 1), t4.setUint32(e3, n3), t4.setUint32(e3 + 4, i2);
               })(this.view, this.pos, t3), this.pos += 8;
@@ -15084,32 +15092,32 @@ var PeraWalletConnect = (() => {
           function L(t2) {
             return (t2 < 0 ? "-" : "") + "0x" + Math.abs(t2).toString(16).padStart(2, "0");
           }
-          var M = (function() {
+          var M = (function () {
             function t2(t3, e3) {
               void 0 === t3 && (t3 = 16), void 0 === e3 && (e3 = 16), this.maxKeyLength = t3, this.maxLengthPerKey = e3, this.hit = 0, this.miss = 0, this.caches = [];
               for (var r3 = 0; r3 < this.maxKeyLength; r3++) this.caches.push([]);
             }
-            return t2.prototype.canBeCached = function(t3) {
+            return t2.prototype.canBeCached = function (t3) {
               return t3 > 0 && t3 <= this.maxKeyLength;
-            }, t2.prototype.get = function(t3, e3, r3) {
+            }, t2.prototype.get = function (t3, e3, r3) {
               var n3 = this.caches[r3 - 1], i2 = n3.length;
               t: for (var o3 = 0; o3 < i2; o3++) {
                 for (var s2 = n3[o3], a2 = s2.bytes, h2 = 0; h2 < r3; h2++) if (a2[h2] !== t3[e3 + h2]) continue t;
                 return s2.value;
               }
               return null;
-            }, t2.prototype.store = function(t3, e3) {
+            }, t2.prototype.store = function (t3, e3) {
               var r3 = this.caches[t3.length - 1], n3 = { bytes: t3, value: e3 };
               r3.length >= this.maxLengthPerKey ? r3[Math.random() * r3.length | 0] = n3 : r3.push(n3);
-            }, t2.prototype.decode = function(t3, e3, r3) {
+            }, t2.prototype.decode = function (t3, e3, r3) {
               var n3 = this.get(t3, e3, r3);
               if (null != n3) return this.hit++, n3;
               this.miss++;
               var i2 = c(t3, e3, r3), o3 = Uint8Array.prototype.slice.call(t3, e3, e3 + r3);
               return this.store(o3, i2), i2;
             }, t2;
-          })(), k = function(t2, e3, r3, n3) {
-            return new (r3 || (r3 = Promise))((function(i2, o3) {
+          })(), k = function (t2, e3, r3, n3) {
+            return new (r3 || (r3 = Promise))((function (i2, o3) {
               function s2(t3) {
                 try {
                   h2(n3.next(t3));
@@ -15126,25 +15134,27 @@ var PeraWalletConnect = (() => {
               }
               function h2(t3) {
                 var e4;
-                t3.done ? i2(t3.value) : (e4 = t3.value, e4 instanceof r3 ? e4 : new r3((function(t4) {
+                t3.done ? i2(t3.value) : (e4 = t3.value, e4 instanceof r3 ? e4 : new r3((function (t4) {
                   t4(e4);
                 }))).then(s2, a2);
               }
               h2((n3 = n3.apply(t2, e3 || [])).next());
             }));
-          }, z = function(t2, e3) {
-            var r3, n3, i2, o3, s2 = { label: 0, sent: function() {
-              if (1 & i2[0]) throw i2[1];
-              return i2[1];
-            }, trys: [], ops: [] };
-            return o3 = { next: a2(0), throw: a2(1), return: a2(2) }, "function" == typeof Symbol && (o3[Symbol.iterator] = function() {
+          }, z = function (t2, e3) {
+            var r3, n3, i2, o3, s2 = {
+              label: 0, sent: function () {
+                if (1 & i2[0]) throw i2[1];
+                return i2[1];
+              }, trys: [], ops: []
+            };
+            return o3 = { next: a2(0), throw: a2(1), return: a2(2) }, "function" == typeof Symbol && (o3[Symbol.iterator] = function () {
               return this;
             }), o3;
             function a2(o4) {
-              return function(a3) {
-                return (function(o5) {
+              return function (a3) {
+                return (function (o5) {
                   if (r3) throw new TypeError("Generator is already executing.");
-                  for (; s2; ) try {
+                  for (; s2;) try {
                     if (r3 = 1, n3 && (i2 = 2 & o5[0] ? n3.return : o5[0] ? n3.throw || ((i2 = n3.return) && i2.call(n3), 0) : n3.next) && !(i2 = i2.call(n3, o5[1])).done) return i2;
                     switch (n3 = 0, i2 && (o5 = [2 & o5[0], i2.value]), o5[0]) {
                       case 0:
@@ -15190,34 +15200,34 @@ var PeraWalletConnect = (() => {
                 })([o4, a3]);
               };
             }
-          }, D = function(t2) {
+          }, D = function (t2) {
             if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
             var e3, r3 = t2[Symbol.asyncIterator];
-            return r3 ? r3.call(t2) : (t2 = "function" == typeof __values ? __values(t2) : t2[Symbol.iterator](), e3 = {}, n3("next"), n3("throw"), n3("return"), e3[Symbol.asyncIterator] = function() {
+            return r3 ? r3.call(t2) : (t2 = "function" == typeof __values ? __values(t2) : t2[Symbol.iterator](), e3 = {}, n3("next"), n3("throw"), n3("return"), e3[Symbol.asyncIterator] = function () {
               return this;
             }, e3);
             function n3(r4) {
-              e3[r4] = t2[r4] && function(e4) {
-                return new Promise((function(n4, i2) {
-                  (function(t3, e5, r5, n5) {
-                    Promise.resolve(n5).then((function(e6) {
+              e3[r4] = t2[r4] && function (e4) {
+                return new Promise((function (n4, i2) {
+                  (function (t3, e5, r5, n5) {
+                    Promise.resolve(n5).then((function (e6) {
                       t3({ value: e6, done: r5 });
                     }), e5);
                   })(n4, i2, (e4 = t2[r4](e4)).done, e4.value);
                 }));
               };
             }
-          }, N = function(t2) {
+          }, N = function (t2) {
             return this instanceof N ? (this.v = t2, this) : new N(t2);
-          }, C = function(t2, e3, r3) {
+          }, C = function (t2, e3, r3) {
             if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
             var n3, i2 = r3.apply(t2, e3 || []), o3 = [];
-            return n3 = {}, s2("next"), s2("throw"), s2("return"), n3[Symbol.asyncIterator] = function() {
+            return n3 = {}, s2("next"), s2("throw"), s2("return"), n3[Symbol.asyncIterator] = function () {
               return this;
             }, n3;
             function s2(t3) {
-              i2[t3] && (n3[t3] = function(e4) {
-                return new Promise((function(r4, n4) {
+              i2[t3] && (n3[t3] = function (e4) {
+                return new Promise((function (r4, n4) {
                   o3.push([t3, e4, r4, n4]) > 1 || a2(t3, e4);
                 }));
               });
@@ -15239,46 +15249,46 @@ var PeraWalletConnect = (() => {
             function c2(t3, e4) {
               t3(e4), o3.shift(), o3.length && a2(o3[0][0], o3[0][1]);
             }
-          }, P = new DataView(new ArrayBuffer(0)), F = new Uint8Array(P.buffer), j = (function() {
+          }, P = new DataView(new ArrayBuffer(0)), F = new Uint8Array(P.buffer), j = (function () {
             try {
               P.getInt8(0);
             } catch (t2) {
               return t2.constructor;
             }
             throw new Error("never reached");
-          })(), _ = new j("Insufficient data"), W = new M(), O = (function() {
+          })(), _ = new j("Insufficient data"), W = new M(), O = (function () {
             function t2(t3, e3, r3, n3, i2, o3, s2, a2) {
               void 0 === t3 && (t3 = S.defaultCodec), void 0 === e3 && (e3 = void 0), void 0 === r3 && (r3 = 4294967295), void 0 === n3 && (n3 = 4294967295), void 0 === i2 && (i2 = 4294967295), void 0 === o3 && (o3 = 4294967295), void 0 === s2 && (s2 = 4294967295), void 0 === a2 && (a2 = W), this.extensionCodec = t3, this.context = e3, this.maxStrLength = r3, this.maxBinLength = n3, this.maxArrayLength = i2, this.maxMapLength = o3, this.maxExtLength = s2, this.keyDecoder = a2, this.totalPos = 0, this.pos = 0, this.view = P, this.bytes = F, this.headByte = -1, this.stack = [];
             }
-            return t2.prototype.reinitializeState = function() {
+            return t2.prototype.reinitializeState = function () {
               this.totalPos = 0, this.headByte = -1;
-            }, t2.prototype.setBuffer = function(t3) {
-              this.bytes = B(t3), this.view = (function(t4) {
+            }, t2.prototype.setBuffer = function (t3) {
+              this.bytes = B(t3), this.view = (function (t4) {
                 if (t4 instanceof ArrayBuffer) return new DataView(t4);
                 var e3 = B(t4);
                 return new DataView(e3.buffer, e3.byteOffset, e3.byteLength);
               })(this.bytes), this.pos = 0;
-            }, t2.prototype.appendBuffer = function(t3) {
+            }, t2.prototype.appendBuffer = function (t3) {
               if (-1 !== this.headByte || this.hasRemaining()) {
                 var e3 = this.bytes.subarray(this.pos), r3 = B(t3), n3 = new Uint8Array(e3.length + r3.length);
                 n3.set(e3), n3.set(r3, e3.length), this.setBuffer(n3);
               } else this.setBuffer(t3);
-            }, t2.prototype.hasRemaining = function(t3) {
+            }, t2.prototype.hasRemaining = function (t3) {
               return void 0 === t3 && (t3 = 1), this.view.byteLength - this.pos >= t3;
-            }, t2.prototype.createNoExtraBytesError = function(t3) {
+            }, t2.prototype.createNoExtraBytesError = function (t3) {
               var e3 = this.view, r3 = this.pos;
               return new RangeError("Extra " + (e3.byteLength - r3) + " of " + e3.byteLength + " byte(s) found at buffer[" + t3 + "]");
-            }, t2.prototype.decode = function(t3) {
+            }, t2.prototype.decode = function (t3) {
               return this.reinitializeState(), this.setBuffer(t3), this.doDecodeSingleSync();
-            }, t2.prototype.doDecodeSingleSync = function() {
+            }, t2.prototype.doDecodeSingleSync = function () {
               var t3 = this.doDecodeSync();
               if (this.hasRemaining()) throw this.createNoExtraBytesError(this.pos);
               return t3;
-            }, t2.prototype.decodeAsync = function(t3) {
+            }, t2.prototype.decodeAsync = function (t3) {
               var e3, r3, n3, i2;
-              return k(this, void 0, void 0, (function() {
+              return k(this, void 0, void 0, (function () {
                 var o3, s2, a2, h2, u2, c2, f2, l2;
-                return z(this, (function(p2) {
+                return z(this, (function (p2) {
                   switch (p2.label) {
                     case 0:
                       o3 = false, p2.label = 1;
@@ -15322,14 +15332,14 @@ var PeraWalletConnect = (() => {
                   }
                 }));
               }));
-            }, t2.prototype.decodeArrayStream = function(t3) {
+            }, t2.prototype.decodeArrayStream = function (t3) {
               return this.decodeMultiAsync(t3, true);
-            }, t2.prototype.decodeStream = function(t3) {
+            }, t2.prototype.decodeStream = function (t3) {
               return this.decodeMultiAsync(t3, false);
-            }, t2.prototype.decodeMultiAsync = function(t3, e3) {
-              return C(this, arguments, (function() {
+            }, t2.prototype.decodeMultiAsync = function (t3, e3) {
+              return C(this, arguments, (function () {
                 var r3, n3, i2, o3, s2, a2, h2, u2, c2;
-                return z(this, (function(f2) {
+                return z(this, (function (f2) {
                   switch (f2.label) {
                     case 0:
                       r3 = e3, n3 = -1, f2.label = 1;
@@ -15378,8 +15388,8 @@ var PeraWalletConnect = (() => {
                   }
                 }));
               }));
-            }, t2.prototype.doDecodeSync = function() {
-              t: for (; ; ) {
+            }, t2.prototype.doDecodeSync = function () {
+              t: for (; ;) {
                 var t3 = this.readHeadByte(), e3 = void 0;
                 if (t3 >= 224) e3 = t3 - 256;
                 else if (t3 < 192) if (t3 < 128) e3 = t3;
@@ -15471,7 +15481,7 @@ var PeraWalletConnect = (() => {
                   e3 = this.decodeExtension(n3, 4);
                 }
                 this.complete();
-                for (var i2 = this.stack; i2.length > 0; ) {
+                for (var i2 = this.stack; i2.length > 0;) {
                   var o3 = i2[i2.length - 1];
                   if (0 === o3.type) {
                     if (o3.array[o3.position] = e3, o3.position++, o3.position !== o3.size) continue t;
@@ -15492,11 +15502,11 @@ var PeraWalletConnect = (() => {
                 return e3;
               }
               var s2;
-            }, t2.prototype.readHeadByte = function() {
+            }, t2.prototype.readHeadByte = function () {
               return -1 === this.headByte && (this.headByte = this.readU8()), this.headByte;
-            }, t2.prototype.complete = function() {
+            }, t2.prototype.complete = function () {
               this.headByte = -1;
-            }, t2.prototype.readArraySize = function() {
+            }, t2.prototype.readArraySize = function () {
               var t3 = this.readHeadByte();
               switch (t3) {
                 case 220:
@@ -15507,66 +15517,66 @@ var PeraWalletConnect = (() => {
                   if (t3 < 160) return t3 - 144;
                   throw new Error("Unrecognized array type byte: " + L(t3));
               }
-            }, t2.prototype.pushMapState = function(t3) {
+            }, t2.prototype.pushMapState = function (t3) {
               if (t3 > this.maxMapLength) throw new Error("Max length exceeded: map length (" + t3 + ") > maxMapLengthLength (" + this.maxMapLength + ")");
               this.stack.push({ type: 1, size: t3, key: null, readCount: 0, map: {} });
-            }, t2.prototype.pushArrayState = function(t3) {
+            }, t2.prototype.pushArrayState = function (t3) {
               if (t3 > this.maxArrayLength) throw new Error("Max length exceeded: array length (" + t3 + ") > maxArrayLength (" + this.maxArrayLength + ")");
               this.stack.push({ type: 0, size: t3, array: new Array(t3), position: 0 });
-            }, t2.prototype.decodeUtf8String = function(t3, e3) {
+            }, t2.prototype.decodeUtf8String = function (t3, e3) {
               var r3;
               if (t3 > this.maxStrLength) throw new Error("Max length exceeded: UTF-8 byte length (" + t3 + ") > maxStrLength (" + this.maxStrLength + ")");
               if (this.bytes.byteLength < this.pos + e3 + t3) throw _;
               var n3, i2 = this.pos + e3;
-              return n3 = this.stateIsMapKey() && (null === (r3 = this.keyDecoder) || void 0 === r3 ? void 0 : r3.canBeCached(t3)) ? this.keyDecoder.decode(this.bytes, i2, t3) : o2 && t3 > l ? (function(t4, e4, r4) {
+              return n3 = this.stateIsMapKey() && (null === (r3 = this.keyDecoder) || void 0 === r3 ? void 0 : r3.canBeCached(t3)) ? this.keyDecoder.decode(this.bytes, i2, t3) : o2 && t3 > l ? (function (t4, e4, r4) {
                 var n4 = t4.subarray(e4, e4 + r4);
                 return f.decode(n4);
               })(this.bytes, i2, t3) : c(this.bytes, i2, t3), this.pos += e3 + t3, n3;
-            }, t2.prototype.stateIsMapKey = function() {
+            }, t2.prototype.stateIsMapKey = function () {
               return this.stack.length > 0 && 1 === this.stack[this.stack.length - 1].type;
-            }, t2.prototype.decodeBinary = function(t3, e3) {
+            }, t2.prototype.decodeBinary = function (t3, e3) {
               if (t3 > this.maxBinLength) throw new Error("Max length exceeded: bin length (" + t3 + ") > maxBinLength (" + this.maxBinLength + ")");
               if (!this.hasRemaining(t3 + e3)) throw _;
               var r3 = this.pos + e3, n3 = this.bytes.subarray(r3, r3 + t3);
               return this.pos += e3 + t3, n3;
-            }, t2.prototype.decodeExtension = function(t3, e3) {
+            }, t2.prototype.decodeExtension = function (t3, e3) {
               if (t3 > this.maxExtLength) throw new Error("Max length exceeded: ext length (" + t3 + ") > maxExtLength (" + this.maxExtLength + ")");
               var r3 = this.view.getInt8(this.pos + e3), n3 = this.decodeBinary(t3, e3 + 1);
               return this.extensionCodec.decode(n3, r3, this.context);
-            }, t2.prototype.lookU8 = function() {
+            }, t2.prototype.lookU8 = function () {
               return this.view.getUint8(this.pos);
-            }, t2.prototype.lookU16 = function() {
+            }, t2.prototype.lookU16 = function () {
               return this.view.getUint16(this.pos);
-            }, t2.prototype.lookU32 = function() {
+            }, t2.prototype.lookU32 = function () {
               return this.view.getUint32(this.pos);
-            }, t2.prototype.readU8 = function() {
+            }, t2.prototype.readU8 = function () {
               var t3 = this.view.getUint8(this.pos);
               return this.pos++, t3;
-            }, t2.prototype.readI8 = function() {
+            }, t2.prototype.readI8 = function () {
               var t3 = this.view.getInt8(this.pos);
               return this.pos++, t3;
-            }, t2.prototype.readU16 = function() {
+            }, t2.prototype.readU16 = function () {
               var t3 = this.view.getUint16(this.pos);
               return this.pos += 2, t3;
-            }, t2.prototype.readI16 = function() {
+            }, t2.prototype.readI16 = function () {
               var t3 = this.view.getInt16(this.pos);
               return this.pos += 2, t3;
-            }, t2.prototype.readU32 = function() {
+            }, t2.prototype.readU32 = function () {
               var t3 = this.view.getUint32(this.pos);
               return this.pos += 4, t3;
-            }, t2.prototype.readI32 = function() {
+            }, t2.prototype.readI32 = function () {
               var t3 = this.view.getInt32(this.pos);
               return this.pos += 4, t3;
-            }, t2.prototype.readU64 = function() {
+            }, t2.prototype.readU64 = function () {
               var t3, e3, r3, n3, i2 = (t3 = this.view, e3 = this.pos, r3 = t3.getUint32(e3), n3 = t3.getUint32(e3 + 4), r3 > Math.floor(Number.MAX_SAFE_INTEGER / 4294967296) ? BigInt(r3) * BigInt(4294967296) + BigInt(n3) : 4294967296 * r3 + n3);
               return this.pos += 8, i2;
-            }, t2.prototype.readI64 = function() {
+            }, t2.prototype.readI64 = function () {
               var t3 = y(this.view, this.pos);
               return this.pos += 8, t3;
-            }, t2.prototype.readF32 = function() {
+            }, t2.prototype.readF32 = function () {
               var t3 = this.view.getFloat32(this.pos);
               return this.pos += 4, t3;
-            }, t2.prototype.readF64 = function() {
+            }, t2.prototype.readF64 = function () {
               var t3 = this.view.getFloat64(this.pos);
               return this.pos += 8, t3;
             }, t2;
@@ -15574,19 +15584,21 @@ var PeraWalletConnect = (() => {
           function V(t2, e3) {
             return void 0 === e3 && (e3 = R), new O(e3.extensionCodec, e3.context, e3.maxStrLength, e3.maxBinLength, e3.maxArrayLength, e3.maxMapLength, e3.maxExtLength).decode(t2);
           }
-          var K = function(t2, e3) {
-            var r3, n3, i2, o3, s2 = { label: 0, sent: function() {
-              if (1 & i2[0]) throw i2[1];
-              return i2[1];
-            }, trys: [], ops: [] };
-            return o3 = { next: a2(0), throw: a2(1), return: a2(2) }, "function" == typeof Symbol && (o3[Symbol.iterator] = function() {
+          var K = function (t2, e3) {
+            var r3, n3, i2, o3, s2 = {
+              label: 0, sent: function () {
+                if (1 & i2[0]) throw i2[1];
+                return i2[1];
+              }, trys: [], ops: []
+            };
+            return o3 = { next: a2(0), throw: a2(1), return: a2(2) }, "function" == typeof Symbol && (o3[Symbol.iterator] = function () {
               return this;
             }), o3;
             function a2(o4) {
-              return function(a3) {
-                return (function(o5) {
+              return function (a3) {
+                return (function (o5) {
                   if (r3) throw new TypeError("Generator is already executing.");
-                  for (; s2; ) try {
+                  for (; s2;) try {
                     if (r3 = 1, n3 && (i2 = 2 & o5[0] ? n3.return : o5[0] ? n3.throw || ((i2 = n3.return) && i2.call(n3), 0) : n3.next) && !(i2 = i2.call(n3, o5[1])).done) return i2;
                     switch (n3 = 0, i2 && (o5 = [2 & o5[0], i2.value]), o5[0]) {
                       case 0:
@@ -15632,17 +15644,17 @@ var PeraWalletConnect = (() => {
                 })([o4, a3]);
               };
             }
-          }, G = function(t2) {
+          }, G = function (t2) {
             return this instanceof G ? (this.v = t2, this) : new G(t2);
-          }, H = function(t2, e3, r3) {
+          }, H = function (t2, e3, r3) {
             if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
             var n3, i2 = r3.apply(t2, e3 || []), o3 = [];
-            return n3 = {}, s2("next"), s2("throw"), s2("return"), n3[Symbol.asyncIterator] = function() {
+            return n3 = {}, s2("next"), s2("throw"), s2("return"), n3[Symbol.asyncIterator] = function () {
               return this;
             }, n3;
             function s2(t3) {
-              i2[t3] && (n3[t3] = function(e4) {
-                return new Promise((function(r4, n4) {
+              i2[t3] && (n3[t3] = function (e4) {
+                return new Promise((function (r4, n4) {
                   o3.push([t3, e4, r4, n4]) > 1 || a2(t3, e4);
                 }));
               });
@@ -15669,10 +15681,10 @@ var PeraWalletConnect = (() => {
             if (null == t2) throw new Error("Assertion Failure: value must not be null nor undefined");
           }
           function q(t2) {
-            return null != t2[Symbol.asyncIterator] ? t2 : (function(t3) {
-              return H(this, arguments, (function() {
+            return null != t2[Symbol.asyncIterator] ? t2 : (function (t3) {
+              return H(this, arguments, (function () {
                 var e3, r3, n3, i2;
-                return K(this, (function(o3) {
+                return K(this, (function (o3) {
                   switch (o3.label) {
                     case 0:
                       e3 = t3.getReader(), o3.label = 1;
@@ -15701,8 +15713,8 @@ var PeraWalletConnect = (() => {
               }));
             })(t2);
           }
-          var J = function(t2, e3, r3, n3) {
-            return new (r3 || (r3 = Promise))((function(i2, o3) {
+          var J = function (t2, e3, r3, n3) {
+            return new (r3 || (r3 = Promise))((function (i2, o3) {
               function s2(t3) {
                 try {
                   h2(n3.next(t3));
@@ -15719,25 +15731,27 @@ var PeraWalletConnect = (() => {
               }
               function h2(t3) {
                 var e4;
-                t3.done ? i2(t3.value) : (e4 = t3.value, e4 instanceof r3 ? e4 : new r3((function(t4) {
+                t3.done ? i2(t3.value) : (e4 = t3.value, e4 instanceof r3 ? e4 : new r3((function (t4) {
                   t4(e4);
                 }))).then(s2, a2);
               }
               h2((n3 = n3.apply(t2, e3 || [])).next());
             }));
-          }, Q = function(t2, e3) {
-            var r3, n3, i2, o3, s2 = { label: 0, sent: function() {
-              if (1 & i2[0]) throw i2[1];
-              return i2[1];
-            }, trys: [], ops: [] };
-            return o3 = { next: a2(0), throw: a2(1), return: a2(2) }, "function" == typeof Symbol && (o3[Symbol.iterator] = function() {
+          }, Q = function (t2, e3) {
+            var r3, n3, i2, o3, s2 = {
+              label: 0, sent: function () {
+                if (1 & i2[0]) throw i2[1];
+                return i2[1];
+              }, trys: [], ops: []
+            };
+            return o3 = { next: a2(0), throw: a2(1), return: a2(2) }, "function" == typeof Symbol && (o3[Symbol.iterator] = function () {
               return this;
             }), o3;
             function a2(o4) {
-              return function(a3) {
-                return (function(o5) {
+              return function (a3) {
+                return (function (o5) {
                   if (r3) throw new TypeError("Generator is already executing.");
-                  for (; s2; ) try {
+                  for (; s2;) try {
                     if (r3 = 1, n3 && (i2 = 2 & o5[0] ? n3.return : o5[0] ? n3.throw || ((i2 = n3.return) && i2.call(n3), 0) : n3.next) && !(i2 = i2.call(n3, o5[1])).done) return i2;
                     switch (n3 = 0, i2 && (o5 = [2 & o5[0], i2.value]), o5[0]) {
                       case 0:
@@ -15785,9 +15799,9 @@ var PeraWalletConnect = (() => {
             }
           };
           function Y(t2, e3) {
-            return void 0 === e3 && (e3 = R), J(this, void 0, void 0, (function() {
+            return void 0 === e3 && (e3 = R), J(this, void 0, void 0, (function () {
               var r3;
-              return Q(this, (function(n3) {
+              return Q(this, (function (n3) {
                 return r3 = q(t2), [2, new O(e3.extensionCodec, e3.context, e3.maxStrLength, e3.maxBinLength, e3.maxArrayLength, e3.maxMapLength, e3.maxExtLength).decodeAsync(r3)];
               }));
             }));
@@ -15811,25 +15825,27 @@ var PeraWalletConnect = (() => {
   var require_encoding = __commonJS({
     "node_modules/algosdk/dist/cjs/encoding/encoding.js"(exports) {
       "use strict";
-      var __createBinding2 = exports && exports.__createBinding || (Object.create ? (function(o2, m, k, k2) {
+      var __createBinding2 = exports && exports.__createBinding || (Object.create ? (function (o2, m, k, k2) {
         if (k2 === void 0) k2 = k;
         var desc = Object.getOwnPropertyDescriptor(m, k);
         if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-          desc = { enumerable: true, get: function() {
-            return m[k];
-          } };
+          desc = {
+            enumerable: true, get: function () {
+              return m[k];
+            }
+          };
         }
         Object.defineProperty(o2, k2, desc);
-      }) : (function(o2, m, k, k2) {
+      }) : (function (o2, m, k, k2) {
         if (k2 === void 0) k2 = k;
         o2[k2] = m[k];
       }));
-      var __setModuleDefault = exports && exports.__setModuleDefault || (Object.create ? (function(o2, v) {
+      var __setModuleDefault = exports && exports.__setModuleDefault || (Object.create ? (function (o2, v) {
         Object.defineProperty(o2, "default", { enumerable: true, value: v });
-      }) : function(o2, v) {
+      }) : function (o2, v) {
         o2["default"] = v;
       });
-      var __importStar2 = exports && exports.__importStar || function(mod) {
+      var __importStar2 = exports && exports.__importStar || function (mod) {
         if (mod && mod.__esModule) return mod;
         var result = {};
         if (mod != null) {
@@ -15907,7 +15923,7 @@ var PeraWalletConnect = (() => {
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.OnApplicationComplete = exports.isTransactionType = exports.TransactionType = void 0;
       var TransactionType;
-      (function(TransactionType2) {
+      (function (TransactionType2) {
         TransactionType2["pay"] = "pay";
         TransactionType2["keyreg"] = "keyreg";
         TransactionType2["acfg"] = "acfg";
@@ -15922,7 +15938,7 @@ var PeraWalletConnect = (() => {
       }
       exports.isTransactionType = isTransactionType;
       var OnApplicationComplete;
-      (function(OnApplicationComplete2) {
+      (function (OnApplicationComplete2) {
         OnApplicationComplete2[OnApplicationComplete2["NoOpOC"] = 0] = "NoOpOC";
         OnApplicationComplete2[OnApplicationComplete2["OptInOC"] = 1] = "OptInOC";
         OnApplicationComplete2[OnApplicationComplete2["CloseOutOC"] = 2] = "CloseOutOC";
@@ -15937,25 +15953,27 @@ var PeraWalletConnect = (() => {
   var require_transaction = __commonJS({
     "node_modules/algosdk/dist/cjs/transaction.js"(exports) {
       "use strict";
-      var __createBinding2 = exports && exports.__createBinding || (Object.create ? (function(o2, m, k, k2) {
+      var __createBinding2 = exports && exports.__createBinding || (Object.create ? (function (o2, m, k, k2) {
         if (k2 === void 0) k2 = k;
         var desc = Object.getOwnPropertyDescriptor(m, k);
         if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-          desc = { enumerable: true, get: function() {
-            return m[k];
-          } };
+          desc = {
+            enumerable: true, get: function () {
+              return m[k];
+            }
+          };
         }
         Object.defineProperty(o2, k2, desc);
-      }) : (function(o2, m, k, k2) {
+      }) : (function (o2, m, k, k2) {
         if (k2 === void 0) k2 = k;
         o2[k2] = m[k];
       }));
-      var __setModuleDefault = exports && exports.__setModuleDefault || (Object.create ? (function(o2, v) {
+      var __setModuleDefault = exports && exports.__setModuleDefault || (Object.create ? (function (o2, v) {
         Object.defineProperty(o2, "default", { enumerable: true, value: v });
-      }) : function(o2, v) {
+      }) : function (o2, v) {
         o2["default"] = v;
       });
-      var __importStar2 = exports && exports.__importStar || function(mod) {
+      var __importStar2 = exports && exports.__importStar || function (mod) {
         if (mod && mod.__esModule) return mod;
         var result = {};
         if (mod != null) {
@@ -15964,7 +15982,7 @@ var PeraWalletConnect = (() => {
         __setModuleDefault(result, mod);
         return result;
       };
-      var __importDefault2 = exports && exports.__importDefault || function(mod) {
+      var __importDefault2 = exports && exports.__importDefault || function (mod) {
         return mod && mod.__esModule ? mod : { "default": mod };
       };
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -17013,25 +17031,27 @@ var PeraWalletConnect = (() => {
   var require_bid = __commonJS({
     "node_modules/algosdk/dist/cjs/bid.js"(exports) {
       "use strict";
-      var __createBinding2 = exports && exports.__createBinding || (Object.create ? (function(o2, m, k, k2) {
+      var __createBinding2 = exports && exports.__createBinding || (Object.create ? (function (o2, m, k, k2) {
         if (k2 === void 0) k2 = k;
         var desc = Object.getOwnPropertyDescriptor(m, k);
         if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-          desc = { enumerable: true, get: function() {
-            return m[k];
-          } };
+          desc = {
+            enumerable: true, get: function () {
+              return m[k];
+            }
+          };
         }
         Object.defineProperty(o2, k2, desc);
-      }) : (function(o2, m, k, k2) {
+      }) : (function (o2, m, k, k2) {
         if (k2 === void 0) k2 = k;
         o2[k2] = m[k];
       }));
-      var __setModuleDefault = exports && exports.__setModuleDefault || (Object.create ? (function(o2, v) {
+      var __setModuleDefault = exports && exports.__setModuleDefault || (Object.create ? (function (o2, v) {
         Object.defineProperty(o2, "default", { enumerable: true, value: v });
-      }) : function(o2, v) {
+      }) : function (o2, v) {
         o2["default"] = v;
       });
-      var __importStar2 = exports && exports.__importStar || function(mod) {
+      var __importStar2 = exports && exports.__importStar || function (mod) {
         if (mod && mod.__esModule) return mod;
         var result = {};
         if (mod != null) {
@@ -17259,25 +17279,27 @@ var PeraWalletConnect = (() => {
   var require_client = __commonJS({
     "node_modules/algosdk/dist/cjs/client/client.js"(exports) {
       "use strict";
-      var __createBinding2 = exports && exports.__createBinding || (Object.create ? (function(o2, m, k, k2) {
+      var __createBinding2 = exports && exports.__createBinding || (Object.create ? (function (o2, m, k, k2) {
         if (k2 === void 0) k2 = k;
         var desc = Object.getOwnPropertyDescriptor(m, k);
         if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-          desc = { enumerable: true, get: function() {
-            return m[k];
-          } };
+          desc = {
+            enumerable: true, get: function () {
+              return m[k];
+            }
+          };
         }
         Object.defineProperty(o2, k2, desc);
-      }) : (function(o2, m, k, k2) {
+      }) : (function (o2, m, k, k2) {
         if (k2 === void 0) k2 = k;
         o2[k2] = m[k];
       }));
-      var __setModuleDefault = exports && exports.__setModuleDefault || (Object.create ? (function(o2, v) {
+      var __setModuleDefault = exports && exports.__setModuleDefault || (Object.create ? (function (o2, v) {
         Object.defineProperty(o2, "default", { enumerable: true, value: v });
-      }) : function(o2, v) {
+      }) : function (o2, v) {
         o2["default"] = v;
       });
-      var __importStar2 = exports && exports.__importStar || function(mod) {
+      var __importStar2 = exports && exports.__importStar || function (mod) {
         if (mod && mod.__esModule) return mod;
         var result = {};
         if (mod != null) {
@@ -17461,7 +17483,7 @@ var PeraWalletConnect = (() => {
   var require_serviceClient = __commonJS({
     "node_modules/algosdk/dist/cjs/client/v2/serviceClient.js"(exports) {
       "use strict";
-      var __importDefault2 = exports && exports.__importDefault || function(mod) {
+      var __importDefault2 = exports && exports.__importDefault || function (mod) {
         return mod && mod.__esModule ? mod : { "default": mod };
       };
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -17574,7 +17596,7 @@ var PeraWalletConnect = (() => {
   var require_types = __commonJS({
     "node_modules/algosdk/dist/cjs/client/v2/algod/models/types.js"(exports) {
       "use strict";
-      var __importDefault2 = exports && exports.__importDefault || function(mod) {
+      var __importDefault2 = exports && exports.__importDefault || function (mod) {
         return mod && mod.__esModule ? mod : { "default": mod };
       };
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -20396,7 +20418,7 @@ var PeraWalletConnect = (() => {
   var require_jsonrequest = __commonJS({
     "node_modules/algosdk/dist/cjs/client/v2/jsonrequest.js"(exports) {
       "use strict";
-      var __importDefault2 = exports && exports.__importDefault || function(mod) {
+      var __importDefault2 = exports && exports.__importDefault || function (mod) {
         return mod && mod.__esModule ? mod : { "default": mod };
       };
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -20480,7 +20502,7 @@ var PeraWalletConnect = (() => {
   var require_accountInformation = __commonJS({
     "node_modules/algosdk/dist/cjs/client/v2/algod/accountInformation.js"(exports) {
       "use strict";
-      var __importDefault2 = exports && exports.__importDefault || function(mod) {
+      var __importDefault2 = exports && exports.__importDefault || function (mod) {
         return mod && mod.__esModule ? mod : { "default": mod };
       };
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -20521,7 +20543,7 @@ var PeraWalletConnect = (() => {
   var require_accountAssetInformation = __commonJS({
     "node_modules/algosdk/dist/cjs/client/v2/algod/accountAssetInformation.js"(exports) {
       "use strict";
-      var __importDefault2 = exports && exports.__importDefault || function(mod) {
+      var __importDefault2 = exports && exports.__importDefault || function (mod) {
         return mod && mod.__esModule ? mod : { "default": mod };
       };
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -20546,7 +20568,7 @@ var PeraWalletConnect = (() => {
   var require_accountApplicationInformation = __commonJS({
     "node_modules/algosdk/dist/cjs/client/v2/algod/accountApplicationInformation.js"(exports) {
       "use strict";
-      var __importDefault2 = exports && exports.__importDefault || function(mod) {
+      var __importDefault2 = exports && exports.__importDefault || function (mod) {
         return mod && mod.__esModule ? mod : { "default": mod };
       };
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -20571,25 +20593,27 @@ var PeraWalletConnect = (() => {
   var require_block = __commonJS({
     "node_modules/algosdk/dist/cjs/client/v2/algod/block.js"(exports) {
       "use strict";
-      var __createBinding2 = exports && exports.__createBinding || (Object.create ? (function(o2, m, k, k2) {
+      var __createBinding2 = exports && exports.__createBinding || (Object.create ? (function (o2, m, k, k2) {
         if (k2 === void 0) k2 = k;
         var desc = Object.getOwnPropertyDescriptor(m, k);
         if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-          desc = { enumerable: true, get: function() {
-            return m[k];
-          } };
+          desc = {
+            enumerable: true, get: function () {
+              return m[k];
+            }
+          };
         }
         Object.defineProperty(o2, k2, desc);
-      }) : (function(o2, m, k, k2) {
+      }) : (function (o2, m, k, k2) {
         if (k2 === void 0) k2 = k;
         o2[k2] = m[k];
       }));
-      var __setModuleDefault = exports && exports.__setModuleDefault || (Object.create ? (function(o2, v) {
+      var __setModuleDefault = exports && exports.__setModuleDefault || (Object.create ? (function (o2, v) {
         Object.defineProperty(o2, "default", { enumerable: true, value: v });
-      }) : function(o2, v) {
+      }) : function (o2, v) {
         o2["default"] = v;
       });
-      var __importStar2 = exports && exports.__importStar || function(mod) {
+      var __importStar2 = exports && exports.__importStar || function (mod) {
         if (mod && mod.__esModule) return mod;
         var result = {};
         if (mod != null) {
@@ -20598,7 +20622,7 @@ var PeraWalletConnect = (() => {
         __setModuleDefault(result, mod);
         return result;
       };
-      var __importDefault2 = exports && exports.__importDefault || function(mod) {
+      var __importDefault2 = exports && exports.__importDefault || function (mod) {
         return mod && mod.__esModule ? mod : { "default": mod };
       };
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -20652,7 +20676,7 @@ var PeraWalletConnect = (() => {
   var require_compile = __commonJS({
     "node_modules/algosdk/dist/cjs/client/v2/algod/compile.js"(exports) {
       "use strict";
-      var __importDefault2 = exports && exports.__importDefault || function(mod) {
+      var __importDefault2 = exports && exports.__importDefault || function (mod) {
         return mod && mod.__esModule ? mod : { "default": mod };
       };
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -20700,25 +20724,27 @@ var PeraWalletConnect = (() => {
   var require_dryrun = __commonJS({
     "node_modules/algosdk/dist/cjs/client/v2/algod/dryrun.js"(exports) {
       "use strict";
-      var __createBinding2 = exports && exports.__createBinding || (Object.create ? (function(o2, m, k, k2) {
+      var __createBinding2 = exports && exports.__createBinding || (Object.create ? (function (o2, m, k, k2) {
         if (k2 === void 0) k2 = k;
         var desc = Object.getOwnPropertyDescriptor(m, k);
         if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-          desc = { enumerable: true, get: function() {
-            return m[k];
-          } };
+          desc = {
+            enumerable: true, get: function () {
+              return m[k];
+            }
+          };
         }
         Object.defineProperty(o2, k2, desc);
-      }) : (function(o2, m, k, k2) {
+      }) : (function (o2, m, k, k2) {
         if (k2 === void 0) k2 = k;
         o2[k2] = m[k];
       }));
-      var __setModuleDefault = exports && exports.__setModuleDefault || (Object.create ? (function(o2, v) {
+      var __setModuleDefault = exports && exports.__setModuleDefault || (Object.create ? (function (o2, v) {
         Object.defineProperty(o2, "default", { enumerable: true, value: v });
-      }) : function(o2, v) {
+      }) : function (o2, v) {
         o2["default"] = v;
       });
-      var __importStar2 = exports && exports.__importStar || function(mod) {
+      var __importStar2 = exports && exports.__importStar || function (mod) {
         if (mod && mod.__esModule) return mod;
         var result = {};
         if (mod != null) {
@@ -20727,7 +20753,7 @@ var PeraWalletConnect = (() => {
         __setModuleDefault(result, mod);
         return result;
       };
-      var __importDefault2 = exports && exports.__importDefault || function(mod) {
+      var __importDefault2 = exports && exports.__importDefault || function (mod) {
         return mod && mod.__esModule ? mod : { "default": mod };
       };
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -20762,7 +20788,7 @@ var PeraWalletConnect = (() => {
   var require_genesis = __commonJS({
     "node_modules/algosdk/dist/cjs/client/v2/algod/genesis.js"(exports) {
       "use strict";
-      var __importDefault2 = exports && exports.__importDefault || function(mod) {
+      var __importDefault2 = exports && exports.__importDefault || function (mod) {
         return mod && mod.__esModule ? mod : { "default": mod };
       };
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -20781,7 +20807,7 @@ var PeraWalletConnect = (() => {
   var require_getAssetByID = __commonJS({
     "node_modules/algosdk/dist/cjs/client/v2/algod/getAssetByID.js"(exports) {
       "use strict";
-      var __importDefault2 = exports && exports.__importDefault || function(mod) {
+      var __importDefault2 = exports && exports.__importDefault || function (mod) {
         return mod && mod.__esModule ? mod : { "default": mod };
       };
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -20804,7 +20830,7 @@ var PeraWalletConnect = (() => {
   var require_getApplicationByID = __commonJS({
     "node_modules/algosdk/dist/cjs/client/v2/algod/getApplicationByID.js"(exports) {
       "use strict";
-      var __importDefault2 = exports && exports.__importDefault || function(mod) {
+      var __importDefault2 = exports && exports.__importDefault || function (mod) {
         return mod && mod.__esModule ? mod : { "default": mod };
       };
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -20827,7 +20853,7 @@ var PeraWalletConnect = (() => {
   var require_getBlockHash = __commonJS({
     "node_modules/algosdk/dist/cjs/client/v2/algod/getBlockHash.js"(exports) {
       "use strict";
-      var __importDefault2 = exports && exports.__importDefault || function(mod) {
+      var __importDefault2 = exports && exports.__importDefault || function (mod) {
         return mod && mod.__esModule ? mod : { "default": mod };
       };
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -20851,7 +20877,7 @@ var PeraWalletConnect = (() => {
   var require_getBlockTxids = __commonJS({
     "node_modules/algosdk/dist/cjs/client/v2/algod/getBlockTxids.js"(exports) {
       "use strict";
-      var __importDefault2 = exports && exports.__importDefault || function(mod) {
+      var __importDefault2 = exports && exports.__importDefault || function (mod) {
         return mod && mod.__esModule ? mod : { "default": mod };
       };
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -20875,7 +20901,7 @@ var PeraWalletConnect = (() => {
   var require_getApplicationBoxByName = __commonJS({
     "node_modules/algosdk/dist/cjs/client/v2/algod/getApplicationBoxByName.js"(exports) {
       "use strict";
-      var __importDefault2 = exports && exports.__importDefault || function(mod) {
+      var __importDefault2 = exports && exports.__importDefault || function (mod) {
         return mod && mod.__esModule ? mod : { "default": mod };
       };
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -20909,7 +20935,7 @@ var PeraWalletConnect = (() => {
   var require_getApplicationBoxes = __commonJS({
     "node_modules/algosdk/dist/cjs/client/v2/algod/getApplicationBoxes.js"(exports) {
       "use strict";
-      var __importDefault2 = exports && exports.__importDefault || function(mod) {
+      var __importDefault2 = exports && exports.__importDefault || function (mod) {
         return mod && mod.__esModule ? mod : { "default": mod };
       };
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -20960,7 +20986,7 @@ var PeraWalletConnect = (() => {
   var require_healthCheck = __commonJS({
     "node_modules/algosdk/dist/cjs/client/v2/algod/healthCheck.js"(exports) {
       "use strict";
-      var __importDefault2 = exports && exports.__importDefault || function(mod) {
+      var __importDefault2 = exports && exports.__importDefault || function (mod) {
         return mod && mod.__esModule ? mod : { "default": mod };
       };
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -20986,25 +21012,27 @@ var PeraWalletConnect = (() => {
   var require_pendingTransactionInformation = __commonJS({
     "node_modules/algosdk/dist/cjs/client/v2/algod/pendingTransactionInformation.js"(exports) {
       "use strict";
-      var __createBinding2 = exports && exports.__createBinding || (Object.create ? (function(o2, m, k, k2) {
+      var __createBinding2 = exports && exports.__createBinding || (Object.create ? (function (o2, m, k, k2) {
         if (k2 === void 0) k2 = k;
         var desc = Object.getOwnPropertyDescriptor(m, k);
         if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-          desc = { enumerable: true, get: function() {
-            return m[k];
-          } };
+          desc = {
+            enumerable: true, get: function () {
+              return m[k];
+            }
+          };
         }
         Object.defineProperty(o2, k2, desc);
-      }) : (function(o2, m, k, k2) {
+      }) : (function (o2, m, k, k2) {
         if (k2 === void 0) k2 = k;
         o2[k2] = m[k];
       }));
-      var __setModuleDefault = exports && exports.__setModuleDefault || (Object.create ? (function(o2, v) {
+      var __setModuleDefault = exports && exports.__setModuleDefault || (Object.create ? (function (o2, v) {
         Object.defineProperty(o2, "default", { enumerable: true, value: v });
-      }) : function(o2, v) {
+      }) : function (o2, v) {
         o2["default"] = v;
       });
-      var __importStar2 = exports && exports.__importStar || function(mod) {
+      var __importStar2 = exports && exports.__importStar || function (mod) {
         if (mod && mod.__esModule) return mod;
         var result = {};
         if (mod != null) {
@@ -21013,7 +21041,7 @@ var PeraWalletConnect = (() => {
         __setModuleDefault(result, mod);
         return result;
       };
-      var __importDefault2 = exports && exports.__importDefault || function(mod) {
+      var __importDefault2 = exports && exports.__importDefault || function (mod) {
         return mod && mod.__esModule ? mod : { "default": mod };
       };
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -21050,25 +21078,27 @@ var PeraWalletConnect = (() => {
   var require_pendingTransactions = __commonJS({
     "node_modules/algosdk/dist/cjs/client/v2/algod/pendingTransactions.js"(exports) {
       "use strict";
-      var __createBinding2 = exports && exports.__createBinding || (Object.create ? (function(o2, m, k, k2) {
+      var __createBinding2 = exports && exports.__createBinding || (Object.create ? (function (o2, m, k, k2) {
         if (k2 === void 0) k2 = k;
         var desc = Object.getOwnPropertyDescriptor(m, k);
         if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-          desc = { enumerable: true, get: function() {
-            return m[k];
-          } };
+          desc = {
+            enumerable: true, get: function () {
+              return m[k];
+            }
+          };
         }
         Object.defineProperty(o2, k2, desc);
-      }) : (function(o2, m, k, k2) {
+      }) : (function (o2, m, k, k2) {
         if (k2 === void 0) k2 = k;
         o2[k2] = m[k];
       }));
-      var __setModuleDefault = exports && exports.__setModuleDefault || (Object.create ? (function(o2, v) {
+      var __setModuleDefault = exports && exports.__setModuleDefault || (Object.create ? (function (o2, v) {
         Object.defineProperty(o2, "default", { enumerable: true, value: v });
-      }) : function(o2, v) {
+      }) : function (o2, v) {
         o2["default"] = v;
       });
-      var __importStar2 = exports && exports.__importStar || function(mod) {
+      var __importStar2 = exports && exports.__importStar || function (mod) {
         if (mod && mod.__esModule) return mod;
         var result = {};
         if (mod != null) {
@@ -21077,7 +21107,7 @@ var PeraWalletConnect = (() => {
         __setModuleDefault(result, mod);
         return result;
       };
-      var __importDefault2 = exports && exports.__importDefault || function(mod) {
+      var __importDefault2 = exports && exports.__importDefault || function (mod) {
         return mod && mod.__esModule ? mod : { "default": mod };
       };
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -21113,25 +21143,27 @@ var PeraWalletConnect = (() => {
   var require_pendingTransactionsByAddress = __commonJS({
     "node_modules/algosdk/dist/cjs/client/v2/algod/pendingTransactionsByAddress.js"(exports) {
       "use strict";
-      var __createBinding2 = exports && exports.__createBinding || (Object.create ? (function(o2, m, k, k2) {
+      var __createBinding2 = exports && exports.__createBinding || (Object.create ? (function (o2, m, k, k2) {
         if (k2 === void 0) k2 = k;
         var desc = Object.getOwnPropertyDescriptor(m, k);
         if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-          desc = { enumerable: true, get: function() {
-            return m[k];
-          } };
+          desc = {
+            enumerable: true, get: function () {
+              return m[k];
+            }
+          };
         }
         Object.defineProperty(o2, k2, desc);
-      }) : (function(o2, m, k, k2) {
+      }) : (function (o2, m, k, k2) {
         if (k2 === void 0) k2 = k;
         o2[k2] = m[k];
       }));
-      var __setModuleDefault = exports && exports.__setModuleDefault || (Object.create ? (function(o2, v) {
+      var __setModuleDefault = exports && exports.__setModuleDefault || (Object.create ? (function (o2, v) {
         Object.defineProperty(o2, "default", { enumerable: true, value: v });
-      }) : function(o2, v) {
+      }) : function (o2, v) {
         o2["default"] = v;
       });
-      var __importStar2 = exports && exports.__importStar || function(mod) {
+      var __importStar2 = exports && exports.__importStar || function (mod) {
         if (mod && mod.__esModule) return mod;
         var result = {};
         if (mod != null) {
@@ -21140,7 +21172,7 @@ var PeraWalletConnect = (() => {
         __setModuleDefault(result, mod);
         return result;
       };
-      var __importDefault2 = exports && exports.__importDefault || function(mod) {
+      var __importDefault2 = exports && exports.__importDefault || function (mod) {
         return mod && mod.__esModule ? mod : { "default": mod };
       };
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -21177,7 +21209,7 @@ var PeraWalletConnect = (() => {
   var require_getTransactionProof = __commonJS({
     "node_modules/algosdk/dist/cjs/client/v2/algod/getTransactionProof.js"(exports) {
       "use strict";
-      var __importDefault2 = exports && exports.__importDefault || function(mod) {
+      var __importDefault2 = exports && exports.__importDefault || function (mod) {
         return mod && mod.__esModule ? mod : { "default": mod };
       };
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -21223,7 +21255,7 @@ var PeraWalletConnect = (() => {
   var require_sendRawTransaction = __commonJS({
     "node_modules/algosdk/dist/cjs/client/v2/algod/sendRawTransaction.js"(exports) {
       "use strict";
-      var __importDefault2 = exports && exports.__importDefault || function(mod) {
+      var __importDefault2 = exports && exports.__importDefault || function (mod) {
         return mod && mod.__esModule ? mod : { "default": mod };
       };
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -21275,7 +21307,7 @@ var PeraWalletConnect = (() => {
   var require_status = __commonJS({
     "node_modules/algosdk/dist/cjs/client/v2/algod/status.js"(exports) {
       "use strict";
-      var __importDefault2 = exports && exports.__importDefault || function(mod) {
+      var __importDefault2 = exports && exports.__importDefault || function (mod) {
         return mod && mod.__esModule ? mod : { "default": mod };
       };
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -21294,7 +21326,7 @@ var PeraWalletConnect = (() => {
   var require_statusAfterBlock = __commonJS({
     "node_modules/algosdk/dist/cjs/client/v2/algod/statusAfterBlock.js"(exports) {
       "use strict";
-      var __importDefault2 = exports && exports.__importDefault || function(mod) {
+      var __importDefault2 = exports && exports.__importDefault || function (mod) {
         return mod && mod.__esModule ? mod : { "default": mod };
       };
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -21319,7 +21351,7 @@ var PeraWalletConnect = (() => {
   var require_suggestedParams = __commonJS({
     "node_modules/algosdk/dist/cjs/client/v2/algod/suggestedParams.js"(exports) {
       "use strict";
-      var __importDefault2 = exports && exports.__importDefault || function(mod) {
+      var __importDefault2 = exports && exports.__importDefault || function (mod) {
         return mod && mod.__esModule ? mod : { "default": mod };
       };
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -21349,7 +21381,7 @@ var PeraWalletConnect = (() => {
   var require_supply = __commonJS({
     "node_modules/algosdk/dist/cjs/client/v2/algod/supply.js"(exports) {
       "use strict";
-      var __importDefault2 = exports && exports.__importDefault || function(mod) {
+      var __importDefault2 = exports && exports.__importDefault || function (mod) {
         return mod && mod.__esModule ? mod : { "default": mod };
       };
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -21368,7 +21400,7 @@ var PeraWalletConnect = (() => {
   var require_versions = __commonJS({
     "node_modules/algosdk/dist/cjs/client/v2/algod/versions.js"(exports) {
       "use strict";
-      var __importDefault2 = exports && exports.__importDefault || function(mod) {
+      var __importDefault2 = exports && exports.__importDefault || function (mod) {
         return mod && mod.__esModule ? mod : { "default": mod };
       };
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -21387,7 +21419,7 @@ var PeraWalletConnect = (() => {
   var require_lightBlockHeaderProof = __commonJS({
     "node_modules/algosdk/dist/cjs/client/v2/algod/lightBlockHeaderProof.js"(exports) {
       "use strict";
-      var __importDefault2 = exports && exports.__importDefault || function(mod) {
+      var __importDefault2 = exports && exports.__importDefault || function (mod) {
         return mod && mod.__esModule ? mod : { "default": mod };
       };
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -21410,7 +21442,7 @@ var PeraWalletConnect = (() => {
   var require_stateproof = __commonJS({
     "node_modules/algosdk/dist/cjs/client/v2/algod/stateproof.js"(exports) {
       "use strict";
-      var __importDefault2 = exports && exports.__importDefault || function(mod) {
+      var __importDefault2 = exports && exports.__importDefault || function (mod) {
         return mod && mod.__esModule ? mod : { "default": mod };
       };
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -21433,7 +21465,7 @@ var PeraWalletConnect = (() => {
   var require_setSyncRound = __commonJS({
     "node_modules/algosdk/dist/cjs/client/v2/algod/setSyncRound.js"(exports) {
       "use strict";
-      var __importDefault2 = exports && exports.__importDefault || function(mod) {
+      var __importDefault2 = exports && exports.__importDefault || function (mod) {
         return mod && mod.__esModule ? mod : { "default": mod };
       };
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -21460,7 +21492,7 @@ var PeraWalletConnect = (() => {
   var require_getSyncRound = __commonJS({
     "node_modules/algosdk/dist/cjs/client/v2/algod/getSyncRound.js"(exports) {
       "use strict";
-      var __importDefault2 = exports && exports.__importDefault || function(mod) {
+      var __importDefault2 = exports && exports.__importDefault || function (mod) {
         return mod && mod.__esModule ? mod : { "default": mod };
       };
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -21484,7 +21516,7 @@ var PeraWalletConnect = (() => {
   var require_setBlockOffsetTimestamp = __commonJS({
     "node_modules/algosdk/dist/cjs/client/v2/algod/setBlockOffsetTimestamp.js"(exports) {
       "use strict";
-      var __importDefault2 = exports && exports.__importDefault || function(mod) {
+      var __importDefault2 = exports && exports.__importDefault || function (mod) {
         return mod && mod.__esModule ? mod : { "default": mod };
       };
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -21511,7 +21543,7 @@ var PeraWalletConnect = (() => {
   var require_getBlockOffsetTimestamp = __commonJS({
     "node_modules/algosdk/dist/cjs/client/v2/algod/getBlockOffsetTimestamp.js"(exports) {
       "use strict";
-      var __importDefault2 = exports && exports.__importDefault || function(mod) {
+      var __importDefault2 = exports && exports.__importDefault || function (mod) {
         return mod && mod.__esModule ? mod : { "default": mod };
       };
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -21535,7 +21567,7 @@ var PeraWalletConnect = (() => {
   var require_disassemble = __commonJS({
     "node_modules/algosdk/dist/cjs/client/v2/algod/disassemble.js"(exports) {
       "use strict";
-      var __importDefault2 = exports && exports.__importDefault || function(mod) {
+      var __importDefault2 = exports && exports.__importDefault || function (mod) {
         return mod && mod.__esModule ? mod : { "default": mod };
       };
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -21579,25 +21611,27 @@ var PeraWalletConnect = (() => {
   var require_simulateTransaction = __commonJS({
     "node_modules/algosdk/dist/cjs/client/v2/algod/simulateTransaction.js"(exports) {
       "use strict";
-      var __createBinding2 = exports && exports.__createBinding || (Object.create ? (function(o2, m, k, k2) {
+      var __createBinding2 = exports && exports.__createBinding || (Object.create ? (function (o2, m, k, k2) {
         if (k2 === void 0) k2 = k;
         var desc = Object.getOwnPropertyDescriptor(m, k);
         if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-          desc = { enumerable: true, get: function() {
-            return m[k];
-          } };
+          desc = {
+            enumerable: true, get: function () {
+              return m[k];
+            }
+          };
         }
         Object.defineProperty(o2, k2, desc);
-      }) : (function(o2, m, k, k2) {
+      }) : (function (o2, m, k, k2) {
         if (k2 === void 0) k2 = k;
         o2[k2] = m[k];
       }));
-      var __setModuleDefault = exports && exports.__setModuleDefault || (Object.create ? (function(o2, v) {
+      var __setModuleDefault = exports && exports.__setModuleDefault || (Object.create ? (function (o2, v) {
         Object.defineProperty(o2, "default", { enumerable: true, value: v });
-      }) : function(o2, v) {
+      }) : function (o2, v) {
         o2["default"] = v;
       });
-      var __importStar2 = exports && exports.__importStar || function(mod) {
+      var __importStar2 = exports && exports.__importStar || function (mod) {
         if (mod && mod.__esModule) return mod;
         var result = {};
         if (mod != null) {
@@ -21606,7 +21640,7 @@ var PeraWalletConnect = (() => {
         __setModuleDefault(result, mod);
         return result;
       };
-      var __importDefault2 = exports && exports.__importDefault || function(mod) {
+      var __importDefault2 = exports && exports.__importDefault || function (mod) {
         return mod && mod.__esModule ? mod : { "default": mod };
       };
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -21653,7 +21687,7 @@ var PeraWalletConnect = (() => {
   var require_ready = __commonJS({
     "node_modules/algosdk/dist/cjs/client/v2/algod/ready.js"(exports) {
       "use strict";
-      var __importDefault2 = exports && exports.__importDefault || function(mod) {
+      var __importDefault2 = exports && exports.__importDefault || function (mod) {
         return mod && mod.__esModule ? mod : { "default": mod };
       };
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -21672,7 +21706,7 @@ var PeraWalletConnect = (() => {
   var require_unsetSyncRound = __commonJS({
     "node_modules/algosdk/dist/cjs/client/v2/algod/unsetSyncRound.js"(exports) {
       "use strict";
-      var __importDefault2 = exports && exports.__importDefault || function(mod) {
+      var __importDefault2 = exports && exports.__importDefault || function (mod) {
         return mod && mod.__esModule ? mod : { "default": mod };
       };
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -21695,7 +21729,7 @@ var PeraWalletConnect = (() => {
   var require_getLedgerStateDeltaForTransactionGroup = __commonJS({
     "node_modules/algosdk/dist/cjs/client/v2/algod/getLedgerStateDeltaForTransactionGroup.js"(exports) {
       "use strict";
-      var __importDefault2 = exports && exports.__importDefault || function(mod) {
+      var __importDefault2 = exports && exports.__importDefault || function (mod) {
         return mod && mod.__esModule ? mod : { "default": mod };
       };
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -21720,7 +21754,7 @@ var PeraWalletConnect = (() => {
   var require_getLedgerStateDelta = __commonJS({
     "node_modules/algosdk/dist/cjs/client/v2/algod/getLedgerStateDelta.js"(exports) {
       "use strict";
-      var __importDefault2 = exports && exports.__importDefault || function(mod) {
+      var __importDefault2 = exports && exports.__importDefault || function (mod) {
         return mod && mod.__esModule ? mod : { "default": mod };
       };
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -21745,7 +21779,7 @@ var PeraWalletConnect = (() => {
   var require_getTransactionGroupLedgerStateDeltasForRound = __commonJS({
     "node_modules/algosdk/dist/cjs/client/v2/algod/getTransactionGroupLedgerStateDeltasForRound.js"(exports) {
       "use strict";
-      var __importDefault2 = exports && exports.__importDefault || function(mod) {
+      var __importDefault2 = exports && exports.__importDefault || function (mod) {
         return mod && mod.__esModule ? mod : { "default": mod };
       };
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -21775,25 +21809,27 @@ var PeraWalletConnect = (() => {
   var require_algod = __commonJS({
     "node_modules/algosdk/dist/cjs/client/v2/algod/algod.js"(exports) {
       "use strict";
-      var __createBinding2 = exports && exports.__createBinding || (Object.create ? (function(o2, m, k, k2) {
+      var __createBinding2 = exports && exports.__createBinding || (Object.create ? (function (o2, m, k, k2) {
         if (k2 === void 0) k2 = k;
         var desc = Object.getOwnPropertyDescriptor(m, k);
         if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-          desc = { enumerable: true, get: function() {
-            return m[k];
-          } };
+          desc = {
+            enumerable: true, get: function () {
+              return m[k];
+            }
+          };
         }
         Object.defineProperty(o2, k2, desc);
-      }) : (function(o2, m, k, k2) {
+      }) : (function (o2, m, k, k2) {
         if (k2 === void 0) k2 = k;
         o2[k2] = m[k];
       }));
-      var __setModuleDefault = exports && exports.__setModuleDefault || (Object.create ? (function(o2, v) {
+      var __setModuleDefault = exports && exports.__setModuleDefault || (Object.create ? (function (o2, v) {
         Object.defineProperty(o2, "default", { enumerable: true, value: v });
-      }) : function(o2, v) {
+      }) : function (o2, v) {
         o2["default"] = v;
       });
-      var __importStar2 = exports && exports.__importStar || function(mod) {
+      var __importStar2 = exports && exports.__importStar || function (mod) {
         if (mod && mod.__esModule) return mod;
         var result = {};
         if (mod != null) {
@@ -21802,7 +21838,7 @@ var PeraWalletConnect = (() => {
         __setModuleDefault(result, mod);
         return result;
       };
-      var __importDefault2 = exports && exports.__importDefault || function(mod) {
+      var __importDefault2 = exports && exports.__importDefault || function (mod) {
         return mod && mod.__esModule ? mod : { "default": mod };
       };
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -22561,25 +22597,27 @@ var PeraWalletConnect = (() => {
   var require_kmd = __commonJS({
     "node_modules/algosdk/dist/cjs/client/kmd.js"(exports) {
       "use strict";
-      var __createBinding2 = exports && exports.__createBinding || (Object.create ? (function(o2, m, k, k2) {
+      var __createBinding2 = exports && exports.__createBinding || (Object.create ? (function (o2, m, k, k2) {
         if (k2 === void 0) k2 = k;
         var desc = Object.getOwnPropertyDescriptor(m, k);
         if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-          desc = { enumerable: true, get: function() {
-            return m[k];
-          } };
+          desc = {
+            enumerable: true, get: function () {
+              return m[k];
+            }
+          };
         }
         Object.defineProperty(o2, k2, desc);
-      }) : (function(o2, m, k, k2) {
+      }) : (function (o2, m, k, k2) {
         if (k2 === void 0) k2 = k;
         o2[k2] = m[k];
       }));
-      var __setModuleDefault = exports && exports.__setModuleDefault || (Object.create ? (function(o2, v) {
+      var __setModuleDefault = exports && exports.__setModuleDefault || (Object.create ? (function (o2, v) {
         Object.defineProperty(o2, "default", { enumerable: true, value: v });
-      }) : function(o2, v) {
+      }) : function (o2, v) {
         o2["default"] = v;
       });
-      var __importStar2 = exports && exports.__importStar || function(mod) {
+      var __importStar2 = exports && exports.__importStar || function (mod) {
         if (mod && mod.__esModule) return mod;
         var result = {};
         if (mod != null) {
@@ -22588,7 +22626,7 @@ var PeraWalletConnect = (() => {
         __setModuleDefault(result, mod);
         return result;
       };
-      var __importDefault2 = exports && exports.__importDefault || function(mod) {
+      var __importDefault2 = exports && exports.__importDefault || function (mod) {
         return mod && mod.__esModule ? mod : { "default": mod };
       };
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -22953,7 +22991,7 @@ var PeraWalletConnect = (() => {
   var require_makeHealthCheck = __commonJS({
     "node_modules/algosdk/dist/cjs/client/v2/indexer/makeHealthCheck.js"(exports) {
       "use strict";
-      var __importDefault2 = exports && exports.__importDefault || function(mod) {
+      var __importDefault2 = exports && exports.__importDefault || function (mod) {
         return mod && mod.__esModule ? mod : { "default": mod };
       };
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -22975,7 +23013,7 @@ var PeraWalletConnect = (() => {
   var require_lookupAssetBalances = __commonJS({
     "node_modules/algosdk/dist/cjs/client/v2/indexer/lookupAssetBalances.js"(exports) {
       "use strict";
-      var __importDefault2 = exports && exports.__importDefault || function(mod) {
+      var __importDefault2 = exports && exports.__importDefault || function (mod) {
         return mod && mod.__esModule ? mod : { "default": mod };
       };
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -23125,7 +23163,7 @@ var PeraWalletConnect = (() => {
   var require_lookupAccountTransactions = __commonJS({
     "node_modules/algosdk/dist/cjs/client/v2/indexer/lookupAccountTransactions.js"(exports) {
       "use strict";
-      var __importDefault2 = exports && exports.__importDefault || function(mod) {
+      var __importDefault2 = exports && exports.__importDefault || function (mod) {
         return mod && mod.__esModule ? mod : { "default": mod };
       };
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -23503,7 +23541,7 @@ var PeraWalletConnect = (() => {
   var require_lookupAssetTransactions = __commonJS({
     "node_modules/algosdk/dist/cjs/client/v2/indexer/lookupAssetTransactions.js"(exports) {
       "use strict";
-      var __importDefault2 = exports && exports.__importDefault || function(mod) {
+      var __importDefault2 = exports && exports.__importDefault || function (mod) {
         return mod && mod.__esModule ? mod : { "default": mod };
       };
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -23890,7 +23928,7 @@ var PeraWalletConnect = (() => {
   var require_lookupBlock = __commonJS({
     "node_modules/algosdk/dist/cjs/client/v2/indexer/lookupBlock.js"(exports) {
       "use strict";
-      var __importDefault2 = exports && exports.__importDefault || function(mod) {
+      var __importDefault2 = exports && exports.__importDefault || function (mod) {
         return mod && mod.__esModule ? mod : { "default": mod };
       };
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -23937,7 +23975,7 @@ var PeraWalletConnect = (() => {
   var require_lookupTransactionByID = __commonJS({
     "node_modules/algosdk/dist/cjs/client/v2/indexer/lookupTransactionByID.js"(exports) {
       "use strict";
-      var __importDefault2 = exports && exports.__importDefault || function(mod) {
+      var __importDefault2 = exports && exports.__importDefault || function (mod) {
         return mod && mod.__esModule ? mod : { "default": mod };
       };
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -23976,7 +24014,7 @@ var PeraWalletConnect = (() => {
   var require_lookupAccountByID = __commonJS({
     "node_modules/algosdk/dist/cjs/client/v2/indexer/lookupAccountByID.js"(exports) {
       "use strict";
-      var __importDefault2 = exports && exports.__importDefault || function(mod) {
+      var __importDefault2 = exports && exports.__importDefault || function (mod) {
         return mod && mod.__esModule ? mod : { "default": mod };
       };
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -24087,7 +24125,7 @@ var PeraWalletConnect = (() => {
   var require_lookupAccountAssets = __commonJS({
     "node_modules/algosdk/dist/cjs/client/v2/indexer/lookupAccountAssets.js"(exports) {
       "use strict";
-      var __importDefault2 = exports && exports.__importDefault || function(mod) {
+      var __importDefault2 = exports && exports.__importDefault || function (mod) {
         return mod && mod.__esModule ? mod : { "default": mod };
       };
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -24228,7 +24266,7 @@ var PeraWalletConnect = (() => {
   var require_lookupAccountCreatedAssets = __commonJS({
     "node_modules/algosdk/dist/cjs/client/v2/indexer/lookupAccountCreatedAssets.js"(exports) {
       "use strict";
-      var __importDefault2 = exports && exports.__importDefault || function(mod) {
+      var __importDefault2 = exports && exports.__importDefault || function (mod) {
         return mod && mod.__esModule ? mod : { "default": mod };
       };
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -24370,7 +24408,7 @@ var PeraWalletConnect = (() => {
   var require_lookupAccountAppLocalStates = __commonJS({
     "node_modules/algosdk/dist/cjs/client/v2/indexer/lookupAccountAppLocalStates.js"(exports) {
       "use strict";
-      var __importDefault2 = exports && exports.__importDefault || function(mod) {
+      var __importDefault2 = exports && exports.__importDefault || function (mod) {
         return mod && mod.__esModule ? mod : { "default": mod };
       };
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -24510,7 +24548,7 @@ var PeraWalletConnect = (() => {
   var require_lookupAccountCreatedApplications = __commonJS({
     "node_modules/algosdk/dist/cjs/client/v2/indexer/lookupAccountCreatedApplications.js"(exports) {
       "use strict";
-      var __importDefault2 = exports && exports.__importDefault || function(mod) {
+      var __importDefault2 = exports && exports.__importDefault || function (mod) {
         return mod && mod.__esModule ? mod : { "default": mod };
       };
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -24651,7 +24689,7 @@ var PeraWalletConnect = (() => {
   var require_lookupAssetByID = __commonJS({
     "node_modules/algosdk/dist/cjs/client/v2/indexer/lookupAssetByID.js"(exports) {
       "use strict";
-      var __importDefault2 = exports && exports.__importDefault || function(mod) {
+      var __importDefault2 = exports && exports.__importDefault || function (mod) {
         return mod && mod.__esModule ? mod : { "default": mod };
       };
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -24717,7 +24755,7 @@ var PeraWalletConnect = (() => {
   var require_lookupApplications = __commonJS({
     "node_modules/algosdk/dist/cjs/client/v2/indexer/lookupApplications.js"(exports) {
       "use strict";
-      var __importDefault2 = exports && exports.__importDefault || function(mod) {
+      var __importDefault2 = exports && exports.__importDefault || function (mod) {
         return mod && mod.__esModule ? mod : { "default": mod };
       };
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -24784,7 +24822,7 @@ var PeraWalletConnect = (() => {
   var require_lookupApplicationLogs = __commonJS({
     "node_modules/algosdk/dist/cjs/client/v2/indexer/lookupApplicationLogs.js"(exports) {
       "use strict";
-      var __importDefault2 = exports && exports.__importDefault || function(mod) {
+      var __importDefault2 = exports && exports.__importDefault || function (mod) {
         return mod && mod.__esModule ? mod : { "default": mod };
       };
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -24943,7 +24981,7 @@ var PeraWalletConnect = (() => {
   var require_types2 = __commonJS({
     "node_modules/algosdk/dist/cjs/client/v2/indexer/models/types.js"(exports) {
       "use strict";
-      var __importDefault2 = exports && exports.__importDefault || function(mod) {
+      var __importDefault2 = exports && exports.__importDefault || function (mod) {
         return mod && mod.__esModule ? mod : { "default": mod };
       };
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -27664,7 +27702,7 @@ var PeraWalletConnect = (() => {
   var require_lookupApplicationBoxByIDandName = __commonJS({
     "node_modules/algosdk/dist/cjs/client/v2/indexer/lookupApplicationBoxByIDandName.js"(exports) {
       "use strict";
-      var __importDefault2 = exports && exports.__importDefault || function(mod) {
+      var __importDefault2 = exports && exports.__importDefault || function (mod) {
         return mod && mod.__esModule ? mod : { "default": mod };
       };
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -27714,7 +27752,7 @@ var PeraWalletConnect = (() => {
   var require_searchAccounts = __commonJS({
     "node_modules/algosdk/dist/cjs/client/v2/indexer/searchAccounts.js"(exports) {
       "use strict";
-      var __importDefault2 = exports && exports.__importDefault || function(mod) {
+      var __importDefault2 = exports && exports.__importDefault || function (mod) {
         return mod && mod.__esModule ? mod : { "default": mod };
       };
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -27972,7 +28010,7 @@ var PeraWalletConnect = (() => {
   var require_searchForBlockHeaders = __commonJS({
     "node_modules/algosdk/dist/cjs/client/v2/indexer/searchForBlockHeaders.js"(exports) {
       "use strict";
-      var __importDefault2 = exports && exports.__importDefault || function(mod) {
+      var __importDefault2 = exports && exports.__importDefault || function (mod) {
         return mod && mod.__esModule ? mod : { "default": mod };
       };
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -28175,7 +28213,7 @@ var PeraWalletConnect = (() => {
   var require_searchForTransactions = __commonJS({
     "node_modules/algosdk/dist/cjs/client/v2/indexer/searchForTransactions.js"(exports) {
       "use strict";
-      var __importDefault2 = exports && exports.__importDefault || function(mod) {
+      var __importDefault2 = exports && exports.__importDefault || function (mod) {
         return mod && mod.__esModule ? mod : { "default": mod };
       };
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -28589,7 +28627,7 @@ var PeraWalletConnect = (() => {
   var require_searchForAssets = __commonJS({
     "node_modules/algosdk/dist/cjs/client/v2/indexer/searchForAssets.js"(exports) {
       "use strict";
-      var __importDefault2 = exports && exports.__importDefault || function(mod) {
+      var __importDefault2 = exports && exports.__importDefault || function (mod) {
         return mod && mod.__esModule ? mod : { "default": mod };
       };
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -28757,7 +28795,7 @@ var PeraWalletConnect = (() => {
   var require_searchForApplications = __commonJS({
     "node_modules/algosdk/dist/cjs/client/v2/indexer/searchForApplications.js"(exports) {
       "use strict";
-      var __importDefault2 = exports && exports.__importDefault || function(mod) {
+      var __importDefault2 = exports && exports.__importDefault || function (mod) {
         return mod && mod.__esModule ? mod : { "default": mod };
       };
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -28886,7 +28924,7 @@ var PeraWalletConnect = (() => {
   var require_searchForApplicationBoxes = __commonJS({
     "node_modules/algosdk/dist/cjs/client/v2/indexer/searchForApplicationBoxes.js"(exports) {
       "use strict";
-      var __importDefault2 = exports && exports.__importDefault || function(mod) {
+      var __importDefault2 = exports && exports.__importDefault || function (mod) {
         return mod && mod.__esModule ? mod : { "default": mod };
       };
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -28990,7 +29028,7 @@ var PeraWalletConnect = (() => {
   var require_indexer = __commonJS({
     "node_modules/algosdk/dist/cjs/client/v2/indexer/indexer.js"(exports) {
       "use strict";
-      var __importDefault2 = exports && exports.__importDefault || function(mod) {
+      var __importDefault2 = exports && exports.__importDefault || function (mod) {
         return mod && mod.__esModule ? mod : { "default": mod };
       };
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -29460,25 +29498,27 @@ var PeraWalletConnect = (() => {
   var require_account = __commonJS({
     "node_modules/algosdk/dist/cjs/account.js"(exports) {
       "use strict";
-      var __createBinding2 = exports && exports.__createBinding || (Object.create ? (function(o2, m, k, k2) {
+      var __createBinding2 = exports && exports.__createBinding || (Object.create ? (function (o2, m, k, k2) {
         if (k2 === void 0) k2 = k;
         var desc = Object.getOwnPropertyDescriptor(m, k);
         if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-          desc = { enumerable: true, get: function() {
-            return m[k];
-          } };
+          desc = {
+            enumerable: true, get: function () {
+              return m[k];
+            }
+          };
         }
         Object.defineProperty(o2, k2, desc);
-      }) : (function(o2, m, k, k2) {
+      }) : (function (o2, m, k, k2) {
         if (k2 === void 0) k2 = k;
         o2[k2] = m[k];
       }));
-      var __setModuleDefault = exports && exports.__setModuleDefault || (Object.create ? (function(o2, v) {
+      var __setModuleDefault = exports && exports.__setModuleDefault || (Object.create ? (function (o2, v) {
         Object.defineProperty(o2, "default", { enumerable: true, value: v });
-      }) : function(o2, v) {
+      }) : function (o2, v) {
         o2["default"] = v;
       });
-      var __importStar2 = exports && exports.__importStar || function(mod) {
+      var __importStar2 = exports && exports.__importStar || function (mod) {
         if (mod && mod.__esModule) return mod;
         var result = {};
         if (mod != null) {
@@ -31562,25 +31602,27 @@ var PeraWalletConnect = (() => {
   var require_mnemonic = __commonJS({
     "node_modules/algosdk/dist/cjs/mnemonic/mnemonic.js"(exports) {
       "use strict";
-      var __createBinding2 = exports && exports.__createBinding || (Object.create ? (function(o2, m, k, k2) {
+      var __createBinding2 = exports && exports.__createBinding || (Object.create ? (function (o2, m, k, k2) {
         if (k2 === void 0) k2 = k;
         var desc = Object.getOwnPropertyDescriptor(m, k);
         if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-          desc = { enumerable: true, get: function() {
-            return m[k];
-          } };
+          desc = {
+            enumerable: true, get: function () {
+              return m[k];
+            }
+          };
         }
         Object.defineProperty(o2, k2, desc);
-      }) : (function(o2, m, k, k2) {
+      }) : (function (o2, m, k, k2) {
         if (k2 === void 0) k2 = k;
         o2[k2] = m[k];
       }));
-      var __setModuleDefault = exports && exports.__setModuleDefault || (Object.create ? (function(o2, v) {
+      var __setModuleDefault = exports && exports.__setModuleDefault || (Object.create ? (function (o2, v) {
         Object.defineProperty(o2, "default", { enumerable: true, value: v });
-      }) : function(o2, v) {
+      }) : function (o2, v) {
         o2["default"] = v;
       });
-      var __importStar2 = exports && exports.__importStar || function(mod) {
+      var __importStar2 = exports && exports.__importStar || function (mod) {
         if (mod && mod.__esModule) return mod;
         var result = {};
         if (mod != null) {
@@ -31589,7 +31631,7 @@ var PeraWalletConnect = (() => {
         __setModuleDefault(result, mod);
         return result;
       };
-      var __importDefault2 = exports && exports.__importDefault || function(mod) {
+      var __importDefault2 = exports && exports.__importDefault || function (mod) {
         return mod && mod.__esModule ? mod : { "default": mod };
       };
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -31710,25 +31752,27 @@ var PeraWalletConnect = (() => {
   var require_group = __commonJS({
     "node_modules/algosdk/dist/cjs/group.js"(exports) {
       "use strict";
-      var __createBinding2 = exports && exports.__createBinding || (Object.create ? (function(o2, m, k, k2) {
+      var __createBinding2 = exports && exports.__createBinding || (Object.create ? (function (o2, m, k, k2) {
         if (k2 === void 0) k2 = k;
         var desc = Object.getOwnPropertyDescriptor(m, k);
         if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-          desc = { enumerable: true, get: function() {
-            return m[k];
-          } };
+          desc = {
+            enumerable: true, get: function () {
+              return m[k];
+            }
+          };
         }
         Object.defineProperty(o2, k2, desc);
-      }) : (function(o2, m, k, k2) {
+      }) : (function (o2, m, k, k2) {
         if (k2 === void 0) k2 = k;
         o2[k2] = m[k];
       }));
-      var __setModuleDefault = exports && exports.__setModuleDefault || (Object.create ? (function(o2, v) {
+      var __setModuleDefault = exports && exports.__setModuleDefault || (Object.create ? (function (o2, v) {
         Object.defineProperty(o2, "default", { enumerable: true, value: v });
-      }) : function(o2, v) {
+      }) : function (o2, v) {
         o2["default"] = v;
       });
-      var __importStar2 = exports && exports.__importStar || function(mod) {
+      var __importStar2 = exports && exports.__importStar || function (mod) {
         if (mod && mod.__esModule) return mod;
         var result = {};
         if (mod != null) {
@@ -31813,25 +31857,27 @@ var PeraWalletConnect = (() => {
   var require_multisig = __commonJS({
     "node_modules/algosdk/dist/cjs/multisig.js"(exports) {
       "use strict";
-      var __createBinding2 = exports && exports.__createBinding || (Object.create ? (function(o2, m, k, k2) {
+      var __createBinding2 = exports && exports.__createBinding || (Object.create ? (function (o2, m, k, k2) {
         if (k2 === void 0) k2 = k;
         var desc = Object.getOwnPropertyDescriptor(m, k);
         if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-          desc = { enumerable: true, get: function() {
-            return m[k];
-          } };
+          desc = {
+            enumerable: true, get: function () {
+              return m[k];
+            }
+          };
         }
         Object.defineProperty(o2, k2, desc);
-      }) : (function(o2, m, k, k2) {
+      }) : (function (o2, m, k, k2) {
         if (k2 === void 0) k2 = k;
         o2[k2] = m[k];
       }));
-      var __setModuleDefault = exports && exports.__setModuleDefault || (Object.create ? (function(o2, v) {
+      var __setModuleDefault = exports && exports.__setModuleDefault || (Object.create ? (function (o2, v) {
         Object.defineProperty(o2, "default", { enumerable: true, value: v });
-      }) : function(o2, v) {
+      }) : function (o2, v) {
         o2["default"] = v;
       });
-      var __importStar2 = exports && exports.__importStar || function(mod) {
+      var __importStar2 = exports && exports.__importStar || function (mod) {
         if (mod && mod.__esModule) return mod;
         var result = {};
         if (mod != null) {
@@ -32122,25 +32168,27 @@ var PeraWalletConnect = (() => {
   var require_logicsig = __commonJS({
     "node_modules/algosdk/dist/cjs/logicsig.js"(exports) {
       "use strict";
-      var __createBinding2 = exports && exports.__createBinding || (Object.create ? (function(o2, m, k, k2) {
+      var __createBinding2 = exports && exports.__createBinding || (Object.create ? (function (o2, m, k, k2) {
         if (k2 === void 0) k2 = k;
         var desc = Object.getOwnPropertyDescriptor(m, k);
         if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-          desc = { enumerable: true, get: function() {
-            return m[k];
-          } };
+          desc = {
+            enumerable: true, get: function () {
+              return m[k];
+            }
+          };
         }
         Object.defineProperty(o2, k2, desc);
-      }) : (function(o2, m, k, k2) {
+      }) : (function (o2, m, k, k2) {
         if (k2 === void 0) k2 = k;
         o2[k2] = m[k];
       }));
-      var __setModuleDefault = exports && exports.__setModuleDefault || (Object.create ? (function(o2, v) {
+      var __setModuleDefault = exports && exports.__setModuleDefault || (Object.create ? (function (o2, v) {
         Object.defineProperty(o2, "default", { enumerable: true, value: v });
-      }) : function(o2, v) {
+      }) : function (o2, v) {
         o2["default"] = v;
       });
-      var __importStar2 = exports && exports.__importStar || function(mod) {
+      var __importStar2 = exports && exports.__importStar || function (mod) {
         if (mod && mod.__esModule) return mod;
         var result = {};
         if (mod != null) {
@@ -32512,13 +32560,13 @@ var PeraWalletConnect = (() => {
   // node_modules/vlq/dist/index.cjs
   var require_dist = __commonJS({
     "node_modules/vlq/dist/index.cjs"(exports, module) {
-      (function(global2, factory) {
+      (function (global2, factory) {
         typeof exports === "object" && typeof module !== "undefined" ? factory(exports) : typeof define === "function" && define.amd ? define(["exports"], factory) : (global2 = typeof globalThis !== "undefined" ? globalThis : global2 || self, factory(global2.vlq = {}));
-      })(exports, (function(exports2) {
+      })(exports, (function (exports2) {
         "use strict";
         let char_to_integer = {};
         let integer_to_char = {};
-        "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=".split("").forEach(function(char, i) {
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=".split("").forEach(function (char, i) {
           char_to_integer[char] = i;
           integer_to_char[i] = char;
         });
@@ -32587,25 +32635,27 @@ var PeraWalletConnect = (() => {
   var require_sourcemap = __commonJS({
     "node_modules/algosdk/dist/cjs/logic/sourcemap.js"(exports) {
       "use strict";
-      var __createBinding2 = exports && exports.__createBinding || (Object.create ? (function(o2, m, k, k2) {
+      var __createBinding2 = exports && exports.__createBinding || (Object.create ? (function (o2, m, k, k2) {
         if (k2 === void 0) k2 = k;
         var desc = Object.getOwnPropertyDescriptor(m, k);
         if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-          desc = { enumerable: true, get: function() {
-            return m[k];
-          } };
+          desc = {
+            enumerable: true, get: function () {
+              return m[k];
+            }
+          };
         }
         Object.defineProperty(o2, k2, desc);
-      }) : (function(o2, m, k, k2) {
+      }) : (function (o2, m, k, k2) {
         if (k2 === void 0) k2 = k;
         o2[k2] = m[k];
       }));
-      var __setModuleDefault = exports && exports.__setModuleDefault || (Object.create ? (function(o2, v) {
+      var __setModuleDefault = exports && exports.__setModuleDefault || (Object.create ? (function (o2, v) {
         Object.defineProperty(o2, "default", { enumerable: true, value: v });
-      }) : function(o2, v) {
+      }) : function (o2, v) {
         o2["default"] = v;
       });
-      var __importStar2 = exports && exports.__importStar || function(mod) {
+      var __importStar2 = exports && exports.__importStar || function (mod) {
         if (mod && mod.__esModule) return mod;
         var result = {};
         if (mod != null) {
@@ -32669,28 +32719,32 @@ var PeraWalletConnect = (() => {
   var require_transactions = __commonJS({
     "node_modules/algosdk/dist/cjs/types/transactions/index.js"(exports) {
       "use strict";
-      var __createBinding2 = exports && exports.__createBinding || (Object.create ? (function(o2, m, k, k2) {
+      var __createBinding2 = exports && exports.__createBinding || (Object.create ? (function (o2, m, k, k2) {
         if (k2 === void 0) k2 = k;
         var desc = Object.getOwnPropertyDescriptor(m, k);
         if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-          desc = { enumerable: true, get: function() {
-            return m[k];
-          } };
+          desc = {
+            enumerable: true, get: function () {
+              return m[k];
+            }
+          };
         }
         Object.defineProperty(o2, k2, desc);
-      }) : (function(o2, m, k, k2) {
+      }) : (function (o2, m, k, k2) {
         if (k2 === void 0) k2 = k;
         o2[k2] = m[k];
       }));
-      var __exportStar2 = exports && exports.__exportStar || function(m, exports2) {
+      var __exportStar2 = exports && exports.__exportStar || function (m, exports2) {
         for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports2, p)) __createBinding2(exports2, m, p);
       };
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.TransactionType = void 0;
       var base_1 = require_base();
-      Object.defineProperty(exports, "TransactionType", { enumerable: true, get: function() {
-        return base_1.TransactionType;
-      } });
+      Object.defineProperty(exports, "TransactionType", {
+        enumerable: true, get: function () {
+          return base_1.TransactionType;
+        }
+      });
       __exportStar2(require_encoded(), exports);
     }
   });
@@ -32974,25 +33028,27 @@ var PeraWalletConnect = (() => {
   var require_makeTxn = __commonJS({
     "node_modules/algosdk/dist/cjs/makeTxn.js"(exports) {
       "use strict";
-      var __createBinding2 = exports && exports.__createBinding || (Object.create ? (function(o2, m, k, k2) {
+      var __createBinding2 = exports && exports.__createBinding || (Object.create ? (function (o2, m, k, k2) {
         if (k2 === void 0) k2 = k;
         var desc = Object.getOwnPropertyDescriptor(m, k);
         if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-          desc = { enumerable: true, get: function() {
-            return m[k];
-          } };
+          desc = {
+            enumerable: true, get: function () {
+              return m[k];
+            }
+          };
         }
         Object.defineProperty(o2, k2, desc);
-      }) : (function(o2, m, k, k2) {
+      }) : (function (o2, m, k, k2) {
         if (k2 === void 0) k2 = k;
         o2[k2] = m[k];
       }));
-      var __setModuleDefault = exports && exports.__setModuleDefault || (Object.create ? (function(o2, v) {
+      var __setModuleDefault = exports && exports.__setModuleDefault || (Object.create ? (function (o2, v) {
         Object.defineProperty(o2, "default", { enumerable: true, value: v });
-      }) : function(o2, v) {
+      }) : function (o2, v) {
         o2["default"] = v;
       });
-      var __importStar2 = exports && exports.__importStar || function(mod) {
+      var __importStar2 = exports && exports.__importStar || function (mod) {
         if (mod && mod.__esModule) return mod;
         var result = {};
         if (mod != null) {
@@ -33320,9 +33376,11 @@ var PeraWalletConnect = (() => {
       }
       exports.makeApplicationNoOpTxnFromObject = makeApplicationNoOpTxnFromObject;
       var base_2 = require_base();
-      Object.defineProperty(exports, "OnApplicationComplete", { enumerable: true, get: function() {
-        return base_2.OnApplicationComplete;
-      } });
+      Object.defineProperty(exports, "OnApplicationComplete", {
+        enumerable: true, get: function () {
+          return base_2.OnApplicationComplete;
+        }
+      });
       function makeApplicationCallTxnFromObject(options) {
         const o2 = {
           type: transactions_1.TransactionType.appl,
@@ -34069,7 +34127,7 @@ var PeraWalletConnect = (() => {
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.abiCheckTransactionType = exports.abiTypeIsTransaction = exports.ABITransactionType = void 0;
       var ABITransactionType;
-      (function(ABITransactionType2) {
+      (function (ABITransactionType2) {
         ABITransactionType2["any"] = "txn";
         ABITransactionType2["pay"] = "pay";
         ABITransactionType2["keyreg"] = "keyreg";
@@ -34099,7 +34157,7 @@ var PeraWalletConnect = (() => {
       Object.defineProperty(exports, "__esModule", { value: true });
       exports.abiTypeIsReference = exports.ABIReferenceType = void 0;
       var ABIReferenceType;
-      (function(ABIReferenceType2) {
+      (function (ABIReferenceType2) {
         ABIReferenceType2["account"] = "account";
         ABIReferenceType2["application"] = "application";
         ABIReferenceType2["asset"] = "asset";
@@ -34309,20 +34367,22 @@ var PeraWalletConnect = (() => {
   var require_abi = __commonJS({
     "node_modules/algosdk/dist/cjs/abi/index.js"(exports) {
       "use strict";
-      var __createBinding2 = exports && exports.__createBinding || (Object.create ? (function(o2, m, k, k2) {
+      var __createBinding2 = exports && exports.__createBinding || (Object.create ? (function (o2, m, k, k2) {
         if (k2 === void 0) k2 = k;
         var desc = Object.getOwnPropertyDescriptor(m, k);
         if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-          desc = { enumerable: true, get: function() {
-            return m[k];
-          } };
+          desc = {
+            enumerable: true, get: function () {
+              return m[k];
+            }
+          };
         }
         Object.defineProperty(o2, k2, desc);
-      }) : (function(o2, m, k, k2) {
+      }) : (function (o2, m, k, k2) {
         if (k2 === void 0) k2 = k;
         o2[k2] = m[k];
       }));
-      var __exportStar2 = exports && exports.__exportStar || function(m, exports2) {
+      var __exportStar2 = exports && exports.__exportStar || function (m, exports2) {
         for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports2, p)) __createBinding2(exports2, m, p);
       };
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -34339,25 +34399,27 @@ var PeraWalletConnect = (() => {
   var require_composer = __commonJS({
     "node_modules/algosdk/dist/cjs/composer.js"(exports) {
       "use strict";
-      var __createBinding2 = exports && exports.__createBinding || (Object.create ? (function(o2, m, k, k2) {
+      var __createBinding2 = exports && exports.__createBinding || (Object.create ? (function (o2, m, k, k2) {
         if (k2 === void 0) k2 = k;
         var desc = Object.getOwnPropertyDescriptor(m, k);
         if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-          desc = { enumerable: true, get: function() {
-            return m[k];
-          } };
+          desc = {
+            enumerable: true, get: function () {
+              return m[k];
+            }
+          };
         }
         Object.defineProperty(o2, k2, desc);
-      }) : (function(o2, m, k, k2) {
+      }) : (function (o2, m, k, k2) {
         if (k2 === void 0) k2 = k;
         o2[k2] = m[k];
       }));
-      var __setModuleDefault = exports && exports.__setModuleDefault || (Object.create ? (function(o2, v) {
+      var __setModuleDefault = exports && exports.__setModuleDefault || (Object.create ? (function (o2, v) {
         Object.defineProperty(o2, "default", { enumerable: true, value: v });
-      }) : function(o2, v) {
+      }) : function (o2, v) {
         o2["default"] = v;
       });
-      var __importStar2 = exports && exports.__importStar || function(mod) {
+      var __importStar2 = exports && exports.__importStar || function (mod) {
         if (mod && mod.__esModule) return mod;
         var result = {};
         if (mod != null) {
@@ -34381,7 +34443,7 @@ var PeraWalletConnect = (() => {
       var RETURN_PREFIX = buffer_1.Buffer.from([21, 31, 124, 117]);
       var MAX_APP_ARGS = 16;
       var AtomicTransactionComposerStatus;
-      (function(AtomicTransactionComposerStatus2) {
+      (function (AtomicTransactionComposerStatus2) {
         AtomicTransactionComposerStatus2[AtomicTransactionComposerStatus2["BUILDING"] = 0] = "BUILDING";
         AtomicTransactionComposerStatus2[AtomicTransactionComposerStatus2["BUILT"] = 1] = "BUILT";
         AtomicTransactionComposerStatus2[AtomicTransactionComposerStatus2["SIGNED"] = 2] = "SIGNED";
@@ -34845,20 +34907,22 @@ var PeraWalletConnect = (() => {
   var require_types3 = __commonJS({
     "node_modules/algosdk/dist/cjs/types/index.js"(exports) {
       "use strict";
-      var __createBinding2 = exports && exports.__createBinding || (Object.create ? (function(o2, m, k, k2) {
+      var __createBinding2 = exports && exports.__createBinding || (Object.create ? (function (o2, m, k, k2) {
         if (k2 === void 0) k2 = k;
         var desc = Object.getOwnPropertyDescriptor(m, k);
         if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-          desc = { enumerable: true, get: function() {
-            return m[k];
-          } };
+          desc = {
+            enumerable: true, get: function () {
+              return m[k];
+            }
+          };
         }
         Object.defineProperty(o2, k2, desc);
-      }) : (function(o2, m, k, k2) {
+      }) : (function (o2, m, k, k2) {
         if (k2 === void 0) k2 = k;
         o2[k2] = m[k];
       }));
-      var __exportStar2 = exports && exports.__exportStar || function(m, exports2) {
+      var __exportStar2 = exports && exports.__exportStar || function (m, exports2) {
         for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports2, p)) __createBinding2(exports2, m, p);
       };
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -34872,25 +34936,27 @@ var PeraWalletConnect = (() => {
   var require_main = __commonJS({
     "node_modules/algosdk/dist/cjs/main.js"(exports) {
       "use strict";
-      var __createBinding2 = exports && exports.__createBinding || (Object.create ? (function(o2, m, k, k2) {
+      var __createBinding2 = exports && exports.__createBinding || (Object.create ? (function (o2, m, k, k2) {
         if (k2 === void 0) k2 = k;
         var desc = Object.getOwnPropertyDescriptor(m, k);
         if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-          desc = { enumerable: true, get: function() {
-            return m[k];
-          } };
+          desc = {
+            enumerable: true, get: function () {
+              return m[k];
+            }
+          };
         }
         Object.defineProperty(o2, k2, desc);
-      }) : (function(o2, m, k, k2) {
+      }) : (function (o2, m, k, k2) {
         if (k2 === void 0) k2 = k;
         o2[k2] = m[k];
       }));
-      var __setModuleDefault = exports && exports.__setModuleDefault || (Object.create ? (function(o2, v) {
+      var __setModuleDefault = exports && exports.__setModuleDefault || (Object.create ? (function (o2, v) {
         Object.defineProperty(o2, "default", { enumerable: true, value: v });
-      }) : function(o2, v) {
+      }) : function (o2, v) {
         o2["default"] = v;
       });
-      var __importStar2 = exports && exports.__importStar || function(mod) {
+      var __importStar2 = exports && exports.__importStar || function (mod) {
         if (mod && mod.__esModule) return mod;
         var result = {};
         if (mod != null) {
@@ -34899,10 +34965,10 @@ var PeraWalletConnect = (() => {
         __setModuleDefault(result, mod);
         return result;
       };
-      var __exportStar2 = exports && exports.__exportStar || function(m, exports2) {
+      var __exportStar2 = exports && exports.__exportStar || function (m, exports2) {
         for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports2, p)) __createBinding2(exports2, m, p);
       };
-      var __importDefault2 = exports && exports.__importDefault || function(mod) {
+      var __importDefault2 = exports && exports.__importDefault || function (mod) {
         return mod && mod.__esModule ? mod : { "default": mod };
       };
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -34958,145 +35024,227 @@ var PeraWalletConnect = (() => {
       exports.ERROR_MULTISIG_BAD_SENDER = new Error(exports.MULTISIG_BAD_SENDER_ERROR_MSG);
       exports.ERROR_INVALID_MICROALGOS = new Error(convert.INVALID_MICROALGOS_ERROR_MSG);
       var algod_1 = require_algod();
-      Object.defineProperty(exports, "Algodv2", { enumerable: true, get: function() {
-        return __importDefault2(algod_1).default;
-      } });
+      Object.defineProperty(exports, "Algodv2", {
+        enumerable: true, get: function () {
+          return __importDefault2(algod_1).default;
+        }
+      });
       var kmd_1 = require_kmd();
-      Object.defineProperty(exports, "Kmd", { enumerable: true, get: function() {
-        return __importDefault2(kmd_1).default;
-      } });
+      Object.defineProperty(exports, "Kmd", {
+        enumerable: true, get: function () {
+          return __importDefault2(kmd_1).default;
+        }
+      });
       var intDecoding_1 = require_intDecoding();
-      Object.defineProperty(exports, "IntDecoding", { enumerable: true, get: function() {
-        return __importDefault2(intDecoding_1).default;
-      } });
+      Object.defineProperty(exports, "IntDecoding", {
+        enumerable: true, get: function () {
+          return __importDefault2(intDecoding_1).default;
+        }
+      });
       var indexer_1 = require_indexer();
-      Object.defineProperty(exports, "Indexer", { enumerable: true, get: function() {
-        return __importDefault2(indexer_1).default;
-      } });
+      Object.defineProperty(exports, "Indexer", {
+        enumerable: true, get: function () {
+          return __importDefault2(indexer_1).default;
+        }
+      });
       var wait_1 = require_wait();
-      Object.defineProperty(exports, "waitForConfirmation", { enumerable: true, get: function() {
-        return wait_1.waitForConfirmation;
-      } });
+      Object.defineProperty(exports, "waitForConfirmation", {
+        enumerable: true, get: function () {
+          return wait_1.waitForConfirmation;
+        }
+      });
       var address_1 = require_address();
-      Object.defineProperty(exports, "isValidAddress", { enumerable: true, get: function() {
-        return address_1.isValidAddress;
-      } });
-      Object.defineProperty(exports, "encodeAddress", { enumerable: true, get: function() {
-        return address_1.encodeAddress;
-      } });
-      Object.defineProperty(exports, "decodeAddress", { enumerable: true, get: function() {
-        return address_1.decodeAddress;
-      } });
-      Object.defineProperty(exports, "getApplicationAddress", { enumerable: true, get: function() {
-        return address_1.getApplicationAddress;
-      } });
+      Object.defineProperty(exports, "isValidAddress", {
+        enumerable: true, get: function () {
+          return address_1.isValidAddress;
+        }
+      });
+      Object.defineProperty(exports, "encodeAddress", {
+        enumerable: true, get: function () {
+          return address_1.encodeAddress;
+        }
+      });
+      Object.defineProperty(exports, "decodeAddress", {
+        enumerable: true, get: function () {
+          return address_1.decodeAddress;
+        }
+      });
+      Object.defineProperty(exports, "getApplicationAddress", {
+        enumerable: true, get: function () {
+          return address_1.getApplicationAddress;
+        }
+      });
       var bigint_1 = require_bigint();
-      Object.defineProperty(exports, "bytesToBigInt", { enumerable: true, get: function() {
-        return bigint_1.bytesToBigInt;
-      } });
-      Object.defineProperty(exports, "bigIntToBytes", { enumerable: true, get: function() {
-        return bigint_1.bigIntToBytes;
-      } });
+      Object.defineProperty(exports, "bytesToBigInt", {
+        enumerable: true, get: function () {
+          return bigint_1.bytesToBigInt;
+        }
+      });
+      Object.defineProperty(exports, "bigIntToBytes", {
+        enumerable: true, get: function () {
+          return bigint_1.bigIntToBytes;
+        }
+      });
       var uint64_1 = require_uint64();
-      Object.defineProperty(exports, "encodeUint64", { enumerable: true, get: function() {
-        return uint64_1.encodeUint64;
-      } });
-      Object.defineProperty(exports, "decodeUint64", { enumerable: true, get: function() {
-        return uint64_1.decodeUint64;
-      } });
+      Object.defineProperty(exports, "encodeUint64", {
+        enumerable: true, get: function () {
+          return uint64_1.encodeUint64;
+        }
+      });
+      Object.defineProperty(exports, "decodeUint64", {
+        enumerable: true, get: function () {
+          return uint64_1.decodeUint64;
+        }
+      });
       var account_1 = require_account();
-      Object.defineProperty(exports, "generateAccount", { enumerable: true, get: function() {
-        return __importDefault2(account_1).default;
-      } });
+      Object.defineProperty(exports, "generateAccount", {
+        enumerable: true, get: function () {
+          return __importDefault2(account_1).default;
+        }
+      });
       exports.modelsv2 = __importStar2(require_types());
       exports.indexerModels = __importStar2(require_types2());
       var mnemonic_1 = require_mnemonic();
-      Object.defineProperty(exports, "mnemonicToMasterDerivationKey", { enumerable: true, get: function() {
-        return mnemonic_1.mnemonicToMasterDerivationKey;
-      } });
-      Object.defineProperty(exports, "masterDerivationKeyToMnemonic", { enumerable: true, get: function() {
-        return mnemonic_1.masterDerivationKeyToMnemonic;
-      } });
-      Object.defineProperty(exports, "secretKeyToMnemonic", { enumerable: true, get: function() {
-        return mnemonic_1.secretKeyToMnemonic;
-      } });
-      Object.defineProperty(exports, "mnemonicToSecretKey", { enumerable: true, get: function() {
-        return mnemonic_1.mnemonicToSecretKey;
-      } });
-      Object.defineProperty(exports, "seedFromMnemonic", { enumerable: true, get: function() {
-        return mnemonic_1.seedFromMnemonic;
-      } });
-      Object.defineProperty(exports, "mnemonicFromSeed", { enumerable: true, get: function() {
-        return mnemonic_1.mnemonicFromSeed;
-      } });
+      Object.defineProperty(exports, "mnemonicToMasterDerivationKey", {
+        enumerable: true, get: function () {
+          return mnemonic_1.mnemonicToMasterDerivationKey;
+        }
+      });
+      Object.defineProperty(exports, "masterDerivationKeyToMnemonic", {
+        enumerable: true, get: function () {
+          return mnemonic_1.masterDerivationKeyToMnemonic;
+        }
+      });
+      Object.defineProperty(exports, "secretKeyToMnemonic", {
+        enumerable: true, get: function () {
+          return mnemonic_1.secretKeyToMnemonic;
+        }
+      });
+      Object.defineProperty(exports, "mnemonicToSecretKey", {
+        enumerable: true, get: function () {
+          return mnemonic_1.mnemonicToSecretKey;
+        }
+      });
+      Object.defineProperty(exports, "seedFromMnemonic", {
+        enumerable: true, get: function () {
+          return mnemonic_1.seedFromMnemonic;
+        }
+      });
+      Object.defineProperty(exports, "mnemonicFromSeed", {
+        enumerable: true, get: function () {
+          return mnemonic_1.mnemonicFromSeed;
+        }
+      });
       var convert_1 = require_convert();
-      Object.defineProperty(exports, "microalgosToAlgos", { enumerable: true, get: function() {
-        return convert_1.microalgosToAlgos;
-      } });
-      Object.defineProperty(exports, "algosToMicroalgos", { enumerable: true, get: function() {
-        return convert_1.algosToMicroalgos;
-      } });
-      Object.defineProperty(exports, "INVALID_MICROALGOS_ERROR_MSG", { enumerable: true, get: function() {
-        return convert_1.INVALID_MICROALGOS_ERROR_MSG;
-      } });
+      Object.defineProperty(exports, "microalgosToAlgos", {
+        enumerable: true, get: function () {
+          return convert_1.microalgosToAlgos;
+        }
+      });
+      Object.defineProperty(exports, "algosToMicroalgos", {
+        enumerable: true, get: function () {
+          return convert_1.algosToMicroalgos;
+        }
+      });
+      Object.defineProperty(exports, "INVALID_MICROALGOS_ERROR_MSG", {
+        enumerable: true, get: function () {
+          return convert_1.INVALID_MICROALGOS_ERROR_MSG;
+        }
+      });
       var group_1 = require_group();
-      Object.defineProperty(exports, "computeGroupID", { enumerable: true, get: function() {
-        return group_1.computeGroupID;
-      } });
-      Object.defineProperty(exports, "assignGroupID", { enumerable: true, get: function() {
-        return group_1.assignGroupID;
-      } });
+      Object.defineProperty(exports, "computeGroupID", {
+        enumerable: true, get: function () {
+          return group_1.computeGroupID;
+        }
+      });
+      Object.defineProperty(exports, "assignGroupID", {
+        enumerable: true, get: function () {
+          return group_1.assignGroupID;
+        }
+      });
       var logicsig_1 = require_logicsig();
-      Object.defineProperty(exports, "LogicSig", { enumerable: true, get: function() {
-        return logicsig_1.LogicSig;
-      } });
-      Object.defineProperty(exports, "LogicSigAccount", { enumerable: true, get: function() {
-        return logicsig_1.LogicSigAccount;
-      } });
-      Object.defineProperty(exports, "signLogicSigTransaction", { enumerable: true, get: function() {
-        return logicsig_1.signLogicSigTransaction;
-      } });
-      Object.defineProperty(exports, "signLogicSigTransactionObject", { enumerable: true, get: function() {
-        return logicsig_1.signLogicSigTransactionObject;
-      } });
-      Object.defineProperty(exports, "logicSigFromByte", { enumerable: true, get: function() {
-        return logicsig_1.logicSigFromByte;
-      } });
-      Object.defineProperty(exports, "tealSign", { enumerable: true, get: function() {
-        return logicsig_1.tealSign;
-      } });
-      Object.defineProperty(exports, "tealSignFromProgram", { enumerable: true, get: function() {
-        return logicsig_1.tealSignFromProgram;
-      } });
-      Object.defineProperty(exports, "verifyTealSign", { enumerable: true, get: function() {
-        return logicsig_1.verifyTealSign;
-      } });
+      Object.defineProperty(exports, "LogicSig", {
+        enumerable: true, get: function () {
+          return logicsig_1.LogicSig;
+        }
+      });
+      Object.defineProperty(exports, "LogicSigAccount", {
+        enumerable: true, get: function () {
+          return logicsig_1.LogicSigAccount;
+        }
+      });
+      Object.defineProperty(exports, "signLogicSigTransaction", {
+        enumerable: true, get: function () {
+          return logicsig_1.signLogicSigTransaction;
+        }
+      });
+      Object.defineProperty(exports, "signLogicSigTransactionObject", {
+        enumerable: true, get: function () {
+          return logicsig_1.signLogicSigTransactionObject;
+        }
+      });
+      Object.defineProperty(exports, "logicSigFromByte", {
+        enumerable: true, get: function () {
+          return logicsig_1.logicSigFromByte;
+        }
+      });
+      Object.defineProperty(exports, "tealSign", {
+        enumerable: true, get: function () {
+          return logicsig_1.tealSign;
+        }
+      });
+      Object.defineProperty(exports, "tealSignFromProgram", {
+        enumerable: true, get: function () {
+          return logicsig_1.tealSignFromProgram;
+        }
+      });
+      Object.defineProperty(exports, "verifyTealSign", {
+        enumerable: true, get: function () {
+          return logicsig_1.verifyTealSign;
+        }
+      });
       var multisig_1 = require_multisig();
-      Object.defineProperty(exports, "signMultisigTransaction", { enumerable: true, get: function() {
-        return multisig_1.signMultisigTransaction;
-      } });
-      Object.defineProperty(exports, "mergeMultisigTransactions", { enumerable: true, get: function() {
-        return multisig_1.mergeMultisigTransactions;
-      } });
-      Object.defineProperty(exports, "appendSignMultisigTransaction", { enumerable: true, get: function() {
-        return multisig_1.appendSignMultisigTransaction;
-      } });
-      Object.defineProperty(exports, "createMultisigTransaction", { enumerable: true, get: function() {
-        return multisig_1.createMultisigTransaction;
-      } });
-      Object.defineProperty(exports, "appendSignRawMultisigSignature", { enumerable: true, get: function() {
-        return multisig_1.appendSignRawMultisigSignature;
-      } });
-      Object.defineProperty(exports, "verifyMultisig", { enumerable: true, get: function() {
-        return multisig_1.verifyMultisig;
-      } });
-      Object.defineProperty(exports, "multisigAddress", { enumerable: true, get: function() {
-        return multisig_1.multisigAddress;
-      } });
+      Object.defineProperty(exports, "signMultisigTransaction", {
+        enumerable: true, get: function () {
+          return multisig_1.signMultisigTransaction;
+        }
+      });
+      Object.defineProperty(exports, "mergeMultisigTransactions", {
+        enumerable: true, get: function () {
+          return multisig_1.mergeMultisigTransactions;
+        }
+      });
+      Object.defineProperty(exports, "appendSignMultisigTransaction", {
+        enumerable: true, get: function () {
+          return multisig_1.appendSignMultisigTransaction;
+        }
+      });
+      Object.defineProperty(exports, "createMultisigTransaction", {
+        enumerable: true, get: function () {
+          return multisig_1.createMultisigTransaction;
+        }
+      });
+      Object.defineProperty(exports, "appendSignRawMultisigSignature", {
+        enumerable: true, get: function () {
+          return multisig_1.appendSignRawMultisigSignature;
+        }
+      });
+      Object.defineProperty(exports, "verifyMultisig", {
+        enumerable: true, get: function () {
+          return multisig_1.verifyMultisig;
+        }
+      });
+      Object.defineProperty(exports, "multisigAddress", {
+        enumerable: true, get: function () {
+          return multisig_1.multisigAddress;
+        }
+      });
       var sourcemap_1 = require_sourcemap();
-      Object.defineProperty(exports, "SourceMap", { enumerable: true, get: function() {
-        return sourcemap_1.SourceMap;
-      } });
+      Object.defineProperty(exports, "SourceMap", {
+        enumerable: true, get: function () {
+          return sourcemap_1.SourceMap;
+        }
+      });
       __exportStar2(require_dryrun2(), exports);
       __exportStar2(require_makeTxn(), exports);
       __exportStar2(require_transaction(), exports);
@@ -35111,25 +35259,27 @@ var PeraWalletConnect = (() => {
   var require_cjs4 = __commonJS({
     "node_modules/algosdk/dist/cjs/index.js"(exports) {
       "use strict";
-      var __createBinding2 = exports && exports.__createBinding || (Object.create ? (function(o2, m, k, k2) {
+      var __createBinding2 = exports && exports.__createBinding || (Object.create ? (function (o2, m, k, k2) {
         if (k2 === void 0) k2 = k;
         var desc = Object.getOwnPropertyDescriptor(m, k);
         if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-          desc = { enumerable: true, get: function() {
-            return m[k];
-          } };
+          desc = {
+            enumerable: true, get: function () {
+              return m[k];
+            }
+          };
         }
         Object.defineProperty(o2, k2, desc);
-      }) : (function(o2, m, k, k2) {
+      }) : (function (o2, m, k, k2) {
         if (k2 === void 0) k2 = k;
         o2[k2] = m[k];
       }));
-      var __setModuleDefault = exports && exports.__setModuleDefault || (Object.create ? (function(o2, v) {
+      var __setModuleDefault = exports && exports.__setModuleDefault || (Object.create ? (function (o2, v) {
         Object.defineProperty(o2, "default", { enumerable: true, value: v });
-      }) : function(o2, v) {
+      }) : function (o2, v) {
         o2["default"] = v;
       });
-      var __importStar2 = exports && exports.__importStar || function(mod) {
+      var __importStar2 = exports && exports.__importStar || function (mod) {
         if (mod && mod.__esModule) return mod;
         var result = {};
         if (mod != null) {
@@ -35138,7 +35288,7 @@ var PeraWalletConnect = (() => {
         __setModuleDefault(result, mod);
         return result;
       };
-      var __exportStar2 = exports && exports.__exportStar || function(m, exports2) {
+      var __exportStar2 = exports && exports.__exportStar || function (m, exports2) {
         for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports2, p)) __createBinding2(exports2, m, p);
       };
       Object.defineProperty(exports, "__esModule", { value: true });
@@ -35151,628 +35301,806 @@ var PeraWalletConnect = (() => {
   // node_modules/bowser/es5.js
   var require_es5 = __commonJS({
     "node_modules/bowser/es5.js"(exports, module) {
-      !(function(e2, t) {
+      !(function (e2, t) {
         "object" == typeof exports && "object" == typeof module ? module.exports = t() : "function" == typeof define && define.amd ? define([], t) : "object" == typeof exports ? exports.bowser = t() : e2.bowser = t();
-      })(exports, (function() {
-        return (function(e2) {
+      })(exports, (function () {
+        return (function (e2) {
           var t = {};
           function r2(n2) {
             if (t[n2]) return t[n2].exports;
             var i = t[n2] = { i: n2, l: false, exports: {} };
             return e2[n2].call(i.exports, i, i.exports, r2), i.l = true, i.exports;
           }
-          return r2.m = e2, r2.c = t, r2.d = function(e3, t2, n2) {
+          return r2.m = e2, r2.c = t, r2.d = function (e3, t2, n2) {
             r2.o(e3, t2) || Object.defineProperty(e3, t2, { enumerable: true, get: n2 });
-          }, r2.r = function(e3) {
+          }, r2.r = function (e3) {
             "undefined" != typeof Symbol && Symbol.toStringTag && Object.defineProperty(e3, Symbol.toStringTag, { value: "Module" }), Object.defineProperty(e3, "__esModule", { value: true });
-          }, r2.t = function(e3, t2) {
+          }, r2.t = function (e3, t2) {
             if (1 & t2 && (e3 = r2(e3)), 8 & t2) return e3;
             if (4 & t2 && "object" == typeof e3 && e3 && e3.__esModule) return e3;
             var n2 = /* @__PURE__ */ Object.create(null);
-            if (r2.r(n2), Object.defineProperty(n2, "default", { enumerable: true, value: e3 }), 2 & t2 && "string" != typeof e3) for (var i in e3) r2.d(n2, i, function(t3) {
+            if (r2.r(n2), Object.defineProperty(n2, "default", { enumerable: true, value: e3 }), 2 & t2 && "string" != typeof e3) for (var i in e3) r2.d(n2, i, function (t3) {
               return e3[t3];
             }.bind(null, i));
             return n2;
-          }, r2.n = function(e3) {
-            var t2 = e3 && e3.__esModule ? function() {
+          }, r2.n = function (e3) {
+            var t2 = e3 && e3.__esModule ? function () {
               return e3.default;
-            } : function() {
+            } : function () {
               return e3;
             };
             return r2.d(t2, "a", t2), t2;
-          }, r2.o = function(e3, t2) {
+          }, r2.o = function (e3, t2) {
             return Object.prototype.hasOwnProperty.call(e3, t2);
           }, r2.p = "", r2(r2.s = 90);
-        })({ 17: function(e2, t, r2) {
-          "use strict";
-          t.__esModule = true, t.default = void 0;
-          var n2 = r2(18), i = (function() {
-            function e3() {
-            }
-            return e3.getFirstMatch = function(e4, t2) {
-              var r3 = t2.match(e4);
-              return r3 && r3.length > 0 && r3[1] || "";
-            }, e3.getSecondMatch = function(e4, t2) {
-              var r3 = t2.match(e4);
-              return r3 && r3.length > 1 && r3[2] || "";
-            }, e3.matchAndReturnConst = function(e4, t2, r3) {
-              if (e4.test(t2)) return r3;
-            }, e3.getWindowsVersionName = function(e4) {
-              switch (e4) {
-                case "NT":
-                  return "NT";
-                case "XP":
-                  return "XP";
-                case "NT 5.0":
-                  return "2000";
-                case "NT 5.1":
-                  return "XP";
-                case "NT 5.2":
-                  return "2003";
-                case "NT 6.0":
-                  return "Vista";
-                case "NT 6.1":
-                  return "7";
-                case "NT 6.2":
-                  return "8";
-                case "NT 6.3":
-                  return "8.1";
-                case "NT 10.0":
-                  return "10";
-                default:
-                  return;
+        })({
+          17: function (e2, t, r2) {
+            "use strict";
+            t.__esModule = true, t.default = void 0;
+            var n2 = r2(18), i = (function () {
+              function e3() {
               }
-            }, e3.getMacOSVersionName = function(e4) {
-              var t2 = e4.split(".").splice(0, 2).map((function(e5) {
-                return parseInt(e5, 10) || 0;
-              }));
-              if (t2.push(0), 10 === t2[0]) switch (t2[1]) {
-                case 5:
-                  return "Leopard";
-                case 6:
-                  return "Snow Leopard";
-                case 7:
-                  return "Lion";
-                case 8:
-                  return "Mountain Lion";
-                case 9:
-                  return "Mavericks";
-                case 10:
-                  return "Yosemite";
-                case 11:
-                  return "El Capitan";
-                case 12:
-                  return "Sierra";
-                case 13:
-                  return "High Sierra";
-                case 14:
-                  return "Mojave";
-                case 15:
-                  return "Catalina";
-                default:
-                  return;
-              }
-            }, e3.getAndroidVersionName = function(e4) {
-              var t2 = e4.split(".").splice(0, 2).map((function(e5) {
-                return parseInt(e5, 10) || 0;
-              }));
-              if (t2.push(0), !(1 === t2[0] && t2[1] < 5)) return 1 === t2[0] && t2[1] < 6 ? "Cupcake" : 1 === t2[0] && t2[1] >= 6 ? "Donut" : 2 === t2[0] && t2[1] < 2 ? "Eclair" : 2 === t2[0] && 2 === t2[1] ? "Froyo" : 2 === t2[0] && t2[1] > 2 ? "Gingerbread" : 3 === t2[0] ? "Honeycomb" : 4 === t2[0] && t2[1] < 1 ? "Ice Cream Sandwich" : 4 === t2[0] && t2[1] < 4 ? "Jelly Bean" : 4 === t2[0] && t2[1] >= 4 ? "KitKat" : 5 === t2[0] ? "Lollipop" : 6 === t2[0] ? "Marshmallow" : 7 === t2[0] ? "Nougat" : 8 === t2[0] ? "Oreo" : 9 === t2[0] ? "Pie" : void 0;
-            }, e3.getVersionPrecision = function(e4) {
-              return e4.split(".").length;
-            }, e3.compareVersions = function(t2, r3, n3) {
-              void 0 === n3 && (n3 = false);
-              var i2 = e3.getVersionPrecision(t2), s = e3.getVersionPrecision(r3), a = Math.max(i2, s), o2 = 0, u = e3.map([t2, r3], (function(t3) {
-                var r4 = a - e3.getVersionPrecision(t3), n4 = t3 + new Array(r4 + 1).join(".0");
-                return e3.map(n4.split("."), (function(e4) {
-                  return new Array(20 - e4.length).join("0") + e4;
-                })).reverse();
-              }));
-              for (n3 && (o2 = a - Math.min(i2, s)), a -= 1; a >= o2; ) {
-                if (u[0][a] > u[1][a]) return 1;
-                if (u[0][a] === u[1][a]) {
-                  if (a === o2) return 0;
-                  a -= 1;
-                } else if (u[0][a] < u[1][a]) return -1;
-              }
-            }, e3.map = function(e4, t2) {
-              var r3, n3 = [];
-              if (Array.prototype.map) return Array.prototype.map.call(e4, t2);
-              for (r3 = 0; r3 < e4.length; r3 += 1) n3.push(t2(e4[r3]));
-              return n3;
-            }, e3.find = function(e4, t2) {
-              var r3, n3;
-              if (Array.prototype.find) return Array.prototype.find.call(e4, t2);
-              for (r3 = 0, n3 = e4.length; r3 < n3; r3 += 1) {
-                var i2 = e4[r3];
-                if (t2(i2, r3)) return i2;
-              }
-            }, e3.assign = function(e4) {
-              for (var t2, r3, n3 = e4, i2 = arguments.length, s = new Array(i2 > 1 ? i2 - 1 : 0), a = 1; a < i2; a++) s[a - 1] = arguments[a];
-              if (Object.assign) return Object.assign.apply(Object, [e4].concat(s));
-              var o2 = function() {
-                var e5 = s[t2];
-                "object" == typeof e5 && null !== e5 && Object.keys(e5).forEach((function(t3) {
-                  n3[t3] = e5[t3];
-                }));
-              };
-              for (t2 = 0, r3 = s.length; t2 < r3; t2 += 1) o2();
-              return e4;
-            }, e3.getBrowserAlias = function(e4) {
-              return n2.BROWSER_ALIASES_MAP[e4];
-            }, e3.getBrowserTypeByAlias = function(e4) {
-              return n2.BROWSER_MAP[e4] || "";
-            }, e3;
-          })();
-          t.default = i, e2.exports = t.default;
-        }, 18: function(e2, t, r2) {
-          "use strict";
-          t.__esModule = true, t.ENGINE_MAP = t.OS_MAP = t.PLATFORMS_MAP = t.BROWSER_MAP = t.BROWSER_ALIASES_MAP = void 0;
-          t.BROWSER_ALIASES_MAP = { "Amazon Silk": "amazon_silk", "Android Browser": "android", Bada: "bada", BlackBerry: "blackberry", Chrome: "chrome", Chromium: "chromium", Electron: "electron", Epiphany: "epiphany", Firefox: "firefox", Focus: "focus", Generic: "generic", "Google Search": "google_search", Googlebot: "googlebot", "Internet Explorer": "ie", "K-Meleon": "k_meleon", Maxthon: "maxthon", "Microsoft Edge": "edge", "MZ Browser": "mz", "NAVER Whale Browser": "naver", Opera: "opera", "Opera Coast": "opera_coast", PhantomJS: "phantomjs", Puffin: "puffin", QupZilla: "qupzilla", QQ: "qq", QQLite: "qqlite", Safari: "safari", Sailfish: "sailfish", "Samsung Internet for Android": "samsung_internet", SeaMonkey: "seamonkey", Sleipnir: "sleipnir", Swing: "swing", Tizen: "tizen", "UC Browser": "uc", Vivaldi: "vivaldi", "WebOS Browser": "webos", WeChat: "wechat", "Yandex Browser": "yandex", Roku: "roku" };
-          t.BROWSER_MAP = { amazon_silk: "Amazon Silk", android: "Android Browser", bada: "Bada", blackberry: "BlackBerry", chrome: "Chrome", chromium: "Chromium", electron: "Electron", epiphany: "Epiphany", firefox: "Firefox", focus: "Focus", generic: "Generic", googlebot: "Googlebot", google_search: "Google Search", ie: "Internet Explorer", k_meleon: "K-Meleon", maxthon: "Maxthon", edge: "Microsoft Edge", mz: "MZ Browser", naver: "NAVER Whale Browser", opera: "Opera", opera_coast: "Opera Coast", phantomjs: "PhantomJS", puffin: "Puffin", qupzilla: "QupZilla", qq: "QQ Browser", qqlite: "QQ Browser Lite", safari: "Safari", sailfish: "Sailfish", samsung_internet: "Samsung Internet for Android", seamonkey: "SeaMonkey", sleipnir: "Sleipnir", swing: "Swing", tizen: "Tizen", uc: "UC Browser", vivaldi: "Vivaldi", webos: "WebOS Browser", wechat: "WeChat", yandex: "Yandex Browser" };
-          t.PLATFORMS_MAP = { tablet: "tablet", mobile: "mobile", desktop: "desktop", tv: "tv" };
-          t.OS_MAP = { WindowsPhone: "Windows Phone", Windows: "Windows", MacOS: "macOS", iOS: "iOS", Android: "Android", WebOS: "WebOS", BlackBerry: "BlackBerry", Bada: "Bada", Tizen: "Tizen", Linux: "Linux", ChromeOS: "Chrome OS", PlayStation4: "PlayStation 4", Roku: "Roku" };
-          t.ENGINE_MAP = { EdgeHTML: "EdgeHTML", Blink: "Blink", Trident: "Trident", Presto: "Presto", Gecko: "Gecko", WebKit: "WebKit" };
-        }, 90: function(e2, t, r2) {
-          "use strict";
-          t.__esModule = true, t.default = void 0;
-          var n2, i = (n2 = r2(91)) && n2.__esModule ? n2 : { default: n2 }, s = r2(18);
-          function a(e3, t2) {
-            for (var r3 = 0; r3 < t2.length; r3++) {
-              var n3 = t2[r3];
-              n3.enumerable = n3.enumerable || false, n3.configurable = true, "value" in n3 && (n3.writable = true), Object.defineProperty(e3, n3.key, n3);
-            }
-          }
-          var o2 = (function() {
-            function e3() {
-            }
-            var t2, r3, n3;
-            return e3.getParser = function(e4, t3) {
-              if (void 0 === t3 && (t3 = false), "string" != typeof e4) throw new Error("UserAgent should be a string");
-              return new i.default(e4, t3);
-            }, e3.parse = function(e4) {
-              return new i.default(e4).getResult();
-            }, t2 = e3, n3 = [{ key: "BROWSER_MAP", get: function() {
-              return s.BROWSER_MAP;
-            } }, { key: "ENGINE_MAP", get: function() {
-              return s.ENGINE_MAP;
-            } }, { key: "OS_MAP", get: function() {
-              return s.OS_MAP;
-            } }, { key: "PLATFORMS_MAP", get: function() {
-              return s.PLATFORMS_MAP;
-            } }], (r3 = null) && a(t2.prototype, r3), n3 && a(t2, n3), e3;
-          })();
-          t.default = o2, e2.exports = t.default;
-        }, 91: function(e2, t, r2) {
-          "use strict";
-          t.__esModule = true, t.default = void 0;
-          var n2 = u(r2(92)), i = u(r2(93)), s = u(r2(94)), a = u(r2(95)), o2 = u(r2(17));
-          function u(e3) {
-            return e3 && e3.__esModule ? e3 : { default: e3 };
-          }
-          var d = (function() {
-            function e3(e4, t3) {
-              if (void 0 === t3 && (t3 = false), null == e4 || "" === e4) throw new Error("UserAgent parameter can't be empty");
-              this._ua = e4, this.parsedResult = {}, true !== t3 && this.parse();
-            }
-            var t2 = e3.prototype;
-            return t2.getUA = function() {
-              return this._ua;
-            }, t2.test = function(e4) {
-              return e4.test(this._ua);
-            }, t2.parseBrowser = function() {
-              var e4 = this;
-              this.parsedResult.browser = {};
-              var t3 = o2.default.find(n2.default, (function(t4) {
-                if ("function" == typeof t4.test) return t4.test(e4);
-                if (t4.test instanceof Array) return t4.test.some((function(t5) {
-                  return e4.test(t5);
-                }));
-                throw new Error("Browser's test function is not valid");
-              }));
-              return t3 && (this.parsedResult.browser = t3.describe(this.getUA())), this.parsedResult.browser;
-            }, t2.getBrowser = function() {
-              return this.parsedResult.browser ? this.parsedResult.browser : this.parseBrowser();
-            }, t2.getBrowserName = function(e4) {
-              return e4 ? String(this.getBrowser().name).toLowerCase() || "" : this.getBrowser().name || "";
-            }, t2.getBrowserVersion = function() {
-              return this.getBrowser().version;
-            }, t2.getOS = function() {
-              return this.parsedResult.os ? this.parsedResult.os : this.parseOS();
-            }, t2.parseOS = function() {
-              var e4 = this;
-              this.parsedResult.os = {};
-              var t3 = o2.default.find(i.default, (function(t4) {
-                if ("function" == typeof t4.test) return t4.test(e4);
-                if (t4.test instanceof Array) return t4.test.some((function(t5) {
-                  return e4.test(t5);
-                }));
-                throw new Error("Browser's test function is not valid");
-              }));
-              return t3 && (this.parsedResult.os = t3.describe(this.getUA())), this.parsedResult.os;
-            }, t2.getOSName = function(e4) {
-              var t3 = this.getOS().name;
-              return e4 ? String(t3).toLowerCase() || "" : t3 || "";
-            }, t2.getOSVersion = function() {
-              return this.getOS().version;
-            }, t2.getPlatform = function() {
-              return this.parsedResult.platform ? this.parsedResult.platform : this.parsePlatform();
-            }, t2.getPlatformType = function(e4) {
-              void 0 === e4 && (e4 = false);
-              var t3 = this.getPlatform().type;
-              return e4 ? String(t3).toLowerCase() || "" : t3 || "";
-            }, t2.parsePlatform = function() {
-              var e4 = this;
-              this.parsedResult.platform = {};
-              var t3 = o2.default.find(s.default, (function(t4) {
-                if ("function" == typeof t4.test) return t4.test(e4);
-                if (t4.test instanceof Array) return t4.test.some((function(t5) {
-                  return e4.test(t5);
-                }));
-                throw new Error("Browser's test function is not valid");
-              }));
-              return t3 && (this.parsedResult.platform = t3.describe(this.getUA())), this.parsedResult.platform;
-            }, t2.getEngine = function() {
-              return this.parsedResult.engine ? this.parsedResult.engine : this.parseEngine();
-            }, t2.getEngineName = function(e4) {
-              return e4 ? String(this.getEngine().name).toLowerCase() || "" : this.getEngine().name || "";
-            }, t2.parseEngine = function() {
-              var e4 = this;
-              this.parsedResult.engine = {};
-              var t3 = o2.default.find(a.default, (function(t4) {
-                if ("function" == typeof t4.test) return t4.test(e4);
-                if (t4.test instanceof Array) return t4.test.some((function(t5) {
-                  return e4.test(t5);
-                }));
-                throw new Error("Browser's test function is not valid");
-              }));
-              return t3 && (this.parsedResult.engine = t3.describe(this.getUA())), this.parsedResult.engine;
-            }, t2.parse = function() {
-              return this.parseBrowser(), this.parseOS(), this.parsePlatform(), this.parseEngine(), this;
-            }, t2.getResult = function() {
-              return o2.default.assign({}, this.parsedResult);
-            }, t2.satisfies = function(e4) {
-              var t3 = this, r3 = {}, n3 = 0, i2 = {}, s2 = 0;
-              if (Object.keys(e4).forEach((function(t4) {
-                var a3 = e4[t4];
-                "string" == typeof a3 ? (i2[t4] = a3, s2 += 1) : "object" == typeof a3 && (r3[t4] = a3, n3 += 1);
-              })), n3 > 0) {
-                var a2 = Object.keys(r3), u2 = o2.default.find(a2, (function(e5) {
-                  return t3.isOS(e5);
-                }));
-                if (u2) {
-                  var d2 = this.satisfies(r3[u2]);
-                  if (void 0 !== d2) return d2;
+              return e3.getFirstMatch = function (e4, t2) {
+                var r3 = t2.match(e4);
+                return r3 && r3.length > 0 && r3[1] || "";
+              }, e3.getSecondMatch = function (e4, t2) {
+                var r3 = t2.match(e4);
+                return r3 && r3.length > 1 && r3[2] || "";
+              }, e3.matchAndReturnConst = function (e4, t2, r3) {
+                if (e4.test(t2)) return r3;
+              }, e3.getWindowsVersionName = function (e4) {
+                switch (e4) {
+                  case "NT":
+                    return "NT";
+                  case "XP":
+                    return "XP";
+                  case "NT 5.0":
+                    return "2000";
+                  case "NT 5.1":
+                    return "XP";
+                  case "NT 5.2":
+                    return "2003";
+                  case "NT 6.0":
+                    return "Vista";
+                  case "NT 6.1":
+                    return "7";
+                  case "NT 6.2":
+                    return "8";
+                  case "NT 6.3":
+                    return "8.1";
+                  case "NT 10.0":
+                    return "10";
+                  default:
+                    return;
                 }
-                var c = o2.default.find(a2, (function(e5) {
-                  return t3.isPlatform(e5);
+              }, e3.getMacOSVersionName = function (e4) {
+                var t2 = e4.split(".").splice(0, 2).map((function (e5) {
+                  return parseInt(e5, 10) || 0;
                 }));
-                if (c) {
-                  var f = this.satisfies(r3[c]);
-                  if (void 0 !== f) return f;
+                if (t2.push(0), 10 === t2[0]) switch (t2[1]) {
+                  case 5:
+                    return "Leopard";
+                  case 6:
+                    return "Snow Leopard";
+                  case 7:
+                    return "Lion";
+                  case 8:
+                    return "Mountain Lion";
+                  case 9:
+                    return "Mavericks";
+                  case 10:
+                    return "Yosemite";
+                  case 11:
+                    return "El Capitan";
+                  case 12:
+                    return "Sierra";
+                  case 13:
+                    return "High Sierra";
+                  case 14:
+                    return "Mojave";
+                  case 15:
+                    return "Catalina";
+                  default:
+                    return;
                 }
-              }
-              if (s2 > 0) {
-                var l = Object.keys(i2), h = o2.default.find(l, (function(e5) {
-                  return t3.isBrowser(e5, true);
+              }, e3.getAndroidVersionName = function (e4) {
+                var t2 = e4.split(".").splice(0, 2).map((function (e5) {
+                  return parseInt(e5, 10) || 0;
                 }));
-                if (void 0 !== h) return this.compareVersion(i2[h]);
+                if (t2.push(0), !(1 === t2[0] && t2[1] < 5)) return 1 === t2[0] && t2[1] < 6 ? "Cupcake" : 1 === t2[0] && t2[1] >= 6 ? "Donut" : 2 === t2[0] && t2[1] < 2 ? "Eclair" : 2 === t2[0] && 2 === t2[1] ? "Froyo" : 2 === t2[0] && t2[1] > 2 ? "Gingerbread" : 3 === t2[0] ? "Honeycomb" : 4 === t2[0] && t2[1] < 1 ? "Ice Cream Sandwich" : 4 === t2[0] && t2[1] < 4 ? "Jelly Bean" : 4 === t2[0] && t2[1] >= 4 ? "KitKat" : 5 === t2[0] ? "Lollipop" : 6 === t2[0] ? "Marshmallow" : 7 === t2[0] ? "Nougat" : 8 === t2[0] ? "Oreo" : 9 === t2[0] ? "Pie" : void 0;
+              }, e3.getVersionPrecision = function (e4) {
+                return e4.split(".").length;
+              }, e3.compareVersions = function (t2, r3, n3) {
+                void 0 === n3 && (n3 = false);
+                var i2 = e3.getVersionPrecision(t2), s = e3.getVersionPrecision(r3), a = Math.max(i2, s), o2 = 0, u = e3.map([t2, r3], (function (t3) {
+                  var r4 = a - e3.getVersionPrecision(t3), n4 = t3 + new Array(r4 + 1).join(".0");
+                  return e3.map(n4.split("."), (function (e4) {
+                    return new Array(20 - e4.length).join("0") + e4;
+                  })).reverse();
+                }));
+                for (n3 && (o2 = a - Math.min(i2, s)), a -= 1; a >= o2;) {
+                  if (u[0][a] > u[1][a]) return 1;
+                  if (u[0][a] === u[1][a]) {
+                    if (a === o2) return 0;
+                    a -= 1;
+                  } else if (u[0][a] < u[1][a]) return -1;
+                }
+              }, e3.map = function (e4, t2) {
+                var r3, n3 = [];
+                if (Array.prototype.map) return Array.prototype.map.call(e4, t2);
+                for (r3 = 0; r3 < e4.length; r3 += 1) n3.push(t2(e4[r3]));
+                return n3;
+              }, e3.find = function (e4, t2) {
+                var r3, n3;
+                if (Array.prototype.find) return Array.prototype.find.call(e4, t2);
+                for (r3 = 0, n3 = e4.length; r3 < n3; r3 += 1) {
+                  var i2 = e4[r3];
+                  if (t2(i2, r3)) return i2;
+                }
+              }, e3.assign = function (e4) {
+                for (var t2, r3, n3 = e4, i2 = arguments.length, s = new Array(i2 > 1 ? i2 - 1 : 0), a = 1; a < i2; a++) s[a - 1] = arguments[a];
+                if (Object.assign) return Object.assign.apply(Object, [e4].concat(s));
+                var o2 = function () {
+                  var e5 = s[t2];
+                  "object" == typeof e5 && null !== e5 && Object.keys(e5).forEach((function (t3) {
+                    n3[t3] = e5[t3];
+                  }));
+                };
+                for (t2 = 0, r3 = s.length; t2 < r3; t2 += 1) o2();
+                return e4;
+              }, e3.getBrowserAlias = function (e4) {
+                return n2.BROWSER_ALIASES_MAP[e4];
+              }, e3.getBrowserTypeByAlias = function (e4) {
+                return n2.BROWSER_MAP[e4] || "";
+              }, e3;
+            })();
+            t.default = i, e2.exports = t.default;
+          }, 18: function (e2, t, r2) {
+            "use strict";
+            t.__esModule = true, t.ENGINE_MAP = t.OS_MAP = t.PLATFORMS_MAP = t.BROWSER_MAP = t.BROWSER_ALIASES_MAP = void 0;
+            t.BROWSER_ALIASES_MAP = { "Amazon Silk": "amazon_silk", "Android Browser": "android", Bada: "bada", BlackBerry: "blackberry", Chrome: "chrome", Chromium: "chromium", Electron: "electron", Epiphany: "epiphany", Firefox: "firefox", Focus: "focus", Generic: "generic", "Google Search": "google_search", Googlebot: "googlebot", "Internet Explorer": "ie", "K-Meleon": "k_meleon", Maxthon: "maxthon", "Microsoft Edge": "edge", "MZ Browser": "mz", "NAVER Whale Browser": "naver", Opera: "opera", "Opera Coast": "opera_coast", PhantomJS: "phantomjs", Puffin: "puffin", QupZilla: "qupzilla", QQ: "qq", QQLite: "qqlite", Safari: "safari", Sailfish: "sailfish", "Samsung Internet for Android": "samsung_internet", SeaMonkey: "seamonkey", Sleipnir: "sleipnir", Swing: "swing", Tizen: "tizen", "UC Browser": "uc", Vivaldi: "vivaldi", "WebOS Browser": "webos", WeChat: "wechat", "Yandex Browser": "yandex", Roku: "roku" };
+            t.BROWSER_MAP = { amazon_silk: "Amazon Silk", android: "Android Browser", bada: "Bada", blackberry: "BlackBerry", chrome: "Chrome", chromium: "Chromium", electron: "Electron", epiphany: "Epiphany", firefox: "Firefox", focus: "Focus", generic: "Generic", googlebot: "Googlebot", google_search: "Google Search", ie: "Internet Explorer", k_meleon: "K-Meleon", maxthon: "Maxthon", edge: "Microsoft Edge", mz: "MZ Browser", naver: "NAVER Whale Browser", opera: "Opera", opera_coast: "Opera Coast", phantomjs: "PhantomJS", puffin: "Puffin", qupzilla: "QupZilla", qq: "QQ Browser", qqlite: "QQ Browser Lite", safari: "Safari", sailfish: "Sailfish", samsung_internet: "Samsung Internet for Android", seamonkey: "SeaMonkey", sleipnir: "Sleipnir", swing: "Swing", tizen: "Tizen", uc: "UC Browser", vivaldi: "Vivaldi", webos: "WebOS Browser", wechat: "WeChat", yandex: "Yandex Browser" };
+            t.PLATFORMS_MAP = { tablet: "tablet", mobile: "mobile", desktop: "desktop", tv: "tv" };
+            t.OS_MAP = { WindowsPhone: "Windows Phone", Windows: "Windows", MacOS: "macOS", iOS: "iOS", Android: "Android", WebOS: "WebOS", BlackBerry: "BlackBerry", Bada: "Bada", Tizen: "Tizen", Linux: "Linux", ChromeOS: "Chrome OS", PlayStation4: "PlayStation 4", Roku: "Roku" };
+            t.ENGINE_MAP = { EdgeHTML: "EdgeHTML", Blink: "Blink", Trident: "Trident", Presto: "Presto", Gecko: "Gecko", WebKit: "WebKit" };
+          }, 90: function (e2, t, r2) {
+            "use strict";
+            t.__esModule = true, t.default = void 0;
+            var n2, i = (n2 = r2(91)) && n2.__esModule ? n2 : { default: n2 }, s = r2(18);
+            function a(e3, t2) {
+              for (var r3 = 0; r3 < t2.length; r3++) {
+                var n3 = t2[r3];
+                n3.enumerable = n3.enumerable || false, n3.configurable = true, "value" in n3 && (n3.writable = true), Object.defineProperty(e3, n3.key, n3);
               }
-            }, t2.isBrowser = function(e4, t3) {
-              void 0 === t3 && (t3 = false);
-              var r3 = this.getBrowserName().toLowerCase(), n3 = e4.toLowerCase(), i2 = o2.default.getBrowserTypeByAlias(n3);
-              return t3 && i2 && (n3 = i2.toLowerCase()), n3 === r3;
-            }, t2.compareVersion = function(e4) {
-              var t3 = [0], r3 = e4, n3 = false, i2 = this.getBrowserVersion();
-              if ("string" == typeof i2) return ">" === e4[0] || "<" === e4[0] ? (r3 = e4.substr(1), "=" === e4[1] ? (n3 = true, r3 = e4.substr(2)) : t3 = [], ">" === e4[0] ? t3.push(1) : t3.push(-1)) : "=" === e4[0] ? r3 = e4.substr(1) : "~" === e4[0] && (n3 = true, r3 = e4.substr(1)), t3.indexOf(o2.default.compareVersions(i2, r3, n3)) > -1;
-            }, t2.isOS = function(e4) {
-              return this.getOSName(true) === String(e4).toLowerCase();
-            }, t2.isPlatform = function(e4) {
-              return this.getPlatformType(true) === String(e4).toLowerCase();
-            }, t2.isEngine = function(e4) {
-              return this.getEngineName(true) === String(e4).toLowerCase();
-            }, t2.is = function(e4, t3) {
-              return void 0 === t3 && (t3 = false), this.isBrowser(e4, t3) || this.isOS(e4) || this.isPlatform(e4);
-            }, t2.some = function(e4) {
-              var t3 = this;
-              return void 0 === e4 && (e4 = []), e4.some((function(e5) {
-                return t3.is(e5);
-              }));
-            }, e3;
-          })();
-          t.default = d, e2.exports = t.default;
-        }, 92: function(e2, t, r2) {
-          "use strict";
-          t.__esModule = true, t.default = void 0;
-          var n2, i = (n2 = r2(17)) && n2.__esModule ? n2 : { default: n2 };
-          var s = /version\/(\d+(\.?_?\d+)+)/i, a = [{ test: [/googlebot/i], describe: function(e3) {
-            var t2 = { name: "Googlebot" }, r3 = i.default.getFirstMatch(/googlebot\/(\d+(\.\d+))/i, e3) || i.default.getFirstMatch(s, e3);
-            return r3 && (t2.version = r3), t2;
-          } }, { test: [/opera/i], describe: function(e3) {
-            var t2 = { name: "Opera" }, r3 = i.default.getFirstMatch(s, e3) || i.default.getFirstMatch(/(?:opera)[\s/](\d+(\.?_?\d+)+)/i, e3);
-            return r3 && (t2.version = r3), t2;
-          } }, { test: [/opr\/|opios/i], describe: function(e3) {
-            var t2 = { name: "Opera" }, r3 = i.default.getFirstMatch(/(?:opr|opios)[\s/](\S+)/i, e3) || i.default.getFirstMatch(s, e3);
-            return r3 && (t2.version = r3), t2;
-          } }, { test: [/SamsungBrowser/i], describe: function(e3) {
-            var t2 = { name: "Samsung Internet for Android" }, r3 = i.default.getFirstMatch(s, e3) || i.default.getFirstMatch(/(?:SamsungBrowser)[\s/](\d+(\.?_?\d+)+)/i, e3);
-            return r3 && (t2.version = r3), t2;
-          } }, { test: [/Whale/i], describe: function(e3) {
-            var t2 = { name: "NAVER Whale Browser" }, r3 = i.default.getFirstMatch(s, e3) || i.default.getFirstMatch(/(?:whale)[\s/](\d+(?:\.\d+)+)/i, e3);
-            return r3 && (t2.version = r3), t2;
-          } }, { test: [/MZBrowser/i], describe: function(e3) {
-            var t2 = { name: "MZ Browser" }, r3 = i.default.getFirstMatch(/(?:MZBrowser)[\s/](\d+(?:\.\d+)+)/i, e3) || i.default.getFirstMatch(s, e3);
-            return r3 && (t2.version = r3), t2;
-          } }, { test: [/focus/i], describe: function(e3) {
-            var t2 = { name: "Focus" }, r3 = i.default.getFirstMatch(/(?:focus)[\s/](\d+(?:\.\d+)+)/i, e3) || i.default.getFirstMatch(s, e3);
-            return r3 && (t2.version = r3), t2;
-          } }, { test: [/swing/i], describe: function(e3) {
-            var t2 = { name: "Swing" }, r3 = i.default.getFirstMatch(/(?:swing)[\s/](\d+(?:\.\d+)+)/i, e3) || i.default.getFirstMatch(s, e3);
-            return r3 && (t2.version = r3), t2;
-          } }, { test: [/coast/i], describe: function(e3) {
-            var t2 = { name: "Opera Coast" }, r3 = i.default.getFirstMatch(s, e3) || i.default.getFirstMatch(/(?:coast)[\s/](\d+(\.?_?\d+)+)/i, e3);
-            return r3 && (t2.version = r3), t2;
-          } }, { test: [/opt\/\d+(?:.?_?\d+)+/i], describe: function(e3) {
-            var t2 = { name: "Opera Touch" }, r3 = i.default.getFirstMatch(/(?:opt)[\s/](\d+(\.?_?\d+)+)/i, e3) || i.default.getFirstMatch(s, e3);
-            return r3 && (t2.version = r3), t2;
-          } }, { test: [/yabrowser/i], describe: function(e3) {
-            var t2 = { name: "Yandex Browser" }, r3 = i.default.getFirstMatch(/(?:yabrowser)[\s/](\d+(\.?_?\d+)+)/i, e3) || i.default.getFirstMatch(s, e3);
-            return r3 && (t2.version = r3), t2;
-          } }, { test: [/ucbrowser/i], describe: function(e3) {
-            var t2 = { name: "UC Browser" }, r3 = i.default.getFirstMatch(s, e3) || i.default.getFirstMatch(/(?:ucbrowser)[\s/](\d+(\.?_?\d+)+)/i, e3);
-            return r3 && (t2.version = r3), t2;
-          } }, { test: [/Maxthon|mxios/i], describe: function(e3) {
-            var t2 = { name: "Maxthon" }, r3 = i.default.getFirstMatch(s, e3) || i.default.getFirstMatch(/(?:Maxthon|mxios)[\s/](\d+(\.?_?\d+)+)/i, e3);
-            return r3 && (t2.version = r3), t2;
-          } }, { test: [/epiphany/i], describe: function(e3) {
-            var t2 = { name: "Epiphany" }, r3 = i.default.getFirstMatch(s, e3) || i.default.getFirstMatch(/(?:epiphany)[\s/](\d+(\.?_?\d+)+)/i, e3);
-            return r3 && (t2.version = r3), t2;
-          } }, { test: [/puffin/i], describe: function(e3) {
-            var t2 = { name: "Puffin" }, r3 = i.default.getFirstMatch(s, e3) || i.default.getFirstMatch(/(?:puffin)[\s/](\d+(\.?_?\d+)+)/i, e3);
-            return r3 && (t2.version = r3), t2;
-          } }, { test: [/sleipnir/i], describe: function(e3) {
-            var t2 = { name: "Sleipnir" }, r3 = i.default.getFirstMatch(s, e3) || i.default.getFirstMatch(/(?:sleipnir)[\s/](\d+(\.?_?\d+)+)/i, e3);
-            return r3 && (t2.version = r3), t2;
-          } }, { test: [/k-meleon/i], describe: function(e3) {
-            var t2 = { name: "K-Meleon" }, r3 = i.default.getFirstMatch(s, e3) || i.default.getFirstMatch(/(?:k-meleon)[\s/](\d+(\.?_?\d+)+)/i, e3);
-            return r3 && (t2.version = r3), t2;
-          } }, { test: [/micromessenger/i], describe: function(e3) {
-            var t2 = { name: "WeChat" }, r3 = i.default.getFirstMatch(/(?:micromessenger)[\s/](\d+(\.?_?\d+)+)/i, e3) || i.default.getFirstMatch(s, e3);
-            return r3 && (t2.version = r3), t2;
-          } }, { test: [/qqbrowser/i], describe: function(e3) {
-            var t2 = { name: /qqbrowserlite/i.test(e3) ? "QQ Browser Lite" : "QQ Browser" }, r3 = i.default.getFirstMatch(/(?:qqbrowserlite|qqbrowser)[/](\d+(\.?_?\d+)+)/i, e3) || i.default.getFirstMatch(s, e3);
-            return r3 && (t2.version = r3), t2;
-          } }, { test: [/msie|trident/i], describe: function(e3) {
-            var t2 = { name: "Internet Explorer" }, r3 = i.default.getFirstMatch(/(?:msie |rv:)(\d+(\.?_?\d+)+)/i, e3);
-            return r3 && (t2.version = r3), t2;
-          } }, { test: [/\sedg\//i], describe: function(e3) {
-            var t2 = { name: "Microsoft Edge" }, r3 = i.default.getFirstMatch(/\sedg\/(\d+(\.?_?\d+)+)/i, e3);
-            return r3 && (t2.version = r3), t2;
-          } }, { test: [/edg([ea]|ios)/i], describe: function(e3) {
-            var t2 = { name: "Microsoft Edge" }, r3 = i.default.getSecondMatch(/edg([ea]|ios)\/(\d+(\.?_?\d+)+)/i, e3);
-            return r3 && (t2.version = r3), t2;
-          } }, { test: [/vivaldi/i], describe: function(e3) {
-            var t2 = { name: "Vivaldi" }, r3 = i.default.getFirstMatch(/vivaldi\/(\d+(\.?_?\d+)+)/i, e3);
-            return r3 && (t2.version = r3), t2;
-          } }, { test: [/seamonkey/i], describe: function(e3) {
-            var t2 = { name: "SeaMonkey" }, r3 = i.default.getFirstMatch(/seamonkey\/(\d+(\.?_?\d+)+)/i, e3);
-            return r3 && (t2.version = r3), t2;
-          } }, { test: [/sailfish/i], describe: function(e3) {
-            var t2 = { name: "Sailfish" }, r3 = i.default.getFirstMatch(/sailfish\s?browser\/(\d+(\.\d+)?)/i, e3);
-            return r3 && (t2.version = r3), t2;
-          } }, { test: [/silk/i], describe: function(e3) {
-            var t2 = { name: "Amazon Silk" }, r3 = i.default.getFirstMatch(/silk\/(\d+(\.?_?\d+)+)/i, e3);
-            return r3 && (t2.version = r3), t2;
-          } }, { test: [/phantom/i], describe: function(e3) {
-            var t2 = { name: "PhantomJS" }, r3 = i.default.getFirstMatch(/phantomjs\/(\d+(\.?_?\d+)+)/i, e3);
-            return r3 && (t2.version = r3), t2;
-          } }, { test: [/slimerjs/i], describe: function(e3) {
-            var t2 = { name: "SlimerJS" }, r3 = i.default.getFirstMatch(/slimerjs\/(\d+(\.?_?\d+)+)/i, e3);
-            return r3 && (t2.version = r3), t2;
-          } }, { test: [/blackberry|\bbb\d+/i, /rim\stablet/i], describe: function(e3) {
-            var t2 = { name: "BlackBerry" }, r3 = i.default.getFirstMatch(s, e3) || i.default.getFirstMatch(/blackberry[\d]+\/(\d+(\.?_?\d+)+)/i, e3);
-            return r3 && (t2.version = r3), t2;
-          } }, { test: [/(web|hpw)[o0]s/i], describe: function(e3) {
-            var t2 = { name: "WebOS Browser" }, r3 = i.default.getFirstMatch(s, e3) || i.default.getFirstMatch(/w(?:eb)?[o0]sbrowser\/(\d+(\.?_?\d+)+)/i, e3);
-            return r3 && (t2.version = r3), t2;
-          } }, { test: [/bada/i], describe: function(e3) {
-            var t2 = { name: "Bada" }, r3 = i.default.getFirstMatch(/dolfin\/(\d+(\.?_?\d+)+)/i, e3);
-            return r3 && (t2.version = r3), t2;
-          } }, { test: [/tizen/i], describe: function(e3) {
-            var t2 = { name: "Tizen" }, r3 = i.default.getFirstMatch(/(?:tizen\s?)?browser\/(\d+(\.?_?\d+)+)/i, e3) || i.default.getFirstMatch(s, e3);
-            return r3 && (t2.version = r3), t2;
-          } }, { test: [/qupzilla/i], describe: function(e3) {
-            var t2 = { name: "QupZilla" }, r3 = i.default.getFirstMatch(/(?:qupzilla)[\s/](\d+(\.?_?\d+)+)/i, e3) || i.default.getFirstMatch(s, e3);
-            return r3 && (t2.version = r3), t2;
-          } }, { test: [/firefox|iceweasel|fxios/i], describe: function(e3) {
-            var t2 = { name: "Firefox" }, r3 = i.default.getFirstMatch(/(?:firefox|iceweasel|fxios)[\s/](\d+(\.?_?\d+)+)/i, e3);
-            return r3 && (t2.version = r3), t2;
-          } }, { test: [/electron/i], describe: function(e3) {
-            var t2 = { name: "Electron" }, r3 = i.default.getFirstMatch(/(?:electron)\/(\d+(\.?_?\d+)+)/i, e3);
-            return r3 && (t2.version = r3), t2;
-          } }, { test: [/MiuiBrowser/i], describe: function(e3) {
-            var t2 = { name: "Miui" }, r3 = i.default.getFirstMatch(/(?:MiuiBrowser)[\s/](\d+(\.?_?\d+)+)/i, e3);
-            return r3 && (t2.version = r3), t2;
-          } }, { test: [/chromium/i], describe: function(e3) {
-            var t2 = { name: "Chromium" }, r3 = i.default.getFirstMatch(/(?:chromium)[\s/](\d+(\.?_?\d+)+)/i, e3) || i.default.getFirstMatch(s, e3);
-            return r3 && (t2.version = r3), t2;
-          } }, { test: [/chrome|crios|crmo/i], describe: function(e3) {
-            var t2 = { name: "Chrome" }, r3 = i.default.getFirstMatch(/(?:chrome|crios|crmo)\/(\d+(\.?_?\d+)+)/i, e3);
-            return r3 && (t2.version = r3), t2;
-          } }, { test: [/GSA/i], describe: function(e3) {
-            var t2 = { name: "Google Search" }, r3 = i.default.getFirstMatch(/(?:GSA)\/(\d+(\.?_?\d+)+)/i, e3);
-            return r3 && (t2.version = r3), t2;
-          } }, { test: function(e3) {
-            var t2 = !e3.test(/like android/i), r3 = e3.test(/android/i);
-            return t2 && r3;
-          }, describe: function(e3) {
-            var t2 = { name: "Android Browser" }, r3 = i.default.getFirstMatch(s, e3);
-            return r3 && (t2.version = r3), t2;
-          } }, { test: [/playstation 4/i], describe: function(e3) {
-            var t2 = { name: "PlayStation 4" }, r3 = i.default.getFirstMatch(s, e3);
-            return r3 && (t2.version = r3), t2;
-          } }, { test: [/safari|applewebkit/i], describe: function(e3) {
-            var t2 = { name: "Safari" }, r3 = i.default.getFirstMatch(s, e3);
-            return r3 && (t2.version = r3), t2;
-          } }, { test: [/.*/i], describe: function(e3) {
-            var t2 = -1 !== e3.search("\\(") ? /^(.*)\/(.*)[ \t]\((.*)/ : /^(.*)\/(.*) /;
-            return { name: i.default.getFirstMatch(t2, e3), version: i.default.getSecondMatch(t2, e3) };
-          } }];
-          t.default = a, e2.exports = t.default;
-        }, 93: function(e2, t, r2) {
-          "use strict";
-          t.__esModule = true, t.default = void 0;
-          var n2, i = (n2 = r2(17)) && n2.__esModule ? n2 : { default: n2 }, s = r2(18);
-          var a = [{ test: [/Roku\/DVP/], describe: function(e3) {
-            var t2 = i.default.getFirstMatch(/Roku\/DVP-(\d+\.\d+)/i, e3);
-            return { name: s.OS_MAP.Roku, version: t2 };
-          } }, { test: [/windows phone/i], describe: function(e3) {
-            var t2 = i.default.getFirstMatch(/windows phone (?:os)?\s?(\d+(\.\d+)*)/i, e3);
-            return { name: s.OS_MAP.WindowsPhone, version: t2 };
-          } }, { test: [/windows /i], describe: function(e3) {
-            var t2 = i.default.getFirstMatch(/Windows ((NT|XP)( \d\d?.\d)?)/i, e3), r3 = i.default.getWindowsVersionName(t2);
-            return { name: s.OS_MAP.Windows, version: t2, versionName: r3 };
-          } }, { test: [/Macintosh(.*?) FxiOS(.*?)\//], describe: function(e3) {
-            var t2 = { name: s.OS_MAP.iOS }, r3 = i.default.getSecondMatch(/(Version\/)(\d[\d.]+)/, e3);
-            return r3 && (t2.version = r3), t2;
-          } }, { test: [/macintosh/i], describe: function(e3) {
-            var t2 = i.default.getFirstMatch(/mac os x (\d+(\.?_?\d+)+)/i, e3).replace(/[_\s]/g, "."), r3 = i.default.getMacOSVersionName(t2), n3 = { name: s.OS_MAP.MacOS, version: t2 };
-            return r3 && (n3.versionName = r3), n3;
-          } }, { test: [/(ipod|iphone|ipad)/i], describe: function(e3) {
-            var t2 = i.default.getFirstMatch(/os (\d+([_\s]\d+)*) like mac os x/i, e3).replace(/[_\s]/g, ".");
-            return { name: s.OS_MAP.iOS, version: t2 };
-          } }, { test: function(e3) {
-            var t2 = !e3.test(/like android/i), r3 = e3.test(/android/i);
-            return t2 && r3;
-          }, describe: function(e3) {
-            var t2 = i.default.getFirstMatch(/android[\s/-](\d+(\.\d+)*)/i, e3), r3 = i.default.getAndroidVersionName(t2), n3 = { name: s.OS_MAP.Android, version: t2 };
-            return r3 && (n3.versionName = r3), n3;
-          } }, { test: [/(web|hpw)[o0]s/i], describe: function(e3) {
-            var t2 = i.default.getFirstMatch(/(?:web|hpw)[o0]s\/(\d+(\.\d+)*)/i, e3), r3 = { name: s.OS_MAP.WebOS };
-            return t2 && t2.length && (r3.version = t2), r3;
-          } }, { test: [/blackberry|\bbb\d+/i, /rim\stablet/i], describe: function(e3) {
-            var t2 = i.default.getFirstMatch(/rim\stablet\sos\s(\d+(\.\d+)*)/i, e3) || i.default.getFirstMatch(/blackberry\d+\/(\d+([_\s]\d+)*)/i, e3) || i.default.getFirstMatch(/\bbb(\d+)/i, e3);
-            return { name: s.OS_MAP.BlackBerry, version: t2 };
-          } }, { test: [/bada/i], describe: function(e3) {
-            var t2 = i.default.getFirstMatch(/bada\/(\d+(\.\d+)*)/i, e3);
-            return { name: s.OS_MAP.Bada, version: t2 };
-          } }, { test: [/tizen/i], describe: function(e3) {
-            var t2 = i.default.getFirstMatch(/tizen[/\s](\d+(\.\d+)*)/i, e3);
-            return { name: s.OS_MAP.Tizen, version: t2 };
-          } }, { test: [/linux/i], describe: function() {
-            return { name: s.OS_MAP.Linux };
-          } }, { test: [/CrOS/], describe: function() {
-            return { name: s.OS_MAP.ChromeOS };
-          } }, { test: [/PlayStation 4/], describe: function(e3) {
-            var t2 = i.default.getFirstMatch(/PlayStation 4[/\s](\d+(\.\d+)*)/i, e3);
-            return { name: s.OS_MAP.PlayStation4, version: t2 };
-          } }];
-          t.default = a, e2.exports = t.default;
-        }, 94: function(e2, t, r2) {
-          "use strict";
-          t.__esModule = true, t.default = void 0;
-          var n2, i = (n2 = r2(17)) && n2.__esModule ? n2 : { default: n2 }, s = r2(18);
-          var a = [{ test: [/googlebot/i], describe: function() {
-            return { type: "bot", vendor: "Google" };
-          } }, { test: [/huawei/i], describe: function(e3) {
-            var t2 = i.default.getFirstMatch(/(can-l01)/i, e3) && "Nova", r3 = { type: s.PLATFORMS_MAP.mobile, vendor: "Huawei" };
-            return t2 && (r3.model = t2), r3;
-          } }, { test: [/nexus\s*(?:7|8|9|10).*/i], describe: function() {
-            return { type: s.PLATFORMS_MAP.tablet, vendor: "Nexus" };
-          } }, { test: [/ipad/i], describe: function() {
-            return { type: s.PLATFORMS_MAP.tablet, vendor: "Apple", model: "iPad" };
-          } }, { test: [/Macintosh(.*?) FxiOS(.*?)\//], describe: function() {
-            return { type: s.PLATFORMS_MAP.tablet, vendor: "Apple", model: "iPad" };
-          } }, { test: [/kftt build/i], describe: function() {
-            return { type: s.PLATFORMS_MAP.tablet, vendor: "Amazon", model: "Kindle Fire HD 7" };
-          } }, { test: [/silk/i], describe: function() {
-            return { type: s.PLATFORMS_MAP.tablet, vendor: "Amazon" };
-          } }, { test: [/tablet(?! pc)/i], describe: function() {
-            return { type: s.PLATFORMS_MAP.tablet };
-          } }, { test: function(e3) {
-            var t2 = e3.test(/ipod|iphone/i), r3 = e3.test(/like (ipod|iphone)/i);
-            return t2 && !r3;
-          }, describe: function(e3) {
-            var t2 = i.default.getFirstMatch(/(ipod|iphone)/i, e3);
-            return { type: s.PLATFORMS_MAP.mobile, vendor: "Apple", model: t2 };
-          } }, { test: [/nexus\s*[0-6].*/i, /galaxy nexus/i], describe: function() {
-            return { type: s.PLATFORMS_MAP.mobile, vendor: "Nexus" };
-          } }, { test: [/[^-]mobi/i], describe: function() {
-            return { type: s.PLATFORMS_MAP.mobile };
-          } }, { test: function(e3) {
-            return "blackberry" === e3.getBrowserName(true);
-          }, describe: function() {
-            return { type: s.PLATFORMS_MAP.mobile, vendor: "BlackBerry" };
-          } }, { test: function(e3) {
-            return "bada" === e3.getBrowserName(true);
-          }, describe: function() {
-            return { type: s.PLATFORMS_MAP.mobile };
-          } }, { test: function(e3) {
-            return "windows phone" === e3.getBrowserName();
-          }, describe: function() {
-            return { type: s.PLATFORMS_MAP.mobile, vendor: "Microsoft" };
-          } }, { test: function(e3) {
-            var t2 = Number(String(e3.getOSVersion()).split(".")[0]);
-            return "android" === e3.getOSName(true) && t2 >= 3;
-          }, describe: function() {
-            return { type: s.PLATFORMS_MAP.tablet };
-          } }, { test: function(e3) {
-            return "android" === e3.getOSName(true);
-          }, describe: function() {
-            return { type: s.PLATFORMS_MAP.mobile };
-          } }, { test: function(e3) {
-            return "macos" === e3.getOSName(true);
-          }, describe: function() {
-            return { type: s.PLATFORMS_MAP.desktop, vendor: "Apple" };
-          } }, { test: function(e3) {
-            return "windows" === e3.getOSName(true);
-          }, describe: function() {
-            return { type: s.PLATFORMS_MAP.desktop };
-          } }, { test: function(e3) {
-            return "linux" === e3.getOSName(true);
-          }, describe: function() {
-            return { type: s.PLATFORMS_MAP.desktop };
-          } }, { test: function(e3) {
-            return "playstation 4" === e3.getOSName(true);
-          }, describe: function() {
-            return { type: s.PLATFORMS_MAP.tv };
-          } }, { test: function(e3) {
-            return "roku" === e3.getOSName(true);
-          }, describe: function() {
-            return { type: s.PLATFORMS_MAP.tv };
-          } }];
-          t.default = a, e2.exports = t.default;
-        }, 95: function(e2, t, r2) {
-          "use strict";
-          t.__esModule = true, t.default = void 0;
-          var n2, i = (n2 = r2(17)) && n2.__esModule ? n2 : { default: n2 }, s = r2(18);
-          var a = [{ test: function(e3) {
-            return "microsoft edge" === e3.getBrowserName(true);
-          }, describe: function(e3) {
-            if (/\sedg\//i.test(e3)) return { name: s.ENGINE_MAP.Blink };
-            var t2 = i.default.getFirstMatch(/edge\/(\d+(\.?_?\d+)+)/i, e3);
-            return { name: s.ENGINE_MAP.EdgeHTML, version: t2 };
-          } }, { test: [/trident/i], describe: function(e3) {
-            var t2 = { name: s.ENGINE_MAP.Trident }, r3 = i.default.getFirstMatch(/trident\/(\d+(\.?_?\d+)+)/i, e3);
-            return r3 && (t2.version = r3), t2;
-          } }, { test: function(e3) {
-            return e3.test(/presto/i);
-          }, describe: function(e3) {
-            var t2 = { name: s.ENGINE_MAP.Presto }, r3 = i.default.getFirstMatch(/presto\/(\d+(\.?_?\d+)+)/i, e3);
-            return r3 && (t2.version = r3), t2;
-          } }, { test: function(e3) {
-            var t2 = e3.test(/gecko/i), r3 = e3.test(/like gecko/i);
-            return t2 && !r3;
-          }, describe: function(e3) {
-            var t2 = { name: s.ENGINE_MAP.Gecko }, r3 = i.default.getFirstMatch(/gecko\/(\d+(\.?_?\d+)+)/i, e3);
-            return r3 && (t2.version = r3), t2;
-          } }, { test: [/(apple)?webkit\/537\.36/i], describe: function() {
-            return { name: s.ENGINE_MAP.Blink };
-          } }, { test: [/(apple)?webkit/i], describe: function(e3) {
-            var t2 = { name: s.ENGINE_MAP.WebKit }, r3 = i.default.getFirstMatch(/webkit\/(\d+(\.?_?\d+)+)/i, e3);
-            return r3 && (t2.version = r3), t2;
-          } }];
-          t.default = a, e2.exports = t.default;
-        } });
+            }
+            var o2 = (function () {
+              function e3() {
+              }
+              var t2, r3, n3;
+              return e3.getParser = function (e4, t3) {
+                if (void 0 === t3 && (t3 = false), "string" != typeof e4) throw new Error("UserAgent should be a string");
+                return new i.default(e4, t3);
+              }, e3.parse = function (e4) {
+                return new i.default(e4).getResult();
+              }, t2 = e3, n3 = [{
+                key: "BROWSER_MAP", get: function () {
+                  return s.BROWSER_MAP;
+                }
+              }, {
+                key: "ENGINE_MAP", get: function () {
+                  return s.ENGINE_MAP;
+                }
+              }, {
+                key: "OS_MAP", get: function () {
+                  return s.OS_MAP;
+                }
+              }, {
+                key: "PLATFORMS_MAP", get: function () {
+                  return s.PLATFORMS_MAP;
+                }
+              }], (r3 = null) && a(t2.prototype, r3), n3 && a(t2, n3), e3;
+            })();
+            t.default = o2, e2.exports = t.default;
+          }, 91: function (e2, t, r2) {
+            "use strict";
+            t.__esModule = true, t.default = void 0;
+            var n2 = u(r2(92)), i = u(r2(93)), s = u(r2(94)), a = u(r2(95)), o2 = u(r2(17));
+            function u(e3) {
+              return e3 && e3.__esModule ? e3 : { default: e3 };
+            }
+            var d = (function () {
+              function e3(e4, t3) {
+                if (void 0 === t3 && (t3 = false), null == e4 || "" === e4) throw new Error("UserAgent parameter can't be empty");
+                this._ua = e4, this.parsedResult = {}, true !== t3 && this.parse();
+              }
+              var t2 = e3.prototype;
+              return t2.getUA = function () {
+                return this._ua;
+              }, t2.test = function (e4) {
+                return e4.test(this._ua);
+              }, t2.parseBrowser = function () {
+                var e4 = this;
+                this.parsedResult.browser = {};
+                var t3 = o2.default.find(n2.default, (function (t4) {
+                  if ("function" == typeof t4.test) return t4.test(e4);
+                  if (t4.test instanceof Array) return t4.test.some((function (t5) {
+                    return e4.test(t5);
+                  }));
+                  throw new Error("Browser's test function is not valid");
+                }));
+                return t3 && (this.parsedResult.browser = t3.describe(this.getUA())), this.parsedResult.browser;
+              }, t2.getBrowser = function () {
+                return this.parsedResult.browser ? this.parsedResult.browser : this.parseBrowser();
+              }, t2.getBrowserName = function (e4) {
+                return e4 ? String(this.getBrowser().name).toLowerCase() || "" : this.getBrowser().name || "";
+              }, t2.getBrowserVersion = function () {
+                return this.getBrowser().version;
+              }, t2.getOS = function () {
+                return this.parsedResult.os ? this.parsedResult.os : this.parseOS();
+              }, t2.parseOS = function () {
+                var e4 = this;
+                this.parsedResult.os = {};
+                var t3 = o2.default.find(i.default, (function (t4) {
+                  if ("function" == typeof t4.test) return t4.test(e4);
+                  if (t4.test instanceof Array) return t4.test.some((function (t5) {
+                    return e4.test(t5);
+                  }));
+                  throw new Error("Browser's test function is not valid");
+                }));
+                return t3 && (this.parsedResult.os = t3.describe(this.getUA())), this.parsedResult.os;
+              }, t2.getOSName = function (e4) {
+                var t3 = this.getOS().name;
+                return e4 ? String(t3).toLowerCase() || "" : t3 || "";
+              }, t2.getOSVersion = function () {
+                return this.getOS().version;
+              }, t2.getPlatform = function () {
+                return this.parsedResult.platform ? this.parsedResult.platform : this.parsePlatform();
+              }, t2.getPlatformType = function (e4) {
+                void 0 === e4 && (e4 = false);
+                var t3 = this.getPlatform().type;
+                return e4 ? String(t3).toLowerCase() || "" : t3 || "";
+              }, t2.parsePlatform = function () {
+                var e4 = this;
+                this.parsedResult.platform = {};
+                var t3 = o2.default.find(s.default, (function (t4) {
+                  if ("function" == typeof t4.test) return t4.test(e4);
+                  if (t4.test instanceof Array) return t4.test.some((function (t5) {
+                    return e4.test(t5);
+                  }));
+                  throw new Error("Browser's test function is not valid");
+                }));
+                return t3 && (this.parsedResult.platform = t3.describe(this.getUA())), this.parsedResult.platform;
+              }, t2.getEngine = function () {
+                return this.parsedResult.engine ? this.parsedResult.engine : this.parseEngine();
+              }, t2.getEngineName = function (e4) {
+                return e4 ? String(this.getEngine().name).toLowerCase() || "" : this.getEngine().name || "";
+              }, t2.parseEngine = function () {
+                var e4 = this;
+                this.parsedResult.engine = {};
+                var t3 = o2.default.find(a.default, (function (t4) {
+                  if ("function" == typeof t4.test) return t4.test(e4);
+                  if (t4.test instanceof Array) return t4.test.some((function (t5) {
+                    return e4.test(t5);
+                  }));
+                  throw new Error("Browser's test function is not valid");
+                }));
+                return t3 && (this.parsedResult.engine = t3.describe(this.getUA())), this.parsedResult.engine;
+              }, t2.parse = function () {
+                return this.parseBrowser(), this.parseOS(), this.parsePlatform(), this.parseEngine(), this;
+              }, t2.getResult = function () {
+                return o2.default.assign({}, this.parsedResult);
+              }, t2.satisfies = function (e4) {
+                var t3 = this, r3 = {}, n3 = 0, i2 = {}, s2 = 0;
+                if (Object.keys(e4).forEach((function (t4) {
+                  var a3 = e4[t4];
+                  "string" == typeof a3 ? (i2[t4] = a3, s2 += 1) : "object" == typeof a3 && (r3[t4] = a3, n3 += 1);
+                })), n3 > 0) {
+                  var a2 = Object.keys(r3), u2 = o2.default.find(a2, (function (e5) {
+                    return t3.isOS(e5);
+                  }));
+                  if (u2) {
+                    var d2 = this.satisfies(r3[u2]);
+                    if (void 0 !== d2) return d2;
+                  }
+                  var c = o2.default.find(a2, (function (e5) {
+                    return t3.isPlatform(e5);
+                  }));
+                  if (c) {
+                    var f = this.satisfies(r3[c]);
+                    if (void 0 !== f) return f;
+                  }
+                }
+                if (s2 > 0) {
+                  var l = Object.keys(i2), h = o2.default.find(l, (function (e5) {
+                    return t3.isBrowser(e5, true);
+                  }));
+                  if (void 0 !== h) return this.compareVersion(i2[h]);
+                }
+              }, t2.isBrowser = function (e4, t3) {
+                void 0 === t3 && (t3 = false);
+                var r3 = this.getBrowserName().toLowerCase(), n3 = e4.toLowerCase(), i2 = o2.default.getBrowserTypeByAlias(n3);
+                return t3 && i2 && (n3 = i2.toLowerCase()), n3 === r3;
+              }, t2.compareVersion = function (e4) {
+                var t3 = [0], r3 = e4, n3 = false, i2 = this.getBrowserVersion();
+                if ("string" == typeof i2) return ">" === e4[0] || "<" === e4[0] ? (r3 = e4.substr(1), "=" === e4[1] ? (n3 = true, r3 = e4.substr(2)) : t3 = [], ">" === e4[0] ? t3.push(1) : t3.push(-1)) : "=" === e4[0] ? r3 = e4.substr(1) : "~" === e4[0] && (n3 = true, r3 = e4.substr(1)), t3.indexOf(o2.default.compareVersions(i2, r3, n3)) > -1;
+              }, t2.isOS = function (e4) {
+                return this.getOSName(true) === String(e4).toLowerCase();
+              }, t2.isPlatform = function (e4) {
+                return this.getPlatformType(true) === String(e4).toLowerCase();
+              }, t2.isEngine = function (e4) {
+                return this.getEngineName(true) === String(e4).toLowerCase();
+              }, t2.is = function (e4, t3) {
+                return void 0 === t3 && (t3 = false), this.isBrowser(e4, t3) || this.isOS(e4) || this.isPlatform(e4);
+              }, t2.some = function (e4) {
+                var t3 = this;
+                return void 0 === e4 && (e4 = []), e4.some((function (e5) {
+                  return t3.is(e5);
+                }));
+              }, e3;
+            })();
+            t.default = d, e2.exports = t.default;
+          }, 92: function (e2, t, r2) {
+            "use strict";
+            t.__esModule = true, t.default = void 0;
+            var n2, i = (n2 = r2(17)) && n2.__esModule ? n2 : { default: n2 };
+            var s = /version\/(\d+(\.?_?\d+)+)/i, a = [{
+              test: [/googlebot/i], describe: function (e3) {
+                var t2 = { name: "Googlebot" }, r3 = i.default.getFirstMatch(/googlebot\/(\d+(\.\d+))/i, e3) || i.default.getFirstMatch(s, e3);
+                return r3 && (t2.version = r3), t2;
+              }
+            }, {
+              test: [/opera/i], describe: function (e3) {
+                var t2 = { name: "Opera" }, r3 = i.default.getFirstMatch(s, e3) || i.default.getFirstMatch(/(?:opera)[\s/](\d+(\.?_?\d+)+)/i, e3);
+                return r3 && (t2.version = r3), t2;
+              }
+            }, {
+              test: [/opr\/|opios/i], describe: function (e3) {
+                var t2 = { name: "Opera" }, r3 = i.default.getFirstMatch(/(?:opr|opios)[\s/](\S+)/i, e3) || i.default.getFirstMatch(s, e3);
+                return r3 && (t2.version = r3), t2;
+              }
+            }, {
+              test: [/SamsungBrowser/i], describe: function (e3) {
+                var t2 = { name: "Samsung Internet for Android" }, r3 = i.default.getFirstMatch(s, e3) || i.default.getFirstMatch(/(?:SamsungBrowser)[\s/](\d+(\.?_?\d+)+)/i, e3);
+                return r3 && (t2.version = r3), t2;
+              }
+            }, {
+              test: [/Whale/i], describe: function (e3) {
+                var t2 = { name: "NAVER Whale Browser" }, r3 = i.default.getFirstMatch(s, e3) || i.default.getFirstMatch(/(?:whale)[\s/](\d+(?:\.\d+)+)/i, e3);
+                return r3 && (t2.version = r3), t2;
+              }
+            }, {
+              test: [/MZBrowser/i], describe: function (e3) {
+                var t2 = { name: "MZ Browser" }, r3 = i.default.getFirstMatch(/(?:MZBrowser)[\s/](\d+(?:\.\d+)+)/i, e3) || i.default.getFirstMatch(s, e3);
+                return r3 && (t2.version = r3), t2;
+              }
+            }, {
+              test: [/focus/i], describe: function (e3) {
+                var t2 = { name: "Focus" }, r3 = i.default.getFirstMatch(/(?:focus)[\s/](\d+(?:\.\d+)+)/i, e3) || i.default.getFirstMatch(s, e3);
+                return r3 && (t2.version = r3), t2;
+              }
+            }, {
+              test: [/swing/i], describe: function (e3) {
+                var t2 = { name: "Swing" }, r3 = i.default.getFirstMatch(/(?:swing)[\s/](\d+(?:\.\d+)+)/i, e3) || i.default.getFirstMatch(s, e3);
+                return r3 && (t2.version = r3), t2;
+              }
+            }, {
+              test: [/coast/i], describe: function (e3) {
+                var t2 = { name: "Opera Coast" }, r3 = i.default.getFirstMatch(s, e3) || i.default.getFirstMatch(/(?:coast)[\s/](\d+(\.?_?\d+)+)/i, e3);
+                return r3 && (t2.version = r3), t2;
+              }
+            }, {
+              test: [/opt\/\d+(?:.?_?\d+)+/i], describe: function (e3) {
+                var t2 = { name: "Opera Touch" }, r3 = i.default.getFirstMatch(/(?:opt)[\s/](\d+(\.?_?\d+)+)/i, e3) || i.default.getFirstMatch(s, e3);
+                return r3 && (t2.version = r3), t2;
+              }
+            }, {
+              test: [/yabrowser/i], describe: function (e3) {
+                var t2 = { name: "Yandex Browser" }, r3 = i.default.getFirstMatch(/(?:yabrowser)[\s/](\d+(\.?_?\d+)+)/i, e3) || i.default.getFirstMatch(s, e3);
+                return r3 && (t2.version = r3), t2;
+              }
+            }, {
+              test: [/ucbrowser/i], describe: function (e3) {
+                var t2 = { name: "UC Browser" }, r3 = i.default.getFirstMatch(s, e3) || i.default.getFirstMatch(/(?:ucbrowser)[\s/](\d+(\.?_?\d+)+)/i, e3);
+                return r3 && (t2.version = r3), t2;
+              }
+            }, {
+              test: [/Maxthon|mxios/i], describe: function (e3) {
+                var t2 = { name: "Maxthon" }, r3 = i.default.getFirstMatch(s, e3) || i.default.getFirstMatch(/(?:Maxthon|mxios)[\s/](\d+(\.?_?\d+)+)/i, e3);
+                return r3 && (t2.version = r3), t2;
+              }
+            }, {
+              test: [/epiphany/i], describe: function (e3) {
+                var t2 = { name: "Epiphany" }, r3 = i.default.getFirstMatch(s, e3) || i.default.getFirstMatch(/(?:epiphany)[\s/](\d+(\.?_?\d+)+)/i, e3);
+                return r3 && (t2.version = r3), t2;
+              }
+            }, {
+              test: [/puffin/i], describe: function (e3) {
+                var t2 = { name: "Puffin" }, r3 = i.default.getFirstMatch(s, e3) || i.default.getFirstMatch(/(?:puffin)[\s/](\d+(\.?_?\d+)+)/i, e3);
+                return r3 && (t2.version = r3), t2;
+              }
+            }, {
+              test: [/sleipnir/i], describe: function (e3) {
+                var t2 = { name: "Sleipnir" }, r3 = i.default.getFirstMatch(s, e3) || i.default.getFirstMatch(/(?:sleipnir)[\s/](\d+(\.?_?\d+)+)/i, e3);
+                return r3 && (t2.version = r3), t2;
+              }
+            }, {
+              test: [/k-meleon/i], describe: function (e3) {
+                var t2 = { name: "K-Meleon" }, r3 = i.default.getFirstMatch(s, e3) || i.default.getFirstMatch(/(?:k-meleon)[\s/](\d+(\.?_?\d+)+)/i, e3);
+                return r3 && (t2.version = r3), t2;
+              }
+            }, {
+              test: [/micromessenger/i], describe: function (e3) {
+                var t2 = { name: "WeChat" }, r3 = i.default.getFirstMatch(/(?:micromessenger)[\s/](\d+(\.?_?\d+)+)/i, e3) || i.default.getFirstMatch(s, e3);
+                return r3 && (t2.version = r3), t2;
+              }
+            }, {
+              test: [/qqbrowser/i], describe: function (e3) {
+                var t2 = { name: /qqbrowserlite/i.test(e3) ? "QQ Browser Lite" : "QQ Browser" }, r3 = i.default.getFirstMatch(/(?:qqbrowserlite|qqbrowser)[/](\d+(\.?_?\d+)+)/i, e3) || i.default.getFirstMatch(s, e3);
+                return r3 && (t2.version = r3), t2;
+              }
+            }, {
+              test: [/msie|trident/i], describe: function (e3) {
+                var t2 = { name: "Internet Explorer" }, r3 = i.default.getFirstMatch(/(?:msie |rv:)(\d+(\.?_?\d+)+)/i, e3);
+                return r3 && (t2.version = r3), t2;
+              }
+            }, {
+              test: [/\sedg\//i], describe: function (e3) {
+                var t2 = { name: "Microsoft Edge" }, r3 = i.default.getFirstMatch(/\sedg\/(\d+(\.?_?\d+)+)/i, e3);
+                return r3 && (t2.version = r3), t2;
+              }
+            }, {
+              test: [/edg([ea]|ios)/i], describe: function (e3) {
+                var t2 = { name: "Microsoft Edge" }, r3 = i.default.getSecondMatch(/edg([ea]|ios)\/(\d+(\.?_?\d+)+)/i, e3);
+                return r3 && (t2.version = r3), t2;
+              }
+            }, {
+              test: [/vivaldi/i], describe: function (e3) {
+                var t2 = { name: "Vivaldi" }, r3 = i.default.getFirstMatch(/vivaldi\/(\d+(\.?_?\d+)+)/i, e3);
+                return r3 && (t2.version = r3), t2;
+              }
+            }, {
+              test: [/seamonkey/i], describe: function (e3) {
+                var t2 = { name: "SeaMonkey" }, r3 = i.default.getFirstMatch(/seamonkey\/(\d+(\.?_?\d+)+)/i, e3);
+                return r3 && (t2.version = r3), t2;
+              }
+            }, {
+              test: [/sailfish/i], describe: function (e3) {
+                var t2 = { name: "Sailfish" }, r3 = i.default.getFirstMatch(/sailfish\s?browser\/(\d+(\.\d+)?)/i, e3);
+                return r3 && (t2.version = r3), t2;
+              }
+            }, {
+              test: [/silk/i], describe: function (e3) {
+                var t2 = { name: "Amazon Silk" }, r3 = i.default.getFirstMatch(/silk\/(\d+(\.?_?\d+)+)/i, e3);
+                return r3 && (t2.version = r3), t2;
+              }
+            }, {
+              test: [/phantom/i], describe: function (e3) {
+                var t2 = { name: "PhantomJS" }, r3 = i.default.getFirstMatch(/phantomjs\/(\d+(\.?_?\d+)+)/i, e3);
+                return r3 && (t2.version = r3), t2;
+              }
+            }, {
+              test: [/slimerjs/i], describe: function (e3) {
+                var t2 = { name: "SlimerJS" }, r3 = i.default.getFirstMatch(/slimerjs\/(\d+(\.?_?\d+)+)/i, e3);
+                return r3 && (t2.version = r3), t2;
+              }
+            }, {
+              test: [/blackberry|\bbb\d+/i, /rim\stablet/i], describe: function (e3) {
+                var t2 = { name: "BlackBerry" }, r3 = i.default.getFirstMatch(s, e3) || i.default.getFirstMatch(/blackberry[\d]+\/(\d+(\.?_?\d+)+)/i, e3);
+                return r3 && (t2.version = r3), t2;
+              }
+            }, {
+              test: [/(web|hpw)[o0]s/i], describe: function (e3) {
+                var t2 = { name: "WebOS Browser" }, r3 = i.default.getFirstMatch(s, e3) || i.default.getFirstMatch(/w(?:eb)?[o0]sbrowser\/(\d+(\.?_?\d+)+)/i, e3);
+                return r3 && (t2.version = r3), t2;
+              }
+            }, {
+              test: [/bada/i], describe: function (e3) {
+                var t2 = { name: "Bada" }, r3 = i.default.getFirstMatch(/dolfin\/(\d+(\.?_?\d+)+)/i, e3);
+                return r3 && (t2.version = r3), t2;
+              }
+            }, {
+              test: [/tizen/i], describe: function (e3) {
+                var t2 = { name: "Tizen" }, r3 = i.default.getFirstMatch(/(?:tizen\s?)?browser\/(\d+(\.?_?\d+)+)/i, e3) || i.default.getFirstMatch(s, e3);
+                return r3 && (t2.version = r3), t2;
+              }
+            }, {
+              test: [/qupzilla/i], describe: function (e3) {
+                var t2 = { name: "QupZilla" }, r3 = i.default.getFirstMatch(/(?:qupzilla)[\s/](\d+(\.?_?\d+)+)/i, e3) || i.default.getFirstMatch(s, e3);
+                return r3 && (t2.version = r3), t2;
+              }
+            }, {
+              test: [/firefox|iceweasel|fxios/i], describe: function (e3) {
+                var t2 = { name: "Firefox" }, r3 = i.default.getFirstMatch(/(?:firefox|iceweasel|fxios)[\s/](\d+(\.?_?\d+)+)/i, e3);
+                return r3 && (t2.version = r3), t2;
+              }
+            }, {
+              test: [/electron/i], describe: function (e3) {
+                var t2 = { name: "Electron" }, r3 = i.default.getFirstMatch(/(?:electron)\/(\d+(\.?_?\d+)+)/i, e3);
+                return r3 && (t2.version = r3), t2;
+              }
+            }, {
+              test: [/MiuiBrowser/i], describe: function (e3) {
+                var t2 = { name: "Miui" }, r3 = i.default.getFirstMatch(/(?:MiuiBrowser)[\s/](\d+(\.?_?\d+)+)/i, e3);
+                return r3 && (t2.version = r3), t2;
+              }
+            }, {
+              test: [/chromium/i], describe: function (e3) {
+                var t2 = { name: "Chromium" }, r3 = i.default.getFirstMatch(/(?:chromium)[\s/](\d+(\.?_?\d+)+)/i, e3) || i.default.getFirstMatch(s, e3);
+                return r3 && (t2.version = r3), t2;
+              }
+            }, {
+              test: [/chrome|crios|crmo/i], describe: function (e3) {
+                var t2 = { name: "Chrome" }, r3 = i.default.getFirstMatch(/(?:chrome|crios|crmo)\/(\d+(\.?_?\d+)+)/i, e3);
+                return r3 && (t2.version = r3), t2;
+              }
+            }, {
+              test: [/GSA/i], describe: function (e3) {
+                var t2 = { name: "Google Search" }, r3 = i.default.getFirstMatch(/(?:GSA)\/(\d+(\.?_?\d+)+)/i, e3);
+                return r3 && (t2.version = r3), t2;
+              }
+            }, {
+              test: function (e3) {
+                var t2 = !e3.test(/like android/i), r3 = e3.test(/android/i);
+                return t2 && r3;
+              }, describe: function (e3) {
+                var t2 = { name: "Android Browser" }, r3 = i.default.getFirstMatch(s, e3);
+                return r3 && (t2.version = r3), t2;
+              }
+            }, {
+              test: [/playstation 4/i], describe: function (e3) {
+                var t2 = { name: "PlayStation 4" }, r3 = i.default.getFirstMatch(s, e3);
+                return r3 && (t2.version = r3), t2;
+              }
+            }, {
+              test: [/safari|applewebkit/i], describe: function (e3) {
+                var t2 = { name: "Safari" }, r3 = i.default.getFirstMatch(s, e3);
+                return r3 && (t2.version = r3), t2;
+              }
+            }, {
+              test: [/.*/i], describe: function (e3) {
+                var t2 = -1 !== e3.search("\\(") ? /^(.*)\/(.*)[ \t]\((.*)/ : /^(.*)\/(.*) /;
+                return { name: i.default.getFirstMatch(t2, e3), version: i.default.getSecondMatch(t2, e3) };
+              }
+            }];
+            t.default = a, e2.exports = t.default;
+          }, 93: function (e2, t, r2) {
+            "use strict";
+            t.__esModule = true, t.default = void 0;
+            var n2, i = (n2 = r2(17)) && n2.__esModule ? n2 : { default: n2 }, s = r2(18);
+            var a = [{
+              test: [/Roku\/DVP/], describe: function (e3) {
+                var t2 = i.default.getFirstMatch(/Roku\/DVP-(\d+\.\d+)/i, e3);
+                return { name: s.OS_MAP.Roku, version: t2 };
+              }
+            }, {
+              test: [/windows phone/i], describe: function (e3) {
+                var t2 = i.default.getFirstMatch(/windows phone (?:os)?\s?(\d+(\.\d+)*)/i, e3);
+                return { name: s.OS_MAP.WindowsPhone, version: t2 };
+              }
+            }, {
+              test: [/windows /i], describe: function (e3) {
+                var t2 = i.default.getFirstMatch(/Windows ((NT|XP)( \d\d?.\d)?)/i, e3), r3 = i.default.getWindowsVersionName(t2);
+                return { name: s.OS_MAP.Windows, version: t2, versionName: r3 };
+              }
+            }, {
+              test: [/Macintosh(.*?) FxiOS(.*?)\//], describe: function (e3) {
+                var t2 = { name: s.OS_MAP.iOS }, r3 = i.default.getSecondMatch(/(Version\/)(\d[\d.]+)/, e3);
+                return r3 && (t2.version = r3), t2;
+              }
+            }, {
+              test: [/macintosh/i], describe: function (e3) {
+                var t2 = i.default.getFirstMatch(/mac os x (\d+(\.?_?\d+)+)/i, e3).replace(/[_\s]/g, "."), r3 = i.default.getMacOSVersionName(t2), n3 = { name: s.OS_MAP.MacOS, version: t2 };
+                return r3 && (n3.versionName = r3), n3;
+              }
+            }, {
+              test: [/(ipod|iphone|ipad)/i], describe: function (e3) {
+                var t2 = i.default.getFirstMatch(/os (\d+([_\s]\d+)*) like mac os x/i, e3).replace(/[_\s]/g, ".");
+                return { name: s.OS_MAP.iOS, version: t2 };
+              }
+            }, {
+              test: function (e3) {
+                var t2 = !e3.test(/like android/i), r3 = e3.test(/android/i);
+                return t2 && r3;
+              }, describe: function (e3) {
+                var t2 = i.default.getFirstMatch(/android[\s/-](\d+(\.\d+)*)/i, e3), r3 = i.default.getAndroidVersionName(t2), n3 = { name: s.OS_MAP.Android, version: t2 };
+                return r3 && (n3.versionName = r3), n3;
+              }
+            }, {
+              test: [/(web|hpw)[o0]s/i], describe: function (e3) {
+                var t2 = i.default.getFirstMatch(/(?:web|hpw)[o0]s\/(\d+(\.\d+)*)/i, e3), r3 = { name: s.OS_MAP.WebOS };
+                return t2 && t2.length && (r3.version = t2), r3;
+              }
+            }, {
+              test: [/blackberry|\bbb\d+/i, /rim\stablet/i], describe: function (e3) {
+                var t2 = i.default.getFirstMatch(/rim\stablet\sos\s(\d+(\.\d+)*)/i, e3) || i.default.getFirstMatch(/blackberry\d+\/(\d+([_\s]\d+)*)/i, e3) || i.default.getFirstMatch(/\bbb(\d+)/i, e3);
+                return { name: s.OS_MAP.BlackBerry, version: t2 };
+              }
+            }, {
+              test: [/bada/i], describe: function (e3) {
+                var t2 = i.default.getFirstMatch(/bada\/(\d+(\.\d+)*)/i, e3);
+                return { name: s.OS_MAP.Bada, version: t2 };
+              }
+            }, {
+              test: [/tizen/i], describe: function (e3) {
+                var t2 = i.default.getFirstMatch(/tizen[/\s](\d+(\.\d+)*)/i, e3);
+                return { name: s.OS_MAP.Tizen, version: t2 };
+              }
+            }, {
+              test: [/linux/i], describe: function () {
+                return { name: s.OS_MAP.Linux };
+              }
+            }, {
+              test: [/CrOS/], describe: function () {
+                return { name: s.OS_MAP.ChromeOS };
+              }
+            }, {
+              test: [/PlayStation 4/], describe: function (e3) {
+                var t2 = i.default.getFirstMatch(/PlayStation 4[/\s](\d+(\.\d+)*)/i, e3);
+                return { name: s.OS_MAP.PlayStation4, version: t2 };
+              }
+            }];
+            t.default = a, e2.exports = t.default;
+          }, 94: function (e2, t, r2) {
+            "use strict";
+            t.__esModule = true, t.default = void 0;
+            var n2, i = (n2 = r2(17)) && n2.__esModule ? n2 : { default: n2 }, s = r2(18);
+            var a = [{
+              test: [/googlebot/i], describe: function () {
+                return { type: "bot", vendor: "Google" };
+              }
+            }, {
+              test: [/huawei/i], describe: function (e3) {
+                var t2 = i.default.getFirstMatch(/(can-l01)/i, e3) && "Nova", r3 = { type: s.PLATFORMS_MAP.mobile, vendor: "Huawei" };
+                return t2 && (r3.model = t2), r3;
+              }
+            }, {
+              test: [/nexus\s*(?:7|8|9|10).*/i], describe: function () {
+                return { type: s.PLATFORMS_MAP.tablet, vendor: "Nexus" };
+              }
+            }, {
+              test: [/ipad/i], describe: function () {
+                return { type: s.PLATFORMS_MAP.tablet, vendor: "Apple", model: "iPad" };
+              }
+            }, {
+              test: [/Macintosh(.*?) FxiOS(.*?)\//], describe: function () {
+                return { type: s.PLATFORMS_MAP.tablet, vendor: "Apple", model: "iPad" };
+              }
+            }, {
+              test: [/kftt build/i], describe: function () {
+                return { type: s.PLATFORMS_MAP.tablet, vendor: "Amazon", model: "Kindle Fire HD 7" };
+              }
+            }, {
+              test: [/silk/i], describe: function () {
+                return { type: s.PLATFORMS_MAP.tablet, vendor: "Amazon" };
+              }
+            }, {
+              test: [/tablet(?! pc)/i], describe: function () {
+                return { type: s.PLATFORMS_MAP.tablet };
+              }
+            }, {
+              test: function (e3) {
+                var t2 = e3.test(/ipod|iphone/i), r3 = e3.test(/like (ipod|iphone)/i);
+                return t2 && !r3;
+              }, describe: function (e3) {
+                var t2 = i.default.getFirstMatch(/(ipod|iphone)/i, e3);
+                return { type: s.PLATFORMS_MAP.mobile, vendor: "Apple", model: t2 };
+              }
+            }, {
+              test: [/nexus\s*[0-6].*/i, /galaxy nexus/i], describe: function () {
+                return { type: s.PLATFORMS_MAP.mobile, vendor: "Nexus" };
+              }
+            }, {
+              test: [/[^-]mobi/i], describe: function () {
+                return { type: s.PLATFORMS_MAP.mobile };
+              }
+            }, {
+              test: function (e3) {
+                return "blackberry" === e3.getBrowserName(true);
+              }, describe: function () {
+                return { type: s.PLATFORMS_MAP.mobile, vendor: "BlackBerry" };
+              }
+            }, {
+              test: function (e3) {
+                return "bada" === e3.getBrowserName(true);
+              }, describe: function () {
+                return { type: s.PLATFORMS_MAP.mobile };
+              }
+            }, {
+              test: function (e3) {
+                return "windows phone" === e3.getBrowserName();
+              }, describe: function () {
+                return { type: s.PLATFORMS_MAP.mobile, vendor: "Microsoft" };
+              }
+            }, {
+              test: function (e3) {
+                var t2 = Number(String(e3.getOSVersion()).split(".")[0]);
+                return "android" === e3.getOSName(true) && t2 >= 3;
+              }, describe: function () {
+                return { type: s.PLATFORMS_MAP.tablet };
+              }
+            }, {
+              test: function (e3) {
+                return "android" === e3.getOSName(true);
+              }, describe: function () {
+                return { type: s.PLATFORMS_MAP.mobile };
+              }
+            }, {
+              test: function (e3) {
+                return "macos" === e3.getOSName(true);
+              }, describe: function () {
+                return { type: s.PLATFORMS_MAP.desktop, vendor: "Apple" };
+              }
+            }, {
+              test: function (e3) {
+                return "windows" === e3.getOSName(true);
+              }, describe: function () {
+                return { type: s.PLATFORMS_MAP.desktop };
+              }
+            }, {
+              test: function (e3) {
+                return "linux" === e3.getOSName(true);
+              }, describe: function () {
+                return { type: s.PLATFORMS_MAP.desktop };
+              }
+            }, {
+              test: function (e3) {
+                return "playstation 4" === e3.getOSName(true);
+              }, describe: function () {
+                return { type: s.PLATFORMS_MAP.tv };
+              }
+            }, {
+              test: function (e3) {
+                return "roku" === e3.getOSName(true);
+              }, describe: function () {
+                return { type: s.PLATFORMS_MAP.tv };
+              }
+            }];
+            t.default = a, e2.exports = t.default;
+          }, 95: function (e2, t, r2) {
+            "use strict";
+            t.__esModule = true, t.default = void 0;
+            var n2, i = (n2 = r2(17)) && n2.__esModule ? n2 : { default: n2 }, s = r2(18);
+            var a = [{
+              test: function (e3) {
+                return "microsoft edge" === e3.getBrowserName(true);
+              }, describe: function (e3) {
+                if (/\sedg\//i.test(e3)) return { name: s.ENGINE_MAP.Blink };
+                var t2 = i.default.getFirstMatch(/edge\/(\d+(\.?_?\d+)+)/i, e3);
+                return { name: s.ENGINE_MAP.EdgeHTML, version: t2 };
+              }
+            }, {
+              test: [/trident/i], describe: function (e3) {
+                var t2 = { name: s.ENGINE_MAP.Trident }, r3 = i.default.getFirstMatch(/trident\/(\d+(\.?_?\d+)+)/i, e3);
+                return r3 && (t2.version = r3), t2;
+              }
+            }, {
+              test: function (e3) {
+                return e3.test(/presto/i);
+              }, describe: function (e3) {
+                var t2 = { name: s.ENGINE_MAP.Presto }, r3 = i.default.getFirstMatch(/presto\/(\d+(\.?_?\d+)+)/i, e3);
+                return r3 && (t2.version = r3), t2;
+              }
+            }, {
+              test: function (e3) {
+                var t2 = e3.test(/gecko/i), r3 = e3.test(/like gecko/i);
+                return t2 && !r3;
+              }, describe: function (e3) {
+                var t2 = { name: s.ENGINE_MAP.Gecko }, r3 = i.default.getFirstMatch(/gecko\/(\d+(\.?_?\d+)+)/i, e3);
+                return r3 && (t2.version = r3), t2;
+              }
+            }, {
+              test: [/(apple)?webkit\/537\.36/i], describe: function () {
+                return { name: s.ENGINE_MAP.Blink };
+              }
+            }, {
+              test: [/(apple)?webkit/i], describe: function (e3) {
+                var t2 = { name: s.ENGINE_MAP.WebKit }, r3 = i.default.getFirstMatch(/webkit\/(\d+(\.?_?\d+)+)/i, e3);
+                return r3 && (t2.version = r3), t2;
+              }
+            }];
+            t.default = a, e2.exports = t.default;
+          }
+        });
       }));
     }
   });
@@ -35780,1381 +36108,1443 @@ var PeraWalletConnect = (() => {
   // node_modules/qr-code-styling/lib/qr-code-styling.js
   var require_qr_code_styling = __commonJS({
     "node_modules/qr-code-styling/lib/qr-code-styling.js"(exports, module) {
-      !(function(t, e2) {
+      !(function (t, e2) {
         "object" == typeof exports && "object" == typeof module ? module.exports = e2() : "function" == typeof define && define.amd ? define([], e2) : "object" == typeof exports ? exports.QRCodeStyling = e2() : t.QRCodeStyling = e2();
-      })(self, (function() {
+      })(self, (function () {
         return (() => {
-          var t = { 192: (t2, e3) => {
-            var r3, n2, o2 = (function() {
-              var t3 = function(t4, e5) {
-                var r5 = t4, n4 = a[e5], o4 = null, i2 = 0, u2 = null, v2 = [], w2 = {}, m = function(t5, e6) {
-                  o4 = (function(t6) {
-                    for (var e7 = new Array(t6), r6 = 0; r6 < t6; r6 += 1) {
-                      e7[r6] = new Array(t6);
-                      for (var n5 = 0; n5 < t6; n5 += 1) e7[r6][n5] = null;
+          var t = {
+            192: (t2, e3) => {
+              var r3, n2, o2 = (function () {
+                var t3 = function (t4, e5) {
+                  var r5 = t4, n4 = a[e5], o4 = null, i2 = 0, u2 = null, v2 = [], w2 = {}, m = function (t5, e6) {
+                    o4 = (function (t6) {
+                      for (var e7 = new Array(t6), r6 = 0; r6 < t6; r6 += 1) {
+                        e7[r6] = new Array(t6);
+                        for (var n5 = 0; n5 < t6; n5 += 1) e7[r6][n5] = null;
+                      }
+                      return e7;
+                    })(i2 = 4 * r5 + 17), b(0, 0), b(i2 - 7, 0), b(0, i2 - 7), x(), _(), M(t5, e6), r5 >= 7 && S(t5), null == u2 && (u2 = A(r5, n4, v2)), C(u2, e6);
+                  }, b = function (t5, e6) {
+                    for (var r6 = -1; r6 <= 7; r6 += 1) if (!(t5 + r6 <= -1 || i2 <= t5 + r6)) for (var n5 = -1; n5 <= 7; n5 += 1) e6 + n5 <= -1 || i2 <= e6 + n5 || (o4[t5 + r6][e6 + n5] = 0 <= r6 && r6 <= 6 && (0 == n5 || 6 == n5) || 0 <= n5 && n5 <= 6 && (0 == r6 || 6 == r6) || 2 <= r6 && r6 <= 4 && 2 <= n5 && n5 <= 4);
+                  }, _ = function () {
+                    for (var t5 = 8; t5 < i2 - 8; t5 += 1) null == o4[t5][6] && (o4[t5][6] = t5 % 2 == 0);
+                    for (var e6 = 8; e6 < i2 - 8; e6 += 1) null == o4[6][e6] && (o4[6][e6] = e6 % 2 == 0);
+                  }, x = function () {
+                    for (var t5 = s.getPatternPosition(r5), e6 = 0; e6 < t5.length; e6 += 1) for (var n5 = 0; n5 < t5.length; n5 += 1) {
+                      var i3 = t5[e6], a2 = t5[n5];
+                      if (null == o4[i3][a2]) for (var u3 = -2; u3 <= 2; u3 += 1) for (var h2 = -2; h2 <= 2; h2 += 1) o4[i3 + u3][a2 + h2] = -2 == u3 || 2 == u3 || -2 == h2 || 2 == h2 || 0 == u3 && 0 == h2;
                     }
-                    return e7;
-                  })(i2 = 4 * r5 + 17), b(0, 0), b(i2 - 7, 0), b(0, i2 - 7), x(), _(), M(t5, e6), r5 >= 7 && S(t5), null == u2 && (u2 = A(r5, n4, v2)), C(u2, e6);
-                }, b = function(t5, e6) {
-                  for (var r6 = -1; r6 <= 7; r6 += 1) if (!(t5 + r6 <= -1 || i2 <= t5 + r6)) for (var n5 = -1; n5 <= 7; n5 += 1) e6 + n5 <= -1 || i2 <= e6 + n5 || (o4[t5 + r6][e6 + n5] = 0 <= r6 && r6 <= 6 && (0 == n5 || 6 == n5) || 0 <= n5 && n5 <= 6 && (0 == r6 || 6 == r6) || 2 <= r6 && r6 <= 4 && 2 <= n5 && n5 <= 4);
-                }, _ = function() {
-                  for (var t5 = 8; t5 < i2 - 8; t5 += 1) null == o4[t5][6] && (o4[t5][6] = t5 % 2 == 0);
-                  for (var e6 = 8; e6 < i2 - 8; e6 += 1) null == o4[6][e6] && (o4[6][e6] = e6 % 2 == 0);
-                }, x = function() {
-                  for (var t5 = s.getPatternPosition(r5), e6 = 0; e6 < t5.length; e6 += 1) for (var n5 = 0; n5 < t5.length; n5 += 1) {
-                    var i3 = t5[e6], a2 = t5[n5];
-                    if (null == o4[i3][a2]) for (var u3 = -2; u3 <= 2; u3 += 1) for (var h2 = -2; h2 <= 2; h2 += 1) o4[i3 + u3][a2 + h2] = -2 == u3 || 2 == u3 || -2 == h2 || 2 == h2 || 0 == u3 && 0 == h2;
-                  }
-                }, S = function(t5) {
-                  for (var e6 = s.getBCHTypeNumber(r5), n5 = 0; n5 < 18; n5 += 1) {
-                    var a2 = !t5 && 1 == (e6 >> n5 & 1);
-                    o4[Math.floor(n5 / 3)][n5 % 3 + i2 - 8 - 3] = a2;
-                  }
-                  for (n5 = 0; n5 < 18; n5 += 1) a2 = !t5 && 1 == (e6 >> n5 & 1), o4[n5 % 3 + i2 - 8 - 3][Math.floor(n5 / 3)] = a2;
-                }, M = function(t5, e6) {
-                  for (var r6 = n4 << 3 | e6, a2 = s.getBCHTypeInfo(r6), u3 = 0; u3 < 15; u3 += 1) {
-                    var h2 = !t5 && 1 == (a2 >> u3 & 1);
-                    u3 < 6 ? o4[u3][8] = h2 : u3 < 8 ? o4[u3 + 1][8] = h2 : o4[i2 - 15 + u3][8] = h2;
-                  }
-                  for (u3 = 0; u3 < 15; u3 += 1) h2 = !t5 && 1 == (a2 >> u3 & 1), u3 < 8 ? o4[8][i2 - u3 - 1] = h2 : u3 < 9 ? o4[8][15 - u3 - 1 + 1] = h2 : o4[8][15 - u3 - 1] = h2;
-                  o4[i2 - 8][8] = !t5;
-                }, C = function(t5, e6) {
-                  for (var r6 = -1, n5 = i2 - 1, a2 = 7, u3 = 0, h2 = s.getMaskFunction(e6), c2 = i2 - 1; c2 > 0; c2 -= 2) for (6 == c2 && (c2 -= 1); ; ) {
-                    for (var l2 = 0; l2 < 2; l2 += 1) if (null == o4[n5][c2 - l2]) {
-                      var d2 = false;
-                      u3 < t5.length && (d2 = 1 == (t5[u3] >>> a2 & 1)), h2(n5, c2 - l2) && (d2 = !d2), o4[n5][c2 - l2] = d2, -1 == (a2 -= 1) && (u3 += 1, a2 = 7);
+                  }, S = function (t5) {
+                    for (var e6 = s.getBCHTypeNumber(r5), n5 = 0; n5 < 18; n5 += 1) {
+                      var a2 = !t5 && 1 == (e6 >> n5 & 1);
+                      o4[Math.floor(n5 / 3)][n5 % 3 + i2 - 8 - 3] = a2;
                     }
-                    if ((n5 += r6) < 0 || i2 <= n5) {
-                      n5 -= r6, r6 = -r6;
-                      break;
+                    for (n5 = 0; n5 < 18; n5 += 1) a2 = !t5 && 1 == (e6 >> n5 & 1), o4[n5 % 3 + i2 - 8 - 3][Math.floor(n5 / 3)] = a2;
+                  }, M = function (t5, e6) {
+                    for (var r6 = n4 << 3 | e6, a2 = s.getBCHTypeInfo(r6), u3 = 0; u3 < 15; u3 += 1) {
+                      var h2 = !t5 && 1 == (a2 >> u3 & 1);
+                      u3 < 6 ? o4[u3][8] = h2 : u3 < 8 ? o4[u3 + 1][8] = h2 : o4[i2 - 15 + u3][8] = h2;
                     }
-                  }
-                }, A = function(t5, e6, r6) {
-                  for (var n5 = c.getRSBlocks(t5, e6), o5 = l(), i3 = 0; i3 < r6.length; i3 += 1) {
-                    var a2 = r6[i3];
-                    o5.put(a2.getMode(), 4), o5.put(a2.getLength(), s.getLengthInBits(a2.getMode(), t5)), a2.write(o5);
-                  }
-                  var u3 = 0;
-                  for (i3 = 0; i3 < n5.length; i3 += 1) u3 += n5[i3].dataCount;
-                  if (o5.getLengthInBits() > 8 * u3) throw "code length overflow. (" + o5.getLengthInBits() + ">" + 8 * u3 + ")";
-                  for (o5.getLengthInBits() + 4 <= 8 * u3 && o5.put(0, 4); o5.getLengthInBits() % 8 != 0; ) o5.putBit(false);
-                  for (; !(o5.getLengthInBits() >= 8 * u3 || (o5.put(236, 8), o5.getLengthInBits() >= 8 * u3)); ) o5.put(17, 8);
-                  return (function(t6, e7) {
-                    for (var r7 = 0, n6 = 0, o6 = 0, i4 = new Array(e7.length), a3 = new Array(e7.length), u4 = 0; u4 < e7.length; u4 += 1) {
-                      var c2 = e7[u4].dataCount, l2 = e7[u4].totalCount - c2;
-                      n6 = Math.max(n6, c2), o6 = Math.max(o6, l2), i4[u4] = new Array(c2);
-                      for (var d2 = 0; d2 < i4[u4].length; d2 += 1) i4[u4][d2] = 255 & t6.getBuffer()[d2 + r7];
-                      r7 += c2;
-                      var f2 = s.getErrorCorrectPolynomial(l2), g2 = h(i4[u4], f2.getLength() - 1).mod(f2);
-                      for (a3[u4] = new Array(f2.getLength() - 1), d2 = 0; d2 < a3[u4].length; d2 += 1) {
-                        var p2 = d2 + g2.getLength() - a3[u4].length;
-                        a3[u4][d2] = p2 >= 0 ? g2.getAt(p2) : 0;
+                    for (u3 = 0; u3 < 15; u3 += 1) h2 = !t5 && 1 == (a2 >> u3 & 1), u3 < 8 ? o4[8][i2 - u3 - 1] = h2 : u3 < 9 ? o4[8][15 - u3 - 1 + 1] = h2 : o4[8][15 - u3 - 1] = h2;
+                    o4[i2 - 8][8] = !t5;
+                  }, C = function (t5, e6) {
+                    for (var r6 = -1, n5 = i2 - 1, a2 = 7, u3 = 0, h2 = s.getMaskFunction(e6), c2 = i2 - 1; c2 > 0; c2 -= 2) for (6 == c2 && (c2 -= 1); ;) {
+                      for (var l2 = 0; l2 < 2; l2 += 1) if (null == o4[n5][c2 - l2]) {
+                        var d2 = false;
+                        u3 < t5.length && (d2 = 1 == (t5[u3] >>> a2 & 1)), h2(n5, c2 - l2) && (d2 = !d2), o4[n5][c2 - l2] = d2, -1 == (a2 -= 1) && (u3 += 1, a2 = 7);
+                      }
+                      if ((n5 += r6) < 0 || i2 <= n5) {
+                        n5 -= r6, r6 = -r6;
+                        break;
                       }
                     }
-                    var v3 = 0;
-                    for (d2 = 0; d2 < e7.length; d2 += 1) v3 += e7[d2].totalCount;
-                    var w3 = new Array(v3), y2 = 0;
-                    for (d2 = 0; d2 < n6; d2 += 1) for (u4 = 0; u4 < e7.length; u4 += 1) d2 < i4[u4].length && (w3[y2] = i4[u4][d2], y2 += 1);
-                    for (d2 = 0; d2 < o6; d2 += 1) for (u4 = 0; u4 < e7.length; u4 += 1) d2 < a3[u4].length && (w3[y2] = a3[u4][d2], y2 += 1);
-                    return w3;
-                  })(o5, n5);
-                };
-                w2.addData = function(t5, e6) {
-                  var r6 = null;
-                  switch (e6 = e6 || "Byte") {
-                    case "Numeric":
-                      r6 = d(t5);
-                      break;
-                    case "Alphanumeric":
-                      r6 = f(t5);
-                      break;
-                    case "Byte":
-                      r6 = g(t5);
-                      break;
-                    case "Kanji":
-                      r6 = p(t5);
-                      break;
-                    default:
-                      throw "mode:" + e6;
-                  }
-                  v2.push(r6), u2 = null;
-                }, w2.isDark = function(t5, e6) {
-                  if (t5 < 0 || i2 <= t5 || e6 < 0 || i2 <= e6) throw t5 + "," + e6;
-                  return o4[t5][e6];
-                }, w2.getModuleCount = function() {
-                  return i2;
-                }, w2.make = function() {
-                  if (r5 < 1) {
-                    for (var t5 = 1; t5 < 40; t5++) {
-                      for (var e6 = c.getRSBlocks(t5, n4), o5 = l(), i3 = 0; i3 < v2.length; i3++) {
-                        var a2 = v2[i3];
-                        o5.put(a2.getMode(), 4), o5.put(a2.getLength(), s.getLengthInBits(a2.getMode(), t5)), a2.write(o5);
+                  }, A = function (t5, e6, r6) {
+                    for (var n5 = c.getRSBlocks(t5, e6), o5 = l(), i3 = 0; i3 < r6.length; i3 += 1) {
+                      var a2 = r6[i3];
+                      o5.put(a2.getMode(), 4), o5.put(a2.getLength(), s.getLengthInBits(a2.getMode(), t5)), a2.write(o5);
+                    }
+                    var u3 = 0;
+                    for (i3 = 0; i3 < n5.length; i3 += 1) u3 += n5[i3].dataCount;
+                    if (o5.getLengthInBits() > 8 * u3) throw "code length overflow. (" + o5.getLengthInBits() + ">" + 8 * u3 + ")";
+                    for (o5.getLengthInBits() + 4 <= 8 * u3 && o5.put(0, 4); o5.getLengthInBits() % 8 != 0;) o5.putBit(false);
+                    for (; !(o5.getLengthInBits() >= 8 * u3 || (o5.put(236, 8), o5.getLengthInBits() >= 8 * u3));) o5.put(17, 8);
+                    return (function (t6, e7) {
+                      for (var r7 = 0, n6 = 0, o6 = 0, i4 = new Array(e7.length), a3 = new Array(e7.length), u4 = 0; u4 < e7.length; u4 += 1) {
+                        var c2 = e7[u4].dataCount, l2 = e7[u4].totalCount - c2;
+                        n6 = Math.max(n6, c2), o6 = Math.max(o6, l2), i4[u4] = new Array(c2);
+                        for (var d2 = 0; d2 < i4[u4].length; d2 += 1) i4[u4][d2] = 255 & t6.getBuffer()[d2 + r7];
+                        r7 += c2;
+                        var f2 = s.getErrorCorrectPolynomial(l2), g2 = h(i4[u4], f2.getLength() - 1).mod(f2);
+                        for (a3[u4] = new Array(f2.getLength() - 1), d2 = 0; d2 < a3[u4].length; d2 += 1) {
+                          var p2 = d2 + g2.getLength() - a3[u4].length;
+                          a3[u4][d2] = p2 >= 0 ? g2.getAt(p2) : 0;
+                        }
                       }
-                      var u3 = 0;
-                      for (i3 = 0; i3 < e6.length; i3++) u3 += e6[i3].dataCount;
-                      if (o5.getLengthInBits() <= 8 * u3) break;
-                    }
-                    r5 = t5;
-                  }
-                  m(false, (function() {
-                    for (var t6 = 0, e7 = 0, r6 = 0; r6 < 8; r6 += 1) {
-                      m(true, r6);
-                      var n5 = s.getLostPoint(w2);
-                      (0 == r6 || t6 > n5) && (t6 = n5, e7 = r6);
-                    }
-                    return e7;
-                  })());
-                }, w2.createTableTag = function(t5, e6) {
-                  t5 = t5 || 2;
-                  var r6 = "";
-                  r6 += '<table style="', r6 += " border-width: 0px; border-style: none;", r6 += " border-collapse: collapse;", r6 += " padding: 0px; margin: " + (e6 = void 0 === e6 ? 4 * t5 : e6) + "px;", r6 += '">', r6 += "<tbody>";
-                  for (var n5 = 0; n5 < w2.getModuleCount(); n5 += 1) {
-                    r6 += "<tr>";
-                    for (var o5 = 0; o5 < w2.getModuleCount(); o5 += 1) r6 += '<td style="', r6 += " border-width: 0px; border-style: none;", r6 += " border-collapse: collapse;", r6 += " padding: 0px; margin: 0px;", r6 += " width: " + t5 + "px;", r6 += " height: " + t5 + "px;", r6 += " background-color: ", r6 += w2.isDark(n5, o5) ? "#000000" : "#ffffff", r6 += ";", r6 += '"/>';
-                    r6 += "</tr>";
-                  }
-                  return (r6 += "</tbody>") + "</table>";
-                }, w2.createSvgTag = function(t5, e6, r6, n5) {
-                  var o5 = {};
-                  "object" == typeof arguments[0] && (t5 = (o5 = arguments[0]).cellSize, e6 = o5.margin, r6 = o5.alt, n5 = o5.title), t5 = t5 || 2, e6 = void 0 === e6 ? 4 * t5 : e6, (r6 = "string" == typeof r6 ? { text: r6 } : r6 || {}).text = r6.text || null, r6.id = r6.text ? r6.id || "qrcode-description" : null, (n5 = "string" == typeof n5 ? { text: n5 } : n5 || {}).text = n5.text || null, n5.id = n5.text ? n5.id || "qrcode-title" : null;
-                  var i3, a2, s2, u3, h2 = w2.getModuleCount() * t5 + 2 * e6, c2 = "";
-                  for (u3 = "l" + t5 + ",0 0," + t5 + " -" + t5 + ",0 0,-" + t5 + "z ", c2 += '<svg version="1.1" xmlns="http://www.w3.org/2000/svg"', c2 += o5.scalable ? "" : ' width="' + h2 + 'px" height="' + h2 + 'px"', c2 += ' viewBox="0 0 ' + h2 + " " + h2 + '" ', c2 += ' preserveAspectRatio="xMinYMin meet"', c2 += n5.text || r6.text ? ' role="img" aria-labelledby="' + k([n5.id, r6.id].join(" ").trim()) + '"' : "", c2 += ">", c2 += n5.text ? '<title id="' + k(n5.id) + '">' + k(n5.text) + "</title>" : "", c2 += r6.text ? '<description id="' + k(r6.id) + '">' + k(r6.text) + "</description>" : "", c2 += '<rect width="100%" height="100%" fill="white" cx="0" cy="0"/>', c2 += '<path d="', a2 = 0; a2 < w2.getModuleCount(); a2 += 1) for (s2 = a2 * t5 + e6, i3 = 0; i3 < w2.getModuleCount(); i3 += 1) w2.isDark(a2, i3) && (c2 += "M" + (i3 * t5 + e6) + "," + s2 + u3);
-                  return (c2 += '" stroke="transparent" fill="black"/>') + "</svg>";
-                }, w2.createDataURL = function(t5, e6) {
-                  t5 = t5 || 2, e6 = void 0 === e6 ? 4 * t5 : e6;
-                  var r6 = w2.getModuleCount() * t5 + 2 * e6, n5 = e6, o5 = r6 - e6;
-                  return y(r6, r6, (function(e7, r7) {
-                    if (n5 <= e7 && e7 < o5 && n5 <= r7 && r7 < o5) {
-                      var i3 = Math.floor((e7 - n5) / t5), a2 = Math.floor((r7 - n5) / t5);
-                      return w2.isDark(a2, i3) ? 0 : 1;
-                    }
-                    return 1;
-                  }));
-                }, w2.createImgTag = function(t5, e6, r6) {
-                  t5 = t5 || 2, e6 = void 0 === e6 ? 4 * t5 : e6;
-                  var n5 = w2.getModuleCount() * t5 + 2 * e6, o5 = "";
-                  return o5 += "<img", o5 += ' src="', o5 += w2.createDataURL(t5, e6), o5 += '"', o5 += ' width="', o5 += n5, o5 += '"', o5 += ' height="', o5 += n5, o5 += '"', r6 && (o5 += ' alt="', o5 += k(r6), o5 += '"'), o5 + "/>";
-                };
-                var k = function(t5) {
-                  for (var e6 = "", r6 = 0; r6 < t5.length; r6 += 1) {
-                    var n5 = t5.charAt(r6);
-                    switch (n5) {
-                      case "<":
-                        e6 += "&lt;";
+                      var v3 = 0;
+                      for (d2 = 0; d2 < e7.length; d2 += 1) v3 += e7[d2].totalCount;
+                      var w3 = new Array(v3), y2 = 0;
+                      for (d2 = 0; d2 < n6; d2 += 1) for (u4 = 0; u4 < e7.length; u4 += 1) d2 < i4[u4].length && (w3[y2] = i4[u4][d2], y2 += 1);
+                      for (d2 = 0; d2 < o6; d2 += 1) for (u4 = 0; u4 < e7.length; u4 += 1) d2 < a3[u4].length && (w3[y2] = a3[u4][d2], y2 += 1);
+                      return w3;
+                    })(o5, n5);
+                  };
+                  w2.addData = function (t5, e6) {
+                    var r6 = null;
+                    switch (e6 = e6 || "Byte") {
+                      case "Numeric":
+                        r6 = d(t5);
                         break;
-                      case ">":
-                        e6 += "&gt;";
+                      case "Alphanumeric":
+                        r6 = f(t5);
                         break;
-                      case "&":
-                        e6 += "&amp;";
+                      case "Byte":
+                        r6 = g(t5);
                         break;
-                      case '"':
-                        e6 += "&quot;";
+                      case "Kanji":
+                        r6 = p(t5);
                         break;
                       default:
-                        e6 += n5;
+                        throw "mode:" + e6;
                     }
-                  }
-                  return e6;
+                    v2.push(r6), u2 = null;
+                  }, w2.isDark = function (t5, e6) {
+                    if (t5 < 0 || i2 <= t5 || e6 < 0 || i2 <= e6) throw t5 + "," + e6;
+                    return o4[t5][e6];
+                  }, w2.getModuleCount = function () {
+                    return i2;
+                  }, w2.make = function () {
+                    if (r5 < 1) {
+                      for (var t5 = 1; t5 < 40; t5++) {
+                        for (var e6 = c.getRSBlocks(t5, n4), o5 = l(), i3 = 0; i3 < v2.length; i3++) {
+                          var a2 = v2[i3];
+                          o5.put(a2.getMode(), 4), o5.put(a2.getLength(), s.getLengthInBits(a2.getMode(), t5)), a2.write(o5);
+                        }
+                        var u3 = 0;
+                        for (i3 = 0; i3 < e6.length; i3++) u3 += e6[i3].dataCount;
+                        if (o5.getLengthInBits() <= 8 * u3) break;
+                      }
+                      r5 = t5;
+                    }
+                    m(false, (function () {
+                      for (var t6 = 0, e7 = 0, r6 = 0; r6 < 8; r6 += 1) {
+                        m(true, r6);
+                        var n5 = s.getLostPoint(w2);
+                        (0 == r6 || t6 > n5) && (t6 = n5, e7 = r6);
+                      }
+                      return e7;
+                    })());
+                  }, w2.createTableTag = function (t5, e6) {
+                    t5 = t5 || 2;
+                    var r6 = "";
+                    r6 += '<table style="', r6 += " border-width: 0px; border-style: none;", r6 += " border-collapse: collapse;", r6 += " padding: 0px; margin: " + (e6 = void 0 === e6 ? 4 * t5 : e6) + "px;", r6 += '">', r6 += "<tbody>";
+                    for (var n5 = 0; n5 < w2.getModuleCount(); n5 += 1) {
+                      r6 += "<tr>";
+                      for (var o5 = 0; o5 < w2.getModuleCount(); o5 += 1) r6 += '<td style="', r6 += " border-width: 0px; border-style: none;", r6 += " border-collapse: collapse;", r6 += " padding: 0px; margin: 0px;", r6 += " width: " + t5 + "px;", r6 += " height: " + t5 + "px;", r6 += " background-color: ", r6 += w2.isDark(n5, o5) ? "#000000" : "#ffffff", r6 += ";", r6 += '"/>';
+                      r6 += "</tr>";
+                    }
+                    return (r6 += "</tbody>") + "</table>";
+                  }, w2.createSvgTag = function (t5, e6, r6, n5) {
+                    var o5 = {};
+                    "object" == typeof arguments[0] && (t5 = (o5 = arguments[0]).cellSize, e6 = o5.margin, r6 = o5.alt, n5 = o5.title), t5 = t5 || 2, e6 = void 0 === e6 ? 4 * t5 : e6, (r6 = "string" == typeof r6 ? { text: r6 } : r6 || {}).text = r6.text || null, r6.id = r6.text ? r6.id || "qrcode-description" : null, (n5 = "string" == typeof n5 ? { text: n5 } : n5 || {}).text = n5.text || null, n5.id = n5.text ? n5.id || "qrcode-title" : null;
+                    var i3, a2, s2, u3, h2 = w2.getModuleCount() * t5 + 2 * e6, c2 = "";
+                    for (u3 = "l" + t5 + ",0 0," + t5 + " -" + t5 + ",0 0,-" + t5 + "z ", c2 += '<svg version="1.1" xmlns="http://www.w3.org/2000/svg"', c2 += o5.scalable ? "" : ' width="' + h2 + 'px" height="' + h2 + 'px"', c2 += ' viewBox="0 0 ' + h2 + " " + h2 + '" ', c2 += ' preserveAspectRatio="xMinYMin meet"', c2 += n5.text || r6.text ? ' role="img" aria-labelledby="' + k([n5.id, r6.id].join(" ").trim()) + '"' : "", c2 += ">", c2 += n5.text ? '<title id="' + k(n5.id) + '">' + k(n5.text) + "</title>" : "", c2 += r6.text ? '<description id="' + k(r6.id) + '">' + k(r6.text) + "</description>" : "", c2 += '<rect width="100%" height="100%" fill="white" cx="0" cy="0"/>', c2 += '<path d="', a2 = 0; a2 < w2.getModuleCount(); a2 += 1) for (s2 = a2 * t5 + e6, i3 = 0; i3 < w2.getModuleCount(); i3 += 1) w2.isDark(a2, i3) && (c2 += "M" + (i3 * t5 + e6) + "," + s2 + u3);
+                    return (c2 += '" stroke="transparent" fill="black"/>') + "</svg>";
+                  }, w2.createDataURL = function (t5, e6) {
+                    t5 = t5 || 2, e6 = void 0 === e6 ? 4 * t5 : e6;
+                    var r6 = w2.getModuleCount() * t5 + 2 * e6, n5 = e6, o5 = r6 - e6;
+                    return y(r6, r6, (function (e7, r7) {
+                      if (n5 <= e7 && e7 < o5 && n5 <= r7 && r7 < o5) {
+                        var i3 = Math.floor((e7 - n5) / t5), a2 = Math.floor((r7 - n5) / t5);
+                        return w2.isDark(a2, i3) ? 0 : 1;
+                      }
+                      return 1;
+                    }));
+                  }, w2.createImgTag = function (t5, e6, r6) {
+                    t5 = t5 || 2, e6 = void 0 === e6 ? 4 * t5 : e6;
+                    var n5 = w2.getModuleCount() * t5 + 2 * e6, o5 = "";
+                    return o5 += "<img", o5 += ' src="', o5 += w2.createDataURL(t5, e6), o5 += '"', o5 += ' width="', o5 += n5, o5 += '"', o5 += ' height="', o5 += n5, o5 += '"', r6 && (o5 += ' alt="', o5 += k(r6), o5 += '"'), o5 + "/>";
+                  };
+                  var k = function (t5) {
+                    for (var e6 = "", r6 = 0; r6 < t5.length; r6 += 1) {
+                      var n5 = t5.charAt(r6);
+                      switch (n5) {
+                        case "<":
+                          e6 += "&lt;";
+                          break;
+                        case ">":
+                          e6 += "&gt;";
+                          break;
+                        case "&":
+                          e6 += "&amp;";
+                          break;
+                        case '"':
+                          e6 += "&quot;";
+                          break;
+                        default:
+                          e6 += n5;
+                      }
+                    }
+                    return e6;
+                  };
+                  return w2.createASCII = function (t5, e6) {
+                    if ((t5 = t5 || 1) < 2) return (function (t6) {
+                      t6 = void 0 === t6 ? 2 : t6;
+                      var e7, r7, n6, o6, i4, a3 = 1 * w2.getModuleCount() + 2 * t6, s3 = t6, u4 = a3 - t6, h3 = { "\u2588\u2588": "\u2588", "\u2588 ": "\u2580", " \u2588": "\u2584", "  ": " " }, c3 = { "\u2588\u2588": "\u2580", "\u2588 ": "\u2580", " \u2588": " ", "  ": " " }, l3 = "";
+                      for (e7 = 0; e7 < a3; e7 += 2) {
+                        for (n6 = Math.floor((e7 - s3) / 1), o6 = Math.floor((e7 + 1 - s3) / 1), r7 = 0; r7 < a3; r7 += 1) i4 = "\u2588", s3 <= r7 && r7 < u4 && s3 <= e7 && e7 < u4 && w2.isDark(n6, Math.floor((r7 - s3) / 1)) && (i4 = " "), s3 <= r7 && r7 < u4 && s3 <= e7 + 1 && e7 + 1 < u4 && w2.isDark(o6, Math.floor((r7 - s3) / 1)) ? i4 += " " : i4 += "\u2588", l3 += t6 < 1 && e7 + 1 >= u4 ? c3[i4] : h3[i4];
+                        l3 += "\n";
+                      }
+                      return a3 % 2 && t6 > 0 ? l3.substring(0, l3.length - a3 - 1) + Array(a3 + 1).join("\u2580") : l3.substring(0, l3.length - 1);
+                    })(e6);
+                    t5 -= 1, e6 = void 0 === e6 ? 2 * t5 : e6;
+                    var r6, n5, o5, i3, a2 = w2.getModuleCount() * t5 + 2 * e6, s2 = e6, u3 = a2 - e6, h2 = Array(t5 + 1).join("\u2588\u2588"), c2 = Array(t5 + 1).join("  "), l2 = "", d2 = "";
+                    for (r6 = 0; r6 < a2; r6 += 1) {
+                      for (o5 = Math.floor((r6 - s2) / t5), d2 = "", n5 = 0; n5 < a2; n5 += 1) i3 = 1, s2 <= n5 && n5 < u3 && s2 <= r6 && r6 < u3 && w2.isDark(o5, Math.floor((n5 - s2) / t5)) && (i3 = 0), d2 += i3 ? h2 : c2;
+                      for (o5 = 0; o5 < t5; o5 += 1) l2 += d2 + "\n";
+                    }
+                    return l2.substring(0, l2.length - 1);
+                  }, w2.renderTo2dContext = function (t5, e6) {
+                    e6 = e6 || 2;
+                    for (var r6 = w2.getModuleCount(), n5 = 0; n5 < r6; n5++) for (var o5 = 0; o5 < r6; o5++) t5.fillStyle = w2.isDark(n5, o5) ? "black" : "white", t5.fillRect(n5 * e6, o5 * e6, e6, e6);
+                  }, w2;
                 };
-                return w2.createASCII = function(t5, e6) {
-                  if ((t5 = t5 || 1) < 2) return (function(t6) {
-                    t6 = void 0 === t6 ? 2 : t6;
-                    var e7, r7, n6, o6, i4, a3 = 1 * w2.getModuleCount() + 2 * t6, s3 = t6, u4 = a3 - t6, h3 = { "\u2588\u2588": "\u2588", "\u2588 ": "\u2580", " \u2588": "\u2584", "  ": " " }, c3 = { "\u2588\u2588": "\u2580", "\u2588 ": "\u2580", " \u2588": " ", "  ": " " }, l3 = "";
-                    for (e7 = 0; e7 < a3; e7 += 2) {
-                      for (n6 = Math.floor((e7 - s3) / 1), o6 = Math.floor((e7 + 1 - s3) / 1), r7 = 0; r7 < a3; r7 += 1) i4 = "\u2588", s3 <= r7 && r7 < u4 && s3 <= e7 && e7 < u4 && w2.isDark(n6, Math.floor((r7 - s3) / 1)) && (i4 = " "), s3 <= r7 && r7 < u4 && s3 <= e7 + 1 && e7 + 1 < u4 && w2.isDark(o6, Math.floor((r7 - s3) / 1)) ? i4 += " " : i4 += "\u2588", l3 += t6 < 1 && e7 + 1 >= u4 ? c3[i4] : h3[i4];
-                      l3 += "\n";
+                t3.stringToBytes = (t3.stringToBytesFuncs = {
+                  default: function (t4) {
+                    for (var e5 = [], r5 = 0; r5 < t4.length; r5 += 1) {
+                      var n4 = t4.charCodeAt(r5);
+                      e5.push(255 & n4);
                     }
-                    return a3 % 2 && t6 > 0 ? l3.substring(0, l3.length - a3 - 1) + Array(a3 + 1).join("\u2580") : l3.substring(0, l3.length - 1);
-                  })(e6);
-                  t5 -= 1, e6 = void 0 === e6 ? 2 * t5 : e6;
-                  var r6, n5, o5, i3, a2 = w2.getModuleCount() * t5 + 2 * e6, s2 = e6, u3 = a2 - e6, h2 = Array(t5 + 1).join("\u2588\u2588"), c2 = Array(t5 + 1).join("  "), l2 = "", d2 = "";
-                  for (r6 = 0; r6 < a2; r6 += 1) {
-                    for (o5 = Math.floor((r6 - s2) / t5), d2 = "", n5 = 0; n5 < a2; n5 += 1) i3 = 1, s2 <= n5 && n5 < u3 && s2 <= r6 && r6 < u3 && w2.isDark(o5, Math.floor((n5 - s2) / t5)) && (i3 = 0), d2 += i3 ? h2 : c2;
-                    for (o5 = 0; o5 < t5; o5 += 1) l2 += d2 + "\n";
+                    return e5;
                   }
-                  return l2.substring(0, l2.length - 1);
-                }, w2.renderTo2dContext = function(t5, e6) {
-                  e6 = e6 || 2;
-                  for (var r6 = w2.getModuleCount(), n5 = 0; n5 < r6; n5++) for (var o5 = 0; o5 < r6; o5++) t5.fillStyle = w2.isDark(n5, o5) ? "black" : "white", t5.fillRect(n5 * e6, o5 * e6, e6, e6);
-                }, w2;
-              };
-              t3.stringToBytes = (t3.stringToBytesFuncs = { default: function(t4) {
-                for (var e5 = [], r5 = 0; r5 < t4.length; r5 += 1) {
-                  var n4 = t4.charCodeAt(r5);
-                  e5.push(255 & n4);
-                }
-                return e5;
-              } }).default, t3.createStringToBytes = function(t4, e5) {
-                var r5 = (function() {
-                  for (var r6 = w(t4), n5 = function() {
-                    var t5 = r6.read();
-                    if (-1 == t5) throw "eof";
-                    return t5;
-                  }, o4 = 0, i2 = {}; ; ) {
-                    var a2 = r6.read();
-                    if (-1 == a2) break;
-                    var s2 = n5(), u2 = n5() << 8 | n5();
-                    i2[String.fromCharCode(a2 << 8 | s2)] = u2, o4 += 1;
-                  }
-                  if (o4 != e5) throw o4 + " != " + e5;
-                  return i2;
-                })(), n4 = "?".charCodeAt(0);
-                return function(t5) {
-                  for (var e6 = [], o4 = 0; o4 < t5.length; o4 += 1) {
-                    var i2 = t5.charCodeAt(o4);
-                    if (i2 < 128) e6.push(i2);
-                    else {
-                      var a2 = r5[t5.charAt(o4)];
-                      "number" == typeof a2 ? (255 & a2) == a2 ? e6.push(a2) : (e6.push(a2 >>> 8), e6.push(255 & a2)) : e6.push(n4);
+                }).default, t3.createStringToBytes = function (t4, e5) {
+                  var r5 = (function () {
+                    for (var r6 = w(t4), n5 = function () {
+                      var t5 = r6.read();
+                      if (-1 == t5) throw "eof";
+                      return t5;
+                    }, o4 = 0, i2 = {}; ;) {
+                      var a2 = r6.read();
+                      if (-1 == a2) break;
+                      var s2 = n5(), u2 = n5() << 8 | n5();
+                      i2[String.fromCharCode(a2 << 8 | s2)] = u2, o4 += 1;
                     }
-                  }
-                  return e6;
+                    if (o4 != e5) throw o4 + " != " + e5;
+                    return i2;
+                  })(), n4 = "?".charCodeAt(0);
+                  return function (t5) {
+                    for (var e6 = [], o4 = 0; o4 < t5.length; o4 += 1) {
+                      var i2 = t5.charCodeAt(o4);
+                      if (i2 < 128) e6.push(i2);
+                      else {
+                        var a2 = r5[t5.charAt(o4)];
+                        "number" == typeof a2 ? (255 & a2) == a2 ? e6.push(a2) : (e6.push(a2 >>> 8), e6.push(255 & a2)) : e6.push(n4);
+                      }
+                    }
+                    return e6;
+                  };
                 };
-              };
-              var e4, r4, n3, o3, i, a = { L: 1, M: 0, Q: 3, H: 2 }, s = (e4 = [[], [6, 18], [6, 22], [6, 26], [6, 30], [6, 34], [6, 22, 38], [6, 24, 42], [6, 26, 46], [6, 28, 50], [6, 30, 54], [6, 32, 58], [6, 34, 62], [6, 26, 46, 66], [6, 26, 48, 70], [6, 26, 50, 74], [6, 30, 54, 78], [6, 30, 56, 82], [6, 30, 58, 86], [6, 34, 62, 90], [6, 28, 50, 72, 94], [6, 26, 50, 74, 98], [6, 30, 54, 78, 102], [6, 28, 54, 80, 106], [6, 32, 58, 84, 110], [6, 30, 58, 86, 114], [6, 34, 62, 90, 118], [6, 26, 50, 74, 98, 122], [6, 30, 54, 78, 102, 126], [6, 26, 52, 78, 104, 130], [6, 30, 56, 82, 108, 134], [6, 34, 60, 86, 112, 138], [6, 30, 58, 86, 114, 142], [6, 34, 62, 90, 118, 146], [6, 30, 54, 78, 102, 126, 150], [6, 24, 50, 76, 102, 128, 154], [6, 28, 54, 80, 106, 132, 158], [6, 32, 58, 84, 110, 136, 162], [6, 26, 54, 82, 110, 138, 166], [6, 30, 58, 86, 114, 142, 170]], r4 = 1335, n3 = 7973, i = function(t4) {
-                for (var e5 = 0; 0 != t4; ) e5 += 1, t4 >>>= 1;
-                return e5;
-              }, (o3 = {}).getBCHTypeInfo = function(t4) {
-                for (var e5 = t4 << 10; i(e5) - i(r4) >= 0; ) e5 ^= r4 << i(e5) - i(r4);
-                return 21522 ^ (t4 << 10 | e5);
-              }, o3.getBCHTypeNumber = function(t4) {
-                for (var e5 = t4 << 12; i(e5) - i(n3) >= 0; ) e5 ^= n3 << i(e5) - i(n3);
-                return t4 << 12 | e5;
-              }, o3.getPatternPosition = function(t4) {
-                return e4[t4 - 1];
-              }, o3.getMaskFunction = function(t4) {
-                switch (t4) {
-                  case 0:
-                    return function(t5, e5) {
-                      return (t5 + e5) % 2 == 0;
-                    };
-                  case 1:
-                    return function(t5, e5) {
-                      return t5 % 2 == 0;
-                    };
-                  case 2:
-                    return function(t5, e5) {
-                      return e5 % 3 == 0;
-                    };
-                  case 3:
-                    return function(t5, e5) {
-                      return (t5 + e5) % 3 == 0;
-                    };
-                  case 4:
-                    return function(t5, e5) {
-                      return (Math.floor(t5 / 2) + Math.floor(e5 / 3)) % 2 == 0;
-                    };
-                  case 5:
-                    return function(t5, e5) {
-                      return t5 * e5 % 2 + t5 * e5 % 3 == 0;
-                    };
-                  case 6:
-                    return function(t5, e5) {
-                      return (t5 * e5 % 2 + t5 * e5 % 3) % 2 == 0;
-                    };
-                  case 7:
-                    return function(t5, e5) {
-                      return (t5 * e5 % 3 + (t5 + e5) % 2) % 2 == 0;
-                    };
-                  default:
-                    throw "bad maskPattern:" + t4;
-                }
-              }, o3.getErrorCorrectPolynomial = function(t4) {
-                for (var e5 = h([1], 0), r5 = 0; r5 < t4; r5 += 1) e5 = e5.multiply(h([1, u.gexp(r5)], 0));
-                return e5;
-              }, o3.getLengthInBits = function(t4, e5) {
-                if (1 <= e5 && e5 < 10) switch (t4) {
-                  case 1:
-                    return 10;
-                  case 2:
-                    return 9;
-                  case 4:
-                  case 8:
-                    return 8;
-                  default:
-                    throw "mode:" + t4;
-                }
-                else if (e5 < 27) switch (t4) {
-                  case 1:
-                    return 12;
-                  case 2:
-                    return 11;
-                  case 4:
-                    return 16;
-                  case 8:
-                    return 10;
-                  default:
-                    throw "mode:" + t4;
-                }
-                else {
-                  if (!(e5 < 41)) throw "type:" + e5;
+                var e4, r4, n3, o3, i, a = { L: 1, M: 0, Q: 3, H: 2 }, s = (e4 = [[], [6, 18], [6, 22], [6, 26], [6, 30], [6, 34], [6, 22, 38], [6, 24, 42], [6, 26, 46], [6, 28, 50], [6, 30, 54], [6, 32, 58], [6, 34, 62], [6, 26, 46, 66], [6, 26, 48, 70], [6, 26, 50, 74], [6, 30, 54, 78], [6, 30, 56, 82], [6, 30, 58, 86], [6, 34, 62, 90], [6, 28, 50, 72, 94], [6, 26, 50, 74, 98], [6, 30, 54, 78, 102], [6, 28, 54, 80, 106], [6, 32, 58, 84, 110], [6, 30, 58, 86, 114], [6, 34, 62, 90, 118], [6, 26, 50, 74, 98, 122], [6, 30, 54, 78, 102, 126], [6, 26, 52, 78, 104, 130], [6, 30, 56, 82, 108, 134], [6, 34, 60, 86, 112, 138], [6, 30, 58, 86, 114, 142], [6, 34, 62, 90, 118, 146], [6, 30, 54, 78, 102, 126, 150], [6, 24, 50, 76, 102, 128, 154], [6, 28, 54, 80, 106, 132, 158], [6, 32, 58, 84, 110, 136, 162], [6, 26, 54, 82, 110, 138, 166], [6, 30, 58, 86, 114, 142, 170]], r4 = 1335, n3 = 7973, i = function (t4) {
+                  for (var e5 = 0; 0 != t4;) e5 += 1, t4 >>>= 1;
+                  return e5;
+                }, (o3 = {}).getBCHTypeInfo = function (t4) {
+                  for (var e5 = t4 << 10; i(e5) - i(r4) >= 0;) e5 ^= r4 << i(e5) - i(r4);
+                  return 21522 ^ (t4 << 10 | e5);
+                }, o3.getBCHTypeNumber = function (t4) {
+                  for (var e5 = t4 << 12; i(e5) - i(n3) >= 0;) e5 ^= n3 << i(e5) - i(n3);
+                  return t4 << 12 | e5;
+                }, o3.getPatternPosition = function (t4) {
+                  return e4[t4 - 1];
+                }, o3.getMaskFunction = function (t4) {
                   switch (t4) {
+                    case 0:
+                      return function (t5, e5) {
+                        return (t5 + e5) % 2 == 0;
+                      };
                     case 1:
-                      return 14;
+                      return function (t5, e5) {
+                        return t5 % 2 == 0;
+                      };
                     case 2:
-                      return 13;
+                      return function (t5, e5) {
+                        return e5 % 3 == 0;
+                      };
+                    case 3:
+                      return function (t5, e5) {
+                        return (t5 + e5) % 3 == 0;
+                      };
                     case 4:
-                      return 16;
+                      return function (t5, e5) {
+                        return (Math.floor(t5 / 2) + Math.floor(e5 / 3)) % 2 == 0;
+                      };
+                    case 5:
+                      return function (t5, e5) {
+                        return t5 * e5 % 2 + t5 * e5 % 3 == 0;
+                      };
+                    case 6:
+                      return function (t5, e5) {
+                        return (t5 * e5 % 2 + t5 * e5 % 3) % 2 == 0;
+                      };
+                    case 7:
+                      return function (t5, e5) {
+                        return (t5 * e5 % 3 + (t5 + e5) % 2) % 2 == 0;
+                      };
+                    default:
+                      throw "bad maskPattern:" + t4;
+                  }
+                }, o3.getErrorCorrectPolynomial = function (t4) {
+                  for (var e5 = h([1], 0), r5 = 0; r5 < t4; r5 += 1) e5 = e5.multiply(h([1, u.gexp(r5)], 0));
+                  return e5;
+                }, o3.getLengthInBits = function (t4, e5) {
+                  if (1 <= e5 && e5 < 10) switch (t4) {
+                    case 1:
+                      return 10;
+                    case 2:
+                      return 9;
+                    case 4:
                     case 8:
-                      return 12;
+                      return 8;
                     default:
                       throw "mode:" + t4;
                   }
-                }
-              }, o3.getLostPoint = function(t4) {
-                for (var e5 = t4.getModuleCount(), r5 = 0, n4 = 0; n4 < e5; n4 += 1) for (var o4 = 0; o4 < e5; o4 += 1) {
-                  for (var i2 = 0, a2 = t4.isDark(n4, o4), s2 = -1; s2 <= 1; s2 += 1) if (!(n4 + s2 < 0 || e5 <= n4 + s2)) for (var u2 = -1; u2 <= 1; u2 += 1) o4 + u2 < 0 || e5 <= o4 + u2 || 0 == s2 && 0 == u2 || a2 == t4.isDark(n4 + s2, o4 + u2) && (i2 += 1);
-                  i2 > 5 && (r5 += 3 + i2 - 5);
-                }
-                for (n4 = 0; n4 < e5 - 1; n4 += 1) for (o4 = 0; o4 < e5 - 1; o4 += 1) {
-                  var h2 = 0;
-                  t4.isDark(n4, o4) && (h2 += 1), t4.isDark(n4 + 1, o4) && (h2 += 1), t4.isDark(n4, o4 + 1) && (h2 += 1), t4.isDark(n4 + 1, o4 + 1) && (h2 += 1), 0 != h2 && 4 != h2 || (r5 += 3);
-                }
-                for (n4 = 0; n4 < e5; n4 += 1) for (o4 = 0; o4 < e5 - 6; o4 += 1) t4.isDark(n4, o4) && !t4.isDark(n4, o4 + 1) && t4.isDark(n4, o4 + 2) && t4.isDark(n4, o4 + 3) && t4.isDark(n4, o4 + 4) && !t4.isDark(n4, o4 + 5) && t4.isDark(n4, o4 + 6) && (r5 += 40);
-                for (o4 = 0; o4 < e5; o4 += 1) for (n4 = 0; n4 < e5 - 6; n4 += 1) t4.isDark(n4, o4) && !t4.isDark(n4 + 1, o4) && t4.isDark(n4 + 2, o4) && t4.isDark(n4 + 3, o4) && t4.isDark(n4 + 4, o4) && !t4.isDark(n4 + 5, o4) && t4.isDark(n4 + 6, o4) && (r5 += 40);
-                var c2 = 0;
-                for (o4 = 0; o4 < e5; o4 += 1) for (n4 = 0; n4 < e5; n4 += 1) t4.isDark(n4, o4) && (c2 += 1);
-                return r5 + Math.abs(100 * c2 / e5 / e5 - 50) / 5 * 10;
-              }, o3), u = (function() {
-                for (var t4 = new Array(256), e5 = new Array(256), r5 = 0; r5 < 8; r5 += 1) t4[r5] = 1 << r5;
-                for (r5 = 8; r5 < 256; r5 += 1) t4[r5] = t4[r5 - 4] ^ t4[r5 - 5] ^ t4[r5 - 6] ^ t4[r5 - 8];
-                for (r5 = 0; r5 < 255; r5 += 1) e5[t4[r5]] = r5;
-                return { glog: function(t5) {
-                  if (t5 < 1) throw "glog(" + t5 + ")";
-                  return e5[t5];
-                }, gexp: function(e6) {
-                  for (; e6 < 0; ) e6 += 255;
-                  for (; e6 >= 256; ) e6 -= 255;
-                  return t4[e6];
-                } };
-              })();
-              function h(t4, e5) {
-                if (void 0 === t4.length) throw t4.length + "/" + e5;
-                var r5 = (function() {
-                  for (var r6 = 0; r6 < t4.length && 0 == t4[r6]; ) r6 += 1;
-                  for (var n5 = new Array(t4.length - r6 + e5), o4 = 0; o4 < t4.length - r6; o4 += 1) n5[o4] = t4[o4 + r6];
-                  return n5;
-                })(), n4 = { getAt: function(t5) {
-                  return r5[t5];
-                }, getLength: function() {
-                  return r5.length;
-                }, multiply: function(t5) {
-                  for (var e6 = new Array(n4.getLength() + t5.getLength() - 1), r6 = 0; r6 < n4.getLength(); r6 += 1) for (var o4 = 0; o4 < t5.getLength(); o4 += 1) e6[r6 + o4] ^= u.gexp(u.glog(n4.getAt(r6)) + u.glog(t5.getAt(o4)));
-                  return h(e6, 0);
-                }, mod: function(t5) {
-                  if (n4.getLength() - t5.getLength() < 0) return n4;
-                  for (var e6 = u.glog(n4.getAt(0)) - u.glog(t5.getAt(0)), r6 = new Array(n4.getLength()), o4 = 0; o4 < n4.getLength(); o4 += 1) r6[o4] = n4.getAt(o4);
-                  for (o4 = 0; o4 < t5.getLength(); o4 += 1) r6[o4] ^= u.gexp(u.glog(t5.getAt(o4)) + e6);
-                  return h(r6, 0).mod(t5);
-                } };
-                return n4;
-              }
-              var c = /* @__PURE__ */ (function() {
-                var t4 = [[1, 26, 19], [1, 26, 16], [1, 26, 13], [1, 26, 9], [1, 44, 34], [1, 44, 28], [1, 44, 22], [1, 44, 16], [1, 70, 55], [1, 70, 44], [2, 35, 17], [2, 35, 13], [1, 100, 80], [2, 50, 32], [2, 50, 24], [4, 25, 9], [1, 134, 108], [2, 67, 43], [2, 33, 15, 2, 34, 16], [2, 33, 11, 2, 34, 12], [2, 86, 68], [4, 43, 27], [4, 43, 19], [4, 43, 15], [2, 98, 78], [4, 49, 31], [2, 32, 14, 4, 33, 15], [4, 39, 13, 1, 40, 14], [2, 121, 97], [2, 60, 38, 2, 61, 39], [4, 40, 18, 2, 41, 19], [4, 40, 14, 2, 41, 15], [2, 146, 116], [3, 58, 36, 2, 59, 37], [4, 36, 16, 4, 37, 17], [4, 36, 12, 4, 37, 13], [2, 86, 68, 2, 87, 69], [4, 69, 43, 1, 70, 44], [6, 43, 19, 2, 44, 20], [6, 43, 15, 2, 44, 16], [4, 101, 81], [1, 80, 50, 4, 81, 51], [4, 50, 22, 4, 51, 23], [3, 36, 12, 8, 37, 13], [2, 116, 92, 2, 117, 93], [6, 58, 36, 2, 59, 37], [4, 46, 20, 6, 47, 21], [7, 42, 14, 4, 43, 15], [4, 133, 107], [8, 59, 37, 1, 60, 38], [8, 44, 20, 4, 45, 21], [12, 33, 11, 4, 34, 12], [3, 145, 115, 1, 146, 116], [4, 64, 40, 5, 65, 41], [11, 36, 16, 5, 37, 17], [11, 36, 12, 5, 37, 13], [5, 109, 87, 1, 110, 88], [5, 65, 41, 5, 66, 42], [5, 54, 24, 7, 55, 25], [11, 36, 12, 7, 37, 13], [5, 122, 98, 1, 123, 99], [7, 73, 45, 3, 74, 46], [15, 43, 19, 2, 44, 20], [3, 45, 15, 13, 46, 16], [1, 135, 107, 5, 136, 108], [10, 74, 46, 1, 75, 47], [1, 50, 22, 15, 51, 23], [2, 42, 14, 17, 43, 15], [5, 150, 120, 1, 151, 121], [9, 69, 43, 4, 70, 44], [17, 50, 22, 1, 51, 23], [2, 42, 14, 19, 43, 15], [3, 141, 113, 4, 142, 114], [3, 70, 44, 11, 71, 45], [17, 47, 21, 4, 48, 22], [9, 39, 13, 16, 40, 14], [3, 135, 107, 5, 136, 108], [3, 67, 41, 13, 68, 42], [15, 54, 24, 5, 55, 25], [15, 43, 15, 10, 44, 16], [4, 144, 116, 4, 145, 117], [17, 68, 42], [17, 50, 22, 6, 51, 23], [19, 46, 16, 6, 47, 17], [2, 139, 111, 7, 140, 112], [17, 74, 46], [7, 54, 24, 16, 55, 25], [34, 37, 13], [4, 151, 121, 5, 152, 122], [4, 75, 47, 14, 76, 48], [11, 54, 24, 14, 55, 25], [16, 45, 15, 14, 46, 16], [6, 147, 117, 4, 148, 118], [6, 73, 45, 14, 74, 46], [11, 54, 24, 16, 55, 25], [30, 46, 16, 2, 47, 17], [8, 132, 106, 4, 133, 107], [8, 75, 47, 13, 76, 48], [7, 54, 24, 22, 55, 25], [22, 45, 15, 13, 46, 16], [10, 142, 114, 2, 143, 115], [19, 74, 46, 4, 75, 47], [28, 50, 22, 6, 51, 23], [33, 46, 16, 4, 47, 17], [8, 152, 122, 4, 153, 123], [22, 73, 45, 3, 74, 46], [8, 53, 23, 26, 54, 24], [12, 45, 15, 28, 46, 16], [3, 147, 117, 10, 148, 118], [3, 73, 45, 23, 74, 46], [4, 54, 24, 31, 55, 25], [11, 45, 15, 31, 46, 16], [7, 146, 116, 7, 147, 117], [21, 73, 45, 7, 74, 46], [1, 53, 23, 37, 54, 24], [19, 45, 15, 26, 46, 16], [5, 145, 115, 10, 146, 116], [19, 75, 47, 10, 76, 48], [15, 54, 24, 25, 55, 25], [23, 45, 15, 25, 46, 16], [13, 145, 115, 3, 146, 116], [2, 74, 46, 29, 75, 47], [42, 54, 24, 1, 55, 25], [23, 45, 15, 28, 46, 16], [17, 145, 115], [10, 74, 46, 23, 75, 47], [10, 54, 24, 35, 55, 25], [19, 45, 15, 35, 46, 16], [17, 145, 115, 1, 146, 116], [14, 74, 46, 21, 75, 47], [29, 54, 24, 19, 55, 25], [11, 45, 15, 46, 46, 16], [13, 145, 115, 6, 146, 116], [14, 74, 46, 23, 75, 47], [44, 54, 24, 7, 55, 25], [59, 46, 16, 1, 47, 17], [12, 151, 121, 7, 152, 122], [12, 75, 47, 26, 76, 48], [39, 54, 24, 14, 55, 25], [22, 45, 15, 41, 46, 16], [6, 151, 121, 14, 152, 122], [6, 75, 47, 34, 76, 48], [46, 54, 24, 10, 55, 25], [2, 45, 15, 64, 46, 16], [17, 152, 122, 4, 153, 123], [29, 74, 46, 14, 75, 47], [49, 54, 24, 10, 55, 25], [24, 45, 15, 46, 46, 16], [4, 152, 122, 18, 153, 123], [13, 74, 46, 32, 75, 47], [48, 54, 24, 14, 55, 25], [42, 45, 15, 32, 46, 16], [20, 147, 117, 4, 148, 118], [40, 75, 47, 7, 76, 48], [43, 54, 24, 22, 55, 25], [10, 45, 15, 67, 46, 16], [19, 148, 118, 6, 149, 119], [18, 75, 47, 31, 76, 48], [34, 54, 24, 34, 55, 25], [20, 45, 15, 61, 46, 16]], e5 = function(t5, e6) {
-                  var r6 = {};
-                  return r6.totalCount = t5, r6.dataCount = e6, r6;
-                }, r5 = { getRSBlocks: function(r6, n4) {
-                  var o4 = (function(e6, r7) {
-                    switch (r7) {
-                      case a.L:
-                        return t4[4 * (e6 - 1) + 0];
-                      case a.M:
-                        return t4[4 * (e6 - 1) + 1];
-                      case a.Q:
-                        return t4[4 * (e6 - 1) + 2];
-                      case a.H:
-                        return t4[4 * (e6 - 1) + 3];
-                      default:
-                        return;
-                    }
-                  })(r6, n4);
-                  if (void 0 === o4) throw "bad rs block @ typeNumber:" + r6 + "/errorCorrectionLevel:" + n4;
-                  for (var i2 = o4.length / 3, s2 = [], u2 = 0; u2 < i2; u2 += 1) for (var h2 = o4[3 * u2 + 0], c2 = o4[3 * u2 + 1], l2 = o4[3 * u2 + 2], d2 = 0; d2 < h2; d2 += 1) s2.push(e5(c2, l2));
-                  return s2;
-                } };
-                return r5;
-              })(), l = function() {
-                var t4 = [], e5 = 0, r5 = { getBuffer: function() {
-                  return t4;
-                }, getAt: function(e6) {
-                  var r6 = Math.floor(e6 / 8);
-                  return 1 == (t4[r6] >>> 7 - e6 % 8 & 1);
-                }, put: function(t5, e6) {
-                  for (var n4 = 0; n4 < e6; n4 += 1) r5.putBit(1 == (t5 >>> e6 - n4 - 1 & 1));
-                }, getLengthInBits: function() {
-                  return e5;
-                }, putBit: function(r6) {
-                  var n4 = Math.floor(e5 / 8);
-                  t4.length <= n4 && t4.push(0), r6 && (t4[n4] |= 128 >>> e5 % 8), e5 += 1;
-                } };
-                return r5;
-              }, d = function(t4) {
-                var e5 = t4, r5 = { getMode: function() {
-                  return 1;
-                }, getLength: function(t5) {
-                  return e5.length;
-                }, write: function(t5) {
-                  for (var r6 = e5, o5 = 0; o5 + 2 < r6.length; ) t5.put(n4(r6.substring(o5, o5 + 3)), 10), o5 += 3;
-                  o5 < r6.length && (r6.length - o5 == 1 ? t5.put(n4(r6.substring(o5, o5 + 1)), 4) : r6.length - o5 == 2 && t5.put(n4(r6.substring(o5, o5 + 2)), 7));
-                } }, n4 = function(t5) {
-                  for (var e6 = 0, r6 = 0; r6 < t5.length; r6 += 1) e6 = 10 * e6 + o4(t5.charAt(r6));
-                  return e6;
-                }, o4 = function(t5) {
-                  if ("0" <= t5 && t5 <= "9") return t5.charCodeAt(0) - "0".charCodeAt(0);
-                  throw "illegal char :" + t5;
-                };
-                return r5;
-              }, f = function(t4) {
-                var e5 = t4, r5 = { getMode: function() {
-                  return 2;
-                }, getLength: function(t5) {
-                  return e5.length;
-                }, write: function(t5) {
-                  for (var r6 = e5, o4 = 0; o4 + 1 < r6.length; ) t5.put(45 * n4(r6.charAt(o4)) + n4(r6.charAt(o4 + 1)), 11), o4 += 2;
-                  o4 < r6.length && t5.put(n4(r6.charAt(o4)), 6);
-                } }, n4 = function(t5) {
-                  if ("0" <= t5 && t5 <= "9") return t5.charCodeAt(0) - "0".charCodeAt(0);
-                  if ("A" <= t5 && t5 <= "Z") return t5.charCodeAt(0) - "A".charCodeAt(0) + 10;
-                  switch (t5) {
-                    case " ":
-                      return 36;
-                    case "$":
-                      return 37;
-                    case "%":
-                      return 38;
-                    case "*":
-                      return 39;
-                    case "+":
-                      return 40;
-                    case "-":
-                      return 41;
-                    case ".":
-                      return 42;
-                    case "/":
-                      return 43;
-                    case ":":
-                      return 44;
+                  else if (e5 < 27) switch (t4) {
+                    case 1:
+                      return 12;
+                    case 2:
+                      return 11;
+                    case 4:
+                      return 16;
+                    case 8:
+                      return 10;
                     default:
-                      throw "illegal char :" + t5;
+                      throw "mode:" + t4;
                   }
-                };
-                return r5;
-              }, g = function(e5) {
-                var r5 = t3.stringToBytes(e5);
-                return { getMode: function() {
-                  return 4;
-                }, getLength: function(t4) {
-                  return r5.length;
-                }, write: function(t4) {
-                  for (var e6 = 0; e6 < r5.length; e6 += 1) t4.put(r5[e6], 8);
-                } };
-              }, p = function(e5) {
-                var r5 = t3.stringToBytesFuncs.SJIS;
-                if (!r5) throw "sjis not supported.";
-                !(function(t4, e6) {
-                  var n5 = r5("\u53CB");
-                  if (2 != n5.length || 38726 != (n5[0] << 8 | n5[1])) throw "sjis not supported.";
-                })();
-                var n4 = r5(e5);
-                return { getMode: function() {
-                  return 8;
-                }, getLength: function(t4) {
-                  return ~~(n4.length / 2);
-                }, write: function(t4) {
-                  for (var e6 = n4, r6 = 0; r6 + 1 < e6.length; ) {
-                    var o4 = (255 & e6[r6]) << 8 | 255 & e6[r6 + 1];
-                    if (33088 <= o4 && o4 <= 40956) o4 -= 33088;
-                    else {
-                      if (!(57408 <= o4 && o4 <= 60351)) throw "illegal char at " + (r6 + 1) + "/" + o4;
-                      o4 -= 49472;
-                    }
-                    o4 = 192 * (o4 >>> 8 & 255) + (255 & o4), t4.put(o4, 13), r6 += 2;
-                  }
-                  if (r6 < e6.length) throw "illegal char at " + (r6 + 1);
-                } };
-              }, v = function() {
-                var t4 = [], e5 = { writeByte: function(e6) {
-                  t4.push(255 & e6);
-                }, writeShort: function(t5) {
-                  e5.writeByte(t5), e5.writeByte(t5 >>> 8);
-                }, writeBytes: function(t5, r5, n4) {
-                  r5 = r5 || 0, n4 = n4 || t5.length;
-                  for (var o4 = 0; o4 < n4; o4 += 1) e5.writeByte(t5[o4 + r5]);
-                }, writeString: function(t5) {
-                  for (var r5 = 0; r5 < t5.length; r5 += 1) e5.writeByte(t5.charCodeAt(r5));
-                }, toByteArray: function() {
-                  return t4;
-                }, toString: function() {
-                  var e6 = "";
-                  e6 += "[";
-                  for (var r5 = 0; r5 < t4.length; r5 += 1) r5 > 0 && (e6 += ","), e6 += t4[r5];
-                  return e6 + "]";
-                } };
-                return e5;
-              }, w = function(t4) {
-                var e5 = t4, r5 = 0, n4 = 0, o4 = 0, i2 = { read: function() {
-                  for (; o4 < 8; ) {
-                    if (r5 >= e5.length) {
-                      if (0 == o4) return -1;
-                      throw "unexpected end of file./" + o4;
-                    }
-                    var t5 = e5.charAt(r5);
-                    if (r5 += 1, "=" == t5) return o4 = 0, -1;
-                    t5.match(/^\s$/) || (n4 = n4 << 6 | a2(t5.charCodeAt(0)), o4 += 6);
-                  }
-                  var i3 = n4 >>> o4 - 8 & 255;
-                  return o4 -= 8, i3;
-                } }, a2 = function(t5) {
-                  if (65 <= t5 && t5 <= 90) return t5 - 65;
-                  if (97 <= t5 && t5 <= 122) return t5 - 97 + 26;
-                  if (48 <= t5 && t5 <= 57) return t5 - 48 + 52;
-                  if (43 == t5) return 62;
-                  if (47 == t5) return 63;
-                  throw "c:" + t5;
-                };
-                return i2;
-              }, y = function(t4, e5, r5) {
-                for (var n4 = (function(t5, e6) {
-                  var r6 = t5, n5 = e6, o5 = new Array(t5 * e6), i3 = { setPixel: function(t6, e7, n6) {
-                    o5[e7 * r6 + t6] = n6;
-                  }, write: function(t6) {
-                    t6.writeString("GIF87a"), t6.writeShort(r6), t6.writeShort(n5), t6.writeByte(128), t6.writeByte(0), t6.writeByte(0), t6.writeByte(0), t6.writeByte(0), t6.writeByte(0), t6.writeByte(255), t6.writeByte(255), t6.writeByte(255), t6.writeString(","), t6.writeShort(0), t6.writeShort(0), t6.writeShort(r6), t6.writeShort(n5), t6.writeByte(0);
-                    var e7 = a3(2);
-                    t6.writeByte(2);
-                    for (var o6 = 0; e7.length - o6 > 255; ) t6.writeByte(255), t6.writeBytes(e7, o6, 255), o6 += 255;
-                    t6.writeByte(e7.length - o6), t6.writeBytes(e7, o6, e7.length - o6), t6.writeByte(0), t6.writeString(";");
-                  } }, a3 = function(t6) {
-                    for (var e7 = 1 << t6, r7 = 1 + (1 << t6), n6 = t6 + 1, i4 = s3(), a4 = 0; a4 < e7; a4 += 1) i4.add(String.fromCharCode(a4));
-                    i4.add(String.fromCharCode(e7)), i4.add(String.fromCharCode(r7));
-                    var u3, h3, c2, l2 = v(), d2 = (u3 = l2, h3 = 0, c2 = 0, { write: function(t7, e8) {
-                      if (t7 >>> e8 != 0) throw "length over";
-                      for (; h3 + e8 >= 8; ) u3.writeByte(255 & (t7 << h3 | c2)), e8 -= 8 - h3, t7 >>>= 8 - h3, c2 = 0, h3 = 0;
-                      c2 |= t7 << h3, h3 += e8;
-                    }, flush: function() {
-                      h3 > 0 && u3.writeByte(c2);
-                    } });
-                    d2.write(e7, n6);
-                    var f2 = 0, g2 = String.fromCharCode(o5[f2]);
-                    for (f2 += 1; f2 < o5.length; ) {
-                      var p2 = String.fromCharCode(o5[f2]);
-                      f2 += 1, i4.contains(g2 + p2) ? g2 += p2 : (d2.write(i4.indexOf(g2), n6), i4.size() < 4095 && (i4.size() == 1 << n6 && (n6 += 1), i4.add(g2 + p2)), g2 = p2);
-                    }
-                    return d2.write(i4.indexOf(g2), n6), d2.write(r7, n6), d2.flush(), l2.toByteArray();
-                  }, s3 = function() {
-                    var t6 = {}, e7 = 0, r7 = { add: function(n6) {
-                      if (r7.contains(n6)) throw "dup key:" + n6;
-                      t6[n6] = e7, e7 += 1;
-                    }, size: function() {
-                      return e7;
-                    }, indexOf: function(e8) {
-                      return t6[e8];
-                    }, contains: function(e8) {
-                      return void 0 !== t6[e8];
-                    } };
-                    return r7;
-                  };
-                  return i3;
-                })(t4, e5), o4 = 0; o4 < e5; o4 += 1) for (var i2 = 0; i2 < t4; i2 += 1) n4.setPixel(i2, o4, r5(i2, o4));
-                var a2 = v();
-                n4.write(a2);
-                for (var s2 = (function() {
-                  var t5 = 0, e6 = 0, r6 = 0, n5 = "", o5 = {}, i3 = function(t6) {
-                    n5 += String.fromCharCode(a3(63 & t6));
-                  }, a3 = function(t6) {
-                    if (t6 < 0) ;
-                    else {
-                      if (t6 < 26) return 65 + t6;
-                      if (t6 < 52) return t6 - 26 + 97;
-                      if (t6 < 62) return t6 - 52 + 48;
-                      if (62 == t6) return 43;
-                      if (63 == t6) return 47;
-                    }
-                    throw "n:" + t6;
-                  };
-                  return o5.writeByte = function(n6) {
-                    for (t5 = t5 << 8 | 255 & n6, e6 += 8, r6 += 1; e6 >= 6; ) i3(t5 >>> e6 - 6), e6 -= 6;
-                  }, o5.flush = function() {
-                    if (e6 > 0 && (i3(t5 << 6 - e6), t5 = 0, e6 = 0), r6 % 3 != 0) for (var o6 = 3 - r6 % 3, a4 = 0; a4 < o6; a4 += 1) n5 += "=";
-                  }, o5.toString = function() {
-                    return n5;
-                  }, o5;
-                })(), u2 = a2.toByteArray(), h2 = 0; h2 < u2.length; h2 += 1) s2.writeByte(u2[h2]);
-                return s2.flush(), "data:image/gif;base64," + s2;
-              };
-              return t3;
-            })();
-            o2.stringToBytesFuncs["UTF-8"] = function(t3) {
-              return (function(t4) {
-                for (var e4 = [], r4 = 0; r4 < t4.length; r4++) {
-                  var n3 = t4.charCodeAt(r4);
-                  n3 < 128 ? e4.push(n3) : n3 < 2048 ? e4.push(192 | n3 >> 6, 128 | 63 & n3) : n3 < 55296 || n3 >= 57344 ? e4.push(224 | n3 >> 12, 128 | n3 >> 6 & 63, 128 | 63 & n3) : (r4++, n3 = 65536 + ((1023 & n3) << 10 | 1023 & t4.charCodeAt(r4)), e4.push(240 | n3 >> 18, 128 | n3 >> 12 & 63, 128 | n3 >> 6 & 63, 128 | 63 & n3));
-                }
-                return e4;
-              })(t3);
-            }, void 0 === (n2 = "function" == typeof (r3 = function() {
-              return o2;
-            }) ? r3.apply(e3, []) : r3) || (t2.exports = n2);
-          }, 676: (t2, e3, r3) => {
-            "use strict";
-            r3.d(e3, { default: () => q });
-            var n2 = function() {
-              return (n2 = Object.assign || function(t3) {
-                for (var e4, r4 = 1, n3 = arguments.length; r4 < n3; r4++) for (var o3 in e4 = arguments[r4]) Object.prototype.hasOwnProperty.call(e4, o3) && (t3[o3] = e4[o3]);
-                return t3;
-              }).apply(this, arguments);
-            }, o2 = function() {
-              for (var t3 = 0, e4 = 0, r4 = arguments.length; e4 < r4; e4++) t3 += arguments[e4].length;
-              var n3 = Array(t3), o3 = 0;
-              for (e4 = 0; e4 < r4; e4++) for (var i2 = arguments[e4], a2 = 0, s2 = i2.length; a2 < s2; a2++, o3++) n3[o3] = i2[a2];
-              return n3;
-            }, i = function(t3) {
-              return !!t3 && "object" == typeof t3 && !Array.isArray(t3);
-            };
-            function a(t3) {
-              for (var e4 = [], r4 = 1; r4 < arguments.length; r4++) e4[r4 - 1] = arguments[r4];
-              if (!e4.length) return t3;
-              var s2 = e4.shift();
-              return void 0 !== s2 && i(t3) && i(s2) ? (t3 = n2({}, t3), Object.keys(s2).forEach((function(e5) {
-                var r5 = t3[e5], n3 = s2[e5];
-                Array.isArray(r5) && Array.isArray(n3) ? t3[e5] = n3 : i(r5) && i(n3) ? t3[e5] = a(Object.assign({}, r5), n3) : t3[e5] = n3;
-              })), a.apply(void 0, o2([t3], e4))) : t3;
-            }
-            function s(t3, e4) {
-              var r4 = document.createElement("a");
-              r4.download = e4, r4.href = t3, document.body.appendChild(r4), r4.click(), document.body.removeChild(r4);
-            }
-            function u(t3) {
-              return e4 = this, r4 = void 0, o3 = function() {
-                return (function(t4, e5) {
-                  var r5, n4, o4, i2, a2 = { label: 0, sent: function() {
-                    if (1 & o4[0]) throw o4[1];
-                    return o4[1];
-                  }, trys: [], ops: [] };
-                  return i2 = { next: s2(0), throw: s2(1), return: s2(2) }, "function" == typeof Symbol && (i2[Symbol.iterator] = function() {
-                    return this;
-                  }), i2;
-                  function s2(i3) {
-                    return function(s3) {
-                      return (function(i4) {
-                        if (r5) throw new TypeError("Generator is already executing.");
-                        for (; a2; ) try {
-                          if (r5 = 1, n4 && (o4 = 2 & i4[0] ? n4.return : i4[0] ? n4.throw || ((o4 = n4.return) && o4.call(n4), 0) : n4.next) && !(o4 = o4.call(n4, i4[1])).done) return o4;
-                          switch (n4 = 0, o4 && (i4 = [2 & i4[0], o4.value]), i4[0]) {
-                            case 0:
-                            case 1:
-                              o4 = i4;
-                              break;
-                            case 4:
-                              return a2.label++, { value: i4[1], done: false };
-                            case 5:
-                              a2.label++, n4 = i4[1], i4 = [0];
-                              continue;
-                            case 7:
-                              i4 = a2.ops.pop(), a2.trys.pop();
-                              continue;
-                            default:
-                              if (!((o4 = (o4 = a2.trys).length > 0 && o4[o4.length - 1]) || 6 !== i4[0] && 2 !== i4[0])) {
-                                a2 = 0;
-                                continue;
-                              }
-                              if (3 === i4[0] && (!o4 || i4[1] > o4[0] && i4[1] < o4[3])) {
-                                a2.label = i4[1];
-                                break;
-                              }
-                              if (6 === i4[0] && a2.label < o4[1]) {
-                                a2.label = o4[1], o4 = i4;
-                                break;
-                              }
-                              if (o4 && a2.label < o4[2]) {
-                                a2.label = o4[2], a2.ops.push(i4);
-                                break;
-                              }
-                              o4[2] && a2.ops.pop(), a2.trys.pop();
-                              continue;
-                          }
-                          i4 = e5.call(t4, a2);
-                        } catch (t5) {
-                          i4 = [6, t5], n4 = 0;
-                        } finally {
-                          r5 = o4 = 0;
-                        }
-                        if (5 & i4[0]) throw i4[1];
-                        return { value: i4[0] ? i4[1] : void 0, done: true };
-                      })([i3, s3]);
-                    };
-                  }
-                })(this, (function(e5) {
-                  return [2, new Promise((function(e6) {
-                    var r5 = new XMLHttpRequest();
-                    r5.onload = function() {
-                      var t4 = new FileReader();
-                      t4.onloadend = function() {
-                        e6(t4.result);
-                      }, t4.readAsDataURL(r5.response);
-                    }, r5.open("GET", t3), r5.responseType = "blob", r5.send();
-                  }))];
-                }));
-              }, new ((n3 = void 0) || (n3 = Promise))((function(t4, i2) {
-                function a2(t5) {
-                  try {
-                    u2(o3.next(t5));
-                  } catch (t6) {
-                    i2(t6);
-                  }
-                }
-                function s2(t5) {
-                  try {
-                    u2(o3.throw(t5));
-                  } catch (t6) {
-                    i2(t6);
-                  }
-                }
-                function u2(e5) {
-                  var r5;
-                  e5.done ? t4(e5.value) : (r5 = e5.value, r5 instanceof n3 ? r5 : new n3((function(t5) {
-                    t5(r5);
-                  }))).then(a2, s2);
-                }
-                u2((o3 = o3.apply(e4, r4 || [])).next());
-              }));
-              var e4, r4, n3, o3;
-            }
-            const h = { L: 0.07, M: 0.15, Q: 0.25, H: 0.3 };
-            var c = function() {
-              return (c = Object.assign || function(t3) {
-                for (var e4, r4 = 1, n3 = arguments.length; r4 < n3; r4++) for (var o3 in e4 = arguments[r4]) Object.prototype.hasOwnProperty.call(e4, o3) && (t3[o3] = e4[o3]);
-                return t3;
-              }).apply(this, arguments);
-            };
-            const l = (function() {
-              function t3(t4) {
-                var e4 = t4.svg, r4 = t4.type;
-                this._svg = e4, this._type = r4;
-              }
-              return t3.prototype.draw = function(t4, e4, r4, n3) {
-                var o3;
-                switch (this._type) {
-                  case "dots":
-                    o3 = this._drawDot;
-                    break;
-                  case "classy":
-                    o3 = this._drawClassy;
-                    break;
-                  case "classy-rounded":
-                    o3 = this._drawClassyRounded;
-                    break;
-                  case "rounded":
-                    o3 = this._drawRounded;
-                    break;
-                  case "extra-rounded":
-                    o3 = this._drawExtraRounded;
-                    break;
-                  case "square":
-                  default:
-                    o3 = this._drawSquare;
-                }
-                o3.call(this, { x: t4, y: e4, size: r4, getNeighbor: n3 });
-              }, t3.prototype._rotateFigure = function(t4) {
-                var e4, r4 = t4.x, n3 = t4.y, o3 = t4.size, i2 = t4.rotation, a2 = void 0 === i2 ? 0 : i2, s2 = r4 + o3 / 2, u2 = n3 + o3 / 2;
-                (0, t4.draw)(), null === (e4 = this._element) || void 0 === e4 || e4.setAttribute("transform", "rotate(" + 180 * a2 / Math.PI + "," + s2 + "," + u2 + ")");
-              }, t3.prototype._basicDot = function(t4) {
-                var e4 = this, r4 = t4.size, n3 = t4.x, o3 = t4.y;
-                this._rotateFigure(c(c({}, t4), { draw: function() {
-                  e4._element = document.createElementNS("http://www.w3.org/2000/svg", "circle"), e4._element.setAttribute("cx", String(n3 + r4 / 2)), e4._element.setAttribute("cy", String(o3 + r4 / 2)), e4._element.setAttribute("r", String(r4 / 2));
-                } }));
-              }, t3.prototype._basicSquare = function(t4) {
-                var e4 = this, r4 = t4.size, n3 = t4.x, o3 = t4.y;
-                this._rotateFigure(c(c({}, t4), { draw: function() {
-                  e4._element = document.createElementNS("http://www.w3.org/2000/svg", "rect"), e4._element.setAttribute("x", String(n3)), e4._element.setAttribute("y", String(o3)), e4._element.setAttribute("width", String(r4)), e4._element.setAttribute("height", String(r4));
-                } }));
-              }, t3.prototype._basicSideRounded = function(t4) {
-                var e4 = this, r4 = t4.size, n3 = t4.x, o3 = t4.y;
-                this._rotateFigure(c(c({}, t4), { draw: function() {
-                  e4._element = document.createElementNS("http://www.w3.org/2000/svg", "path"), e4._element.setAttribute("d", "M " + n3 + " " + o3 + "v " + r4 + "h " + r4 / 2 + "a " + r4 / 2 + " " + r4 / 2 + ", 0, 0, 0, 0 " + -r4);
-                } }));
-              }, t3.prototype._basicCornerRounded = function(t4) {
-                var e4 = this, r4 = t4.size, n3 = t4.x, o3 = t4.y;
-                this._rotateFigure(c(c({}, t4), { draw: function() {
-                  e4._element = document.createElementNS("http://www.w3.org/2000/svg", "path"), e4._element.setAttribute("d", "M " + n3 + " " + o3 + "v " + r4 + "h " + r4 + "v " + -r4 / 2 + "a " + r4 / 2 + " " + r4 / 2 + ", 0, 0, 0, " + -r4 / 2 + " " + -r4 / 2);
-                } }));
-              }, t3.prototype._basicCornerExtraRounded = function(t4) {
-                var e4 = this, r4 = t4.size, n3 = t4.x, o3 = t4.y;
-                this._rotateFigure(c(c({}, t4), { draw: function() {
-                  e4._element = document.createElementNS("http://www.w3.org/2000/svg", "path"), e4._element.setAttribute("d", "M " + n3 + " " + o3 + "v " + r4 + "h " + r4 + "a " + r4 + " " + r4 + ", 0, 0, 0, " + -r4 + " " + -r4);
-                } }));
-              }, t3.prototype._basicCornersRounded = function(t4) {
-                var e4 = this, r4 = t4.size, n3 = t4.x, o3 = t4.y;
-                this._rotateFigure(c(c({}, t4), { draw: function() {
-                  e4._element = document.createElementNS("http://www.w3.org/2000/svg", "path"), e4._element.setAttribute("d", "M " + n3 + " " + o3 + "v " + r4 / 2 + "a " + r4 / 2 + " " + r4 / 2 + ", 0, 0, 0, " + r4 / 2 + " " + r4 / 2 + "h " + r4 / 2 + "v " + -r4 / 2 + "a " + r4 / 2 + " " + r4 / 2 + ", 0, 0, 0, " + -r4 / 2 + " " + -r4 / 2);
-                } }));
-              }, t3.prototype._drawDot = function(t4) {
-                var e4 = t4.x, r4 = t4.y, n3 = t4.size;
-                this._basicDot({ x: e4, y: r4, size: n3, rotation: 0 });
-              }, t3.prototype._drawSquare = function(t4) {
-                var e4 = t4.x, r4 = t4.y, n3 = t4.size;
-                this._basicSquare({ x: e4, y: r4, size: n3, rotation: 0 });
-              }, t3.prototype._drawRounded = function(t4) {
-                var e4 = t4.x, r4 = t4.y, n3 = t4.size, o3 = t4.getNeighbor, i2 = o3 ? +o3(-1, 0) : 0, a2 = o3 ? +o3(1, 0) : 0, s2 = o3 ? +o3(0, -1) : 0, u2 = o3 ? +o3(0, 1) : 0, h2 = i2 + a2 + s2 + u2;
-                if (0 !== h2) if (h2 > 2 || i2 && a2 || s2 && u2) this._basicSquare({ x: e4, y: r4, size: n3, rotation: 0 });
-                else {
-                  if (2 === h2) {
-                    var c2 = 0;
-                    return i2 && s2 ? c2 = Math.PI / 2 : s2 && a2 ? c2 = Math.PI : a2 && u2 && (c2 = -Math.PI / 2), void this._basicCornerRounded({ x: e4, y: r4, size: n3, rotation: c2 });
-                  }
-                  if (1 === h2) return c2 = 0, s2 ? c2 = Math.PI / 2 : a2 ? c2 = Math.PI : u2 && (c2 = -Math.PI / 2), void this._basicSideRounded({ x: e4, y: r4, size: n3, rotation: c2 });
-                }
-                else this._basicDot({ x: e4, y: r4, size: n3, rotation: 0 });
-              }, t3.prototype._drawExtraRounded = function(t4) {
-                var e4 = t4.x, r4 = t4.y, n3 = t4.size, o3 = t4.getNeighbor, i2 = o3 ? +o3(-1, 0) : 0, a2 = o3 ? +o3(1, 0) : 0, s2 = o3 ? +o3(0, -1) : 0, u2 = o3 ? +o3(0, 1) : 0, h2 = i2 + a2 + s2 + u2;
-                if (0 !== h2) if (h2 > 2 || i2 && a2 || s2 && u2) this._basicSquare({ x: e4, y: r4, size: n3, rotation: 0 });
-                else {
-                  if (2 === h2) {
-                    var c2 = 0;
-                    return i2 && s2 ? c2 = Math.PI / 2 : s2 && a2 ? c2 = Math.PI : a2 && u2 && (c2 = -Math.PI / 2), void this._basicCornerExtraRounded({ x: e4, y: r4, size: n3, rotation: c2 });
-                  }
-                  if (1 === h2) return c2 = 0, s2 ? c2 = Math.PI / 2 : a2 ? c2 = Math.PI : u2 && (c2 = -Math.PI / 2), void this._basicSideRounded({ x: e4, y: r4, size: n3, rotation: c2 });
-                }
-                else this._basicDot({ x: e4, y: r4, size: n3, rotation: 0 });
-              }, t3.prototype._drawClassy = function(t4) {
-                var e4 = t4.x, r4 = t4.y, n3 = t4.size, o3 = t4.getNeighbor, i2 = o3 ? +o3(-1, 0) : 0, a2 = o3 ? +o3(1, 0) : 0, s2 = o3 ? +o3(0, -1) : 0, u2 = o3 ? +o3(0, 1) : 0;
-                0 !== i2 + a2 + s2 + u2 ? i2 || s2 ? a2 || u2 ? this._basicSquare({ x: e4, y: r4, size: n3, rotation: 0 }) : this._basicCornerRounded({ x: e4, y: r4, size: n3, rotation: Math.PI / 2 }) : this._basicCornerRounded({ x: e4, y: r4, size: n3, rotation: -Math.PI / 2 }) : this._basicCornersRounded({ x: e4, y: r4, size: n3, rotation: Math.PI / 2 });
-              }, t3.prototype._drawClassyRounded = function(t4) {
-                var e4 = t4.x, r4 = t4.y, n3 = t4.size, o3 = t4.getNeighbor, i2 = o3 ? +o3(-1, 0) : 0, a2 = o3 ? +o3(1, 0) : 0, s2 = o3 ? +o3(0, -1) : 0, u2 = o3 ? +o3(0, 1) : 0;
-                0 !== i2 + a2 + s2 + u2 ? i2 || s2 ? a2 || u2 ? this._basicSquare({ x: e4, y: r4, size: n3, rotation: 0 }) : this._basicCornerExtraRounded({ x: e4, y: r4, size: n3, rotation: Math.PI / 2 }) : this._basicCornerExtraRounded({ x: e4, y: r4, size: n3, rotation: -Math.PI / 2 }) : this._basicCornersRounded({ x: e4, y: r4, size: n3, rotation: Math.PI / 2 });
-              }, t3;
-            })();
-            var d = function() {
-              return (d = Object.assign || function(t3) {
-                for (var e4, r4 = 1, n3 = arguments.length; r4 < n3; r4++) for (var o3 in e4 = arguments[r4]) Object.prototype.hasOwnProperty.call(e4, o3) && (t3[o3] = e4[o3]);
-                return t3;
-              }).apply(this, arguments);
-            };
-            const f = (function() {
-              function t3(t4) {
-                var e4 = t4.svg, r4 = t4.type;
-                this._svg = e4, this._type = r4;
-              }
-              return t3.prototype.draw = function(t4, e4, r4, n3) {
-                var o3;
-                switch (this._type) {
-                  case "square":
-                    o3 = this._drawSquare;
-                    break;
-                  case "extra-rounded":
-                    o3 = this._drawExtraRounded;
-                    break;
-                  case "dot":
-                  default:
-                    o3 = this._drawDot;
-                }
-                o3.call(this, { x: t4, y: e4, size: r4, rotation: n3 });
-              }, t3.prototype._rotateFigure = function(t4) {
-                var e4, r4 = t4.x, n3 = t4.y, o3 = t4.size, i2 = t4.rotation, a2 = void 0 === i2 ? 0 : i2, s2 = r4 + o3 / 2, u2 = n3 + o3 / 2;
-                (0, t4.draw)(), null === (e4 = this._element) || void 0 === e4 || e4.setAttribute("transform", "rotate(" + 180 * a2 / Math.PI + "," + s2 + "," + u2 + ")");
-              }, t3.prototype._basicDot = function(t4) {
-                var e4 = this, r4 = t4.size, n3 = t4.x, o3 = t4.y, i2 = r4 / 7;
-                this._rotateFigure(d(d({}, t4), { draw: function() {
-                  e4._element = document.createElementNS("http://www.w3.org/2000/svg", "path"), e4._element.setAttribute("clip-rule", "evenodd"), e4._element.setAttribute("d", "M " + (n3 + r4 / 2) + " " + o3 + "a " + r4 / 2 + " " + r4 / 2 + " 0 1 0 0.1 0zm 0 " + i2 + "a " + (r4 / 2 - i2) + " " + (r4 / 2 - i2) + " 0 1 1 -0.1 0Z");
-                } }));
-              }, t3.prototype._basicSquare = function(t4) {
-                var e4 = this, r4 = t4.size, n3 = t4.x, o3 = t4.y, i2 = r4 / 7;
-                this._rotateFigure(d(d({}, t4), { draw: function() {
-                  e4._element = document.createElementNS("http://www.w3.org/2000/svg", "path"), e4._element.setAttribute("clip-rule", "evenodd"), e4._element.setAttribute("d", "M " + n3 + " " + o3 + "v " + r4 + "h " + r4 + "v " + -r4 + "zM " + (n3 + i2) + " " + (o3 + i2) + "h " + (r4 - 2 * i2) + "v " + (r4 - 2 * i2) + "h " + (2 * i2 - r4) + "z");
-                } }));
-              }, t3.prototype._basicExtraRounded = function(t4) {
-                var e4 = this, r4 = t4.size, n3 = t4.x, o3 = t4.y, i2 = r4 / 7;
-                this._rotateFigure(d(d({}, t4), { draw: function() {
-                  e4._element = document.createElementNS("http://www.w3.org/2000/svg", "path"), e4._element.setAttribute("clip-rule", "evenodd"), e4._element.setAttribute("d", "M " + n3 + " " + (o3 + 2.5 * i2) + "v " + 2 * i2 + "a " + 2.5 * i2 + " " + 2.5 * i2 + ", 0, 0, 0, " + 2.5 * i2 + " " + 2.5 * i2 + "h " + 2 * i2 + "a " + 2.5 * i2 + " " + 2.5 * i2 + ", 0, 0, 0, " + 2.5 * i2 + " " + 2.5 * -i2 + "v " + -2 * i2 + "a " + 2.5 * i2 + " " + 2.5 * i2 + ", 0, 0, 0, " + 2.5 * -i2 + " " + 2.5 * -i2 + "h " + -2 * i2 + "a " + 2.5 * i2 + " " + 2.5 * i2 + ", 0, 0, 0, " + 2.5 * -i2 + " " + 2.5 * i2 + "M " + (n3 + 2.5 * i2) + " " + (o3 + i2) + "h " + 2 * i2 + "a " + 1.5 * i2 + " " + 1.5 * i2 + ", 0, 0, 1, " + 1.5 * i2 + " " + 1.5 * i2 + "v " + 2 * i2 + "a " + 1.5 * i2 + " " + 1.5 * i2 + ", 0, 0, 1, " + 1.5 * -i2 + " " + 1.5 * i2 + "h " + -2 * i2 + "a " + 1.5 * i2 + " " + 1.5 * i2 + ", 0, 0, 1, " + 1.5 * -i2 + " " + 1.5 * -i2 + "v " + -2 * i2 + "a " + 1.5 * i2 + " " + 1.5 * i2 + ", 0, 0, 1, " + 1.5 * i2 + " " + 1.5 * -i2);
-                } }));
-              }, t3.prototype._drawDot = function(t4) {
-                var e4 = t4.x, r4 = t4.y, n3 = t4.size, o3 = t4.rotation;
-                this._basicDot({ x: e4, y: r4, size: n3, rotation: o3 });
-              }, t3.prototype._drawSquare = function(t4) {
-                var e4 = t4.x, r4 = t4.y, n3 = t4.size, o3 = t4.rotation;
-                this._basicSquare({ x: e4, y: r4, size: n3, rotation: o3 });
-              }, t3.prototype._drawExtraRounded = function(t4) {
-                var e4 = t4.x, r4 = t4.y, n3 = t4.size, o3 = t4.rotation;
-                this._basicExtraRounded({ x: e4, y: r4, size: n3, rotation: o3 });
-              }, t3;
-            })();
-            var g = function() {
-              return (g = Object.assign || function(t3) {
-                for (var e4, r4 = 1, n3 = arguments.length; r4 < n3; r4++) for (var o3 in e4 = arguments[r4]) Object.prototype.hasOwnProperty.call(e4, o3) && (t3[o3] = e4[o3]);
-                return t3;
-              }).apply(this, arguments);
-            };
-            const p = (function() {
-              function t3(t4) {
-                var e4 = t4.svg, r4 = t4.type;
-                this._svg = e4, this._type = r4;
-              }
-              return t3.prototype.draw = function(t4, e4, r4, n3) {
-                var o3;
-                switch (this._type) {
-                  case "square":
-                    o3 = this._drawSquare;
-                    break;
-                  case "dot":
-                  default:
-                    o3 = this._drawDot;
-                }
-                o3.call(this, { x: t4, y: e4, size: r4, rotation: n3 });
-              }, t3.prototype._rotateFigure = function(t4) {
-                var e4, r4 = t4.x, n3 = t4.y, o3 = t4.size, i2 = t4.rotation, a2 = void 0 === i2 ? 0 : i2, s2 = r4 + o3 / 2, u2 = n3 + o3 / 2;
-                (0, t4.draw)(), null === (e4 = this._element) || void 0 === e4 || e4.setAttribute("transform", "rotate(" + 180 * a2 / Math.PI + "," + s2 + "," + u2 + ")");
-              }, t3.prototype._basicDot = function(t4) {
-                var e4 = this, r4 = t4.size, n3 = t4.x, o3 = t4.y;
-                this._rotateFigure(g(g({}, t4), { draw: function() {
-                  e4._element = document.createElementNS("http://www.w3.org/2000/svg", "circle"), e4._element.setAttribute("cx", String(n3 + r4 / 2)), e4._element.setAttribute("cy", String(o3 + r4 / 2)), e4._element.setAttribute("r", String(r4 / 2));
-                } }));
-              }, t3.prototype._basicSquare = function(t4) {
-                var e4 = this, r4 = t4.size, n3 = t4.x, o3 = t4.y;
-                this._rotateFigure(g(g({}, t4), { draw: function() {
-                  e4._element = document.createElementNS("http://www.w3.org/2000/svg", "rect"), e4._element.setAttribute("x", String(n3)), e4._element.setAttribute("y", String(o3)), e4._element.setAttribute("width", String(r4)), e4._element.setAttribute("height", String(r4));
-                } }));
-              }, t3.prototype._drawDot = function(t4) {
-                var e4 = t4.x, r4 = t4.y, n3 = t4.size, o3 = t4.rotation;
-                this._basicDot({ x: e4, y: r4, size: n3, rotation: o3 });
-              }, t3.prototype._drawSquare = function(t4) {
-                var e4 = t4.x, r4 = t4.y, n3 = t4.size, o3 = t4.rotation;
-                this._basicSquare({ x: e4, y: r4, size: n3, rotation: o3 });
-              }, t3;
-            })(), v = "circle";
-            var w = function(t3, e4, r4, n3) {
-              return new (r4 || (r4 = Promise))((function(o3, i2) {
-                function a2(t4) {
-                  try {
-                    u2(n3.next(t4));
-                  } catch (t5) {
-                    i2(t5);
-                  }
-                }
-                function s2(t4) {
-                  try {
-                    u2(n3.throw(t4));
-                  } catch (t5) {
-                    i2(t5);
-                  }
-                }
-                function u2(t4) {
-                  var e5;
-                  t4.done ? o3(t4.value) : (e5 = t4.value, e5 instanceof r4 ? e5 : new r4((function(t5) {
-                    t5(e5);
-                  }))).then(a2, s2);
-                }
-                u2((n3 = n3.apply(t3, e4 || [])).next());
-              }));
-            }, y = function(t3, e4) {
-              var r4, n3, o3, i2, a2 = { label: 0, sent: function() {
-                if (1 & o3[0]) throw o3[1];
-                return o3[1];
-              }, trys: [], ops: [] };
-              return i2 = { next: s2(0), throw: s2(1), return: s2(2) }, "function" == typeof Symbol && (i2[Symbol.iterator] = function() {
-                return this;
-              }), i2;
-              function s2(i3) {
-                return function(s3) {
-                  return (function(i4) {
-                    if (r4) throw new TypeError("Generator is already executing.");
-                    for (; a2; ) try {
-                      if (r4 = 1, n3 && (o3 = 2 & i4[0] ? n3.return : i4[0] ? n3.throw || ((o3 = n3.return) && o3.call(n3), 0) : n3.next) && !(o3 = o3.call(n3, i4[1])).done) return o3;
-                      switch (n3 = 0, o3 && (i4 = [2 & i4[0], o3.value]), i4[0]) {
-                        case 0:
-                        case 1:
-                          o3 = i4;
-                          break;
-                        case 4:
-                          return a2.label++, { value: i4[1], done: false };
-                        case 5:
-                          a2.label++, n3 = i4[1], i4 = [0];
-                          continue;
-                        case 7:
-                          i4 = a2.ops.pop(), a2.trys.pop();
-                          continue;
-                        default:
-                          if (!((o3 = (o3 = a2.trys).length > 0 && o3[o3.length - 1]) || 6 !== i4[0] && 2 !== i4[0])) {
-                            a2 = 0;
-                            continue;
-                          }
-                          if (3 === i4[0] && (!o3 || i4[1] > o3[0] && i4[1] < o3[3])) {
-                            a2.label = i4[1];
-                            break;
-                          }
-                          if (6 === i4[0] && a2.label < o3[1]) {
-                            a2.label = o3[1], o3 = i4;
-                            break;
-                          }
-                          if (o3 && a2.label < o3[2]) {
-                            a2.label = o3[2], a2.ops.push(i4);
-                            break;
-                          }
-                          o3[2] && a2.ops.pop(), a2.trys.pop();
-                          continue;
-                      }
-                      i4 = e4.call(t3, a2);
-                    } catch (t4) {
-                      i4 = [6, t4], n3 = 0;
-                    } finally {
-                      r4 = o3 = 0;
-                    }
-                    if (5 & i4[0]) throw i4[1];
-                    return { value: i4[0] ? i4[1] : void 0, done: true };
-                  })([i3, s3]);
-                };
-              }
-            }, m = [[1, 1, 1, 1, 1, 1, 1], [1, 0, 0, 0, 0, 0, 1], [1, 0, 0, 0, 0, 0, 1], [1, 0, 0, 0, 0, 0, 1], [1, 0, 0, 0, 0, 0, 1], [1, 0, 0, 0, 0, 0, 1], [1, 1, 1, 1, 1, 1, 1]], b = [[0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 1, 1, 1, 0, 0], [0, 0, 1, 1, 1, 0, 0], [0, 0, 1, 1, 1, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0]];
-            const _ = (function() {
-              function t3(t4) {
-                this._element = document.createElementNS("http://www.w3.org/2000/svg", "svg"), this._element.setAttribute("width", String(t4.width)), this._element.setAttribute("height", String(t4.height)), this._defs = document.createElementNS("http://www.w3.org/2000/svg", "defs"), this._element.appendChild(this._defs), this._options = t4;
-              }
-              return Object.defineProperty(t3.prototype, "width", { get: function() {
-                return this._options.width;
-              }, enumerable: false, configurable: true }), Object.defineProperty(t3.prototype, "height", { get: function() {
-                return this._options.height;
-              }, enumerable: false, configurable: true }), t3.prototype.getElement = function() {
-                return this._element;
-              }, t3.prototype.drawQR = function(t4) {
-                return w(this, void 0, void 0, (function() {
-                  var e4, r4, n3, o3, i2, a2, s2, u2, c2, l2, d2 = this;
-                  return y(this, (function(f2) {
-                    switch (f2.label) {
-                      case 0:
-                        return e4 = t4.getModuleCount(), r4 = Math.min(this._options.width, this._options.height) - 2 * this._options.margin, n3 = this._options.shape === v ? r4 / Math.sqrt(2) : r4, o3 = Math.floor(n3 / e4), i2 = { hideXDots: 0, hideYDots: 0, width: 0, height: 0 }, this._qr = t4, this._options.image ? [4, this.loadImage()] : [3, 2];
-                      case 1:
-                        if (f2.sent(), !this._image) return [2];
-                        a2 = this._options, s2 = a2.imageOptions, u2 = a2.qrOptions, c2 = s2.imageSize * h[u2.errorCorrectionLevel], l2 = Math.floor(c2 * e4 * e4), i2 = (function(t5) {
-                          var e5 = t5.originalHeight, r5 = t5.originalWidth, n4 = t5.maxHiddenDots, o4 = t5.maxHiddenAxisDots, i3 = t5.dotSize, a3 = { x: 0, y: 0 }, s3 = { x: 0, y: 0 };
-                          if (e5 <= 0 || r5 <= 0 || n4 <= 0 || i3 <= 0) return { height: 0, width: 0, hideYDots: 0, hideXDots: 0 };
-                          var u3 = e5 / r5;
-                          return a3.x = Math.floor(Math.sqrt(n4 / u3)), a3.x <= 0 && (a3.x = 1), o4 && o4 < a3.x && (a3.x = o4), a3.x % 2 == 0 && a3.x--, s3.x = a3.x * i3, a3.y = 1 + 2 * Math.ceil((a3.x * u3 - 1) / 2), s3.y = Math.round(s3.x * u3), (a3.y * a3.x > n4 || o4 && o4 < a3.y) && (o4 && o4 < a3.y ? (a3.y = o4, a3.y % 2 == 0 && a3.x--) : a3.y -= 2, s3.y = a3.y * i3, a3.x = 1 + 2 * Math.ceil((a3.y / u3 - 1) / 2), s3.x = Math.round(s3.y / u3)), { height: s3.y, width: s3.x, hideYDots: a3.y, hideXDots: a3.x };
-                        })({ originalWidth: this._image.width, originalHeight: this._image.height, maxHiddenDots: l2, maxHiddenAxisDots: e4 - 14, dotSize: o3 }), f2.label = 2;
-                      case 2:
-                        return this.drawBackground(), this.drawDots((function(t5, r5) {
-                          var n4, o4, a3, s3, u3, h2;
-                          return !(d2._options.imageOptions.hideBackgroundDots && t5 >= (e4 - i2.hideXDots) / 2 && t5 < (e4 + i2.hideXDots) / 2 && r5 >= (e4 - i2.hideYDots) / 2 && r5 < (e4 + i2.hideYDots) / 2 || (null === (n4 = m[t5]) || void 0 === n4 ? void 0 : n4[r5]) || (null === (o4 = m[t5 - e4 + 7]) || void 0 === o4 ? void 0 : o4[r5]) || (null === (a3 = m[t5]) || void 0 === a3 ? void 0 : a3[r5 - e4 + 7]) || (null === (s3 = b[t5]) || void 0 === s3 ? void 0 : s3[r5]) || (null === (u3 = b[t5 - e4 + 7]) || void 0 === u3 ? void 0 : u3[r5]) || (null === (h2 = b[t5]) || void 0 === h2 ? void 0 : h2[r5 - e4 + 7]));
-                        })), this.drawCorners(), this._options.image ? [4, this.drawImage({ width: i2.width, height: i2.height, count: e4, dotSize: o3 })] : [3, 4];
-                      case 3:
-                        f2.sent(), f2.label = 4;
-                      case 4:
-                        return [2];
-                    }
-                  }));
-                }));
-              }, t3.prototype.drawBackground = function() {
-                var t4, e4, r4, n3 = this._element, o3 = this._options;
-                if (n3) {
-                  var i2 = null === (t4 = o3.backgroundOptions) || void 0 === t4 ? void 0 : t4.gradient, a2 = null === (e4 = o3.backgroundOptions) || void 0 === e4 ? void 0 : e4.color;
-                  if ((i2 || a2) && this._createColor({ options: i2, color: a2, additionalRotation: 0, x: 0, y: 0, height: o3.height, width: o3.width, name: "background-color" }), null === (r4 = o3.backgroundOptions) || void 0 === r4 ? void 0 : r4.round) {
-                    var s2 = Math.min(o3.width, o3.height), u2 = document.createElementNS("http://www.w3.org/2000/svg", "rect");
-                    this._backgroundClipPath = document.createElementNS("http://www.w3.org/2000/svg", "clipPath"), this._backgroundClipPath.setAttribute("id", "clip-path-background-color"), this._defs.appendChild(this._backgroundClipPath), u2.setAttribute("x", String((o3.width - s2) / 2)), u2.setAttribute("y", String((o3.height - s2) / 2)), u2.setAttribute("width", String(s2)), u2.setAttribute("height", String(s2)), u2.setAttribute("rx", String(s2 / 2 * o3.backgroundOptions.round)), this._backgroundClipPath.appendChild(u2);
-                  }
-                }
-              }, t3.prototype.drawDots = function(t4) {
-                var e4, r4, n3 = this;
-                if (!this._qr) throw "QR code is not defined";
-                var o3 = this._options, i2 = this._qr.getModuleCount();
-                if (i2 > o3.width || i2 > o3.height) throw "The canvas is too small.";
-                var a2 = Math.min(o3.width, o3.height) - 2 * o3.margin, s2 = o3.shape === v ? a2 / Math.sqrt(2) : a2, u2 = Math.floor(s2 / i2), h2 = Math.floor((o3.width - i2 * u2) / 2), c2 = Math.floor((o3.height - i2 * u2) / 2), d2 = new l({ svg: this._element, type: o3.dotsOptions.type });
-                this._dotsClipPath = document.createElementNS("http://www.w3.org/2000/svg", "clipPath"), this._dotsClipPath.setAttribute("id", "clip-path-dot-color"), this._defs.appendChild(this._dotsClipPath), this._createColor({ options: null === (e4 = o3.dotsOptions) || void 0 === e4 ? void 0 : e4.gradient, color: o3.dotsOptions.color, additionalRotation: 0, x: 0, y: 0, height: o3.height, width: o3.width, name: "dot-color" });
-                for (var f2 = function(e5) {
-                  for (var o4 = function(o5) {
-                    return t4 && !t4(e5, o5) ? "continue" : (null === (r4 = g2._qr) || void 0 === r4 ? void 0 : r4.isDark(e5, o5)) ? (d2.draw(h2 + e5 * u2, c2 + o5 * u2, u2, (function(r5, a4) {
-                      return !(e5 + r5 < 0 || o5 + a4 < 0 || e5 + r5 >= i2 || o5 + a4 >= i2) && !(t4 && !t4(e5 + r5, o5 + a4)) && !!n3._qr && n3._qr.isDark(e5 + r5, o5 + a4);
-                    })), void (d2._element && g2._dotsClipPath && g2._dotsClipPath.appendChild(d2._element))) : "continue";
-                  }, a3 = 0; a3 < i2; a3++) o4(a3);
-                }, g2 = this, p2 = 0; p2 < i2; p2++) f2(p2);
-                if (o3.shape === v) {
-                  var w2 = Math.floor((a2 / u2 - i2) / 2), y2 = i2 + 2 * w2, m2 = h2 - w2 * u2, b2 = c2 - w2 * u2, _2 = [], x2 = Math.floor(y2 / 2);
-                  for (p2 = 0; p2 < y2; p2++) {
-                    _2[p2] = [];
-                    for (var S2 = 0; S2 < y2; S2++) p2 >= w2 - 1 && p2 <= y2 - w2 && S2 >= w2 - 1 && S2 <= y2 - w2 || Math.sqrt((p2 - x2) * (p2 - x2) + (S2 - x2) * (S2 - x2)) > x2 ? _2[p2][S2] = 0 : _2[p2][S2] = this._qr.isDark(S2 - 2 * w2 < 0 ? S2 : S2 >= i2 ? S2 - 2 * w2 : S2 - w2, p2 - 2 * w2 < 0 ? p2 : p2 >= i2 ? p2 - 2 * w2 : p2 - w2) ? 1 : 0;
-                  }
-                  var M2 = function(t5) {
-                    for (var e5 = function(e6) {
-                      if (!_2[t5][e6]) return "continue";
-                      d2.draw(m2 + t5 * u2, b2 + e6 * u2, u2, (function(r6, n4) {
-                        var o4;
-                        return !!(null === (o4 = _2[t5 + r6]) || void 0 === o4 ? void 0 : o4[e6 + n4]);
-                      })), d2._element && C2._dotsClipPath && C2._dotsClipPath.appendChild(d2._element);
-                    }, r5 = 0; r5 < y2; r5++) e5(r5);
-                  }, C2 = this;
-                  for (p2 = 0; p2 < y2; p2++) M2(p2);
-                }
-              }, t3.prototype.drawCorners = function() {
-                var t4 = this;
-                if (!this._qr) throw "QR code is not defined";
-                var e4 = this._element, r4 = this._options;
-                if (!e4) throw "Element code is not defined";
-                var n3 = this._qr.getModuleCount(), o3 = Math.min(r4.width, r4.height) - 2 * r4.margin, i2 = r4.shape === v ? o3 / Math.sqrt(2) : o3, a2 = Math.floor(i2 / n3), s2 = 7 * a2, u2 = 3 * a2, h2 = Math.floor((r4.width - n3 * a2) / 2), c2 = Math.floor((r4.height - n3 * a2) / 2);
-                [[0, 0, 0], [1, 0, Math.PI / 2], [0, 1, -Math.PI / 2]].forEach((function(e5) {
-                  var o4, i3, d2, g2, v2, w2, y2, _2, x2, S2, M2, C2, A2 = e5[0], k2 = e5[1], O2 = e5[2], D2 = h2 + A2 * a2 * (n3 - 7), P2 = c2 + k2 * a2 * (n3 - 7), z2 = t4._dotsClipPath, B2 = t4._dotsClipPath;
-                  if (((null === (o4 = r4.cornersSquareOptions) || void 0 === o4 ? void 0 : o4.gradient) || (null === (i3 = r4.cornersSquareOptions) || void 0 === i3 ? void 0 : i3.color)) && ((z2 = document.createElementNS("http://www.w3.org/2000/svg", "clipPath")).setAttribute("id", "clip-path-corners-square-color-" + A2 + "-" + k2), t4._defs.appendChild(z2), t4._cornersSquareClipPath = t4._cornersDotClipPath = B2 = z2, t4._createColor({ options: null === (d2 = r4.cornersSquareOptions) || void 0 === d2 ? void 0 : d2.gradient, color: null === (g2 = r4.cornersSquareOptions) || void 0 === g2 ? void 0 : g2.color, additionalRotation: O2, x: D2, y: P2, height: s2, width: s2, name: "corners-square-color-" + A2 + "-" + k2 })), null === (v2 = r4.cornersSquareOptions) || void 0 === v2 ? void 0 : v2.type) {
-                    var q2 = new f({ svg: t4._element, type: r4.cornersSquareOptions.type });
-                    q2.draw(D2, P2, s2, O2), q2._element && z2 && z2.appendChild(q2._element);
-                  } else for (var I = new l({ svg: t4._element, type: r4.dotsOptions.type }), E = function(t5) {
-                    for (var e6 = function(e7) {
-                      if (!(null === (w2 = m[t5]) || void 0 === w2 ? void 0 : w2[e7])) return "continue";
-                      I.draw(D2 + t5 * a2, P2 + e7 * a2, a2, (function(r6, n4) {
-                        var o5;
-                        return !!(null === (o5 = m[t5 + r6]) || void 0 === o5 ? void 0 : o5[e7 + n4]);
-                      })), I._element && z2 && z2.appendChild(I._element);
-                    }, r5 = 0; r5 < m[t5].length; r5++) e6(r5);
-                  }, L = 0; L < m.length; L++) E(L);
-                  if (((null === (y2 = r4.cornersDotOptions) || void 0 === y2 ? void 0 : y2.gradient) || (null === (_2 = r4.cornersDotOptions) || void 0 === _2 ? void 0 : _2.color)) && ((B2 = document.createElementNS("http://www.w3.org/2000/svg", "clipPath")).setAttribute("id", "clip-path-corners-dot-color-" + A2 + "-" + k2), t4._defs.appendChild(B2), t4._cornersDotClipPath = B2, t4._createColor({ options: null === (x2 = r4.cornersDotOptions) || void 0 === x2 ? void 0 : x2.gradient, color: null === (S2 = r4.cornersDotOptions) || void 0 === S2 ? void 0 : S2.color, additionalRotation: O2, x: D2 + 2 * a2, y: P2 + 2 * a2, height: u2, width: u2, name: "corners-dot-color-" + A2 + "-" + k2 })), null === (M2 = r4.cornersDotOptions) || void 0 === M2 ? void 0 : M2.type) {
-                    var R = new p({ svg: t4._element, type: r4.cornersDotOptions.type });
-                    R.draw(D2 + 2 * a2, P2 + 2 * a2, u2, O2), R._element && B2 && B2.appendChild(R._element);
-                  } else {
-                    I = new l({ svg: t4._element, type: r4.dotsOptions.type });
-                    var N = function(t5) {
-                      for (var e6 = function(e7) {
-                        if (!(null === (C2 = b[t5]) || void 0 === C2 ? void 0 : C2[e7])) return "continue";
-                        I.draw(D2 + t5 * a2, P2 + e7 * a2, a2, (function(r6, n4) {
-                          var o5;
-                          return !!(null === (o5 = b[t5 + r6]) || void 0 === o5 ? void 0 : o5[e7 + n4]);
-                        })), I._element && B2 && B2.appendChild(I._element);
-                      }, r5 = 0; r5 < b[t5].length; r5++) e6(r5);
-                    };
-                    for (L = 0; L < b.length; L++) N(L);
-                  }
-                }));
-              }, t3.prototype.loadImage = function() {
-                var t4 = this;
-                return new Promise((function(e4, r4) {
-                  var n3 = t4._options, o3 = new Image();
-                  if (!n3.image) return r4("Image is not defined");
-                  "string" == typeof n3.imageOptions.crossOrigin && (o3.crossOrigin = n3.imageOptions.crossOrigin), t4._image = o3, o3.onload = function() {
-                    e4();
-                  }, o3.src = n3.image;
-                }));
-              }, t3.prototype.drawImage = function(t4) {
-                var e4 = t4.width, r4 = t4.height, n3 = t4.count, o3 = t4.dotSize;
-                return w(this, void 0, void 0, (function() {
-                  var t5, i2, a2, s2, h2, c2, l2, d2, f2;
-                  return y(this, (function(g2) {
-                    switch (g2.label) {
-                      case 0:
-                        return t5 = this._options, i2 = Math.floor((t5.width - n3 * o3) / 2), a2 = Math.floor((t5.height - n3 * o3) / 2), s2 = i2 + t5.imageOptions.margin + (n3 * o3 - e4) / 2, h2 = a2 + t5.imageOptions.margin + (n3 * o3 - r4) / 2, c2 = e4 - 2 * t5.imageOptions.margin, l2 = r4 - 2 * t5.imageOptions.margin, (d2 = document.createElementNS("http://www.w3.org/2000/svg", "image")).setAttribute("x", String(s2)), d2.setAttribute("y", String(h2)), d2.setAttribute("width", c2 + "px"), d2.setAttribute("height", l2 + "px"), [4, u(t5.image || "")];
-                      case 1:
-                        return f2 = g2.sent(), d2.setAttribute("href", f2 || ""), this._element.appendChild(d2), [2];
-                    }
-                  }));
-                }));
-              }, t3.prototype._createColor = function(t4) {
-                var e4 = t4.options, r4 = t4.color, n3 = t4.additionalRotation, o3 = t4.x, i2 = t4.y, a2 = t4.height, s2 = t4.width, u2 = t4.name, h2 = s2 > a2 ? s2 : a2, c2 = document.createElementNS("http://www.w3.org/2000/svg", "rect");
-                if (c2.setAttribute("x", String(o3)), c2.setAttribute("y", String(i2)), c2.setAttribute("height", String(a2)), c2.setAttribute("width", String(s2)), c2.setAttribute("clip-path", "url('#clip-path-" + u2 + "')"), e4) {
-                  var l2;
-                  if ("radial" === e4.type) (l2 = document.createElementNS("http://www.w3.org/2000/svg", "radialGradient")).setAttribute("id", u2), l2.setAttribute("gradientUnits", "userSpaceOnUse"), l2.setAttribute("fx", String(o3 + s2 / 2)), l2.setAttribute("fy", String(i2 + a2 / 2)), l2.setAttribute("cx", String(o3 + s2 / 2)), l2.setAttribute("cy", String(i2 + a2 / 2)), l2.setAttribute("r", String(h2 / 2));
                   else {
-                    var d2 = ((e4.rotation || 0) + n3) % (2 * Math.PI), f2 = (d2 + 2 * Math.PI) % (2 * Math.PI), g2 = o3 + s2 / 2, p2 = i2 + a2 / 2, v2 = o3 + s2 / 2, w2 = i2 + a2 / 2;
-                    f2 >= 0 && f2 <= 0.25 * Math.PI || f2 > 1.75 * Math.PI && f2 <= 2 * Math.PI ? (g2 -= s2 / 2, p2 -= a2 / 2 * Math.tan(d2), v2 += s2 / 2, w2 += a2 / 2 * Math.tan(d2)) : f2 > 0.25 * Math.PI && f2 <= 0.75 * Math.PI ? (p2 -= a2 / 2, g2 -= s2 / 2 / Math.tan(d2), w2 += a2 / 2, v2 += s2 / 2 / Math.tan(d2)) : f2 > 0.75 * Math.PI && f2 <= 1.25 * Math.PI ? (g2 += s2 / 2, p2 += a2 / 2 * Math.tan(d2), v2 -= s2 / 2, w2 -= a2 / 2 * Math.tan(d2)) : f2 > 1.25 * Math.PI && f2 <= 1.75 * Math.PI && (p2 += a2 / 2, g2 += s2 / 2 / Math.tan(d2), w2 -= a2 / 2, v2 -= s2 / 2 / Math.tan(d2)), (l2 = document.createElementNS("http://www.w3.org/2000/svg", "linearGradient")).setAttribute("id", u2), l2.setAttribute("gradientUnits", "userSpaceOnUse"), l2.setAttribute("x1", String(Math.round(g2))), l2.setAttribute("y1", String(Math.round(p2))), l2.setAttribute("x2", String(Math.round(v2))), l2.setAttribute("y2", String(Math.round(w2)));
-                  }
-                  e4.colorStops.forEach((function(t5) {
-                    var e5 = t5.offset, r5 = t5.color, n4 = document.createElementNS("http://www.w3.org/2000/svg", "stop");
-                    n4.setAttribute("offset", 100 * e5 + "%"), n4.setAttribute("stop-color", r5), l2.appendChild(n4);
-                  })), c2.setAttribute("fill", "url('#" + u2 + "')"), this._defs.appendChild(l2);
-                } else r4 && c2.setAttribute("fill", r4);
-                this._element.appendChild(c2);
-              }, t3;
-            })(), x = "canvas";
-            for (var S = {}, M = 0; M <= 40; M++) S[M] = M;
-            const C = { type: x, shape: "square", width: 300, height: 300, data: "", margin: 0, qrOptions: { typeNumber: S[0], mode: void 0, errorCorrectionLevel: "Q" }, imageOptions: { hideBackgroundDots: true, imageSize: 0.4, crossOrigin: void 0, margin: 0 }, dotsOptions: { type: "square", color: "#000" }, backgroundOptions: { round: 0, color: "#fff" } };
-            var A = function() {
-              return (A = Object.assign || function(t3) {
-                for (var e4, r4 = 1, n3 = arguments.length; r4 < n3; r4++) for (var o3 in e4 = arguments[r4]) Object.prototype.hasOwnProperty.call(e4, o3) && (t3[o3] = e4[o3]);
-                return t3;
-              }).apply(this, arguments);
-            };
-            function k(t3) {
-              var e4 = A({}, t3);
-              if (!e4.colorStops || !e4.colorStops.length) throw "Field 'colorStops' is required in gradient";
-              return e4.rotation ? e4.rotation = Number(e4.rotation) : e4.rotation = 0, e4.colorStops = e4.colorStops.map((function(t4) {
-                return A(A({}, t4), { offset: Number(t4.offset) });
-              })), e4;
-            }
-            function O(t3) {
-              var e4 = A({}, t3);
-              return e4.width = Number(e4.width), e4.height = Number(e4.height), e4.margin = Number(e4.margin), e4.imageOptions = A(A({}, e4.imageOptions), { hideBackgroundDots: Boolean(e4.imageOptions.hideBackgroundDots), imageSize: Number(e4.imageOptions.imageSize), margin: Number(e4.imageOptions.margin) }), e4.margin > Math.min(e4.width, e4.height) && (e4.margin = Math.min(e4.width, e4.height)), e4.dotsOptions = A({}, e4.dotsOptions), e4.dotsOptions.gradient && (e4.dotsOptions.gradient = k(e4.dotsOptions.gradient)), e4.cornersSquareOptions && (e4.cornersSquareOptions = A({}, e4.cornersSquareOptions), e4.cornersSquareOptions.gradient && (e4.cornersSquareOptions.gradient = k(e4.cornersSquareOptions.gradient))), e4.cornersDotOptions && (e4.cornersDotOptions = A({}, e4.cornersDotOptions), e4.cornersDotOptions.gradient && (e4.cornersDotOptions.gradient = k(e4.cornersDotOptions.gradient))), e4.backgroundOptions && (e4.backgroundOptions = A({}, e4.backgroundOptions), e4.backgroundOptions.gradient && (e4.backgroundOptions.gradient = k(e4.backgroundOptions.gradient))), e4;
-            }
-            var D = r3(192), P = r3.n(D), z = function(t3, e4, r4, n3) {
-              return new (r4 || (r4 = Promise))((function(o3, i2) {
-                function a2(t4) {
-                  try {
-                    u2(n3.next(t4));
-                  } catch (t5) {
-                    i2(t5);
-                  }
-                }
-                function s2(t4) {
-                  try {
-                    u2(n3.throw(t4));
-                  } catch (t5) {
-                    i2(t5);
-                  }
-                }
-                function u2(t4) {
-                  var e5;
-                  t4.done ? o3(t4.value) : (e5 = t4.value, e5 instanceof r4 ? e5 : new r4((function(t5) {
-                    t5(e5);
-                  }))).then(a2, s2);
-                }
-                u2((n3 = n3.apply(t3, e4 || [])).next());
-              }));
-            }, B = function(t3, e4) {
-              var r4, n3, o3, i2, a2 = { label: 0, sent: function() {
-                if (1 & o3[0]) throw o3[1];
-                return o3[1];
-              }, trys: [], ops: [] };
-              return i2 = { next: s2(0), throw: s2(1), return: s2(2) }, "function" == typeof Symbol && (i2[Symbol.iterator] = function() {
-                return this;
-              }), i2;
-              function s2(i3) {
-                return function(s3) {
-                  return (function(i4) {
-                    if (r4) throw new TypeError("Generator is already executing.");
-                    for (; a2; ) try {
-                      if (r4 = 1, n3 && (o3 = 2 & i4[0] ? n3.return : i4[0] ? n3.throw || ((o3 = n3.return) && o3.call(n3), 0) : n3.next) && !(o3 = o3.call(n3, i4[1])).done) return o3;
-                      switch (n3 = 0, o3 && (i4 = [2 & i4[0], o3.value]), i4[0]) {
-                        case 0:
-                        case 1:
-                          o3 = i4;
-                          break;
-                        case 4:
-                          return a2.label++, { value: i4[1], done: false };
-                        case 5:
-                          a2.label++, n3 = i4[1], i4 = [0];
-                          continue;
-                        case 7:
-                          i4 = a2.ops.pop(), a2.trys.pop();
-                          continue;
-                        default:
-                          if (!((o3 = (o3 = a2.trys).length > 0 && o3[o3.length - 1]) || 6 !== i4[0] && 2 !== i4[0])) {
-                            a2 = 0;
-                            continue;
-                          }
-                          if (3 === i4[0] && (!o3 || i4[1] > o3[0] && i4[1] < o3[3])) {
-                            a2.label = i4[1];
-                            break;
-                          }
-                          if (6 === i4[0] && a2.label < o3[1]) {
-                            a2.label = o3[1], o3 = i4;
-                            break;
-                          }
-                          if (o3 && a2.label < o3[2]) {
-                            a2.label = o3[2], a2.ops.push(i4);
-                            break;
-                          }
-                          o3[2] && a2.ops.pop(), a2.trys.pop();
-                          continue;
-                      }
-                      i4 = e4.call(t3, a2);
-                    } catch (t4) {
-                      i4 = [6, t4], n3 = 0;
-                    } finally {
-                      r4 = o3 = 0;
+                    if (!(e5 < 41)) throw "type:" + e5;
+                    switch (t4) {
+                      case 1:
+                        return 14;
+                      case 2:
+                        return 13;
+                      case 4:
+                        return 16;
+                      case 8:
+                        return 12;
+                      default:
+                        throw "mode:" + t4;
                     }
-                    if (5 & i4[0]) throw i4[1];
-                    return { value: i4[0] ? i4[1] : void 0, done: true };
-                  })([i3, s3]);
-                };
-              }
-            };
-            const q = (function() {
-              function t3(t4) {
-                this._options = t4 ? O(a(C, t4)) : C, this.update();
-              }
-              return t3._clearContainer = function(t4) {
-                t4 && (t4.innerHTML = "");
-              }, t3.prototype._setupSvg = function() {
-                var t4 = this;
-                if (this._qr) {
-                  var e4 = new _(this._options);
-                  this._svg = e4.getElement(), this._svgDrawingPromise = e4.drawQR(this._qr).then((function() {
-                    var r4;
-                    t4._svg && (null === (r4 = t4._extension) || void 0 === r4 || r4.call(t4, e4.getElement(), t4._options));
-                  }));
+                  }
+                }, o3.getLostPoint = function (t4) {
+                  for (var e5 = t4.getModuleCount(), r5 = 0, n4 = 0; n4 < e5; n4 += 1) for (var o4 = 0; o4 < e5; o4 += 1) {
+                    for (var i2 = 0, a2 = t4.isDark(n4, o4), s2 = -1; s2 <= 1; s2 += 1) if (!(n4 + s2 < 0 || e5 <= n4 + s2)) for (var u2 = -1; u2 <= 1; u2 += 1) o4 + u2 < 0 || e5 <= o4 + u2 || 0 == s2 && 0 == u2 || a2 == t4.isDark(n4 + s2, o4 + u2) && (i2 += 1);
+                    i2 > 5 && (r5 += 3 + i2 - 5);
+                  }
+                  for (n4 = 0; n4 < e5 - 1; n4 += 1) for (o4 = 0; o4 < e5 - 1; o4 += 1) {
+                    var h2 = 0;
+                    t4.isDark(n4, o4) && (h2 += 1), t4.isDark(n4 + 1, o4) && (h2 += 1), t4.isDark(n4, o4 + 1) && (h2 += 1), t4.isDark(n4 + 1, o4 + 1) && (h2 += 1), 0 != h2 && 4 != h2 || (r5 += 3);
+                  }
+                  for (n4 = 0; n4 < e5; n4 += 1) for (o4 = 0; o4 < e5 - 6; o4 += 1) t4.isDark(n4, o4) && !t4.isDark(n4, o4 + 1) && t4.isDark(n4, o4 + 2) && t4.isDark(n4, o4 + 3) && t4.isDark(n4, o4 + 4) && !t4.isDark(n4, o4 + 5) && t4.isDark(n4, o4 + 6) && (r5 += 40);
+                  for (o4 = 0; o4 < e5; o4 += 1) for (n4 = 0; n4 < e5 - 6; n4 += 1) t4.isDark(n4, o4) && !t4.isDark(n4 + 1, o4) && t4.isDark(n4 + 2, o4) && t4.isDark(n4 + 3, o4) && t4.isDark(n4 + 4, o4) && !t4.isDark(n4 + 5, o4) && t4.isDark(n4 + 6, o4) && (r5 += 40);
+                  var c2 = 0;
+                  for (o4 = 0; o4 < e5; o4 += 1) for (n4 = 0; n4 < e5; n4 += 1) t4.isDark(n4, o4) && (c2 += 1);
+                  return r5 + Math.abs(100 * c2 / e5 / e5 - 50) / 5 * 10;
+                }, o3), u = (function () {
+                  for (var t4 = new Array(256), e5 = new Array(256), r5 = 0; r5 < 8; r5 += 1) t4[r5] = 1 << r5;
+                  for (r5 = 8; r5 < 256; r5 += 1) t4[r5] = t4[r5 - 4] ^ t4[r5 - 5] ^ t4[r5 - 6] ^ t4[r5 - 8];
+                  for (r5 = 0; r5 < 255; r5 += 1) e5[t4[r5]] = r5;
+                  return {
+                    glog: function (t5) {
+                      if (t5 < 1) throw "glog(" + t5 + ")";
+                      return e5[t5];
+                    }, gexp: function (e6) {
+                      for (; e6 < 0;) e6 += 255;
+                      for (; e6 >= 256;) e6 -= 255;
+                      return t4[e6];
+                    }
+                  };
+                })();
+                function h(t4, e5) {
+                  if (void 0 === t4.length) throw t4.length + "/" + e5;
+                  var r5 = (function () {
+                    for (var r6 = 0; r6 < t4.length && 0 == t4[r6];) r6 += 1;
+                    for (var n5 = new Array(t4.length - r6 + e5), o4 = 0; o4 < t4.length - r6; o4 += 1) n5[o4] = t4[o4 + r6];
+                    return n5;
+                  })(), n4 = {
+                    getAt: function (t5) {
+                      return r5[t5];
+                    }, getLength: function () {
+                      return r5.length;
+                    }, multiply: function (t5) {
+                      for (var e6 = new Array(n4.getLength() + t5.getLength() - 1), r6 = 0; r6 < n4.getLength(); r6 += 1) for (var o4 = 0; o4 < t5.getLength(); o4 += 1) e6[r6 + o4] ^= u.gexp(u.glog(n4.getAt(r6)) + u.glog(t5.getAt(o4)));
+                      return h(e6, 0);
+                    }, mod: function (t5) {
+                      if (n4.getLength() - t5.getLength() < 0) return n4;
+                      for (var e6 = u.glog(n4.getAt(0)) - u.glog(t5.getAt(0)), r6 = new Array(n4.getLength()), o4 = 0; o4 < n4.getLength(); o4 += 1) r6[o4] = n4.getAt(o4);
+                      for (o4 = 0; o4 < t5.getLength(); o4 += 1) r6[o4] ^= u.gexp(u.glog(t5.getAt(o4)) + e6);
+                      return h(r6, 0).mod(t5);
+                    }
+                  };
+                  return n4;
                 }
-              }, t3.prototype._setupCanvas = function() {
-                var t4, e4 = this;
-                this._qr && (this._canvas = document.createElement("canvas"), this._canvas.width = this._options.width, this._canvas.height = this._options.height, this._setupSvg(), this._canvasDrawingPromise = null === (t4 = this._svgDrawingPromise) || void 0 === t4 ? void 0 : t4.then((function() {
-                  if (e4._svg) {
-                    var t5 = e4._svg, r4 = new XMLSerializer().serializeToString(t5), n3 = "data:image/svg+xml;base64," + btoa(r4), o3 = new Image();
-                    return new Promise((function(t6) {
-                      o3.onload = function() {
-                        var r5, n4;
-                        null === (n4 = null === (r5 = e4._canvas) || void 0 === r5 ? void 0 : r5.getContext("2d")) || void 0 === n4 || n4.drawImage(o3, 0, 0), t6();
-                      }, o3.src = n3;
+                var c = /* @__PURE__ */ (function () {
+                  var t4 = [[1, 26, 19], [1, 26, 16], [1, 26, 13], [1, 26, 9], [1, 44, 34], [1, 44, 28], [1, 44, 22], [1, 44, 16], [1, 70, 55], [1, 70, 44], [2, 35, 17], [2, 35, 13], [1, 100, 80], [2, 50, 32], [2, 50, 24], [4, 25, 9], [1, 134, 108], [2, 67, 43], [2, 33, 15, 2, 34, 16], [2, 33, 11, 2, 34, 12], [2, 86, 68], [4, 43, 27], [4, 43, 19], [4, 43, 15], [2, 98, 78], [4, 49, 31], [2, 32, 14, 4, 33, 15], [4, 39, 13, 1, 40, 14], [2, 121, 97], [2, 60, 38, 2, 61, 39], [4, 40, 18, 2, 41, 19], [4, 40, 14, 2, 41, 15], [2, 146, 116], [3, 58, 36, 2, 59, 37], [4, 36, 16, 4, 37, 17], [4, 36, 12, 4, 37, 13], [2, 86, 68, 2, 87, 69], [4, 69, 43, 1, 70, 44], [6, 43, 19, 2, 44, 20], [6, 43, 15, 2, 44, 16], [4, 101, 81], [1, 80, 50, 4, 81, 51], [4, 50, 22, 4, 51, 23], [3, 36, 12, 8, 37, 13], [2, 116, 92, 2, 117, 93], [6, 58, 36, 2, 59, 37], [4, 46, 20, 6, 47, 21], [7, 42, 14, 4, 43, 15], [4, 133, 107], [8, 59, 37, 1, 60, 38], [8, 44, 20, 4, 45, 21], [12, 33, 11, 4, 34, 12], [3, 145, 115, 1, 146, 116], [4, 64, 40, 5, 65, 41], [11, 36, 16, 5, 37, 17], [11, 36, 12, 5, 37, 13], [5, 109, 87, 1, 110, 88], [5, 65, 41, 5, 66, 42], [5, 54, 24, 7, 55, 25], [11, 36, 12, 7, 37, 13], [5, 122, 98, 1, 123, 99], [7, 73, 45, 3, 74, 46], [15, 43, 19, 2, 44, 20], [3, 45, 15, 13, 46, 16], [1, 135, 107, 5, 136, 108], [10, 74, 46, 1, 75, 47], [1, 50, 22, 15, 51, 23], [2, 42, 14, 17, 43, 15], [5, 150, 120, 1, 151, 121], [9, 69, 43, 4, 70, 44], [17, 50, 22, 1, 51, 23], [2, 42, 14, 19, 43, 15], [3, 141, 113, 4, 142, 114], [3, 70, 44, 11, 71, 45], [17, 47, 21, 4, 48, 22], [9, 39, 13, 16, 40, 14], [3, 135, 107, 5, 136, 108], [3, 67, 41, 13, 68, 42], [15, 54, 24, 5, 55, 25], [15, 43, 15, 10, 44, 16], [4, 144, 116, 4, 145, 117], [17, 68, 42], [17, 50, 22, 6, 51, 23], [19, 46, 16, 6, 47, 17], [2, 139, 111, 7, 140, 112], [17, 74, 46], [7, 54, 24, 16, 55, 25], [34, 37, 13], [4, 151, 121, 5, 152, 122], [4, 75, 47, 14, 76, 48], [11, 54, 24, 14, 55, 25], [16, 45, 15, 14, 46, 16], [6, 147, 117, 4, 148, 118], [6, 73, 45, 14, 74, 46], [11, 54, 24, 16, 55, 25], [30, 46, 16, 2, 47, 17], [8, 132, 106, 4, 133, 107], [8, 75, 47, 13, 76, 48], [7, 54, 24, 22, 55, 25], [22, 45, 15, 13, 46, 16], [10, 142, 114, 2, 143, 115], [19, 74, 46, 4, 75, 47], [28, 50, 22, 6, 51, 23], [33, 46, 16, 4, 47, 17], [8, 152, 122, 4, 153, 123], [22, 73, 45, 3, 74, 46], [8, 53, 23, 26, 54, 24], [12, 45, 15, 28, 46, 16], [3, 147, 117, 10, 148, 118], [3, 73, 45, 23, 74, 46], [4, 54, 24, 31, 55, 25], [11, 45, 15, 31, 46, 16], [7, 146, 116, 7, 147, 117], [21, 73, 45, 7, 74, 46], [1, 53, 23, 37, 54, 24], [19, 45, 15, 26, 46, 16], [5, 145, 115, 10, 146, 116], [19, 75, 47, 10, 76, 48], [15, 54, 24, 25, 55, 25], [23, 45, 15, 25, 46, 16], [13, 145, 115, 3, 146, 116], [2, 74, 46, 29, 75, 47], [42, 54, 24, 1, 55, 25], [23, 45, 15, 28, 46, 16], [17, 145, 115], [10, 74, 46, 23, 75, 47], [10, 54, 24, 35, 55, 25], [19, 45, 15, 35, 46, 16], [17, 145, 115, 1, 146, 116], [14, 74, 46, 21, 75, 47], [29, 54, 24, 19, 55, 25], [11, 45, 15, 46, 46, 16], [13, 145, 115, 6, 146, 116], [14, 74, 46, 23, 75, 47], [44, 54, 24, 7, 55, 25], [59, 46, 16, 1, 47, 17], [12, 151, 121, 7, 152, 122], [12, 75, 47, 26, 76, 48], [39, 54, 24, 14, 55, 25], [22, 45, 15, 41, 46, 16], [6, 151, 121, 14, 152, 122], [6, 75, 47, 34, 76, 48], [46, 54, 24, 10, 55, 25], [2, 45, 15, 64, 46, 16], [17, 152, 122, 4, 153, 123], [29, 74, 46, 14, 75, 47], [49, 54, 24, 10, 55, 25], [24, 45, 15, 46, 46, 16], [4, 152, 122, 18, 153, 123], [13, 74, 46, 32, 75, 47], [48, 54, 24, 14, 55, 25], [42, 45, 15, 32, 46, 16], [20, 147, 117, 4, 148, 118], [40, 75, 47, 7, 76, 48], [43, 54, 24, 22, 55, 25], [10, 45, 15, 67, 46, 16], [19, 148, 118, 6, 149, 119], [18, 75, 47, 31, 76, 48], [34, 54, 24, 34, 55, 25], [20, 45, 15, 61, 46, 16]], e5 = function (t5, e6) {
+                    var r6 = {};
+                    return r6.totalCount = t5, r6.dataCount = e6, r6;
+                  }, r5 = {
+                    getRSBlocks: function (r6, n4) {
+                      var o4 = (function (e6, r7) {
+                        switch (r7) {
+                          case a.L:
+                            return t4[4 * (e6 - 1) + 0];
+                          case a.M:
+                            return t4[4 * (e6 - 1) + 1];
+                          case a.Q:
+                            return t4[4 * (e6 - 1) + 2];
+                          case a.H:
+                            return t4[4 * (e6 - 1) + 3];
+                          default:
+                            return;
+                        }
+                      })(r6, n4);
+                      if (void 0 === o4) throw "bad rs block @ typeNumber:" + r6 + "/errorCorrectionLevel:" + n4;
+                      for (var i2 = o4.length / 3, s2 = [], u2 = 0; u2 < i2; u2 += 1) for (var h2 = o4[3 * u2 + 0], c2 = o4[3 * u2 + 1], l2 = o4[3 * u2 + 2], d2 = 0; d2 < h2; d2 += 1) s2.push(e5(c2, l2));
+                      return s2;
+                    }
+                  };
+                  return r5;
+                })(), l = function () {
+                  var t4 = [], e5 = 0, r5 = {
+                    getBuffer: function () {
+                      return t4;
+                    }, getAt: function (e6) {
+                      var r6 = Math.floor(e6 / 8);
+                      return 1 == (t4[r6] >>> 7 - e6 % 8 & 1);
+                    }, put: function (t5, e6) {
+                      for (var n4 = 0; n4 < e6; n4 += 1) r5.putBit(1 == (t5 >>> e6 - n4 - 1 & 1));
+                    }, getLengthInBits: function () {
+                      return e5;
+                    }, putBit: function (r6) {
+                      var n4 = Math.floor(e5 / 8);
+                      t4.length <= n4 && t4.push(0), r6 && (t4[n4] |= 128 >>> e5 % 8), e5 += 1;
+                    }
+                  };
+                  return r5;
+                }, d = function (t4) {
+                  var e5 = t4, r5 = {
+                    getMode: function () {
+                      return 1;
+                    }, getLength: function (t5) {
+                      return e5.length;
+                    }, write: function (t5) {
+                      for (var r6 = e5, o5 = 0; o5 + 2 < r6.length;) t5.put(n4(r6.substring(o5, o5 + 3)), 10), o5 += 3;
+                      o5 < r6.length && (r6.length - o5 == 1 ? t5.put(n4(r6.substring(o5, o5 + 1)), 4) : r6.length - o5 == 2 && t5.put(n4(r6.substring(o5, o5 + 2)), 7));
+                    }
+                  }, n4 = function (t5) {
+                    for (var e6 = 0, r6 = 0; r6 < t5.length; r6 += 1) e6 = 10 * e6 + o4(t5.charAt(r6));
+                    return e6;
+                  }, o4 = function (t5) {
+                    if ("0" <= t5 && t5 <= "9") return t5.charCodeAt(0) - "0".charCodeAt(0);
+                    throw "illegal char :" + t5;
+                  };
+                  return r5;
+                }, f = function (t4) {
+                  var e5 = t4, r5 = {
+                    getMode: function () {
+                      return 2;
+                    }, getLength: function (t5) {
+                      return e5.length;
+                    }, write: function (t5) {
+                      for (var r6 = e5, o4 = 0; o4 + 1 < r6.length;) t5.put(45 * n4(r6.charAt(o4)) + n4(r6.charAt(o4 + 1)), 11), o4 += 2;
+                      o4 < r6.length && t5.put(n4(r6.charAt(o4)), 6);
+                    }
+                  }, n4 = function (t5) {
+                    if ("0" <= t5 && t5 <= "9") return t5.charCodeAt(0) - "0".charCodeAt(0);
+                    if ("A" <= t5 && t5 <= "Z") return t5.charCodeAt(0) - "A".charCodeAt(0) + 10;
+                    switch (t5) {
+                      case " ":
+                        return 36;
+                      case "$":
+                        return 37;
+                      case "%":
+                        return 38;
+                      case "*":
+                        return 39;
+                      case "+":
+                        return 40;
+                      case "-":
+                        return 41;
+                      case ".":
+                        return 42;
+                      case "/":
+                        return 43;
+                      case ":":
+                        return 44;
+                      default:
+                        throw "illegal char :" + t5;
+                    }
+                  };
+                  return r5;
+                }, g = function (e5) {
+                  var r5 = t3.stringToBytes(e5);
+                  return {
+                    getMode: function () {
+                      return 4;
+                    }, getLength: function (t4) {
+                      return r5.length;
+                    }, write: function (t4) {
+                      for (var e6 = 0; e6 < r5.length; e6 += 1) t4.put(r5[e6], 8);
+                    }
+                  };
+                }, p = function (e5) {
+                  var r5 = t3.stringToBytesFuncs.SJIS;
+                  if (!r5) throw "sjis not supported.";
+                  !(function (t4, e6) {
+                    var n5 = r5("\u53CB");
+                    if (2 != n5.length || 38726 != (n5[0] << 8 | n5[1])) throw "sjis not supported.";
+                  })();
+                  var n4 = r5(e5);
+                  return {
+                    getMode: function () {
+                      return 8;
+                    }, getLength: function (t4) {
+                      return ~~(n4.length / 2);
+                    }, write: function (t4) {
+                      for (var e6 = n4, r6 = 0; r6 + 1 < e6.length;) {
+                        var o4 = (255 & e6[r6]) << 8 | 255 & e6[r6 + 1];
+                        if (33088 <= o4 && o4 <= 40956) o4 -= 33088;
+                        else {
+                          if (!(57408 <= o4 && o4 <= 60351)) throw "illegal char at " + (r6 + 1) + "/" + o4;
+                          o4 -= 49472;
+                        }
+                        o4 = 192 * (o4 >>> 8 & 255) + (255 & o4), t4.put(o4, 13), r6 += 2;
+                      }
+                      if (r6 < e6.length) throw "illegal char at " + (r6 + 1);
+                    }
+                  };
+                }, v = function () {
+                  var t4 = [], e5 = {
+                    writeByte: function (e6) {
+                      t4.push(255 & e6);
+                    }, writeShort: function (t5) {
+                      e5.writeByte(t5), e5.writeByte(t5 >>> 8);
+                    }, writeBytes: function (t5, r5, n4) {
+                      r5 = r5 || 0, n4 = n4 || t5.length;
+                      for (var o4 = 0; o4 < n4; o4 += 1) e5.writeByte(t5[o4 + r5]);
+                    }, writeString: function (t5) {
+                      for (var r5 = 0; r5 < t5.length; r5 += 1) e5.writeByte(t5.charCodeAt(r5));
+                    }, toByteArray: function () {
+                      return t4;
+                    }, toString: function () {
+                      var e6 = "";
+                      e6 += "[";
+                      for (var r5 = 0; r5 < t4.length; r5 += 1) r5 > 0 && (e6 += ","), e6 += t4[r5];
+                      return e6 + "]";
+                    }
+                  };
+                  return e5;
+                }, w = function (t4) {
+                  var e5 = t4, r5 = 0, n4 = 0, o4 = 0, i2 = {
+                    read: function () {
+                      for (; o4 < 8;) {
+                        if (r5 >= e5.length) {
+                          if (0 == o4) return -1;
+                          throw "unexpected end of file./" + o4;
+                        }
+                        var t5 = e5.charAt(r5);
+                        if (r5 += 1, "=" == t5) return o4 = 0, -1;
+                        t5.match(/^\s$/) || (n4 = n4 << 6 | a2(t5.charCodeAt(0)), o4 += 6);
+                      }
+                      var i3 = n4 >>> o4 - 8 & 255;
+                      return o4 -= 8, i3;
+                    }
+                  }, a2 = function (t5) {
+                    if (65 <= t5 && t5 <= 90) return t5 - 65;
+                    if (97 <= t5 && t5 <= 122) return t5 - 97 + 26;
+                    if (48 <= t5 && t5 <= 57) return t5 - 48 + 52;
+                    if (43 == t5) return 62;
+                    if (47 == t5) return 63;
+                    throw "c:" + t5;
+                  };
+                  return i2;
+                }, y = function (t4, e5, r5) {
+                  for (var n4 = (function (t5, e6) {
+                    var r6 = t5, n5 = e6, o5 = new Array(t5 * e6), i3 = {
+                      setPixel: function (t6, e7, n6) {
+                        o5[e7 * r6 + t6] = n6;
+                      }, write: function (t6) {
+                        t6.writeString("GIF87a"), t6.writeShort(r6), t6.writeShort(n5), t6.writeByte(128), t6.writeByte(0), t6.writeByte(0), t6.writeByte(0), t6.writeByte(0), t6.writeByte(0), t6.writeByte(255), t6.writeByte(255), t6.writeByte(255), t6.writeString(","), t6.writeShort(0), t6.writeShort(0), t6.writeShort(r6), t6.writeShort(n5), t6.writeByte(0);
+                        var e7 = a3(2);
+                        t6.writeByte(2);
+                        for (var o6 = 0; e7.length - o6 > 255;) t6.writeByte(255), t6.writeBytes(e7, o6, 255), o6 += 255;
+                        t6.writeByte(e7.length - o6), t6.writeBytes(e7, o6, e7.length - o6), t6.writeByte(0), t6.writeString(";");
+                      }
+                    }, a3 = function (t6) {
+                      for (var e7 = 1 << t6, r7 = 1 + (1 << t6), n6 = t6 + 1, i4 = s3(), a4 = 0; a4 < e7; a4 += 1) i4.add(String.fromCharCode(a4));
+                      i4.add(String.fromCharCode(e7)), i4.add(String.fromCharCode(r7));
+                      var u3, h3, c2, l2 = v(), d2 = (u3 = l2, h3 = 0, c2 = 0, {
+                        write: function (t7, e8) {
+                          if (t7 >>> e8 != 0) throw "length over";
+                          for (; h3 + e8 >= 8;) u3.writeByte(255 & (t7 << h3 | c2)), e8 -= 8 - h3, t7 >>>= 8 - h3, c2 = 0, h3 = 0;
+                          c2 |= t7 << h3, h3 += e8;
+                        }, flush: function () {
+                          h3 > 0 && u3.writeByte(c2);
+                        }
+                      });
+                      d2.write(e7, n6);
+                      var f2 = 0, g2 = String.fromCharCode(o5[f2]);
+                      for (f2 += 1; f2 < o5.length;) {
+                        var p2 = String.fromCharCode(o5[f2]);
+                        f2 += 1, i4.contains(g2 + p2) ? g2 += p2 : (d2.write(i4.indexOf(g2), n6), i4.size() < 4095 && (i4.size() == 1 << n6 && (n6 += 1), i4.add(g2 + p2)), g2 = p2);
+                      }
+                      return d2.write(i4.indexOf(g2), n6), d2.write(r7, n6), d2.flush(), l2.toByteArray();
+                    }, s3 = function () {
+                      var t6 = {}, e7 = 0, r7 = {
+                        add: function (n6) {
+                          if (r7.contains(n6)) throw "dup key:" + n6;
+                          t6[n6] = e7, e7 += 1;
+                        }, size: function () {
+                          return e7;
+                        }, indexOf: function (e8) {
+                          return t6[e8];
+                        }, contains: function (e8) {
+                          return void 0 !== t6[e8];
+                        }
+                      };
+                      return r7;
+                    };
+                    return i3;
+                  })(t4, e5), o4 = 0; o4 < e5; o4 += 1) for (var i2 = 0; i2 < t4; i2 += 1) n4.setPixel(i2, o4, r5(i2, o4));
+                  var a2 = v();
+                  n4.write(a2);
+                  for (var s2 = (function () {
+                    var t5 = 0, e6 = 0, r6 = 0, n5 = "", o5 = {}, i3 = function (t6) {
+                      n5 += String.fromCharCode(a3(63 & t6));
+                    }, a3 = function (t6) {
+                      if (t6 < 0);
+                      else {
+                        if (t6 < 26) return 65 + t6;
+                        if (t6 < 52) return t6 - 26 + 97;
+                        if (t6 < 62) return t6 - 52 + 48;
+                        if (62 == t6) return 43;
+                        if (63 == t6) return 47;
+                      }
+                      throw "n:" + t6;
+                    };
+                    return o5.writeByte = function (n6) {
+                      for (t5 = t5 << 8 | 255 & n6, e6 += 8, r6 += 1; e6 >= 6;) i3(t5 >>> e6 - 6), e6 -= 6;
+                    }, o5.flush = function () {
+                      if (e6 > 0 && (i3(t5 << 6 - e6), t5 = 0, e6 = 0), r6 % 3 != 0) for (var o6 = 3 - r6 % 3, a4 = 0; a4 < o6; a4 += 1) n5 += "=";
+                    }, o5.toString = function () {
+                      return n5;
+                    }, o5;
+                  })(), u2 = a2.toByteArray(), h2 = 0; h2 < u2.length; h2 += 1) s2.writeByte(u2[h2]);
+                  return s2.flush(), "data:image/gif;base64," + s2;
+                };
+                return t3;
+              })();
+              o2.stringToBytesFuncs["UTF-8"] = function (t3) {
+                return (function (t4) {
+                  for (var e4 = [], r4 = 0; r4 < t4.length; r4++) {
+                    var n3 = t4.charCodeAt(r4);
+                    n3 < 128 ? e4.push(n3) : n3 < 2048 ? e4.push(192 | n3 >> 6, 128 | 63 & n3) : n3 < 55296 || n3 >= 57344 ? e4.push(224 | n3 >> 12, 128 | n3 >> 6 & 63, 128 | 63 & n3) : (r4++, n3 = 65536 + ((1023 & n3) << 10 | 1023 & t4.charCodeAt(r4)), e4.push(240 | n3 >> 18, 128 | n3 >> 12 & 63, 128 | n3 >> 6 & 63, 128 | 63 & n3));
+                  }
+                  return e4;
+                })(t3);
+              }, void 0 === (n2 = "function" == typeof (r3 = function () {
+                return o2;
+              }) ? r3.apply(e3, []) : r3) || (t2.exports = n2);
+            }, 676: (t2, e3, r3) => {
+              "use strict";
+              r3.d(e3, { default: () => q });
+              var n2 = function () {
+                return (n2 = Object.assign || function (t3) {
+                  for (var e4, r4 = 1, n3 = arguments.length; r4 < n3; r4++) for (var o3 in e4 = arguments[r4]) Object.prototype.hasOwnProperty.call(e4, o3) && (t3[o3] = e4[o3]);
+                  return t3;
+                }).apply(this, arguments);
+              }, o2 = function () {
+                for (var t3 = 0, e4 = 0, r4 = arguments.length; e4 < r4; e4++) t3 += arguments[e4].length;
+                var n3 = Array(t3), o3 = 0;
+                for (e4 = 0; e4 < r4; e4++) for (var i2 = arguments[e4], a2 = 0, s2 = i2.length; a2 < s2; a2++, o3++) n3[o3] = i2[a2];
+                return n3;
+              }, i = function (t3) {
+                return !!t3 && "object" == typeof t3 && !Array.isArray(t3);
+              };
+              function a(t3) {
+                for (var e4 = [], r4 = 1; r4 < arguments.length; r4++) e4[r4 - 1] = arguments[r4];
+                if (!e4.length) return t3;
+                var s2 = e4.shift();
+                return void 0 !== s2 && i(t3) && i(s2) ? (t3 = n2({}, t3), Object.keys(s2).forEach((function (e5) {
+                  var r5 = t3[e5], n3 = s2[e5];
+                  Array.isArray(r5) && Array.isArray(n3) ? t3[e5] = n3 : i(r5) && i(n3) ? t3[e5] = a(Object.assign({}, r5), n3) : t3[e5] = n3;
+                })), a.apply(void 0, o2([t3], e4))) : t3;
+              }
+              function s(t3, e4) {
+                var r4 = document.createElement("a");
+                r4.download = e4, r4.href = t3, document.body.appendChild(r4), r4.click(), document.body.removeChild(r4);
+              }
+              function u(t3) {
+                return e4 = this, r4 = void 0, o3 = function () {
+                  return (function (t4, e5) {
+                    var r5, n4, o4, i2, a2 = {
+                      label: 0, sent: function () {
+                        if (1 & o4[0]) throw o4[1];
+                        return o4[1];
+                      }, trys: [], ops: []
+                    };
+                    return i2 = { next: s2(0), throw: s2(1), return: s2(2) }, "function" == typeof Symbol && (i2[Symbol.iterator] = function () {
+                      return this;
+                    }), i2;
+                    function s2(i3) {
+                      return function (s3) {
+                        return (function (i4) {
+                          if (r5) throw new TypeError("Generator is already executing.");
+                          for (; a2;) try {
+                            if (r5 = 1, n4 && (o4 = 2 & i4[0] ? n4.return : i4[0] ? n4.throw || ((o4 = n4.return) && o4.call(n4), 0) : n4.next) && !(o4 = o4.call(n4, i4[1])).done) return o4;
+                            switch (n4 = 0, o4 && (i4 = [2 & i4[0], o4.value]), i4[0]) {
+                              case 0:
+                              case 1:
+                                o4 = i4;
+                                break;
+                              case 4:
+                                return a2.label++, { value: i4[1], done: false };
+                              case 5:
+                                a2.label++, n4 = i4[1], i4 = [0];
+                                continue;
+                              case 7:
+                                i4 = a2.ops.pop(), a2.trys.pop();
+                                continue;
+                              default:
+                                if (!((o4 = (o4 = a2.trys).length > 0 && o4[o4.length - 1]) || 6 !== i4[0] && 2 !== i4[0])) {
+                                  a2 = 0;
+                                  continue;
+                                }
+                                if (3 === i4[0] && (!o4 || i4[1] > o4[0] && i4[1] < o4[3])) {
+                                  a2.label = i4[1];
+                                  break;
+                                }
+                                if (6 === i4[0] && a2.label < o4[1]) {
+                                  a2.label = o4[1], o4 = i4;
+                                  break;
+                                }
+                                if (o4 && a2.label < o4[2]) {
+                                  a2.label = o4[2], a2.ops.push(i4);
+                                  break;
+                                }
+                                o4[2] && a2.ops.pop(), a2.trys.pop();
+                                continue;
+                            }
+                            i4 = e5.call(t4, a2);
+                          } catch (t5) {
+                            i4 = [6, t5], n4 = 0;
+                          } finally {
+                            r5 = o4 = 0;
+                          }
+                          if (5 & i4[0]) throw i4[1];
+                          return { value: i4[0] ? i4[1] : void 0, done: true };
+                        })([i3, s3]);
+                      };
+                    }
+                  })(this, (function (e5) {
+                    return [2, new Promise((function (e6) {
+                      var r5 = new XMLHttpRequest();
+                      r5.onload = function () {
+                        var t4 = new FileReader();
+                        t4.onloadend = function () {
+                          e6(t4.result);
+                        }, t4.readAsDataURL(r5.response);
+                      }, r5.open("GET", t3), r5.responseType = "blob", r5.send();
+                    }))];
+                  }));
+                }, new ((n3 = void 0) || (n3 = Promise))((function (t4, i2) {
+                  function a2(t5) {
+                    try {
+                      u2(o3.next(t5));
+                    } catch (t6) {
+                      i2(t6);
+                    }
+                  }
+                  function s2(t5) {
+                    try {
+                      u2(o3.throw(t5));
+                    } catch (t6) {
+                      i2(t6);
+                    }
+                  }
+                  function u2(e5) {
+                    var r5;
+                    e5.done ? t4(e5.value) : (r5 = e5.value, r5 instanceof n3 ? r5 : new n3((function (t5) {
+                      t5(r5);
+                    }))).then(a2, s2);
+                  }
+                  u2((o3 = o3.apply(e4, r4 || [])).next());
+                }));
+                var e4, r4, n3, o3;
+              }
+              const h = { L: 0.07, M: 0.15, Q: 0.25, H: 0.3 };
+              var c = function () {
+                return (c = Object.assign || function (t3) {
+                  for (var e4, r4 = 1, n3 = arguments.length; r4 < n3; r4++) for (var o3 in e4 = arguments[r4]) Object.prototype.hasOwnProperty.call(e4, o3) && (t3[o3] = e4[o3]);
+                  return t3;
+                }).apply(this, arguments);
+              };
+              const l = (function () {
+                function t3(t4) {
+                  var e4 = t4.svg, r4 = t4.type;
+                  this._svg = e4, this._type = r4;
+                }
+                return t3.prototype.draw = function (t4, e4, r4, n3) {
+                  var o3;
+                  switch (this._type) {
+                    case "dots":
+                      o3 = this._drawDot;
+                      break;
+                    case "classy":
+                      o3 = this._drawClassy;
+                      break;
+                    case "classy-rounded":
+                      o3 = this._drawClassyRounded;
+                      break;
+                    case "rounded":
+                      o3 = this._drawRounded;
+                      break;
+                    case "extra-rounded":
+                      o3 = this._drawExtraRounded;
+                      break;
+                    case "square":
+                    default:
+                      o3 = this._drawSquare;
+                  }
+                  o3.call(this, { x: t4, y: e4, size: r4, getNeighbor: n3 });
+                }, t3.prototype._rotateFigure = function (t4) {
+                  var e4, r4 = t4.x, n3 = t4.y, o3 = t4.size, i2 = t4.rotation, a2 = void 0 === i2 ? 0 : i2, s2 = r4 + o3 / 2, u2 = n3 + o3 / 2;
+                  (0, t4.draw)(), null === (e4 = this._element) || void 0 === e4 || e4.setAttribute("transform", "rotate(" + 180 * a2 / Math.PI + "," + s2 + "," + u2 + ")");
+                }, t3.prototype._basicDot = function (t4) {
+                  var e4 = this, r4 = t4.size, n3 = t4.x, o3 = t4.y;
+                  this._rotateFigure(c(c({}, t4), {
+                    draw: function () {
+                      e4._element = document.createElementNS("http://www.w3.org/2000/svg", "circle"), e4._element.setAttribute("cx", String(n3 + r4 / 2)), e4._element.setAttribute("cy", String(o3 + r4 / 2)), e4._element.setAttribute("r", String(r4 / 2));
+                    }
+                  }));
+                }, t3.prototype._basicSquare = function (t4) {
+                  var e4 = this, r4 = t4.size, n3 = t4.x, o3 = t4.y;
+                  this._rotateFigure(c(c({}, t4), {
+                    draw: function () {
+                      e4._element = document.createElementNS("http://www.w3.org/2000/svg", "rect"), e4._element.setAttribute("x", String(n3)), e4._element.setAttribute("y", String(o3)), e4._element.setAttribute("width", String(r4)), e4._element.setAttribute("height", String(r4));
+                    }
+                  }));
+                }, t3.prototype._basicSideRounded = function (t4) {
+                  var e4 = this, r4 = t4.size, n3 = t4.x, o3 = t4.y;
+                  this._rotateFigure(c(c({}, t4), {
+                    draw: function () {
+                      e4._element = document.createElementNS("http://www.w3.org/2000/svg", "path"), e4._element.setAttribute("d", "M " + n3 + " " + o3 + "v " + r4 + "h " + r4 / 2 + "a " + r4 / 2 + " " + r4 / 2 + ", 0, 0, 0, 0 " + -r4);
+                    }
+                  }));
+                }, t3.prototype._basicCornerRounded = function (t4) {
+                  var e4 = this, r4 = t4.size, n3 = t4.x, o3 = t4.y;
+                  this._rotateFigure(c(c({}, t4), {
+                    draw: function () {
+                      e4._element = document.createElementNS("http://www.w3.org/2000/svg", "path"), e4._element.setAttribute("d", "M " + n3 + " " + o3 + "v " + r4 + "h " + r4 + "v " + -r4 / 2 + "a " + r4 / 2 + " " + r4 / 2 + ", 0, 0, 0, " + -r4 / 2 + " " + -r4 / 2);
+                    }
+                  }));
+                }, t3.prototype._basicCornerExtraRounded = function (t4) {
+                  var e4 = this, r4 = t4.size, n3 = t4.x, o3 = t4.y;
+                  this._rotateFigure(c(c({}, t4), {
+                    draw: function () {
+                      e4._element = document.createElementNS("http://www.w3.org/2000/svg", "path"), e4._element.setAttribute("d", "M " + n3 + " " + o3 + "v " + r4 + "h " + r4 + "a " + r4 + " " + r4 + ", 0, 0, 0, " + -r4 + " " + -r4);
+                    }
+                  }));
+                }, t3.prototype._basicCornersRounded = function (t4) {
+                  var e4 = this, r4 = t4.size, n3 = t4.x, o3 = t4.y;
+                  this._rotateFigure(c(c({}, t4), {
+                    draw: function () {
+                      e4._element = document.createElementNS("http://www.w3.org/2000/svg", "path"), e4._element.setAttribute("d", "M " + n3 + " " + o3 + "v " + r4 / 2 + "a " + r4 / 2 + " " + r4 / 2 + ", 0, 0, 0, " + r4 / 2 + " " + r4 / 2 + "h " + r4 / 2 + "v " + -r4 / 2 + "a " + r4 / 2 + " " + r4 / 2 + ", 0, 0, 0, " + -r4 / 2 + " " + -r4 / 2);
+                    }
+                  }));
+                }, t3.prototype._drawDot = function (t4) {
+                  var e4 = t4.x, r4 = t4.y, n3 = t4.size;
+                  this._basicDot({ x: e4, y: r4, size: n3, rotation: 0 });
+                }, t3.prototype._drawSquare = function (t4) {
+                  var e4 = t4.x, r4 = t4.y, n3 = t4.size;
+                  this._basicSquare({ x: e4, y: r4, size: n3, rotation: 0 });
+                }, t3.prototype._drawRounded = function (t4) {
+                  var e4 = t4.x, r4 = t4.y, n3 = t4.size, o3 = t4.getNeighbor, i2 = o3 ? +o3(-1, 0) : 0, a2 = o3 ? +o3(1, 0) : 0, s2 = o3 ? +o3(0, -1) : 0, u2 = o3 ? +o3(0, 1) : 0, h2 = i2 + a2 + s2 + u2;
+                  if (0 !== h2) if (h2 > 2 || i2 && a2 || s2 && u2) this._basicSquare({ x: e4, y: r4, size: n3, rotation: 0 });
+                  else {
+                    if (2 === h2) {
+                      var c2 = 0;
+                      return i2 && s2 ? c2 = Math.PI / 2 : s2 && a2 ? c2 = Math.PI : a2 && u2 && (c2 = -Math.PI / 2), void this._basicCornerRounded({ x: e4, y: r4, size: n3, rotation: c2 });
+                    }
+                    if (1 === h2) return c2 = 0, s2 ? c2 = Math.PI / 2 : a2 ? c2 = Math.PI : u2 && (c2 = -Math.PI / 2), void this._basicSideRounded({ x: e4, y: r4, size: n3, rotation: c2 });
+                  }
+                  else this._basicDot({ x: e4, y: r4, size: n3, rotation: 0 });
+                }, t3.prototype._drawExtraRounded = function (t4) {
+                  var e4 = t4.x, r4 = t4.y, n3 = t4.size, o3 = t4.getNeighbor, i2 = o3 ? +o3(-1, 0) : 0, a2 = o3 ? +o3(1, 0) : 0, s2 = o3 ? +o3(0, -1) : 0, u2 = o3 ? +o3(0, 1) : 0, h2 = i2 + a2 + s2 + u2;
+                  if (0 !== h2) if (h2 > 2 || i2 && a2 || s2 && u2) this._basicSquare({ x: e4, y: r4, size: n3, rotation: 0 });
+                  else {
+                    if (2 === h2) {
+                      var c2 = 0;
+                      return i2 && s2 ? c2 = Math.PI / 2 : s2 && a2 ? c2 = Math.PI : a2 && u2 && (c2 = -Math.PI / 2), void this._basicCornerExtraRounded({ x: e4, y: r4, size: n3, rotation: c2 });
+                    }
+                    if (1 === h2) return c2 = 0, s2 ? c2 = Math.PI / 2 : a2 ? c2 = Math.PI : u2 && (c2 = -Math.PI / 2), void this._basicSideRounded({ x: e4, y: r4, size: n3, rotation: c2 });
+                  }
+                  else this._basicDot({ x: e4, y: r4, size: n3, rotation: 0 });
+                }, t3.prototype._drawClassy = function (t4) {
+                  var e4 = t4.x, r4 = t4.y, n3 = t4.size, o3 = t4.getNeighbor, i2 = o3 ? +o3(-1, 0) : 0, a2 = o3 ? +o3(1, 0) : 0, s2 = o3 ? +o3(0, -1) : 0, u2 = o3 ? +o3(0, 1) : 0;
+                  0 !== i2 + a2 + s2 + u2 ? i2 || s2 ? a2 || u2 ? this._basicSquare({ x: e4, y: r4, size: n3, rotation: 0 }) : this._basicCornerRounded({ x: e4, y: r4, size: n3, rotation: Math.PI / 2 }) : this._basicCornerRounded({ x: e4, y: r4, size: n3, rotation: -Math.PI / 2 }) : this._basicCornersRounded({ x: e4, y: r4, size: n3, rotation: Math.PI / 2 });
+                }, t3.prototype._drawClassyRounded = function (t4) {
+                  var e4 = t4.x, r4 = t4.y, n3 = t4.size, o3 = t4.getNeighbor, i2 = o3 ? +o3(-1, 0) : 0, a2 = o3 ? +o3(1, 0) : 0, s2 = o3 ? +o3(0, -1) : 0, u2 = o3 ? +o3(0, 1) : 0;
+                  0 !== i2 + a2 + s2 + u2 ? i2 || s2 ? a2 || u2 ? this._basicSquare({ x: e4, y: r4, size: n3, rotation: 0 }) : this._basicCornerExtraRounded({ x: e4, y: r4, size: n3, rotation: Math.PI / 2 }) : this._basicCornerExtraRounded({ x: e4, y: r4, size: n3, rotation: -Math.PI / 2 }) : this._basicCornersRounded({ x: e4, y: r4, size: n3, rotation: Math.PI / 2 });
+                }, t3;
+              })();
+              var d = function () {
+                return (d = Object.assign || function (t3) {
+                  for (var e4, r4 = 1, n3 = arguments.length; r4 < n3; r4++) for (var o3 in e4 = arguments[r4]) Object.prototype.hasOwnProperty.call(e4, o3) && (t3[o3] = e4[o3]);
+                  return t3;
+                }).apply(this, arguments);
+              };
+              const f = (function () {
+                function t3(t4) {
+                  var e4 = t4.svg, r4 = t4.type;
+                  this._svg = e4, this._type = r4;
+                }
+                return t3.prototype.draw = function (t4, e4, r4, n3) {
+                  var o3;
+                  switch (this._type) {
+                    case "square":
+                      o3 = this._drawSquare;
+                      break;
+                    case "extra-rounded":
+                      o3 = this._drawExtraRounded;
+                      break;
+                    case "dot":
+                    default:
+                      o3 = this._drawDot;
+                  }
+                  o3.call(this, { x: t4, y: e4, size: r4, rotation: n3 });
+                }, t3.prototype._rotateFigure = function (t4) {
+                  var e4, r4 = t4.x, n3 = t4.y, o3 = t4.size, i2 = t4.rotation, a2 = void 0 === i2 ? 0 : i2, s2 = r4 + o3 / 2, u2 = n3 + o3 / 2;
+                  (0, t4.draw)(), null === (e4 = this._element) || void 0 === e4 || e4.setAttribute("transform", "rotate(" + 180 * a2 / Math.PI + "," + s2 + "," + u2 + ")");
+                }, t3.prototype._basicDot = function (t4) {
+                  var e4 = this, r4 = t4.size, n3 = t4.x, o3 = t4.y, i2 = r4 / 7;
+                  this._rotateFigure(d(d({}, t4), {
+                    draw: function () {
+                      e4._element = document.createElementNS("http://www.w3.org/2000/svg", "path"), e4._element.setAttribute("clip-rule", "evenodd"), e4._element.setAttribute("d", "M " + (n3 + r4 / 2) + " " + o3 + "a " + r4 / 2 + " " + r4 / 2 + " 0 1 0 0.1 0zm 0 " + i2 + "a " + (r4 / 2 - i2) + " " + (r4 / 2 - i2) + " 0 1 1 -0.1 0Z");
+                    }
+                  }));
+                }, t3.prototype._basicSquare = function (t4) {
+                  var e4 = this, r4 = t4.size, n3 = t4.x, o3 = t4.y, i2 = r4 / 7;
+                  this._rotateFigure(d(d({}, t4), {
+                    draw: function () {
+                      e4._element = document.createElementNS("http://www.w3.org/2000/svg", "path"), e4._element.setAttribute("clip-rule", "evenodd"), e4._element.setAttribute("d", "M " + n3 + " " + o3 + "v " + r4 + "h " + r4 + "v " + -r4 + "zM " + (n3 + i2) + " " + (o3 + i2) + "h " + (r4 - 2 * i2) + "v " + (r4 - 2 * i2) + "h " + (2 * i2 - r4) + "z");
+                    }
+                  }));
+                }, t3.prototype._basicExtraRounded = function (t4) {
+                  var e4 = this, r4 = t4.size, n3 = t4.x, o3 = t4.y, i2 = r4 / 7;
+                  this._rotateFigure(d(d({}, t4), {
+                    draw: function () {
+                      e4._element = document.createElementNS("http://www.w3.org/2000/svg", "path"), e4._element.setAttribute("clip-rule", "evenodd"), e4._element.setAttribute("d", "M " + n3 + " " + (o3 + 2.5 * i2) + "v " + 2 * i2 + "a " + 2.5 * i2 + " " + 2.5 * i2 + ", 0, 0, 0, " + 2.5 * i2 + " " + 2.5 * i2 + "h " + 2 * i2 + "a " + 2.5 * i2 + " " + 2.5 * i2 + ", 0, 0, 0, " + 2.5 * i2 + " " + 2.5 * -i2 + "v " + -2 * i2 + "a " + 2.5 * i2 + " " + 2.5 * i2 + ", 0, 0, 0, " + 2.5 * -i2 + " " + 2.5 * -i2 + "h " + -2 * i2 + "a " + 2.5 * i2 + " " + 2.5 * i2 + ", 0, 0, 0, " + 2.5 * -i2 + " " + 2.5 * i2 + "M " + (n3 + 2.5 * i2) + " " + (o3 + i2) + "h " + 2 * i2 + "a " + 1.5 * i2 + " " + 1.5 * i2 + ", 0, 0, 1, " + 1.5 * i2 + " " + 1.5 * i2 + "v " + 2 * i2 + "a " + 1.5 * i2 + " " + 1.5 * i2 + ", 0, 0, 1, " + 1.5 * -i2 + " " + 1.5 * i2 + "h " + -2 * i2 + "a " + 1.5 * i2 + " " + 1.5 * i2 + ", 0, 0, 1, " + 1.5 * -i2 + " " + 1.5 * -i2 + "v " + -2 * i2 + "a " + 1.5 * i2 + " " + 1.5 * i2 + ", 0, 0, 1, " + 1.5 * i2 + " " + 1.5 * -i2);
+                    }
+                  }));
+                }, t3.prototype._drawDot = function (t4) {
+                  var e4 = t4.x, r4 = t4.y, n3 = t4.size, o3 = t4.rotation;
+                  this._basicDot({ x: e4, y: r4, size: n3, rotation: o3 });
+                }, t3.prototype._drawSquare = function (t4) {
+                  var e4 = t4.x, r4 = t4.y, n3 = t4.size, o3 = t4.rotation;
+                  this._basicSquare({ x: e4, y: r4, size: n3, rotation: o3 });
+                }, t3.prototype._drawExtraRounded = function (t4) {
+                  var e4 = t4.x, r4 = t4.y, n3 = t4.size, o3 = t4.rotation;
+                  this._basicExtraRounded({ x: e4, y: r4, size: n3, rotation: o3 });
+                }, t3;
+              })();
+              var g = function () {
+                return (g = Object.assign || function (t3) {
+                  for (var e4, r4 = 1, n3 = arguments.length; r4 < n3; r4++) for (var o3 in e4 = arguments[r4]) Object.prototype.hasOwnProperty.call(e4, o3) && (t3[o3] = e4[o3]);
+                  return t3;
+                }).apply(this, arguments);
+              };
+              const p = (function () {
+                function t3(t4) {
+                  var e4 = t4.svg, r4 = t4.type;
+                  this._svg = e4, this._type = r4;
+                }
+                return t3.prototype.draw = function (t4, e4, r4, n3) {
+                  var o3;
+                  switch (this._type) {
+                    case "square":
+                      o3 = this._drawSquare;
+                      break;
+                    case "dot":
+                    default:
+                      o3 = this._drawDot;
+                  }
+                  o3.call(this, { x: t4, y: e4, size: r4, rotation: n3 });
+                }, t3.prototype._rotateFigure = function (t4) {
+                  var e4, r4 = t4.x, n3 = t4.y, o3 = t4.size, i2 = t4.rotation, a2 = void 0 === i2 ? 0 : i2, s2 = r4 + o3 / 2, u2 = n3 + o3 / 2;
+                  (0, t4.draw)(), null === (e4 = this._element) || void 0 === e4 || e4.setAttribute("transform", "rotate(" + 180 * a2 / Math.PI + "," + s2 + "," + u2 + ")");
+                }, t3.prototype._basicDot = function (t4) {
+                  var e4 = this, r4 = t4.size, n3 = t4.x, o3 = t4.y;
+                  this._rotateFigure(g(g({}, t4), {
+                    draw: function () {
+                      e4._element = document.createElementNS("http://www.w3.org/2000/svg", "circle"), e4._element.setAttribute("cx", String(n3 + r4 / 2)), e4._element.setAttribute("cy", String(o3 + r4 / 2)), e4._element.setAttribute("r", String(r4 / 2));
+                    }
+                  }));
+                }, t3.prototype._basicSquare = function (t4) {
+                  var e4 = this, r4 = t4.size, n3 = t4.x, o3 = t4.y;
+                  this._rotateFigure(g(g({}, t4), {
+                    draw: function () {
+                      e4._element = document.createElementNS("http://www.w3.org/2000/svg", "rect"), e4._element.setAttribute("x", String(n3)), e4._element.setAttribute("y", String(o3)), e4._element.setAttribute("width", String(r4)), e4._element.setAttribute("height", String(r4));
+                    }
+                  }));
+                }, t3.prototype._drawDot = function (t4) {
+                  var e4 = t4.x, r4 = t4.y, n3 = t4.size, o3 = t4.rotation;
+                  this._basicDot({ x: e4, y: r4, size: n3, rotation: o3 });
+                }, t3.prototype._drawSquare = function (t4) {
+                  var e4 = t4.x, r4 = t4.y, n3 = t4.size, o3 = t4.rotation;
+                  this._basicSquare({ x: e4, y: r4, size: n3, rotation: o3 });
+                }, t3;
+              })(), v = "circle";
+              var w = function (t3, e4, r4, n3) {
+                return new (r4 || (r4 = Promise))((function (o3, i2) {
+                  function a2(t4) {
+                    try {
+                      u2(n3.next(t4));
+                    } catch (t5) {
+                      i2(t5);
+                    }
+                  }
+                  function s2(t4) {
+                    try {
+                      u2(n3.throw(t4));
+                    } catch (t5) {
+                      i2(t5);
+                    }
+                  }
+                  function u2(t4) {
+                    var e5;
+                    t4.done ? o3(t4.value) : (e5 = t4.value, e5 instanceof r4 ? e5 : new r4((function (t5) {
+                      t5(e5);
+                    }))).then(a2, s2);
+                  }
+                  u2((n3 = n3.apply(t3, e4 || [])).next());
+                }));
+              }, y = function (t3, e4) {
+                var r4, n3, o3, i2, a2 = {
+                  label: 0, sent: function () {
+                    if (1 & o3[0]) throw o3[1];
+                    return o3[1];
+                  }, trys: [], ops: []
+                };
+                return i2 = { next: s2(0), throw: s2(1), return: s2(2) }, "function" == typeof Symbol && (i2[Symbol.iterator] = function () {
+                  return this;
+                }), i2;
+                function s2(i3) {
+                  return function (s3) {
+                    return (function (i4) {
+                      if (r4) throw new TypeError("Generator is already executing.");
+                      for (; a2;) try {
+                        if (r4 = 1, n3 && (o3 = 2 & i4[0] ? n3.return : i4[0] ? n3.throw || ((o3 = n3.return) && o3.call(n3), 0) : n3.next) && !(o3 = o3.call(n3, i4[1])).done) return o3;
+                        switch (n3 = 0, o3 && (i4 = [2 & i4[0], o3.value]), i4[0]) {
+                          case 0:
+                          case 1:
+                            o3 = i4;
+                            break;
+                          case 4:
+                            return a2.label++, { value: i4[1], done: false };
+                          case 5:
+                            a2.label++, n3 = i4[1], i4 = [0];
+                            continue;
+                          case 7:
+                            i4 = a2.ops.pop(), a2.trys.pop();
+                            continue;
+                          default:
+                            if (!((o3 = (o3 = a2.trys).length > 0 && o3[o3.length - 1]) || 6 !== i4[0] && 2 !== i4[0])) {
+                              a2 = 0;
+                              continue;
+                            }
+                            if (3 === i4[0] && (!o3 || i4[1] > o3[0] && i4[1] < o3[3])) {
+                              a2.label = i4[1];
+                              break;
+                            }
+                            if (6 === i4[0] && a2.label < o3[1]) {
+                              a2.label = o3[1], o3 = i4;
+                              break;
+                            }
+                            if (o3 && a2.label < o3[2]) {
+                              a2.label = o3[2], a2.ops.push(i4);
+                              break;
+                            }
+                            o3[2] && a2.ops.pop(), a2.trys.pop();
+                            continue;
+                        }
+                        i4 = e4.call(t3, a2);
+                      } catch (t4) {
+                        i4 = [6, t4], n3 = 0;
+                      } finally {
+                        r4 = o3 = 0;
+                      }
+                      if (5 & i4[0]) throw i4[1];
+                      return { value: i4[0] ? i4[1] : void 0, done: true };
+                    })([i3, s3]);
+                  };
+                }
+              }, m = [[1, 1, 1, 1, 1, 1, 1], [1, 0, 0, 0, 0, 0, 1], [1, 0, 0, 0, 0, 0, 1], [1, 0, 0, 0, 0, 0, 1], [1, 0, 0, 0, 0, 0, 1], [1, 0, 0, 0, 0, 0, 1], [1, 1, 1, 1, 1, 1, 1]], b = [[0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 1, 1, 1, 0, 0], [0, 0, 1, 1, 1, 0, 0], [0, 0, 1, 1, 1, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0]];
+              const _ = (function () {
+                function t3(t4) {
+                  this._element = document.createElementNS("http://www.w3.org/2000/svg", "svg"), this._element.setAttribute("width", String(t4.width)), this._element.setAttribute("height", String(t4.height)), this._defs = document.createElementNS("http://www.w3.org/2000/svg", "defs"), this._element.appendChild(this._defs), this._options = t4;
+                }
+                return Object.defineProperty(t3.prototype, "width", {
+                  get: function () {
+                    return this._options.width;
+                  }, enumerable: false, configurable: true
+                }), Object.defineProperty(t3.prototype, "height", {
+                  get: function () {
+                    return this._options.height;
+                  }, enumerable: false, configurable: true
+                }), t3.prototype.getElement = function () {
+                  return this._element;
+                }, t3.prototype.drawQR = function (t4) {
+                  return w(this, void 0, void 0, (function () {
+                    var e4, r4, n3, o3, i2, a2, s2, u2, c2, l2, d2 = this;
+                    return y(this, (function (f2) {
+                      switch (f2.label) {
+                        case 0:
+                          return e4 = t4.getModuleCount(), r4 = Math.min(this._options.width, this._options.height) - 2 * this._options.margin, n3 = this._options.shape === v ? r4 / Math.sqrt(2) : r4, o3 = Math.floor(n3 / e4), i2 = { hideXDots: 0, hideYDots: 0, width: 0, height: 0 }, this._qr = t4, this._options.image ? [4, this.loadImage()] : [3, 2];
+                        case 1:
+                          if (f2.sent(), !this._image) return [2];
+                          a2 = this._options, s2 = a2.imageOptions, u2 = a2.qrOptions, c2 = s2.imageSize * h[u2.errorCorrectionLevel], l2 = Math.floor(c2 * e4 * e4), i2 = (function (t5) {
+                            var e5 = t5.originalHeight, r5 = t5.originalWidth, n4 = t5.maxHiddenDots, o4 = t5.maxHiddenAxisDots, i3 = t5.dotSize, a3 = { x: 0, y: 0 }, s3 = { x: 0, y: 0 };
+                            if (e5 <= 0 || r5 <= 0 || n4 <= 0 || i3 <= 0) return { height: 0, width: 0, hideYDots: 0, hideXDots: 0 };
+                            var u3 = e5 / r5;
+                            return a3.x = Math.floor(Math.sqrt(n4 / u3)), a3.x <= 0 && (a3.x = 1), o4 && o4 < a3.x && (a3.x = o4), a3.x % 2 == 0 && a3.x--, s3.x = a3.x * i3, a3.y = 1 + 2 * Math.ceil((a3.x * u3 - 1) / 2), s3.y = Math.round(s3.x * u3), (a3.y * a3.x > n4 || o4 && o4 < a3.y) && (o4 && o4 < a3.y ? (a3.y = o4, a3.y % 2 == 0 && a3.x--) : a3.y -= 2, s3.y = a3.y * i3, a3.x = 1 + 2 * Math.ceil((a3.y / u3 - 1) / 2), s3.x = Math.round(s3.y / u3)), { height: s3.y, width: s3.x, hideYDots: a3.y, hideXDots: a3.x };
+                          })({ originalWidth: this._image.width, originalHeight: this._image.height, maxHiddenDots: l2, maxHiddenAxisDots: e4 - 14, dotSize: o3 }), f2.label = 2;
+                        case 2:
+                          return this.drawBackground(), this.drawDots((function (t5, r5) {
+                            var n4, o4, a3, s3, u3, h2;
+                            return !(d2._options.imageOptions.hideBackgroundDots && t5 >= (e4 - i2.hideXDots) / 2 && t5 < (e4 + i2.hideXDots) / 2 && r5 >= (e4 - i2.hideYDots) / 2 && r5 < (e4 + i2.hideYDots) / 2 || (null === (n4 = m[t5]) || void 0 === n4 ? void 0 : n4[r5]) || (null === (o4 = m[t5 - e4 + 7]) || void 0 === o4 ? void 0 : o4[r5]) || (null === (a3 = m[t5]) || void 0 === a3 ? void 0 : a3[r5 - e4 + 7]) || (null === (s3 = b[t5]) || void 0 === s3 ? void 0 : s3[r5]) || (null === (u3 = b[t5 - e4 + 7]) || void 0 === u3 ? void 0 : u3[r5]) || (null === (h2 = b[t5]) || void 0 === h2 ? void 0 : h2[r5 - e4 + 7]));
+                          })), this.drawCorners(), this._options.image ? [4, this.drawImage({ width: i2.width, height: i2.height, count: e4, dotSize: o3 })] : [3, 4];
+                        case 3:
+                          f2.sent(), f2.label = 4;
+                        case 4:
+                          return [2];
+                      }
+                    }));
+                  }));
+                }, t3.prototype.drawBackground = function () {
+                  var t4, e4, r4, n3 = this._element, o3 = this._options;
+                  if (n3) {
+                    var i2 = null === (t4 = o3.backgroundOptions) || void 0 === t4 ? void 0 : t4.gradient, a2 = null === (e4 = o3.backgroundOptions) || void 0 === e4 ? void 0 : e4.color;
+                    if ((i2 || a2) && this._createColor({ options: i2, color: a2, additionalRotation: 0, x: 0, y: 0, height: o3.height, width: o3.width, name: "background-color" }), null === (r4 = o3.backgroundOptions) || void 0 === r4 ? void 0 : r4.round) {
+                      var s2 = Math.min(o3.width, o3.height), u2 = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+                      this._backgroundClipPath = document.createElementNS("http://www.w3.org/2000/svg", "clipPath"), this._backgroundClipPath.setAttribute("id", "clip-path-background-color"), this._defs.appendChild(this._backgroundClipPath), u2.setAttribute("x", String((o3.width - s2) / 2)), u2.setAttribute("y", String((o3.height - s2) / 2)), u2.setAttribute("width", String(s2)), u2.setAttribute("height", String(s2)), u2.setAttribute("rx", String(s2 / 2 * o3.backgroundOptions.round)), this._backgroundClipPath.appendChild(u2);
+                    }
+                  }
+                }, t3.prototype.drawDots = function (t4) {
+                  var e4, r4, n3 = this;
+                  if (!this._qr) throw "QR code is not defined";
+                  var o3 = this._options, i2 = this._qr.getModuleCount();
+                  if (i2 > o3.width || i2 > o3.height) throw "The canvas is too small.";
+                  var a2 = Math.min(o3.width, o3.height) - 2 * o3.margin, s2 = o3.shape === v ? a2 / Math.sqrt(2) : a2, u2 = Math.floor(s2 / i2), h2 = Math.floor((o3.width - i2 * u2) / 2), c2 = Math.floor((o3.height - i2 * u2) / 2), d2 = new l({ svg: this._element, type: o3.dotsOptions.type });
+                  this._dotsClipPath = document.createElementNS("http://www.w3.org/2000/svg", "clipPath"), this._dotsClipPath.setAttribute("id", "clip-path-dot-color"), this._defs.appendChild(this._dotsClipPath), this._createColor({ options: null === (e4 = o3.dotsOptions) || void 0 === e4 ? void 0 : e4.gradient, color: o3.dotsOptions.color, additionalRotation: 0, x: 0, y: 0, height: o3.height, width: o3.width, name: "dot-color" });
+                  for (var f2 = function (e5) {
+                    for (var o4 = function (o5) {
+                      return t4 && !t4(e5, o5) ? "continue" : (null === (r4 = g2._qr) || void 0 === r4 ? void 0 : r4.isDark(e5, o5)) ? (d2.draw(h2 + e5 * u2, c2 + o5 * u2, u2, (function (r5, a4) {
+                        return !(e5 + r5 < 0 || o5 + a4 < 0 || e5 + r5 >= i2 || o5 + a4 >= i2) && !(t4 && !t4(e5 + r5, o5 + a4)) && !!n3._qr && n3._qr.isDark(e5 + r5, o5 + a4);
+                      })), void (d2._element && g2._dotsClipPath && g2._dotsClipPath.appendChild(d2._element))) : "continue";
+                    }, a3 = 0; a3 < i2; a3++) o4(a3);
+                  }, g2 = this, p2 = 0; p2 < i2; p2++) f2(p2);
+                  if (o3.shape === v) {
+                    var w2 = Math.floor((a2 / u2 - i2) / 2), y2 = i2 + 2 * w2, m2 = h2 - w2 * u2, b2 = c2 - w2 * u2, _2 = [], x2 = Math.floor(y2 / 2);
+                    for (p2 = 0; p2 < y2; p2++) {
+                      _2[p2] = [];
+                      for (var S2 = 0; S2 < y2; S2++) p2 >= w2 - 1 && p2 <= y2 - w2 && S2 >= w2 - 1 && S2 <= y2 - w2 || Math.sqrt((p2 - x2) * (p2 - x2) + (S2 - x2) * (S2 - x2)) > x2 ? _2[p2][S2] = 0 : _2[p2][S2] = this._qr.isDark(S2 - 2 * w2 < 0 ? S2 : S2 >= i2 ? S2 - 2 * w2 : S2 - w2, p2 - 2 * w2 < 0 ? p2 : p2 >= i2 ? p2 - 2 * w2 : p2 - w2) ? 1 : 0;
+                    }
+                    var M2 = function (t5) {
+                      for (var e5 = function (e6) {
+                        if (!_2[t5][e6]) return "continue";
+                        d2.draw(m2 + t5 * u2, b2 + e6 * u2, u2, (function (r6, n4) {
+                          var o4;
+                          return !!(null === (o4 = _2[t5 + r6]) || void 0 === o4 ? void 0 : o4[e6 + n4]);
+                        })), d2._element && C2._dotsClipPath && C2._dotsClipPath.appendChild(d2._element);
+                      }, r5 = 0; r5 < y2; r5++) e5(r5);
+                    }, C2 = this;
+                    for (p2 = 0; p2 < y2; p2++) M2(p2);
+                  }
+                }, t3.prototype.drawCorners = function () {
+                  var t4 = this;
+                  if (!this._qr) throw "QR code is not defined";
+                  var e4 = this._element, r4 = this._options;
+                  if (!e4) throw "Element code is not defined";
+                  var n3 = this._qr.getModuleCount(), o3 = Math.min(r4.width, r4.height) - 2 * r4.margin, i2 = r4.shape === v ? o3 / Math.sqrt(2) : o3, a2 = Math.floor(i2 / n3), s2 = 7 * a2, u2 = 3 * a2, h2 = Math.floor((r4.width - n3 * a2) / 2), c2 = Math.floor((r4.height - n3 * a2) / 2);
+                  [[0, 0, 0], [1, 0, Math.PI / 2], [0, 1, -Math.PI / 2]].forEach((function (e5) {
+                    var o4, i3, d2, g2, v2, w2, y2, _2, x2, S2, M2, C2, A2 = e5[0], k2 = e5[1], O2 = e5[2], D2 = h2 + A2 * a2 * (n3 - 7), P2 = c2 + k2 * a2 * (n3 - 7), z2 = t4._dotsClipPath, B2 = t4._dotsClipPath;
+                    if (((null === (o4 = r4.cornersSquareOptions) || void 0 === o4 ? void 0 : o4.gradient) || (null === (i3 = r4.cornersSquareOptions) || void 0 === i3 ? void 0 : i3.color)) && ((z2 = document.createElementNS("http://www.w3.org/2000/svg", "clipPath")).setAttribute("id", "clip-path-corners-square-color-" + A2 + "-" + k2), t4._defs.appendChild(z2), t4._cornersSquareClipPath = t4._cornersDotClipPath = B2 = z2, t4._createColor({ options: null === (d2 = r4.cornersSquareOptions) || void 0 === d2 ? void 0 : d2.gradient, color: null === (g2 = r4.cornersSquareOptions) || void 0 === g2 ? void 0 : g2.color, additionalRotation: O2, x: D2, y: P2, height: s2, width: s2, name: "corners-square-color-" + A2 + "-" + k2 })), null === (v2 = r4.cornersSquareOptions) || void 0 === v2 ? void 0 : v2.type) {
+                      var q2 = new f({ svg: t4._element, type: r4.cornersSquareOptions.type });
+                      q2.draw(D2, P2, s2, O2), q2._element && z2 && z2.appendChild(q2._element);
+                    } else for (var I = new l({ svg: t4._element, type: r4.dotsOptions.type }), E = function (t5) {
+                      for (var e6 = function (e7) {
+                        if (!(null === (w2 = m[t5]) || void 0 === w2 ? void 0 : w2[e7])) return "continue";
+                        I.draw(D2 + t5 * a2, P2 + e7 * a2, a2, (function (r6, n4) {
+                          var o5;
+                          return !!(null === (o5 = m[t5 + r6]) || void 0 === o5 ? void 0 : o5[e7 + n4]);
+                        })), I._element && z2 && z2.appendChild(I._element);
+                      }, r5 = 0; r5 < m[t5].length; r5++) e6(r5);
+                    }, L = 0; L < m.length; L++) E(L);
+                    if (((null === (y2 = r4.cornersDotOptions) || void 0 === y2 ? void 0 : y2.gradient) || (null === (_2 = r4.cornersDotOptions) || void 0 === _2 ? void 0 : _2.color)) && ((B2 = document.createElementNS("http://www.w3.org/2000/svg", "clipPath")).setAttribute("id", "clip-path-corners-dot-color-" + A2 + "-" + k2), t4._defs.appendChild(B2), t4._cornersDotClipPath = B2, t4._createColor({ options: null === (x2 = r4.cornersDotOptions) || void 0 === x2 ? void 0 : x2.gradient, color: null === (S2 = r4.cornersDotOptions) || void 0 === S2 ? void 0 : S2.color, additionalRotation: O2, x: D2 + 2 * a2, y: P2 + 2 * a2, height: u2, width: u2, name: "corners-dot-color-" + A2 + "-" + k2 })), null === (M2 = r4.cornersDotOptions) || void 0 === M2 ? void 0 : M2.type) {
+                      var R = new p({ svg: t4._element, type: r4.cornersDotOptions.type });
+                      R.draw(D2 + 2 * a2, P2 + 2 * a2, u2, O2), R._element && B2 && B2.appendChild(R._element);
+                    } else {
+                      I = new l({ svg: t4._element, type: r4.dotsOptions.type });
+                      var N = function (t5) {
+                        for (var e6 = function (e7) {
+                          if (!(null === (C2 = b[t5]) || void 0 === C2 ? void 0 : C2[e7])) return "continue";
+                          I.draw(D2 + t5 * a2, P2 + e7 * a2, a2, (function (r6, n4) {
+                            var o5;
+                            return !!(null === (o5 = b[t5 + r6]) || void 0 === o5 ? void 0 : o5[e7 + n4]);
+                          })), I._element && B2 && B2.appendChild(I._element);
+                        }, r5 = 0; r5 < b[t5].length; r5++) e6(r5);
+                      };
+                      for (L = 0; L < b.length; L++) N(L);
+                    }
+                  }));
+                }, t3.prototype.loadImage = function () {
+                  var t4 = this;
+                  return new Promise((function (e4, r4) {
+                    var n3 = t4._options, o3 = new Image();
+                    if (!n3.image) return r4("Image is not defined");
+                    "string" == typeof n3.imageOptions.crossOrigin && (o3.crossOrigin = n3.imageOptions.crossOrigin), t4._image = o3, o3.onload = function () {
+                      e4();
+                    }, o3.src = n3.image;
+                  }));
+                }, t3.prototype.drawImage = function (t4) {
+                  var e4 = t4.width, r4 = t4.height, n3 = t4.count, o3 = t4.dotSize;
+                  return w(this, void 0, void 0, (function () {
+                    var t5, i2, a2, s2, h2, c2, l2, d2, f2;
+                    return y(this, (function (g2) {
+                      switch (g2.label) {
+                        case 0:
+                          return t5 = this._options, i2 = Math.floor((t5.width - n3 * o3) / 2), a2 = Math.floor((t5.height - n3 * o3) / 2), s2 = i2 + t5.imageOptions.margin + (n3 * o3 - e4) / 2, h2 = a2 + t5.imageOptions.margin + (n3 * o3 - r4) / 2, c2 = e4 - 2 * t5.imageOptions.margin, l2 = r4 - 2 * t5.imageOptions.margin, (d2 = document.createElementNS("http://www.w3.org/2000/svg", "image")).setAttribute("x", String(s2)), d2.setAttribute("y", String(h2)), d2.setAttribute("width", c2 + "px"), d2.setAttribute("height", l2 + "px"), [4, u(t5.image || "")];
+                        case 1:
+                          return f2 = g2.sent(), d2.setAttribute("href", f2 || ""), this._element.appendChild(d2), [2];
+                      }
+                    }));
+                  }));
+                }, t3.prototype._createColor = function (t4) {
+                  var e4 = t4.options, r4 = t4.color, n3 = t4.additionalRotation, o3 = t4.x, i2 = t4.y, a2 = t4.height, s2 = t4.width, u2 = t4.name, h2 = s2 > a2 ? s2 : a2, c2 = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+                  if (c2.setAttribute("x", String(o3)), c2.setAttribute("y", String(i2)), c2.setAttribute("height", String(a2)), c2.setAttribute("width", String(s2)), c2.setAttribute("clip-path", "url('#clip-path-" + u2 + "')"), e4) {
+                    var l2;
+                    if ("radial" === e4.type) (l2 = document.createElementNS("http://www.w3.org/2000/svg", "radialGradient")).setAttribute("id", u2), l2.setAttribute("gradientUnits", "userSpaceOnUse"), l2.setAttribute("fx", String(o3 + s2 / 2)), l2.setAttribute("fy", String(i2 + a2 / 2)), l2.setAttribute("cx", String(o3 + s2 / 2)), l2.setAttribute("cy", String(i2 + a2 / 2)), l2.setAttribute("r", String(h2 / 2));
+                    else {
+                      var d2 = ((e4.rotation || 0) + n3) % (2 * Math.PI), f2 = (d2 + 2 * Math.PI) % (2 * Math.PI), g2 = o3 + s2 / 2, p2 = i2 + a2 / 2, v2 = o3 + s2 / 2, w2 = i2 + a2 / 2;
+                      f2 >= 0 && f2 <= 0.25 * Math.PI || f2 > 1.75 * Math.PI && f2 <= 2 * Math.PI ? (g2 -= s2 / 2, p2 -= a2 / 2 * Math.tan(d2), v2 += s2 / 2, w2 += a2 / 2 * Math.tan(d2)) : f2 > 0.25 * Math.PI && f2 <= 0.75 * Math.PI ? (p2 -= a2 / 2, g2 -= s2 / 2 / Math.tan(d2), w2 += a2 / 2, v2 += s2 / 2 / Math.tan(d2)) : f2 > 0.75 * Math.PI && f2 <= 1.25 * Math.PI ? (g2 += s2 / 2, p2 += a2 / 2 * Math.tan(d2), v2 -= s2 / 2, w2 -= a2 / 2 * Math.tan(d2)) : f2 > 1.25 * Math.PI && f2 <= 1.75 * Math.PI && (p2 += a2 / 2, g2 += s2 / 2 / Math.tan(d2), w2 -= a2 / 2, v2 -= s2 / 2 / Math.tan(d2)), (l2 = document.createElementNS("http://www.w3.org/2000/svg", "linearGradient")).setAttribute("id", u2), l2.setAttribute("gradientUnits", "userSpaceOnUse"), l2.setAttribute("x1", String(Math.round(g2))), l2.setAttribute("y1", String(Math.round(p2))), l2.setAttribute("x2", String(Math.round(v2))), l2.setAttribute("y2", String(Math.round(w2)));
+                    }
+                    e4.colorStops.forEach((function (t5) {
+                      var e5 = t5.offset, r5 = t5.color, n4 = document.createElementNS("http://www.w3.org/2000/svg", "stop");
+                      n4.setAttribute("offset", 100 * e5 + "%"), n4.setAttribute("stop-color", r5), l2.appendChild(n4);
+                    })), c2.setAttribute("fill", "url('#" + u2 + "')"), this._defs.appendChild(l2);
+                  } else r4 && c2.setAttribute("fill", r4);
+                  this._element.appendChild(c2);
+                }, t3;
+              })(), x = "canvas";
+              for (var S = {}, M = 0; M <= 40; M++) S[M] = M;
+              const C = { type: x, shape: "square", width: 300, height: 300, data: "", margin: 0, qrOptions: { typeNumber: S[0], mode: void 0, errorCorrectionLevel: "Q" }, imageOptions: { hideBackgroundDots: true, imageSize: 0.4, crossOrigin: void 0, margin: 0 }, dotsOptions: { type: "square", color: "#000" }, backgroundOptions: { round: 0, color: "#fff" } };
+              var A = function () {
+                return (A = Object.assign || function (t3) {
+                  for (var e4, r4 = 1, n3 = arguments.length; r4 < n3; r4++) for (var o3 in e4 = arguments[r4]) Object.prototype.hasOwnProperty.call(e4, o3) && (t3[o3] = e4[o3]);
+                  return t3;
+                }).apply(this, arguments);
+              };
+              function k(t3) {
+                var e4 = A({}, t3);
+                if (!e4.colorStops || !e4.colorStops.length) throw "Field 'colorStops' is required in gradient";
+                return e4.rotation ? e4.rotation = Number(e4.rotation) : e4.rotation = 0, e4.colorStops = e4.colorStops.map((function (t4) {
+                  return A(A({}, t4), { offset: Number(t4.offset) });
+                })), e4;
+              }
+              function O(t3) {
+                var e4 = A({}, t3);
+                return e4.width = Number(e4.width), e4.height = Number(e4.height), e4.margin = Number(e4.margin), e4.imageOptions = A(A({}, e4.imageOptions), { hideBackgroundDots: Boolean(e4.imageOptions.hideBackgroundDots), imageSize: Number(e4.imageOptions.imageSize), margin: Number(e4.imageOptions.margin) }), e4.margin > Math.min(e4.width, e4.height) && (e4.margin = Math.min(e4.width, e4.height)), e4.dotsOptions = A({}, e4.dotsOptions), e4.dotsOptions.gradient && (e4.dotsOptions.gradient = k(e4.dotsOptions.gradient)), e4.cornersSquareOptions && (e4.cornersSquareOptions = A({}, e4.cornersSquareOptions), e4.cornersSquareOptions.gradient && (e4.cornersSquareOptions.gradient = k(e4.cornersSquareOptions.gradient))), e4.cornersDotOptions && (e4.cornersDotOptions = A({}, e4.cornersDotOptions), e4.cornersDotOptions.gradient && (e4.cornersDotOptions.gradient = k(e4.cornersDotOptions.gradient))), e4.backgroundOptions && (e4.backgroundOptions = A({}, e4.backgroundOptions), e4.backgroundOptions.gradient && (e4.backgroundOptions.gradient = k(e4.backgroundOptions.gradient))), e4;
+              }
+              var D = r3(192), P = r3.n(D), z = function (t3, e4, r4, n3) {
+                return new (r4 || (r4 = Promise))((function (o3, i2) {
+                  function a2(t4) {
+                    try {
+                      u2(n3.next(t4));
+                    } catch (t5) {
+                      i2(t5);
+                    }
+                  }
+                  function s2(t4) {
+                    try {
+                      u2(n3.throw(t4));
+                    } catch (t5) {
+                      i2(t5);
+                    }
+                  }
+                  function u2(t4) {
+                    var e5;
+                    t4.done ? o3(t4.value) : (e5 = t4.value, e5 instanceof r4 ? e5 : new r4((function (t5) {
+                      t5(e5);
+                    }))).then(a2, s2);
+                  }
+                  u2((n3 = n3.apply(t3, e4 || [])).next());
+                }));
+              }, B = function (t3, e4) {
+                var r4, n3, o3, i2, a2 = {
+                  label: 0, sent: function () {
+                    if (1 & o3[0]) throw o3[1];
+                    return o3[1];
+                  }, trys: [], ops: []
+                };
+                return i2 = { next: s2(0), throw: s2(1), return: s2(2) }, "function" == typeof Symbol && (i2[Symbol.iterator] = function () {
+                  return this;
+                }), i2;
+                function s2(i3) {
+                  return function (s3) {
+                    return (function (i4) {
+                      if (r4) throw new TypeError("Generator is already executing.");
+                      for (; a2;) try {
+                        if (r4 = 1, n3 && (o3 = 2 & i4[0] ? n3.return : i4[0] ? n3.throw || ((o3 = n3.return) && o3.call(n3), 0) : n3.next) && !(o3 = o3.call(n3, i4[1])).done) return o3;
+                        switch (n3 = 0, o3 && (i4 = [2 & i4[0], o3.value]), i4[0]) {
+                          case 0:
+                          case 1:
+                            o3 = i4;
+                            break;
+                          case 4:
+                            return a2.label++, { value: i4[1], done: false };
+                          case 5:
+                            a2.label++, n3 = i4[1], i4 = [0];
+                            continue;
+                          case 7:
+                            i4 = a2.ops.pop(), a2.trys.pop();
+                            continue;
+                          default:
+                            if (!((o3 = (o3 = a2.trys).length > 0 && o3[o3.length - 1]) || 6 !== i4[0] && 2 !== i4[0])) {
+                              a2 = 0;
+                              continue;
+                            }
+                            if (3 === i4[0] && (!o3 || i4[1] > o3[0] && i4[1] < o3[3])) {
+                              a2.label = i4[1];
+                              break;
+                            }
+                            if (6 === i4[0] && a2.label < o3[1]) {
+                              a2.label = o3[1], o3 = i4;
+                              break;
+                            }
+                            if (o3 && a2.label < o3[2]) {
+                              a2.label = o3[2], a2.ops.push(i4);
+                              break;
+                            }
+                            o3[2] && a2.ops.pop(), a2.trys.pop();
+                            continue;
+                        }
+                        i4 = e4.call(t3, a2);
+                      } catch (t4) {
+                        i4 = [6, t4], n3 = 0;
+                      } finally {
+                        r4 = o3 = 0;
+                      }
+                      if (5 & i4[0]) throw i4[1];
+                      return { value: i4[0] ? i4[1] : void 0, done: true };
+                    })([i3, s3]);
+                  };
+                }
+              };
+              const q = (function () {
+                function t3(t4) {
+                  this._options = t4 ? O(a(C, t4)) : C, this.update();
+                }
+                return t3._clearContainer = function (t4) {
+                  t4 && (t4.innerHTML = "");
+                }, t3.prototype._setupSvg = function () {
+                  var t4 = this;
+                  if (this._qr) {
+                    var e4 = new _(this._options);
+                    this._svg = e4.getElement(), this._svgDrawingPromise = e4.drawQR(this._qr).then((function () {
+                      var r4;
+                      t4._svg && (null === (r4 = t4._extension) || void 0 === r4 || r4.call(t4, e4.getElement(), t4._options));
                     }));
                   }
-                })));
-              }, t3.prototype._getElement = function(t4) {
-                return void 0 === t4 && (t4 = "png"), z(this, void 0, void 0, (function() {
-                  return B(this, (function(e4) {
-                    switch (e4.label) {
-                      case 0:
-                        if (!this._qr) throw "QR code is empty";
-                        return "svg" !== t4.toLowerCase() ? [3, 2] : (this._svg && this._svgDrawingPromise || this._setupSvg(), [4, this._svgDrawingPromise]);
-                      case 1:
-                        return e4.sent(), [2, this._svg];
-                      case 2:
-                        return this._canvas && this._canvasDrawingPromise || this._setupCanvas(), [4, this._canvasDrawingPromise];
-                      case 3:
-                        return e4.sent(), [2, this._canvas];
+                }, t3.prototype._setupCanvas = function () {
+                  var t4, e4 = this;
+                  this._qr && (this._canvas = document.createElement("canvas"), this._canvas.width = this._options.width, this._canvas.height = this._options.height, this._setupSvg(), this._canvasDrawingPromise = null === (t4 = this._svgDrawingPromise) || void 0 === t4 ? void 0 : t4.then((function () {
+                    if (e4._svg) {
+                      var t5 = e4._svg, r4 = new XMLSerializer().serializeToString(t5), n3 = "data:image/svg+xml;base64," + btoa(r4), o3 = new Image();
+                      return new Promise((function (t6) {
+                        o3.onload = function () {
+                          var r5, n4;
+                          null === (n4 = null === (r5 = e4._canvas) || void 0 === r5 ? void 0 : r5.getContext("2d")) || void 0 === n4 || n4.drawImage(o3, 0, 0), t6();
+                        }, o3.src = n3;
+                      }));
                     }
+                  })));
+                }, t3.prototype._getElement = function (t4) {
+                  return void 0 === t4 && (t4 = "png"), z(this, void 0, void 0, (function () {
+                    return B(this, (function (e4) {
+                      switch (e4.label) {
+                        case 0:
+                          if (!this._qr) throw "QR code is empty";
+                          return "svg" !== t4.toLowerCase() ? [3, 2] : (this._svg && this._svgDrawingPromise || this._setupSvg(), [4, this._svgDrawingPromise]);
+                        case 1:
+                          return e4.sent(), [2, this._svg];
+                        case 2:
+                          return this._canvas && this._canvasDrawingPromise || this._setupCanvas(), [4, this._canvasDrawingPromise];
+                        case 3:
+                          return e4.sent(), [2, this._canvas];
+                      }
+                    }));
                   }));
-                }));
-              }, t3.prototype.update = function(e4) {
-                t3._clearContainer(this._container), this._options = e4 ? O(a(this._options, e4)) : this._options, this._options.data && (this._qr = P()(this._options.qrOptions.typeNumber, this._options.qrOptions.errorCorrectionLevel), this._qr.addData(this._options.data, this._options.qrOptions.mode || (function(t4) {
-                  switch (true) {
-                    case /^[0-9]*$/.test(t4):
-                      return "Numeric";
-                    case /^[0-9A-Z $%*+\-./:]*$/.test(t4):
-                      return "Alphanumeric";
-                    default:
-                      return "Byte";
+                }, t3.prototype.update = function (e4) {
+                  t3._clearContainer(this._container), this._options = e4 ? O(a(this._options, e4)) : this._options, this._options.data && (this._qr = P()(this._options.qrOptions.typeNumber, this._options.qrOptions.errorCorrectionLevel), this._qr.addData(this._options.data, this._options.qrOptions.mode || (function (t4) {
+                    switch (true) {
+                      case /^[0-9]*$/.test(t4):
+                        return "Numeric";
+                      case /^[0-9A-Z $%*+\-./:]*$/.test(t4):
+                        return "Alphanumeric";
+                      default:
+                        return "Byte";
+                    }
+                  })(this._options.data)), this._qr.make(), this._options.type === x ? this._setupCanvas() : this._setupSvg(), this.append(this._container));
+                }, t3.prototype.append = function (t4) {
+                  if (t4) {
+                    if ("function" != typeof t4.appendChild) throw "Container should be a single DOM node";
+                    this._options.type === x ? this._canvas && t4.appendChild(this._canvas) : this._svg && t4.appendChild(this._svg), this._container = t4;
                   }
-                })(this._options.data)), this._qr.make(), this._options.type === x ? this._setupCanvas() : this._setupSvg(), this.append(this._container));
-              }, t3.prototype.append = function(t4) {
-                if (t4) {
-                  if ("function" != typeof t4.appendChild) throw "Container should be a single DOM node";
-                  this._options.type === x ? this._canvas && t4.appendChild(this._canvas) : this._svg && t4.appendChild(this._svg), this._container = t4;
-                }
-              }, t3.prototype.applyExtension = function(t4) {
-                if (!t4) throw "Extension function should be defined.";
-                this._extension = t4, this.update();
-              }, t3.prototype.deleteExtension = function() {
-                this._extension = void 0, this.update();
-              }, t3.prototype.getRawData = function(t4) {
-                return void 0 === t4 && (t4 = "png"), z(this, void 0, void 0, (function() {
-                  var e4, r4, n3;
-                  return B(this, (function(o3) {
-                    switch (o3.label) {
-                      case 0:
-                        if (!this._qr) throw "QR code is empty";
-                        return [4, this._getElement(t4)];
-                      case 1:
-                        return (e4 = o3.sent()) ? "svg" === t4.toLowerCase() ? (r4 = new XMLSerializer(), n3 = r4.serializeToString(e4), [2, new Blob(['<?xml version="1.0" standalone="no"?>\r\n' + n3], { type: "image/svg+xml" })]) : [2, new Promise((function(r5) {
-                          return e4.toBlob(r5, "image/" + t4, 1);
-                        }))] : [2, null];
-                    }
+                }, t3.prototype.applyExtension = function (t4) {
+                  if (!t4) throw "Extension function should be defined.";
+                  this._extension = t4, this.update();
+                }, t3.prototype.deleteExtension = function () {
+                  this._extension = void 0, this.update();
+                }, t3.prototype.getRawData = function (t4) {
+                  return void 0 === t4 && (t4 = "png"), z(this, void 0, void 0, (function () {
+                    var e4, r4, n3;
+                    return B(this, (function (o3) {
+                      switch (o3.label) {
+                        case 0:
+                          if (!this._qr) throw "QR code is empty";
+                          return [4, this._getElement(t4)];
+                        case 1:
+                          return (e4 = o3.sent()) ? "svg" === t4.toLowerCase() ? (r4 = new XMLSerializer(), n3 = r4.serializeToString(e4), [2, new Blob(['<?xml version="1.0" standalone="no"?>\r\n' + n3], { type: "image/svg+xml" })]) : [2, new Promise((function (r5) {
+                            return e4.toBlob(r5, "image/" + t4, 1);
+                          }))] : [2, null];
+                      }
+                    }));
                   }));
-                }));
-              }, t3.prototype.download = function(t4) {
-                return z(this, void 0, void 0, (function() {
-                  var e4, r4, n3, o3, i2;
-                  return B(this, (function(a2) {
-                    switch (a2.label) {
-                      case 0:
-                        if (!this._qr) throw "QR code is empty";
-                        return e4 = "png", r4 = "qr", "string" == typeof t4 ? (e4 = t4, console.warn("Extension is deprecated as argument for 'download' method, please pass object { name: '...', extension: '...' } as argument")) : "object" == typeof t4 && null !== t4 && (t4.name && (r4 = t4.name), t4.extension && (e4 = t4.extension)), [4, this._getElement(e4)];
-                      case 1:
-                        return (n3 = a2.sent()) ? ("svg" === e4.toLowerCase() ? (o3 = new XMLSerializer(), i2 = '<?xml version="1.0" standalone="no"?>\r\n' + (i2 = o3.serializeToString(n3)), s("data:image/svg+xml;charset=utf-8," + encodeURIComponent(i2), r4 + ".svg")) : s(n3.toDataURL("image/" + e4), r4 + "." + e4), [2]) : [2];
-                    }
+                }, t3.prototype.download = function (t4) {
+                  return z(this, void 0, void 0, (function () {
+                    var e4, r4, n3, o3, i2;
+                    return B(this, (function (a2) {
+                      switch (a2.label) {
+                        case 0:
+                          if (!this._qr) throw "QR code is empty";
+                          return e4 = "png", r4 = "qr", "string" == typeof t4 ? (e4 = t4, console.warn("Extension is deprecated as argument for 'download' method, please pass object { name: '...', extension: '...' } as argument")) : "object" == typeof t4 && null !== t4 && (t4.name && (r4 = t4.name), t4.extension && (e4 = t4.extension)), [4, this._getElement(e4)];
+                        case 1:
+                          return (n3 = a2.sent()) ? ("svg" === e4.toLowerCase() ? (o3 = new XMLSerializer(), i2 = '<?xml version="1.0" standalone="no"?>\r\n' + (i2 = o3.serializeToString(n3)), s("data:image/svg+xml;charset=utf-8," + encodeURIComponent(i2), r4 + ".svg")) : s(n3.toDataURL("image/" + e4), r4 + "." + e4), [2]) : [2];
+                      }
+                    }));
                   }));
-                }));
-              }, t3;
-            })();
-          } }, e2 = {};
+                }, t3;
+              })();
+            }
+          }, e2 = {};
           function r2(n2) {
             if (e2[n2]) return e2[n2].exports;
             var o2 = e2[n2] = { exports: {} };
@@ -37174,9 +37564,9 @@ var PeraWalletConnect = (() => {
   // node_modules/@evanhahn/lottie-web-light/index.js
   var require_lottie_web_light = __commonJS({
     "node_modules/@evanhahn/lottie-web-light/index.js"(exports, module) {
-      typeof navigator !== "undefined" && (function(root, factory) {
+      typeof navigator !== "undefined" && (function (root, factory) {
         if (typeof define === "function" && define.amd) {
-          define(function() {
+          define(function () {
             return factory(root);
           });
         } else if (typeof module === "object" && module.exports) {
@@ -37185,7 +37575,7 @@ var PeraWalletConnect = (() => {
           root.lottie = factory(root);
           root.bodymovin = root.lottie;
         }
-      })(window || {}, function(window2) {
+      })(window || {}, function (window2) {
         "use strict";
         var svgNS = "http://www.w3.org/2000/svg";
         var locationHref = "";
@@ -37203,7 +37593,7 @@ var PeraWalletConnect = (() => {
         var bmMax = Math.max;
         var bmMin = Math.min;
         var BMMath = {};
-        (function() {
+        (function () {
           var propertyNames = ["abs", "acos", "acosh", "asin", "asinh", "atan", "atanh", "atan2", "ceil", "cbrt", "expm1", "clz32", "cos", "cosh", "exp", "floor", "fround", "hypot", "imul", "log", "log1p", "log2", "log10", "max", "min", "pow", "random", "round", "sign", "sin", "sinh", "sqrt", "tan", "tanh", "trunc", "E", "LN10", "LN2", "LOG10E", "LOG2E", "PI", "SQRT1_2", "SQRT2"];
           var i;
           var len = propertyNames.length;
@@ -37215,7 +37605,7 @@ var PeraWalletConnect = (() => {
           return {};
         }
         BMMath.random = Math.random;
-        BMMath.abs = function(val) {
+        BMMath.abs = function (val) {
           var tOfVal = typeof val;
           if (tOfVal === "object" && val.length) {
             var absArr = createSizedArray(val.length);
@@ -37235,7 +37625,7 @@ var PeraWalletConnect = (() => {
           if (flag) {
             bmRnd = Math.round;
           } else {
-            bmRnd = function(val) {
+            bmRnd = function (val) {
               return val;
             };
           }
@@ -37292,7 +37682,7 @@ var PeraWalletConnect = (() => {
           this.type = type;
           this.nativeError = nativeError;
         }
-        var createElementID = /* @__PURE__ */ (function() {
+        var createElementID = /* @__PURE__ */ (function () {
           var _count = 0;
           return function createID() {
             _count += 1;
@@ -37415,7 +37805,7 @@ var PeraWalletConnect = (() => {
           }
           return HSVtoRGB(hsv[0], hsv[1], hsv[2]);
         }
-        var rgbToHex = (function() {
+        var rgbToHex = (function () {
           var colorMap = [];
           var i;
           var hex;
@@ -37423,7 +37813,7 @@ var PeraWalletConnect = (() => {
             hex = i.toString(16);
             colorMap[i] = hex.length === 1 ? "0" + hex : hex;
           }
-          return function(r2, g, b) {
+          return function (r2, g, b) {
             if (r2 < 0) {
               r2 = 0;
             }
@@ -37439,7 +37829,7 @@ var PeraWalletConnect = (() => {
         function BaseEvent() {
         }
         BaseEvent.prototype = {
-          triggerEvent: function(eventName, args) {
+          triggerEvent: function (eventName, args) {
             if (this._cbs[eventName]) {
               var callbacks = this._cbs[eventName];
               for (var i = 0; i < callbacks.length; i += 1) {
@@ -37447,16 +37837,16 @@ var PeraWalletConnect = (() => {
               }
             }
           },
-          addEventListener: function(eventName, callback) {
+          addEventListener: function (eventName, callback) {
             if (!this._cbs[eventName]) {
               this._cbs[eventName] = [];
             }
             this._cbs[eventName].push(callback);
-            return function() {
+            return function () {
               this.removeEventListener(eventName, callback);
             }.bind(this);
           },
-          removeEventListener: function(eventName, callback) {
+          removeEventListener: function (eventName, callback) {
             if (!callback) {
               this._cbs[eventName] = null;
             } else if (this._cbs[eventName]) {
@@ -37476,7 +37866,7 @@ var PeraWalletConnect = (() => {
             }
           }
         };
-        var createTypedArray = (function() {
+        var createTypedArray = (function () {
           function createRegularArray(type, len) {
             var i = 0;
             var arr = [];
@@ -37524,14 +37914,14 @@ var PeraWalletConnect = (() => {
         function DynamicPropertyContainer() {
         }
         DynamicPropertyContainer.prototype = {
-          addDynamicProperty: function(prop) {
+          addDynamicProperty: function (prop) {
             if (this.dynamicProperties.indexOf(prop) === -1) {
               this.dynamicProperties.push(prop);
               this.container.addDynamicProperty(this);
               this._isAnimated = true;
             }
           },
-          iterateDynamicProperties: function() {
+          iterateDynamicProperties: function () {
             this._mdf = false;
             var i;
             var len = this.dynamicProperties.length;
@@ -37542,14 +37932,14 @@ var PeraWalletConnect = (() => {
               }
             }
           },
-          initDynamicPropertyContainer: function(container) {
+          initDynamicPropertyContainer: function (container) {
             this.container = container;
             this.dynamicProperties = [];
             this._mdf = false;
             this._isAnimated = false;
           }
         };
-        var getBlendMode = /* @__PURE__ */ (function() {
+        var getBlendMode = /* @__PURE__ */ (function () {
           var blendModeEnums = {
             0: "source-over",
             1: "multiply",
@@ -37568,7 +37958,7 @@ var PeraWalletConnect = (() => {
             14: "color",
             15: "luminosity"
           };
-          return function(mode) {
+          return function (mode) {
             return blendModeEnums[mode] || "";
           };
         })();
@@ -37582,7 +37972,7 @@ var PeraWalletConnect = (() => {
           2: "round",
           3: "bevel"
         };
-        var Matrix = /* @__PURE__ */ (function() {
+        var Matrix = /* @__PURE__ */ (function () {
           var _cos = Math.cos;
           var _sin = Math.sin;
           var _tan = Math.tan;
@@ -37879,7 +38269,7 @@ var PeraWalletConnect = (() => {
             var _f = roundMatrixProperty(props[13]);
             return "matrix(" + _a + "," + _b + "," + _c + "," + _d + "," + _e + "," + _f + ")";
           }
-          return function() {
+          return function () {
             this.reset = reset;
             this.rotate = rotate;
             this.rotateX = rotateX;
@@ -37915,7 +38305,7 @@ var PeraWalletConnect = (() => {
             this.reset();
           };
         })();
-        (function(pool, math) {
+        (function (pool, math) {
           var global2 = this, width = 256, chunks = 6, digits = 52, rngname = "random", startdenom = math.pow(width, chunks), significance = math.pow(2, digits), overflow = significance * 2, mask = width - 1, nodecrypto;
           function seedrandom(seed, options, callback) {
             var key = [];
@@ -37925,7 +38315,7 @@ var PeraWalletConnect = (() => {
               3
             ), key);
             var arc4 = new ARC4(key);
-            var prng = function() {
+            var prng = function () {
               var n2 = arc4.g(chunks), d = startdenom, x = 0;
               while (n2 < significance) {
                 n2 = (n2 + x) * width;
@@ -37939,20 +38329,20 @@ var PeraWalletConnect = (() => {
               }
               return (n2 + x) / d;
             };
-            prng.int32 = function() {
+            prng.int32 = function () {
               return arc4.g(4) | 0;
             };
-            prng.quick = function() {
+            prng.quick = function () {
               return arc4.g(4) / 4294967296;
             };
             prng.double = prng;
             mixkey(tostring(arc4.S), pool);
-            return (options.pass || callback || function(prng2, seed2, is_math_call, state) {
+            return (options.pass || callback || function (prng2, seed2, is_math_call, state) {
               if (state) {
                 if (state.S) {
                   copy(state, arc4);
                 }
-                prng2.state = function() {
+                prng2.state = function () {
                   return copy(arc4, {});
                 };
               }
@@ -37980,7 +38370,7 @@ var PeraWalletConnect = (() => {
               s[i] = s[j = mask & j + key[i % keylen] + (t = s[i])];
               s[j] = t;
             }
-            me.g = function(count) {
+            me.g = function (count) {
               var t2, r2 = 0, i2 = me.i, j2 = me.j, s2 = me.S;
               while (count--) {
                 t2 = s2[i2 = mask & i2 + 1];
@@ -38039,7 +38429,7 @@ var PeraWalletConnect = (() => {
           BMMath
           // math: package containing random, pow, and seedrandom
         );
-        var BezierFactory = (function() {
+        var BezierFactory = (function () {
           var ob = {};
           ob.getBezierEasing = getBezierEasing;
           var beziers = {};
@@ -38103,7 +38493,7 @@ var PeraWalletConnect = (() => {
             this.get = this.get.bind(this);
           }
           BezierEasing.prototype = {
-            get: function(x) {
+            get: function (x) {
               var mX1 = this._p[0], mY1 = this._p[1], mX2 = this._p[2], mY2 = this._p[3];
               if (!this._precomputed) this._precompute();
               if (mX1 === mY1 && mX2 === mY2) return x;
@@ -38112,14 +38502,14 @@ var PeraWalletConnect = (() => {
               return calcBezier(this._getTForX(x), mY1, mY2);
             },
             // Private part
-            _precompute: function() {
+            _precompute: function () {
               var mX1 = this._p[0], mY1 = this._p[1], mX2 = this._p[2], mY2 = this._p[3];
               this._precomputed = true;
               if (mX1 !== mY1 || mX2 !== mY2) {
                 this._calcSampleValues();
               }
             },
-            _calcSampleValues: function() {
+            _calcSampleValues: function () {
               var mX1 = this._p[0], mX2 = this._p[2];
               for (var i = 0; i < kSplineTableSize; ++i) {
                 this._mSampleValues[i] = calcBezier(i * kSampleStepSize, mX1, mX2);
@@ -38128,7 +38518,7 @@ var PeraWalletConnect = (() => {
             /**
                  * getTForX chose the fastest heuristic to determine the percentage value precisely from a given X projection.
                  */
-            _getTForX: function(aX) {
+            _getTForX: function (aX) {
               var mX1 = this._p[0], mX2 = this._p[2], mSampleValues = this._mSampleValues;
               var intervalStart = 0;
               var currentSample = 1;
@@ -38151,7 +38541,7 @@ var PeraWalletConnect = (() => {
           };
           return ob;
         })();
-        (function() {
+        (function () {
           var lastTime = 0;
           var vendors = ["ms", "moz", "webkit", "o"];
           for (var x = 0; x < vendors.length && !window2.requestAnimationFrame; ++x) {
@@ -38159,11 +38549,11 @@ var PeraWalletConnect = (() => {
             window2.cancelAnimationFrame = window2[vendors[x] + "CancelAnimationFrame"] || window2[vendors[x] + "CancelRequestAnimationFrame"];
           }
           if (!window2.requestAnimationFrame) {
-            window2.requestAnimationFrame = function(callback) {
+            window2.requestAnimationFrame = function (callback) {
               var currTime = (/* @__PURE__ */ new Date()).getTime();
               var timeToCall = Math.max(0, 16 - (currTime - lastTime));
               var id = setTimeout(
-                function() {
+                function () {
                   callback(currTime + timeToCall);
                 },
                 timeToCall
@@ -38173,7 +38563,7 @@ var PeraWalletConnect = (() => {
             };
           }
           if (!window2.cancelAnimationFrame) {
-            window2.cancelAnimationFrame = function(id) {
+            window2.cancelAnimationFrame = function (id) {
               clearTimeout(id);
             };
           }
@@ -38225,8 +38615,8 @@ var PeraWalletConnect = (() => {
             }
             return diffDist > -1e-4 && diffDist < 1e-4;
           }
-          var getBezierLength = /* @__PURE__ */ (function() {
-            return function(pt1, pt2, pt3, pt4) {
+          var getBezierLength = /* @__PURE__ */ (function () {
+            return function (pt1, pt2, pt3, pt4) {
               var curveSegments = defaultCurveSegments;
               var k;
               var i;
@@ -38290,9 +38680,9 @@ var PeraWalletConnect = (() => {
             this.partialLength = partial;
             this.point = point;
           }
-          var buildBezierData = /* @__PURE__ */ (function() {
+          var buildBezierData = /* @__PURE__ */ (function () {
             var storedData = {};
-            return function(pt1, pt2, pt3, pt4) {
+            return function (pt1, pt2, pt3, pt4) {
               var bezierName = (pt1[0] + "_" + pt1[1] + "_" + pt2[0] + "_" + pt2[1] + "_" + pt3[0] + "_" + pt3[1] + "_" + pt4[0] + "_" + pt4[1]).replace(/\./g, "p");
               if (!storedData[bezierName]) {
                 var curveSegments = defaultCurveSegments;
@@ -38415,22 +38805,22 @@ var PeraWalletConnect = (() => {
           };
         }
         var bez = bezFunction();
-        var dataManager = /* @__PURE__ */ (function() {
+        var dataManager = /* @__PURE__ */ (function () {
           var _counterId = 1;
           var processes = [];
           var workerFn;
           var workerInstance;
           var workerProxy = {
-            onmessage: function() {
+            onmessage: function () {
             },
-            postMessage: function(path) {
+            postMessage: function (path) {
               workerFn({
                 data: path
               });
             }
           };
           var _workerSelf = {
-            postMessage: function(data) {
+            postMessage: function (data) {
               workerProxy.onmessage({
                 data
               });
@@ -38566,7 +38956,7 @@ var PeraWalletConnect = (() => {
                     }
                     return null;
                   }
-                  var checkText = /* @__PURE__ */ (function() {
+                  var checkText = /* @__PURE__ */ (function () {
                     var minimumVersion = [4, 4, 14];
                     function updateTextLayer(textLayer) {
                       var documentData = textLayer.t.d;
@@ -38588,7 +38978,7 @@ var PeraWalletConnect = (() => {
                         }
                       }
                     }
-                    return function(animationData2) {
+                    return function (animationData2) {
                       if (checkVersion(minimumVersion, animationData2.v)) {
                         iterateLayers(animationData2.layers);
                         if (animationData2.assets) {
@@ -38603,9 +38993,9 @@ var PeraWalletConnect = (() => {
                       }
                     };
                   })();
-                  var checkChars = /* @__PURE__ */ (function() {
+                  var checkChars = /* @__PURE__ */ (function () {
                     var minimumVersion = [4, 7, 99];
-                    return function(animationData2) {
+                    return function (animationData2) {
                       if (animationData2.chars && !checkVersion(minimumVersion, animationData2.v)) {
                         var i;
                         var len = animationData2.chars.length;
@@ -38629,7 +39019,7 @@ var PeraWalletConnect = (() => {
                       }
                     };
                   })();
-                  var checkPathProperties = /* @__PURE__ */ (function() {
+                  var checkPathProperties = /* @__PURE__ */ (function () {
                     var minimumVersion = [5, 7, 15];
                     function updateTextLayer(textLayer) {
                       var pathData = textLayer.t.p;
@@ -38661,7 +39051,7 @@ var PeraWalletConnect = (() => {
                         }
                       }
                     }
-                    return function(animationData2) {
+                    return function (animationData2) {
                       if (checkVersion(minimumVersion, animationData2.v)) {
                         iterateLayers(animationData2.layers);
                         if (animationData2.assets) {
@@ -38676,7 +39066,7 @@ var PeraWalletConnect = (() => {
                       }
                     };
                   })();
-                  var checkColors = /* @__PURE__ */ (function() {
+                  var checkColors = /* @__PURE__ */ (function () {
                     var minimumVersion = [4, 1, 9];
                     function iterateShapes(shapes) {
                       var i;
@@ -38721,7 +39111,7 @@ var PeraWalletConnect = (() => {
                         }
                       }
                     }
-                    return function(animationData2) {
+                    return function (animationData2) {
                       if (checkVersion(minimumVersion, animationData2.v)) {
                         iterateLayers(animationData2.layers);
                         if (animationData2.assets) {
@@ -38736,7 +39126,7 @@ var PeraWalletConnect = (() => {
                       }
                     };
                   })();
-                  var checkShapes = /* @__PURE__ */ (function() {
+                  var checkShapes = /* @__PURE__ */ (function () {
                     var minimumVersion = [4, 4, 18];
                     function completeClosingShapes(arr) {
                       var i;
@@ -38797,7 +39187,7 @@ var PeraWalletConnect = (() => {
                         }
                       }
                     }
-                    return function(animationData2) {
+                    return function (animationData2) {
                       if (checkVersion(minimumVersion, animationData2.v)) {
                         iterateLayers(animationData2.layers);
                         if (animationData2.assets) {
@@ -38842,7 +39232,7 @@ var PeraWalletConnect = (() => {
                   _workerSelf.dataManager = dataFunctionManager();
                 }
                 if (!_workerSelf.assetLoader) {
-                  _workerSelf.assetLoader = /* @__PURE__ */ (function() {
+                  _workerSelf.assetLoader = /* @__PURE__ */ (function () {
                     function formatResponse(xhr) {
                       var contentTypeHeader = xhr.getResponseHeader("content-type");
                       if (contentTypeHeader && xhr.responseType === "json" && contentTypeHeader.indexOf("json") !== -1) {
@@ -38866,7 +39256,7 @@ var PeraWalletConnect = (() => {
                         xhr.responseType = "json";
                       } catch (err) {
                       }
-                      xhr.onreadystatechange = function() {
+                      xhr.onreadystatechange = function () {
                         if (xhr.readyState === 4) {
                           if (xhr.status === 200) {
                             response = formatResponse(xhr);
@@ -38899,7 +39289,7 @@ var PeraWalletConnect = (() => {
                   _workerSelf.assetLoader.load(
                     e2.data.path,
                     e2.data.fullPath,
-                    function(data) {
+                    function (data) {
                       _workerSelf.dataManager.completeData(data);
                       _workerSelf.postMessage({
                         id: e2.data.id,
@@ -38907,7 +39297,7 @@ var PeraWalletConnect = (() => {
                         status: "success"
                       });
                     },
-                    function() {
+                    function () {
                       _workerSelf.postMessage({
                         id: e2.data.id,
                         status: "error"
@@ -38926,14 +39316,14 @@ var PeraWalletConnect = (() => {
                   _workerSelf.assetLoader.load(
                     e2.data.path,
                     e2.data.fullPath,
-                    function(data) {
+                    function (data) {
                       _workerSelf.postMessage({
                         id: e2.data.id,
                         payload: data,
                         status: "success"
                       });
                     },
-                    function() {
+                    function () {
                       _workerSelf.postMessage({
                         id: e2.data.id,
                         status: "error"
@@ -38942,7 +39332,7 @@ var PeraWalletConnect = (() => {
                   );
                 }
               });
-              workerInstance.onmessage = function(event) {
+              workerInstance.onmessage = function (event) {
                 var data = event.data;
                 var id = data.id;
                 var process2 = processes[id];
@@ -39037,7 +39427,7 @@ var PeraWalletConnect = (() => {
             weight: fontData.fWeight || fWeight
           };
         }
-        var FontManager = (function() {
+        var FontManager = (function () {
           var maxWaitingTime = 5e3;
           var emptyChar = {
             w: 0,
@@ -39343,7 +39733,7 @@ var PeraWalletConnect = (() => {
           function setIsLoaded() {
             this.isLoaded = true;
           }
-          var Font = function() {
+          var Font = function () {
             this.fonts = [];
             this.chars = null;
             this.typekitLoaded = 0;
@@ -39368,7 +39758,7 @@ var PeraWalletConnect = (() => {
           Font.prototype = fontPrototype;
           return Font;
         })();
-        var PropertyFactory = /* @__PURE__ */ (function() {
+        var PropertyFactory = /* @__PURE__ */ (function () {
           var initFrame = initialDefaultFrame;
           var mathAbs = Math.abs;
           function interpolateValue(frameNum, caching) {
@@ -39817,7 +40207,7 @@ var PeraWalletConnect = (() => {
           };
           return ob;
         })();
-        var TransformPropertyFactory = (function() {
+        var TransformPropertyFactory = (function () {
           var defaultVector = [0, 0];
           function applyToMatrix(mat) {
             var _mdf = this._mdf;
@@ -40039,7 +40429,7 @@ var PeraWalletConnect = (() => {
           this.o = createSizedArray(this._maxLength);
           this.i = createSizedArray(this._maxLength);
         }
-        ShapePath.prototype.setPathData = function(closed, len) {
+        ShapePath.prototype.setPathData = function (closed, len) {
           this.c = closed;
           this.setLength(len);
           var i = 0;
@@ -40050,19 +40440,19 @@ var PeraWalletConnect = (() => {
             i += 1;
           }
         };
-        ShapePath.prototype.setLength = function(len) {
+        ShapePath.prototype.setLength = function (len) {
           while (this._maxLength < len) {
             this.doubleArrayLength();
           }
           this._length = len;
         };
-        ShapePath.prototype.doubleArrayLength = function() {
+        ShapePath.prototype.doubleArrayLength = function () {
           this.v = this.v.concat(createSizedArray(this._maxLength));
           this.i = this.i.concat(createSizedArray(this._maxLength));
           this.o = this.o.concat(createSizedArray(this._maxLength));
           this._maxLength *= 2;
         };
-        ShapePath.prototype.setXYAt = function(x, y, type, pos, replace) {
+        ShapePath.prototype.setXYAt = function (x, y, type, pos, replace) {
           var arr;
           this._length = Math.max(this._length, pos + 1);
           if (this._length >= this._maxLength) {
@@ -40088,12 +40478,12 @@ var PeraWalletConnect = (() => {
           arr[pos][0] = x;
           arr[pos][1] = y;
         };
-        ShapePath.prototype.setTripleAt = function(vX, vY, oX, oY, iX, iY, pos, replace) {
+        ShapePath.prototype.setTripleAt = function (vX, vY, oX, oY, iX, iY, pos, replace) {
           this.setXYAt(vX, vY, "v", pos, replace);
           this.setXYAt(oX, oY, "o", pos, replace);
           this.setXYAt(iX, iY, "i", pos, replace);
         };
-        ShapePath.prototype.reverse = function() {
+        ShapePath.prototype.reverse = function () {
           var newPath = new ShapePath();
           newPath.setPathData(this.c, this._length);
           var vertices = this.v;
@@ -40113,7 +40503,7 @@ var PeraWalletConnect = (() => {
           }
           return newPath;
         };
-        var ShapePropertyFactory = (function() {
+        var ShapePropertyFactory = (function () {
           var initFrame = -999999;
           function interpolateShape(frameNum, previousValue, caching) {
             var iterationIndex = caching.lastIndex;
@@ -40309,7 +40699,7 @@ var PeraWalletConnect = (() => {
           KeyframedShapeProperty.prototype.interpolateShape = interpolateShape;
           KeyframedShapeProperty.prototype.setVValue = setVValue;
           KeyframedShapeProperty.prototype.addEffect = addEffect;
-          var EllShapeProperty = (function() {
+          var EllShapeProperty = (function () {
             var cPoint = roundCorner;
             function EllShapePropertyFactory(elem, data) {
               this.v = shapePool.newElement();
@@ -40333,7 +40723,7 @@ var PeraWalletConnect = (() => {
             }
             EllShapePropertyFactory.prototype = {
               reset: resetShape,
-              getValue: function() {
+              getValue: function () {
                 if (this.elem.globalData.frameId === this.frameId) {
                   return;
                 }
@@ -40343,7 +40733,7 @@ var PeraWalletConnect = (() => {
                   this.convertEllToPath();
                 }
               },
-              convertEllToPath: function() {
+              convertEllToPath: function () {
                 var p0 = this.p.v[0];
                 var p1 = this.p.v[1];
                 var s0 = this.s.v[0] / 2;
@@ -40379,7 +40769,7 @@ var PeraWalletConnect = (() => {
             extendPrototype([DynamicPropertyContainer], EllShapePropertyFactory);
             return EllShapePropertyFactory;
           })();
-          var StarShapeProperty = (function() {
+          var StarShapeProperty = (function () {
             function StarShapePropertyFactory(elem, data) {
               this.v = shapePool.newElement();
               this.v.setPathData(true, 0);
@@ -40413,7 +40803,7 @@ var PeraWalletConnect = (() => {
             }
             StarShapePropertyFactory.prototype = {
               reset: resetShape,
-              getValue: function() {
+              getValue: function () {
                 if (this.elem.globalData.frameId === this.frameId) {
                   return;
                 }
@@ -40423,7 +40813,7 @@ var PeraWalletConnect = (() => {
                   this.convertToPath();
                 }
               },
-              convertStarToPath: function() {
+              convertStarToPath: function () {
                 var numPts = Math.floor(this.pt.v) * 2;
                 var angle = Math.PI * 2 / numPts;
                 var longFlag = true;
@@ -40456,7 +40846,7 @@ var PeraWalletConnect = (() => {
                   currentAng += angle * dir;
                 }
               },
-              convertPolygonToPath: function() {
+              convertPolygonToPath: function () {
                 var numPts = Math.floor(this.pt.v);
                 var angle = Math.PI * 2 / numPts;
                 var rad = this.or.v;
@@ -40484,7 +40874,7 @@ var PeraWalletConnect = (() => {
             extendPrototype([DynamicPropertyContainer], StarShapePropertyFactory);
             return StarShapePropertyFactory;
           })();
-          var RectShapeProperty = (function() {
+          var RectShapeProperty = (function () {
             function RectShapePropertyFactory(elem, data) {
               this.v = shapePool.newElement();
               this.v.c = true;
@@ -40507,7 +40897,7 @@ var PeraWalletConnect = (() => {
               }
             }
             RectShapePropertyFactory.prototype = {
-              convertRectToPath: function() {
+              convertRectToPath: function () {
                 var p0 = this.p.v[0];
                 var p1 = this.p.v[1];
                 var v0 = this.s.v[0] / 2;
@@ -40546,7 +40936,7 @@ var PeraWalletConnect = (() => {
                   }
                 }
               },
-              getValue: function() {
+              getValue: function () {
                 if (this.elem.globalData.frameId === this.frameId) {
                   return;
                 }
@@ -40595,7 +40985,7 @@ var PeraWalletConnect = (() => {
           ob.getKeyframedConstructorFunction = getKeyframedConstructorFunction;
           return ob;
         })();
-        var ShapeModifiers = (function() {
+        var ShapeModifiers = (function () {
           var ob = {};
           var modifiers = {};
           ob.registerModifier = registerModifier;
@@ -40612,11 +41002,11 @@ var PeraWalletConnect = (() => {
         })();
         function ShapeModifier() {
         }
-        ShapeModifier.prototype.initModifierProperties = function() {
+        ShapeModifier.prototype.initModifierProperties = function () {
         };
-        ShapeModifier.prototype.addShapeToModifier = function() {
+        ShapeModifier.prototype.addShapeToModifier = function () {
         };
-        ShapeModifier.prototype.addShape = function(data) {
+        ShapeModifier.prototype.addShape = function (data) {
           if (!this.closed) {
             data.sh.container.addDynamicProperty(data.sh);
             var shapeData = { shape: data.sh, data, localShapeCollection: shapeCollectionPool.newShapeCollection() };
@@ -40627,7 +41017,7 @@ var PeraWalletConnect = (() => {
             }
           }
         };
-        ShapeModifier.prototype.init = function(elem, data) {
+        ShapeModifier.prototype.init = function (elem, data) {
           this.shapes = [];
           this.elem = elem;
           this.initDynamicPropertyContainer(elem);
@@ -40641,7 +41031,7 @@ var PeraWalletConnect = (() => {
             this.getValue(true);
           }
         };
-        ShapeModifier.prototype.processKeys = function() {
+        ShapeModifier.prototype.processKeys = function () {
           if (this.elem.globalData.frameId === this.frameId) {
             return;
           }
@@ -40652,7 +41042,7 @@ var PeraWalletConnect = (() => {
         function TrimModifier() {
         }
         extendPrototype([ShapeModifier], TrimModifier);
-        TrimModifier.prototype.initModifierProperties = function(elem, data) {
+        TrimModifier.prototype.initModifierProperties = function (elem, data) {
           this.s = PropertyFactory.getProp(elem, data.s, 0, 0.01, this);
           this.e = PropertyFactory.getProp(elem, data.e, 0, 0.01, this);
           this.o = PropertyFactory.getProp(elem, data.o, 0, 0, this);
@@ -40662,10 +41052,10 @@ var PeraWalletConnect = (() => {
           this.m = data.m;
           this._isAnimated = !!this.s.effectsSequence.length || !!this.e.effectsSequence.length || !!this.o.effectsSequence.length;
         };
-        TrimModifier.prototype.addShapeToModifier = function(shapeData) {
+        TrimModifier.prototype.addShapeToModifier = function (shapeData) {
           shapeData.pathsData = [];
         };
-        TrimModifier.prototype.calculateShapeEdges = function(s, e2, shapeLength, addedLength, totalModifierLength) {
+        TrimModifier.prototype.calculateShapeEdges = function (s, e2, shapeLength, addedLength, totalModifierLength) {
           var segments = [];
           if (e2 <= 1) {
             segments.push({
@@ -40714,7 +41104,7 @@ var PeraWalletConnect = (() => {
           }
           return shapeSegments;
         };
-        TrimModifier.prototype.releasePathsData = function(pathsData) {
+        TrimModifier.prototype.releasePathsData = function (pathsData) {
           var i;
           var len = pathsData.length;
           for (i = 0; i < len; i += 1) {
@@ -40723,7 +41113,7 @@ var PeraWalletConnect = (() => {
           pathsData.length = 0;
           return pathsData;
         };
-        TrimModifier.prototype.processShapes = function(_isFirstFrame) {
+        TrimModifier.prototype.processShapes = function (_isFirstFrame) {
           var s;
           var e2;
           if (this._mdf || _isFirstFrame) {
@@ -40870,14 +41260,14 @@ var PeraWalletConnect = (() => {
             }
           }
         };
-        TrimModifier.prototype.addPaths = function(newPaths, localShapeCollection) {
+        TrimModifier.prototype.addPaths = function (newPaths, localShapeCollection) {
           var i;
           var len = newPaths.length;
           for (i = 0; i < len; i += 1) {
             localShapeCollection.addShape(newPaths[i]);
           }
         };
-        TrimModifier.prototype.addSegment = function(pt1, pt2, pt3, pt4, shapePath, pos, newShape) {
+        TrimModifier.prototype.addSegment = function (pt1, pt2, pt3, pt4, shapePath, pos, newShape) {
           shapePath.setXYAt(pt2[0], pt2[1], "o", pos);
           shapePath.setXYAt(pt3[0], pt3[1], "i", pos + 1);
           if (newShape) {
@@ -40885,7 +41275,7 @@ var PeraWalletConnect = (() => {
           }
           shapePath.setXYAt(pt4[0], pt4[1], "v", pos + 1);
         };
-        TrimModifier.prototype.addSegmentFromArray = function(points, shapePath, pos, newShape) {
+        TrimModifier.prototype.addSegmentFromArray = function (points, shapePath, pos, newShape) {
           shapePath.setXYAt(points[1], points[5], "o", pos);
           shapePath.setXYAt(points[2], points[6], "i", pos + 1);
           if (newShape) {
@@ -40893,7 +41283,7 @@ var PeraWalletConnect = (() => {
           }
           shapePath.setXYAt(points[3], points[7], "v", pos + 1);
         };
-        TrimModifier.prototype.addShapes = function(shapeData, shapeSegment, shapePath) {
+        TrimModifier.prototype.addShapes = function (shapeData, shapeSegment, shapePath) {
           var pathsData = shapeData.pathsData;
           var shapePaths = shapeData.shape.paths.shapes;
           var i;
@@ -40982,12 +41372,12 @@ var PeraWalletConnect = (() => {
         function RoundCornersModifier() {
         }
         extendPrototype([ShapeModifier], RoundCornersModifier);
-        RoundCornersModifier.prototype.initModifierProperties = function(elem, data) {
+        RoundCornersModifier.prototype.initModifierProperties = function (elem, data) {
           this.getValue = this.processKeys;
           this.rd = PropertyFactory.getProp(elem, data.r, 0, null, this);
           this._isAnimated = !!this.rd.effectsSequence.length;
         };
-        RoundCornersModifier.prototype.processPath = function(path, round) {
+        RoundCornersModifier.prototype.processPath = function (path, round) {
           var clonedPath = shapePool.newElement();
           clonedPath.c = path.c;
           var i;
@@ -41052,7 +41442,7 @@ var PeraWalletConnect = (() => {
           }
           return clonedPath;
         };
-        RoundCornersModifier.prototype.processShapes = function(_isFirstFrame) {
+        RoundCornersModifier.prototype.processShapes = function (_isFirstFrame) {
           var shapePaths;
           var i;
           var len = this.shapes.length;
@@ -41085,12 +41475,12 @@ var PeraWalletConnect = (() => {
         function PuckerAndBloatModifier() {
         }
         extendPrototype([ShapeModifier], PuckerAndBloatModifier);
-        PuckerAndBloatModifier.prototype.initModifierProperties = function(elem, data) {
+        PuckerAndBloatModifier.prototype.initModifierProperties = function (elem, data) {
           this.getValue = this.processKeys;
           this.amount = PropertyFactory.getProp(elem, data.a, 0, null, this);
           this._isAnimated = !!this.amount.effectsSequence.length;
         };
-        PuckerAndBloatModifier.prototype.processPath = function(path, amount) {
+        PuckerAndBloatModifier.prototype.processPath = function (path, amount) {
           var percent = amount / 100;
           var centerPoint = [0, 0];
           var pathLength = path._length;
@@ -41120,7 +41510,7 @@ var PeraWalletConnect = (() => {
           }
           return clonedPath;
         };
-        PuckerAndBloatModifier.prototype.processShapes = function(_isFirstFrame) {
+        PuckerAndBloatModifier.prototype.processShapes = function (_isFirstFrame) {
           var shapePaths;
           var i;
           var len = this.shapes.length;
@@ -41153,7 +41543,7 @@ var PeraWalletConnect = (() => {
         function RepeaterModifier() {
         }
         extendPrototype([ShapeModifier], RepeaterModifier);
-        RepeaterModifier.prototype.initModifierProperties = function(elem, data) {
+        RepeaterModifier.prototype.initModifierProperties = function (elem, data) {
           this.getValue = this.processKeys;
           this.c = PropertyFactory.getProp(elem, data.c, 0, null, this);
           this.o = PropertyFactory.getProp(elem, data.o, 0, null, this);
@@ -41171,7 +41561,7 @@ var PeraWalletConnect = (() => {
           this.tMatrix = new Matrix();
           this.matrix = new Matrix();
         };
-        RepeaterModifier.prototype.applyTransforms = function(pMatrix, rMatrix, sMatrix, transform, perc, inv) {
+        RepeaterModifier.prototype.applyTransforms = function (pMatrix, rMatrix, sMatrix, transform, perc, inv) {
           var dir = inv ? -1 : 1;
           var scaleX = transform.s.v[0] + (1 - transform.s.v[0]) * (1 - perc);
           var scaleY = transform.s.v[1] + (1 - transform.s.v[1]) * (1 - perc);
@@ -41183,7 +41573,7 @@ var PeraWalletConnect = (() => {
           sMatrix.scale(inv ? 1 / scaleX : scaleX, inv ? 1 / scaleY : scaleY);
           sMatrix.translate(transform.a.v[0], transform.a.v[1], transform.a.v[2]);
         };
-        RepeaterModifier.prototype.init = function(elem, arr, pos, elemsData) {
+        RepeaterModifier.prototype.init = function (elem, arr, pos, elemsData) {
           this.elem = elem;
           this.arr = arr;
           this.pos = pos;
@@ -41204,7 +41594,7 @@ var PeraWalletConnect = (() => {
             this.getValue(true);
           }
         };
-        RepeaterModifier.prototype.resetElements = function(elements) {
+        RepeaterModifier.prototype.resetElements = function (elements) {
           var i;
           var len = elements.length;
           for (i = 0; i < len; i += 1) {
@@ -41214,12 +41604,12 @@ var PeraWalletConnect = (() => {
             }
           }
         };
-        RepeaterModifier.prototype.cloneElements = function(elements) {
+        RepeaterModifier.prototype.cloneElements = function (elements) {
           var newElements = JSON.parse(JSON.stringify(elements));
           this.resetElements(newElements);
           return newElements;
         };
-        RepeaterModifier.prototype.changeGroupRender = function(elements, renderFlag) {
+        RepeaterModifier.prototype.changeGroupRender = function (elements, renderFlag) {
           var i;
           var len = elements.length;
           for (i = 0; i < len; i += 1) {
@@ -41229,7 +41619,7 @@ var PeraWalletConnect = (() => {
             }
           }
         };
-        RepeaterModifier.prototype.processShapes = function(_isFirstFrame) {
+        RepeaterModifier.prototype.processShapes = function (_isFirstFrame) {
           var items;
           var itemsTransform;
           var i;
@@ -41360,7 +41750,7 @@ var PeraWalletConnect = (() => {
           }
           return hasReloaded;
         };
-        RepeaterModifier.prototype.addShape = function() {
+        RepeaterModifier.prototype.addShape = function () {
         };
         ShapeModifiers.registerModifier("rp", RepeaterModifier);
         function ShapeCollection() {
@@ -41368,7 +41758,7 @@ var PeraWalletConnect = (() => {
           this._maxLength = 4;
           this.shapes = createSizedArray(this._maxLength);
         }
-        ShapeCollection.prototype.addShape = function(shapeData) {
+        ShapeCollection.prototype.addShape = function (shapeData) {
           if (this._length === this._maxLength) {
             this.shapes = this.shapes.concat(createSizedArray(this._maxLength));
             this._maxLength *= 2;
@@ -41376,7 +41766,7 @@ var PeraWalletConnect = (() => {
           this.shapes[this._length] = shapeData;
           this._length += 1;
         };
-        ShapeCollection.prototype.releaseShapes = function() {
+        ShapeCollection.prototype.releaseShapes = function () {
           var i;
           for (i = 0; i < this._length; i += 1) {
             shapePool.release(this.shapes[i]);
@@ -41406,7 +41796,7 @@ var PeraWalletConnect = (() => {
           }
           this._isAnimated = this.k;
         }
-        DashProperty.prototype.getValue = function(forceRender) {
+        DashProperty.prototype.getValue = function (forceRender) {
           if (this.elem.globalData.frameId === this.frameId && !forceRender) {
             return;
           }
@@ -41447,7 +41837,7 @@ var PeraWalletConnect = (() => {
           this.k = this.prop.k;
           this.getValue(true);
         }
-        GradientProperty.prototype.comparePoints = function(values, points) {
+        GradientProperty.prototype.comparePoints = function (values, points) {
           var i = 0;
           var len = this.o.length / 2;
           var diff;
@@ -41460,7 +41850,7 @@ var PeraWalletConnect = (() => {
           }
           return true;
         };
-        GradientProperty.prototype.checkCollapsable = function() {
+        GradientProperty.prototype.checkCollapsable = function () {
           if (this.o.length / 2 !== this.c.length / 4) {
             return false;
           }
@@ -41478,7 +41868,7 @@ var PeraWalletConnect = (() => {
           }
           return true;
         };
-        GradientProperty.prototype.getValue = function(forceRender) {
+        GradientProperty.prototype.getValue = function (forceRender) {
           this.prop.getValue();
           this._mdf = false;
           this._cmdf = false;
@@ -41511,7 +41901,7 @@ var PeraWalletConnect = (() => {
           }
         };
         extendPrototype([DynamicPropertyContainer], GradientProperty);
-        var buildShapeString = function(pathNodes, length, closed, mat) {
+        var buildShapeString = function (pathNodes, length, closed, mat) {
           if (length === 0) {
             return "";
           }
@@ -41529,7 +41919,7 @@ var PeraWalletConnect = (() => {
           }
           return shapeString;
         };
-        var audioControllerFactory = (function() {
+        var audioControllerFactory = (function () {
           function AudioController(audioFactory) {
             this.audios = [];
             this.audioFactory = audioFactory;
@@ -41537,31 +41927,31 @@ var PeraWalletConnect = (() => {
             this._isMuted = false;
           }
           AudioController.prototype = {
-            addAudio: function(audio) {
+            addAudio: function (audio) {
               this.audios.push(audio);
             },
-            pause: function() {
+            pause: function () {
               var i;
               var len = this.audios.length;
               for (i = 0; i < len; i += 1) {
                 this.audios[i].pause();
               }
             },
-            resume: function() {
+            resume: function () {
               var i;
               var len = this.audios.length;
               for (i = 0; i < len; i += 1) {
                 this.audios[i].resume();
               }
             },
-            setRate: function(rateValue) {
+            setRate: function (rateValue) {
               var i;
               var len = this.audios.length;
               for (i = 0; i < len; i += 1) {
                 this.audios[i].setRate(rateValue);
               }
             },
-            createAudio: function(assetPath) {
+            createAudio: function (assetPath) {
               if (this.audioFactory) {
                 return this.audioFactory(assetPath);
               }
@@ -41572,39 +41962,39 @@ var PeraWalletConnect = (() => {
               }
               return {
                 isPlaying: false,
-                play: function() {
+                play: function () {
                   this.isPlaying = true;
                 },
-                seek: function() {
+                seek: function () {
                   this.isPlaying = false;
                 },
-                playing: function() {
+                playing: function () {
                 },
-                rate: function() {
+                rate: function () {
                 },
-                setVolume: function() {
+                setVolume: function () {
                 }
               };
             },
-            setAudioFactory: function(audioFactory) {
+            setAudioFactory: function (audioFactory) {
               this.audioFactory = audioFactory;
             },
-            setVolume: function(value) {
+            setVolume: function (value) {
               this._volume = value;
               this._updateVolume();
             },
-            mute: function() {
+            mute: function () {
               this._isMuted = true;
               this._updateVolume();
             },
-            unmute: function() {
+            unmute: function () {
               this._isMuted = false;
               this._updateVolume();
             },
-            getVolume: function() {
+            getVolume: function () {
               return this._volume;
             },
-            _updateVolume: function() {
+            _updateVolume: function () {
               var i;
               var len = this.audios.length;
               for (i = 0; i < len; i += 1) {
@@ -41612,12 +42002,12 @@ var PeraWalletConnect = (() => {
               }
             }
           };
-          return function() {
+          return function () {
             return new AudioController();
           };
         })();
-        var ImagePreloader = (function() {
-          var proxyImage = (function() {
+        var ImagePreloader = (function () {
+          var proxyImage = (function () {
             var canvas = createTag("canvas");
             canvas.width = 1;
             canvas.height = 1;
@@ -41661,7 +42051,7 @@ var PeraWalletConnect = (() => {
           }
           function testImageLoaded(img) {
             var _count = 0;
-            var intervalId = setInterval(function() {
+            var intervalId = setInterval(function () {
               var box = img.getBBox();
               if (box.width || _count > 500) {
                 this._imageLoaded();
@@ -41678,7 +42068,7 @@ var PeraWalletConnect = (() => {
             } else {
               img.addEventListener("load", this._imageLoaded, false);
             }
-            img.addEventListener("error", function() {
+            img.addEventListener("error", function () {
               ob.img = proxyImage;
               this._imageLoaded();
             }.bind(this), false);
@@ -41699,7 +42089,7 @@ var PeraWalletConnect = (() => {
             var img = createTag("img");
             img.crossOrigin = "anonymous";
             img.addEventListener("load", this._imageLoaded, false);
-            img.addEventListener("error", function() {
+            img.addEventListener("error", function () {
               ob.img = proxyImage;
               this._imageLoaded();
             }.bind(this), false);
@@ -41715,10 +42105,10 @@ var PeraWalletConnect = (() => {
               assetData: data
             };
             var path = getAssetsPath(data, this.assetsPath, this.path);
-            dataManager.loadData(path, function(footageData) {
+            dataManager.loadData(path, function (footageData) {
               ob.img = footageData;
               this._footageLoaded();
-            }.bind(this), function() {
+            }.bind(this), function () {
               ob.img = {};
               this._footageLoaded();
             }.bind(this));
@@ -41805,7 +42195,7 @@ var PeraWalletConnect = (() => {
           };
           return ImagePreloaderFactory;
         })();
-        var featureSupport = (function() {
+        var featureSupport = (function () {
           var ob = {
             maskType: true
           };
@@ -41814,7 +42204,7 @@ var PeraWalletConnect = (() => {
           }
           return ob;
         })();
-        var filtersFactory = (function() {
+        var filtersFactory = (function () {
           var ob = {};
           ob.createFilter = createFilter;
           ob.createAlphaToLuminanceFilter = createAlphaToLuminanceFilter;
@@ -41855,7 +42245,7 @@ var PeraWalletConnect = (() => {
           this.lettersChangedFlag = false;
           this.initDynamicPropertyContainer(elem);
         }
-        TextAnimatorProperty.prototype.searchProperties = function() {
+        TextAnimatorProperty.prototype.searchProperties = function () {
           var i;
           var len = this._textData.a.length;
           var animatorProps;
@@ -41879,7 +42269,7 @@ var PeraWalletConnect = (() => {
           }
           this._moreOptions.alignment = getProp(this._elem, this._textData.m.a, 1, 0, this);
         };
-        TextAnimatorProperty.prototype.getMeasures = function(documentData, lettersChangedFlag) {
+        TextAnimatorProperty.prototype.getMeasures = function (documentData, lettersChangedFlag) {
           this.lettersChangedFlag = lettersChangedFlag;
           if (!this._mdf && !this._isFirstFrame && !lettersChangedFlag && (!this._hasMaskedPath || !this._pathData.m._mdf)) {
             return;
@@ -42396,7 +42786,7 @@ var PeraWalletConnect = (() => {
             }
           }
         };
-        TextAnimatorProperty.prototype.getValue = function() {
+        TextAnimatorProperty.prototype.getValue = function () {
           if (this._elem.globalData.frameId === this._frameId) {
             return;
           }
@@ -42447,7 +42837,7 @@ var PeraWalletConnect = (() => {
             p: true
           };
         }
-        LetterProps.prototype.update = function(o2, sw, sc, fc, m, p) {
+        LetterProps.prototype.update = function (o2, sw, sc, fc, m, p) {
           this._mdf.o = false;
           this._mdf.sw = false;
           this._mdf.sc = false;
@@ -42537,7 +42927,7 @@ var PeraWalletConnect = (() => {
           }
         }
         TextProperty.prototype.defaultBoxWidth = [0, 0];
-        TextProperty.prototype.copyData = function(obj, data) {
+        TextProperty.prototype.copyData = function (obj, data) {
           for (var s in data) {
             if (Object.prototype.hasOwnProperty.call(data, s)) {
               obj[s] = data[s];
@@ -42545,7 +42935,7 @@ var PeraWalletConnect = (() => {
           }
           return obj;
         };
-        TextProperty.prototype.setCurrentData = function(data) {
+        TextProperty.prototype.setCurrentData = function (data) {
           if (!data.__complete) {
             this.completeTextData(data);
           }
@@ -42553,21 +42943,21 @@ var PeraWalletConnect = (() => {
           this.currentData.boxWidth = this.currentData.boxWidth || this.defaultBoxWidth;
           this._mdf = true;
         };
-        TextProperty.prototype.searchProperty = function() {
+        TextProperty.prototype.searchProperty = function () {
           return this.searchKeyframes();
         };
-        TextProperty.prototype.searchKeyframes = function() {
+        TextProperty.prototype.searchKeyframes = function () {
           this.kf = this.data.d.k.length > 1;
           if (this.kf) {
             this.addEffect(this.getKeyframeValue.bind(this));
           }
           return this.kf;
         };
-        TextProperty.prototype.addEffect = function(effectFunction) {
+        TextProperty.prototype.addEffect = function (effectFunction) {
           this.effectsSequence.push(effectFunction);
           this.elem.addDynamicProperty(this);
         };
-        TextProperty.prototype.getValue = function(_finalValue) {
+        TextProperty.prototype.getValue = function (_finalValue) {
           if ((this.elem.globalData.frameId === this.frameId || !this.effectsSequence.length) && !_finalValue) {
             return;
           }
@@ -42598,7 +42988,7 @@ var PeraWalletConnect = (() => {
           this.lock = false;
           this.frameId = this.elem.globalData.frameId;
         };
-        TextProperty.prototype.getKeyframeValue = function() {
+        TextProperty.prototype.getKeyframeValue = function () {
           var textKeys = this.data.d.k;
           var frameNum = this.elem.comp.renderedFrame;
           var i = 0;
@@ -42614,7 +43004,7 @@ var PeraWalletConnect = (() => {
           }
           return this.data.d.k[this.keysIndex].s;
         };
-        TextProperty.prototype.buildFinalText = function(text) {
+        TextProperty.prototype.buildFinalText = function (text) {
           var charactersArray = [];
           var i = 0;
           var len = text.length;
@@ -42657,7 +43047,7 @@ var PeraWalletConnect = (() => {
           }
           return charactersArray;
         };
-        TextProperty.prototype.completeTextData = function(documentData) {
+        TextProperty.prototype.completeTextData = function (documentData) {
           documentData.__complete = true;
           var fontManager = this.elem.globalData.fontManager;
           var data = this.data;
@@ -42888,7 +43278,7 @@ var PeraWalletConnect = (() => {
           documentData.ls = documentData.ls || 0;
           documentData.ascent = fontData.ascent * documentData.finalSize / 100;
         };
-        TextProperty.prototype.updateDocumentData = function(newData, index2) {
+        TextProperty.prototype.updateDocumentData = function (newData, index2) {
           index2 = index2 === void 0 ? this.keysIndex : index2;
           var dData = this.copyData({}, this.data.d.k[index2].s);
           dData = this.copyData(dData, newData);
@@ -42896,24 +43286,24 @@ var PeraWalletConnect = (() => {
           this.recalculate(index2);
           this.elem.addDynamicProperty(this);
         };
-        TextProperty.prototype.recalculate = function(index2) {
+        TextProperty.prototype.recalculate = function (index2) {
           var dData = this.data.d.k[index2].s;
           dData.__complete = false;
           this.keysIndex = 0;
           this._isFirstFrame = true;
           this.getValue(dData);
         };
-        TextProperty.prototype.canResizeFont = function(_canResize) {
+        TextProperty.prototype.canResizeFont = function (_canResize) {
           this.canResize = _canResize;
           this.recalculate(this.keysIndex);
           this.elem.addDynamicProperty(this);
         };
-        TextProperty.prototype.setMinimumFontSize = function(_fontValue) {
+        TextProperty.prototype.setMinimumFontSize = function (_fontValue) {
           this.minimumFontSize = Math.floor(_fontValue) || 1;
           this.recalculate(this.keysIndex);
           this.elem.addDynamicProperty(this);
         };
-        var TextSelectorProp = (function() {
+        var TextSelectorProp = (function () {
           var max = Math.max;
           var min = Math.min;
           var floor = Math.floor;
@@ -42942,7 +43332,7 @@ var PeraWalletConnect = (() => {
             }
           }
           TextSelectorPropFactory.prototype = {
-            getMult: function(ind) {
+            getMult: function (ind) {
               if (this._currentTextLength !== this.elem.textProperty.currentData.l.length) {
                 this.getValue();
               }
@@ -43037,7 +43427,7 @@ var PeraWalletConnect = (() => {
               }
               return mult * this.a.v;
             },
-            getValue: function(newCharsFlag) {
+            getValue: function (newCharsFlag) {
               this.iterateDynamicProperties();
               this._mdf = newCharsFlag || this._mdf;
               this._currentTextLength = this.elem.textProperty.currentData.l.length || 0;
@@ -43065,8 +43455,8 @@ var PeraWalletConnect = (() => {
             getTextSelectorProp
           };
         })();
-        var poolFactory = /* @__PURE__ */ (function() {
-          return function(initialLength, _create, _release) {
+        var poolFactory = /* @__PURE__ */ (function () {
+          return function (initialLength, _create, _release) {
             var _length = 0;
             var _maxLength = initialLength;
             var pool = createSizedArray(_maxLength);
@@ -43098,7 +43488,7 @@ var PeraWalletConnect = (() => {
             return ob;
           };
         })();
-        var pooling = /* @__PURE__ */ (function() {
+        var pooling = /* @__PURE__ */ (function () {
           function double(arr) {
             return arr.concat(createSizedArray(arr.length));
           }
@@ -43106,13 +43496,13 @@ var PeraWalletConnect = (() => {
             double
           };
         })();
-        var pointPool = (function() {
+        var pointPool = (function () {
           function create() {
             return createTypedArray("float32", 2);
           }
           return poolFactory(8, create);
         })();
-        var shapePool = (function() {
+        var shapePool = (function () {
           function create() {
             return new ShapePath();
           }
@@ -43145,7 +43535,7 @@ var PeraWalletConnect = (() => {
           factory.clone = clone;
           return factory;
         })();
-        var shapeCollectionPool = (function() {
+        var shapeCollectionPool = (function () {
           var ob = {
             newShapeCollection,
             release
@@ -43179,7 +43569,7 @@ var PeraWalletConnect = (() => {
           }
           return ob;
         })();
-        var segmentsLengthPool = (function() {
+        var segmentsLengthPool = (function () {
           function create() {
             return {
               lengths: [],
@@ -43196,7 +43586,7 @@ var PeraWalletConnect = (() => {
           }
           return poolFactory(8, create, release);
         })();
-        var bezierLengthPool = (function() {
+        var bezierLengthPool = (function () {
           function create() {
             return {
               addedLength: 0,
@@ -43206,7 +43596,7 @@ var PeraWalletConnect = (() => {
           }
           return poolFactory(8, create);
         })();
-        var markerParser = /* @__PURE__ */ (function() {
+        var markerParser = /* @__PURE__ */ (function () {
           function parsePayloadLines(payload) {
             var lines = payload.split("\r\n");
             var keys = {};
@@ -43224,7 +43614,7 @@ var PeraWalletConnect = (() => {
             }
             return keys;
           }
-          return function(_markers) {
+          return function (_markers) {
             var markers = [];
             for (var i = 0; i < _markers.length; i += 1) {
               var _marker = _markers[i];
@@ -43250,7 +43640,7 @@ var PeraWalletConnect = (() => {
         })();
         function BaseRenderer() {
         }
-        BaseRenderer.prototype.checkLayers = function(num) {
+        BaseRenderer.prototype.checkLayers = function (num) {
           var i;
           var len = this.layers.length;
           var data;
@@ -43266,7 +43656,7 @@ var PeraWalletConnect = (() => {
           }
           this.checkPendingElements();
         };
-        BaseRenderer.prototype.createItem = function(layer) {
+        BaseRenderer.prototype.createItem = function (layer) {
           switch (layer.ty) {
             case 2:
               return this.createImage(layer);
@@ -43290,16 +43680,16 @@ var PeraWalletConnect = (() => {
               return this.createNull(layer);
           }
         };
-        BaseRenderer.prototype.createCamera = function() {
+        BaseRenderer.prototype.createCamera = function () {
           throw new Error("You're using a 3d camera. Try the html renderer.");
         };
-        BaseRenderer.prototype.createAudio = function(data) {
+        BaseRenderer.prototype.createAudio = function (data) {
           return new AudioElement(data, this.globalData, this);
         };
-        BaseRenderer.prototype.createFootage = function(data) {
+        BaseRenderer.prototype.createFootage = function (data) {
           return new FootageElement(data, this.globalData, this);
         };
-        BaseRenderer.prototype.buildAllItems = function() {
+        BaseRenderer.prototype.buildAllItems = function () {
           var i;
           var len = this.layers.length;
           for (i = 0; i < len; i += 1) {
@@ -43307,7 +43697,7 @@ var PeraWalletConnect = (() => {
           }
           this.checkPendingElements();
         };
-        BaseRenderer.prototype.includeLayers = function(newLayers) {
+        BaseRenderer.prototype.includeLayers = function (newLayers) {
           this.completeLayers = false;
           var i;
           var len = newLayers.length;
@@ -43324,15 +43714,15 @@ var PeraWalletConnect = (() => {
             }
           }
         };
-        BaseRenderer.prototype.setProjectInterface = function(pInterface) {
+        BaseRenderer.prototype.setProjectInterface = function (pInterface) {
           this.globalData.projectInterface = pInterface;
         };
-        BaseRenderer.prototype.initItems = function() {
+        BaseRenderer.prototype.initItems = function () {
           if (!this.globalData.progressiveLoad) {
             this.buildAllItems();
           }
         };
-        BaseRenderer.prototype.buildElementParenting = function(element, parentName, hierarchy) {
+        BaseRenderer.prototype.buildElementParenting = function (element, parentName, hierarchy) {
           var elements = this.elements;
           var layers = this.layers;
           var i = 0;
@@ -43355,10 +43745,10 @@ var PeraWalletConnect = (() => {
             i += 1;
           }
         };
-        BaseRenderer.prototype.addPendingElement = function(element) {
+        BaseRenderer.prototype.addPendingElement = function (element) {
           this.pendingElements.push(element);
         };
-        BaseRenderer.prototype.searchExtraCompositions = function(assets) {
+        BaseRenderer.prototype.searchExtraCompositions = function (assets) {
           var i;
           var len = assets.length;
           for (i = 0; i < len; i += 1) {
@@ -43369,7 +43759,7 @@ var PeraWalletConnect = (() => {
             }
           }
         };
-        BaseRenderer.prototype.setupGlobalData = function(animData, fontsContainer) {
+        BaseRenderer.prototype.setupGlobalData = function (animData, fontsContainer) {
           this.globalData.fontManager = new FontManager();
           this.globalData.fontManager.addChars(animData.chars);
           this.globalData.fontManager.addFonts(animData.fonts, fontsContainer);
@@ -43445,25 +43835,25 @@ var PeraWalletConnect = (() => {
           this.rendererType = "svg";
         }
         extendPrototype([BaseRenderer], SVGRenderer);
-        SVGRenderer.prototype.createNull = function(data) {
+        SVGRenderer.prototype.createNull = function (data) {
           return new NullElement(data, this.globalData, this);
         };
-        SVGRenderer.prototype.createShape = function(data) {
+        SVGRenderer.prototype.createShape = function (data) {
           return new SVGShapeElement(data, this.globalData, this);
         };
-        SVGRenderer.prototype.createText = function(data) {
+        SVGRenderer.prototype.createText = function (data) {
           return new SVGTextLottieElement(data, this.globalData, this);
         };
-        SVGRenderer.prototype.createImage = function(data) {
+        SVGRenderer.prototype.createImage = function (data) {
           return new IImageElement(data, this.globalData, this);
         };
-        SVGRenderer.prototype.createComp = function(data) {
+        SVGRenderer.prototype.createComp = function (data) {
           return new SVGCompElement(data, this.globalData, this);
         };
-        SVGRenderer.prototype.createSolid = function(data) {
+        SVGRenderer.prototype.createSolid = function (data) {
           return new ISolidElement(data, this.globalData, this);
         };
-        SVGRenderer.prototype.configAnimation = function(animData) {
+        SVGRenderer.prototype.configAnimation = function (animData) {
           this.svgElement.setAttribute("xmlns", "http://www.w3.org/2000/svg");
           if (this.renderConfig.viewBoxSize) {
             this.svgElement.setAttribute("viewBox", this.renderConfig.viewBoxSize);
@@ -43507,7 +43897,7 @@ var PeraWalletConnect = (() => {
           this.layers = animData.layers;
           this.elements = createSizedArray(animData.layers.length);
         };
-        SVGRenderer.prototype.destroy = function() {
+        SVGRenderer.prototype.destroy = function () {
           if (this.animationItem.wrapper) {
             this.animationItem.wrapper.innerText = "";
           }
@@ -43524,9 +43914,9 @@ var PeraWalletConnect = (() => {
           this.destroyed = true;
           this.animationItem = null;
         };
-        SVGRenderer.prototype.updateContainerSize = function() {
+        SVGRenderer.prototype.updateContainerSize = function () {
         };
-        SVGRenderer.prototype.buildItem = function(pos) {
+        SVGRenderer.prototype.buildItem = function (pos) {
           var elements = this.elements;
           if (elements[pos] || this.layers[pos].ty === 99) {
             return;
@@ -43550,7 +43940,7 @@ var PeraWalletConnect = (() => {
             }
           }
         };
-        SVGRenderer.prototype.checkPendingElements = function() {
+        SVGRenderer.prototype.checkPendingElements = function () {
           while (this.pendingElements.length) {
             var element = this.pendingElements.pop();
             element.checkParenting();
@@ -43567,7 +43957,7 @@ var PeraWalletConnect = (() => {
             }
           }
         };
-        SVGRenderer.prototype.renderFrame = function(num) {
+        SVGRenderer.prototype.renderFrame = function (num) {
           if (this.renderedFrame === num || this.destroyed) {
             return;
           }
@@ -43598,7 +43988,7 @@ var PeraWalletConnect = (() => {
             }
           }
         };
-        SVGRenderer.prototype.appendElementInPos = function(element, pos) {
+        SVGRenderer.prototype.appendElementInPos = function (element, pos) {
           var newElement = element.getBaseElement();
           if (!newElement) {
             return;
@@ -43617,10 +44007,10 @@ var PeraWalletConnect = (() => {
             this.layerElement.appendChild(newElement);
           }
         };
-        SVGRenderer.prototype.hide = function() {
+        SVGRenderer.prototype.hide = function () {
           this.layerElement.style.display = "none";
         };
-        SVGRenderer.prototype.show = function() {
+        SVGRenderer.prototype.show = function () {
           this.layerElement.style.display = "block";
         };
         function MaskElement(data, element, globalData) {
@@ -43749,10 +44139,10 @@ var PeraWalletConnect = (() => {
             this.element.addRenderableComponent(this);
           }
         }
-        MaskElement.prototype.getMaskProperty = function(pos) {
+        MaskElement.prototype.getMaskProperty = function (pos) {
           return this.viewData[pos].prop;
         };
-        MaskElement.prototype.renderFrame = function(isFirstFrame) {
+        MaskElement.prototype.renderFrame = function (isFirstFrame) {
           var finalMat = this.element.finalTransform.mat;
           var i;
           var len = this.masksProperties.length;
@@ -43786,10 +44176,10 @@ var PeraWalletConnect = (() => {
             }
           }
         };
-        MaskElement.prototype.getMaskelement = function() {
+        MaskElement.prototype.getMaskelement = function () {
           return this.maskElement;
         };
-        MaskElement.prototype.createLayerSolidPath = function() {
+        MaskElement.prototype.createLayerSolidPath = function () {
           var path = "M0,0 ";
           path += " h" + this.globalData.compSize.w;
           path += " v" + this.globalData.compSize.h;
@@ -43797,7 +44187,7 @@ var PeraWalletConnect = (() => {
           path += " v-" + this.globalData.compSize.h + " ";
           return path;
         };
-        MaskElement.prototype.drawPath = function(pathData, pathNodes, viewData) {
+        MaskElement.prototype.drawPath = function (pathData, pathNodes, viewData) {
           var pathString = " M" + pathNodes.v[0][0] + "," + pathNodes.v[0][1];
           var i;
           var len;
@@ -43819,7 +44209,7 @@ var PeraWalletConnect = (() => {
             viewData.lastPath = pathString;
           }
         };
-        MaskElement.prototype.destroy = function() {
+        MaskElement.prototype.destroy = function () {
           this.element = null;
           this.globalData = null;
           this.maskElement = null;
@@ -43834,7 +44224,7 @@ var PeraWalletConnect = (() => {
              * Initializes hierarchy properties
              *
              */
-          initHierarchy: function() {
+          initHierarchy: function () {
             this.hierarchy = [];
             this._isParent = false;
             this.checkParenting();
@@ -43846,7 +44236,7 @@ var PeraWalletConnect = (() => {
              * layer's parent list
              *
              */
-          setHierarchy: function(hierarchy) {
+          setHierarchy: function (hierarchy) {
             this.hierarchy = hierarchy;
           },
           /**
@@ -43854,7 +44244,7 @@ var PeraWalletConnect = (() => {
              * Sets layer as parent.
              *
              */
-          setAsParent: function() {
+          setAsParent: function () {
             this._isParent = true;
           },
           /**
@@ -43862,7 +44252,7 @@ var PeraWalletConnect = (() => {
              * Searches layer's parenting chain
              *
              */
-          checkParenting: function() {
+          checkParenting: function () {
             if (this.data.parent !== void 0) {
               this.comp.buildElementParenting(this, this.data.parent, []);
             }
@@ -43876,7 +44266,7 @@ var PeraWalletConnect = (() => {
              * Initializes frame related properties.
              *
              */
-          initFrame: function() {
+          initFrame: function () {
             this._isFirstFrame = false;
             this.dynamicProperties = [];
             this._mdf = false;
@@ -43891,7 +44281,7 @@ var PeraWalletConnect = (() => {
              * if layers is currently in range
              *
              */
-          prepareProperties: function(num, isVisible) {
+          prepareProperties: function (num, isVisible) {
             var i;
             var len = this.dynamicProperties.length;
             for (i = 0; i < len; i += 1) {
@@ -43904,7 +44294,7 @@ var PeraWalletConnect = (() => {
               }
             }
           },
-          addDynamicProperty: function(prop) {
+          addDynamicProperty: function (prop) {
             if (this.dynamicProperties.indexOf(prop) === -1) {
               this.dynamicProperties.push(prop);
             }
@@ -43913,7 +44303,7 @@ var PeraWalletConnect = (() => {
         function TransformElement() {
         }
         TransformElement.prototype = {
-          initTransform: function() {
+          initTransform: function () {
             this.finalTransform = {
               mProp: this.data.ks ? TransformPropertyFactory.getTransformProperty(this, this.data.ks, this) : { o: 0 },
               _matMdf: false,
@@ -43926,7 +44316,7 @@ var PeraWalletConnect = (() => {
             if (this.data.ty !== 11) {
             }
           },
-          renderTransform: function() {
+          renderTransform: function () {
             this.finalTransform._opMdf = this.finalTransform.mProp.o._mdf || this._isFirstFrame;
             this.finalTransform._matMdf = this.finalTransform.mProp._mdf || this._isFirstFrame;
             if (this.hierarchy) {
@@ -43953,7 +44343,7 @@ var PeraWalletConnect = (() => {
               }
             }
           },
-          globalToLocal: function(pt) {
+          globalToLocal: function (pt) {
             var transforms = [];
             transforms.push(this.finalTransform);
             var flag = true;
@@ -43982,26 +44372,26 @@ var PeraWalletConnect = (() => {
         function RenderableElement() {
         }
         RenderableElement.prototype = {
-          initRenderable: function() {
+          initRenderable: function () {
             this.isInRange = false;
             this.hidden = false;
             this.isTransparent = false;
             this.renderableComponents = [];
           },
-          addRenderableComponent: function(component) {
+          addRenderableComponent: function (component) {
             if (this.renderableComponents.indexOf(component) === -1) {
               this.renderableComponents.push(component);
             }
           },
-          removeRenderableComponent: function(component) {
+          removeRenderableComponent: function (component) {
             if (this.renderableComponents.indexOf(component) !== -1) {
               this.renderableComponents.splice(this.renderableComponents.indexOf(component), 1);
             }
           },
-          prepareRenderableFrame: function(num) {
+          prepareRenderableFrame: function (num) {
             this.checkLayerLimits(num);
           },
-          checkTransparency: function() {
+          checkTransparency: function () {
             if (this.finalTransform.mProp.o.v <= 0) {
               if (!this.isTransparent && this.globalData.renderConfig.hideOnTransparent) {
                 this.isTransparent = true;
@@ -44020,7 +44410,7 @@ var PeraWalletConnect = (() => {
              * current frame number in Layer's time
              *
              */
-          checkLayerLimits: function(num) {
+          checkLayerLimits: function (num) {
             if (this.data.ip - this.data.st <= num && this.data.op - this.data.st > num) {
               if (this.isInRange !== true) {
                 this.globalData._mdf = true;
@@ -44034,14 +44424,14 @@ var PeraWalletConnect = (() => {
               this.hide();
             }
           },
-          renderRenderable: function() {
+          renderRenderable: function () {
             var i;
             var len = this.renderableComponents.length;
             for (i = 0; i < len; i += 1) {
               this.renderableComponents[i].renderFrame(this._isFirstFrame);
             }
           },
-          sourceRectAtTime: function() {
+          sourceRectAtTime: function () {
             return {
               top: 0,
               left: 0,
@@ -44049,7 +44439,7 @@ var PeraWalletConnect = (() => {
               height: 100
             };
           },
-          getLayerSize: function() {
+          getLayerSize: function () {
             if (this.data.ty === 5) {
               return { w: this.data.textData.width, h: this.data.textData.height };
             }
@@ -44058,9 +44448,9 @@ var PeraWalletConnect = (() => {
         };
         function RenderableDOMElement() {
         }
-        (function() {
+        (function () {
           var _prototype = {
-            initElement: function(data, globalData, comp) {
+            initElement: function (data, globalData, comp) {
               this.initFrame();
               this.initBaseData(data, globalData, comp);
               this.initTransform(data, globalData, comp);
@@ -44072,14 +44462,14 @@ var PeraWalletConnect = (() => {
               this.createContent();
               this.hide();
             },
-            hide: function() {
+            hide: function () {
               if (!this.hidden && (!this.isInRange || this.isTransparent)) {
                 var elem = this.baseElement || this.layerElement;
                 elem.style.display = "none";
                 this.hidden = true;
               }
             },
-            show: function() {
+            show: function () {
               if (this.isInRange && !this.isTransparent) {
                 if (!this.data.hd) {
                   var elem = this.baseElement || this.layerElement;
@@ -44089,7 +44479,7 @@ var PeraWalletConnect = (() => {
                 this._isFirstFrame = true;
               }
             },
-            renderFrame: function() {
+            renderFrame: function () {
               if (this.data.hd || this.hidden) {
                 return;
               }
@@ -44101,15 +44491,15 @@ var PeraWalletConnect = (() => {
                 this._isFirstFrame = false;
               }
             },
-            renderInnerContent: function() {
+            renderInnerContent: function () {
             },
-            prepareFrame: function(num) {
+            prepareFrame: function (num) {
               this._mdf = false;
               this.prepareRenderableFrame(num);
               this.prepareProperties(num, this.isInRange);
               this.checkTransparency();
             },
-            destroy: function() {
+            destroy: function () {
               this.innerElem = null;
               this.destroyBaseElement();
             }
@@ -44130,7 +44520,7 @@ var PeraWalletConnect = (() => {
           this.pElem = createNS("path");
           this.msElem = null;
         }
-        SVGStyleData.prototype.reset = function() {
+        SVGStyleData.prototype.reset = function () {
           this.d = "";
           this._mdf = false;
         };
@@ -44152,7 +44542,7 @@ var PeraWalletConnect = (() => {
             i += 1;
           }
         }
-        SVGShapeData.prototype.setAsAnimated = function() {
+        SVGShapeData.prototype.setAsAnimated = function () {
           this._isAnimated = true;
         };
         function SVGTransformData(mProps, op, container) {
@@ -44188,7 +44578,7 @@ var PeraWalletConnect = (() => {
           this.getValue = this.iterateDynamicProperties;
           this.initGradientData(elem, data, styleOb);
         }
-        SVGGradientFillStyleData.prototype.initGradientData = function(elem, data, styleOb) {
+        SVGGradientFillStyleData.prototype.initGradientData = function (elem, data, styleOb) {
           this.o = PropertyFactory.getProp(elem, data.o, 0, 0.01, this);
           this.s = PropertyFactory.getProp(elem, data.s, 1, null, this);
           this.e = PropertyFactory.getProp(elem, data.e, 1, null, this);
@@ -44201,7 +44591,7 @@ var PeraWalletConnect = (() => {
           this.setGradientOpacity(data, styleOb);
           this._isAnimated = !!this._isAnimated;
         };
-        SVGGradientFillStyleData.prototype.setGradientData = function(pathElement, data) {
+        SVGGradientFillStyleData.prototype.setGradientData = function (pathElement, data) {
           var gradientId = createElementID();
           var gfill = createNS(data.t === 1 ? "linearGradient" : "radialGradient");
           gfill.setAttribute("id", gradientId);
@@ -44221,7 +44611,7 @@ var PeraWalletConnect = (() => {
           this.gf = gfill;
           this.cst = stops;
         };
-        SVGGradientFillStyleData.prototype.setGradientOpacity = function(data, styleOb) {
+        SVGGradientFillStyleData.prototype.setGradientOpacity = function (data, styleOb) {
           if (this.g._hasOpacity && !this.g._collapsable) {
             var stop;
             var j;
@@ -44274,7 +44664,7 @@ var PeraWalletConnect = (() => {
           this.prevViewData = [];
           this.gr = createNS("g");
         }
-        var SVGElementsRenderer = (function() {
+        var SVGElementsRenderer = (function () {
           var _identityMatrix = new Matrix();
           var _matrixHelper = new Matrix();
           var ob = {
@@ -44496,7 +44886,7 @@ var PeraWalletConnect = (() => {
           this.transform_key_count = 0;
         }
         ShapeTransformManager.prototype = {
-          addTransformSequence: function(transforms) {
+          addTransformSequence: function (transforms) {
             var i;
             var len = transforms.length;
             var key = "_";
@@ -44515,7 +44905,7 @@ var PeraWalletConnect = (() => {
             }
             return sequence;
           },
-          processSequence: function(sequence, isFirstFrame) {
+          processSequence: function (sequence, isFirstFrame) {
             var i = 0;
             var len = sequence.transforms.length;
             var _mdf = isFirstFrame;
@@ -44536,14 +44926,14 @@ var PeraWalletConnect = (() => {
             }
             sequence._mdf = _mdf;
           },
-          processSequences: function(isFirstFrame) {
+          processSequences: function (isFirstFrame) {
             var i;
             var len = this.sequenceList.length;
             for (i = 0; i < len; i += 1) {
               this.processSequence(this.sequenceList[i], isFirstFrame);
             }
           },
-          getNewKey: function() {
+          getNewKey: function () {
             this.transform_key_count += 1;
             return "_" + this.transform_key_count;
           }
@@ -44551,7 +44941,7 @@ var PeraWalletConnect = (() => {
         function BaseElement() {
         }
         BaseElement.prototype = {
-          checkMasks: function() {
+          checkMasks: function () {
             if (!this.data.hasMask) {
               return false;
             }
@@ -44565,7 +44955,7 @@ var PeraWalletConnect = (() => {
             }
             return false;
           },
-          initExpressions: function() {
+          initExpressions: function () {
             this.layerInterface = LayerExpressionInterface(this);
             if (this.data.hasMask && this.maskManager) {
               this.layerInterface.registerMaskInterface(this.maskManager);
@@ -44582,12 +44972,12 @@ var PeraWalletConnect = (() => {
               this.layerInterface.text = this.layerInterface.textInterface;
             }
           },
-          setBlendMode: function() {
+          setBlendMode: function () {
             var blendModeValue = getBlendMode(this.data.bm);
             var elem = this.baseElement || this.layerElement;
             elem.style["mix-blend-mode"] = blendModeValue;
           },
-          initBaseData: function(data, globalData, comp) {
+          initBaseData: function (data, globalData, comp) {
             this.globalData = globalData;
             this.comp = comp;
             this.data = data;
@@ -44597,10 +44987,10 @@ var PeraWalletConnect = (() => {
             }
             this.effectsManager = new EffectsManager(this.data, this, this.dynamicProperties);
           },
-          getType: function() {
+          getType: function () {
             return this.type;
           },
-          sourceRectAtTime: function() {
+          sourceRectAtTime: function () {
           }
         };
         function NullElement(data, globalData, comp) {
@@ -44610,28 +45000,28 @@ var PeraWalletConnect = (() => {
           this.initTransform(data, globalData, comp);
           this.initHierarchy();
         }
-        NullElement.prototype.prepareFrame = function(num) {
+        NullElement.prototype.prepareFrame = function (num) {
           this.prepareProperties(num, true);
         };
-        NullElement.prototype.renderFrame = function() {
+        NullElement.prototype.renderFrame = function () {
         };
-        NullElement.prototype.getBaseElement = function() {
+        NullElement.prototype.getBaseElement = function () {
           return null;
         };
-        NullElement.prototype.destroy = function() {
+        NullElement.prototype.destroy = function () {
         };
-        NullElement.prototype.sourceRectAtTime = function() {
+        NullElement.prototype.sourceRectAtTime = function () {
         };
-        NullElement.prototype.hide = function() {
+        NullElement.prototype.hide = function () {
         };
         extendPrototype([BaseElement, TransformElement, HierarchyElement, FrameElement], NullElement);
         function SVGBaseElement() {
         }
         SVGBaseElement.prototype = {
-          initRendererElement: function() {
+          initRendererElement: function () {
             this.layerElement = createNS("g");
           },
-          createContainerElements: function() {
+          createContainerElements: function () {
             this.matteElement = createNS("g");
             this.transformedElement = this.layerElement;
             this.maskedElement = this.layerElement;
@@ -44737,7 +45127,7 @@ var PeraWalletConnect = (() => {
               this.setBlendMode();
             }
           },
-          renderElement: function() {
+          renderElement: function () {
             if (this.finalTransform._matMdf) {
               this.transformedElement.setAttribute("transform", this.finalTransform.mat.to2dCSS());
             }
@@ -44745,22 +45135,22 @@ var PeraWalletConnect = (() => {
               this.transformedElement.setAttribute("opacity", this.finalTransform.mProp.o.v);
             }
           },
-          destroyBaseElement: function() {
+          destroyBaseElement: function () {
             this.layerElement = null;
             this.matteElement = null;
             this.maskManager.destroy();
           },
-          getBaseElement: function() {
+          getBaseElement: function () {
             if (this.data.hd) {
               return null;
             }
             return this.baseElement;
           },
-          createRenderableComponents: function() {
+          createRenderableComponents: function () {
             this.maskManager = new MaskElement(this.data, this, this.globalData);
             this.renderableEffectsManager = new SVGEffects(this);
           },
-          setMatte: function(id) {
+          setMatte: function (id) {
             if (!this.matteElement) {
               return;
             }
@@ -44770,14 +45160,14 @@ var PeraWalletConnect = (() => {
         function IShapeElement() {
         }
         IShapeElement.prototype = {
-          addShapeToModifiers: function(data) {
+          addShapeToModifiers: function (data) {
             var i;
             var len = this.shapeModifiers.length;
             for (i = 0; i < len; i += 1) {
               this.shapeModifiers[i].addShape(data);
             }
           },
-          isShapeInAnimatedModifiers: function(data) {
+          isShapeInAnimatedModifiers: function (data) {
             var i = 0;
             var len = this.shapeModifiers.length;
             while (i < len) {
@@ -44787,7 +45177,7 @@ var PeraWalletConnect = (() => {
             }
             return false;
           },
-          renderModifiers: function() {
+          renderModifiers: function () {
             if (!this.shapeModifiers.length) {
               return;
             }
@@ -44805,7 +45195,7 @@ var PeraWalletConnect = (() => {
               }
             }
           },
-          searchProcessedElement: function(elem) {
+          searchProcessedElement: function (elem) {
             var elements = this.processedElements;
             var i = 0;
             var len = elements.length;
@@ -44817,7 +45207,7 @@ var PeraWalletConnect = (() => {
             }
             return 0;
           },
-          addProcessedElement: function(elem, pos) {
+          addProcessedElement: function (elem, pos) {
             var elements = this.processedElements;
             var i = elements.length;
             while (i) {
@@ -44829,14 +45219,14 @@ var PeraWalletConnect = (() => {
             }
             elements.push(new ProcessedElement(elem, pos));
           },
-          prepareFrame: function(num) {
+          prepareFrame: function (num) {
             this.prepareRenderableFrame(num);
             this.prepareProperties(num, this.isInRange);
           }
         };
         function ITextElement() {
         }
-        ITextElement.prototype.initElement = function(data, globalData, comp) {
+        ITextElement.prototype.initElement = function (data, globalData, comp) {
           this.lettersChangedFlag = true;
           this.initFrame();
           this.initBaseData(data, globalData, comp);
@@ -44852,7 +45242,7 @@ var PeraWalletConnect = (() => {
           this.hide();
           this.textAnimator.searchProperties(this.dynamicProperties);
         };
-        ITextElement.prototype.prepareFrame = function(num) {
+        ITextElement.prototype.prepareFrame = function (num) {
           this._mdf = false;
           this.prepareRenderableFrame(num);
           this.prepareProperties(num, this.isInRange);
@@ -44862,7 +45252,7 @@ var PeraWalletConnect = (() => {
             this.textProperty._mdf = false;
           }
         };
-        ITextElement.prototype.createPathShape = function(matrixHelper, shapes) {
+        ITextElement.prototype.createPathShape = function (matrixHelper, shapes) {
           var j;
           var jLen = shapes.length;
           var pathNodes;
@@ -44873,16 +45263,16 @@ var PeraWalletConnect = (() => {
           }
           return shapeStr;
         };
-        ITextElement.prototype.updateDocumentData = function(newData, index2) {
+        ITextElement.prototype.updateDocumentData = function (newData, index2) {
           this.textProperty.updateDocumentData(newData, index2);
         };
-        ITextElement.prototype.canResizeFont = function(_canResize) {
+        ITextElement.prototype.canResizeFont = function (_canResize) {
           this.textProperty.canResizeFont(_canResize);
         };
-        ITextElement.prototype.setMinimumFontSize = function(_fontSize) {
+        ITextElement.prototype.setMinimumFontSize = function (_fontSize) {
           this.textProperty.setMinimumFontSize(_fontSize);
         };
-        ITextElement.prototype.applyTextPropertiesToMatrix = function(documentData, matrixHelper, lineNumber, xPos, yPos) {
+        ITextElement.prototype.applyTextPropertiesToMatrix = function (documentData, matrixHelper, lineNumber, xPos, yPos) {
           if (documentData.ps) {
             matrixHelper.translate(documentData.ps[0], documentData.ps[1] + documentData.ascent, 0);
           }
@@ -44899,16 +45289,16 @@ var PeraWalletConnect = (() => {
           }
           matrixHelper.translate(xPos, yPos, 0);
         };
-        ITextElement.prototype.buildColor = function(colorData) {
+        ITextElement.prototype.buildColor = function (colorData) {
           return "rgb(" + Math.round(colorData[0] * 255) + "," + Math.round(colorData[1] * 255) + "," + Math.round(colorData[2] * 255) + ")";
         };
         ITextElement.prototype.emptyProp = new LetterProps();
-        ITextElement.prototype.destroy = function() {
+        ITextElement.prototype.destroy = function () {
         };
         function ICompElement() {
         }
         extendPrototype([BaseElement, TransformElement, HierarchyElement, FrameElement, RenderableDOMElement], ICompElement);
-        ICompElement.prototype.initElement = function(data, globalData, comp) {
+        ICompElement.prototype.initElement = function (data, globalData, comp) {
           this.initFrame();
           this.initBaseData(data, globalData, comp);
           this.initTransform(data, globalData, comp);
@@ -44922,7 +45312,7 @@ var PeraWalletConnect = (() => {
           }
           this.hide();
         };
-        ICompElement.prototype.prepareFrame = function(num) {
+        ICompElement.prototype.prepareFrame = function (num) {
           this._mdf = false;
           this.prepareRenderableFrame(num);
           this.prepareProperties(num, this.isInRange);
@@ -44952,7 +45342,7 @@ var PeraWalletConnect = (() => {
             }
           }
         };
-        ICompElement.prototype.renderInnerContent = function() {
+        ICompElement.prototype.renderInnerContent = function () {
           var i;
           var len = this.layers.length;
           for (i = 0; i < len; i += 1) {
@@ -44961,13 +45351,13 @@ var PeraWalletConnect = (() => {
             }
           }
         };
-        ICompElement.prototype.setElements = function(elems) {
+        ICompElement.prototype.setElements = function (elems) {
           this.elements = elems;
         };
-        ICompElement.prototype.getElements = function() {
+        ICompElement.prototype.getElements = function () {
           return this.elements;
         };
-        ICompElement.prototype.destroyElements = function() {
+        ICompElement.prototype.destroyElements = function () {
           var i;
           var len = this.layers.length;
           for (i = 0; i < len; i += 1) {
@@ -44976,7 +45366,7 @@ var PeraWalletConnect = (() => {
             }
           }
         };
-        ICompElement.prototype.destroy = function() {
+        ICompElement.prototype.destroy = function () {
           this.destroyElements();
           this.destroyBaseElement();
         };
@@ -44991,7 +45381,7 @@ var PeraWalletConnect = (() => {
           };
         }
         extendPrototype([BaseElement, TransformElement, SVGBaseElement, HierarchyElement, FrameElement, RenderableDOMElement], IImageElement);
-        IImageElement.prototype.createContent = function() {
+        IImageElement.prototype.createContent = function () {
           var assetPath = this.globalData.getAssetsPath(this.assetData);
           this.innerElem = createNS("image");
           this.innerElem.setAttribute("width", this.assetData.w + "px");
@@ -45000,14 +45390,14 @@ var PeraWalletConnect = (() => {
           this.innerElem.setAttributeNS("http://www.w3.org/1999/xlink", "href", assetPath);
           this.layerElement.appendChild(this.innerElem);
         };
-        IImageElement.prototype.sourceRectAtTime = function() {
+        IImageElement.prototype.sourceRectAtTime = function () {
           return this.sourceRect;
         };
         function ISolidElement(data, globalData, comp) {
           this.initElement(data, globalData, comp);
         }
         extendPrototype([IImageElement], ISolidElement);
-        ISolidElement.prototype.createContent = function() {
+        ISolidElement.prototype.createContent = function () {
           var rect = createNS("rect");
           rect.setAttribute("width", this.data.sw);
           rect.setAttribute("height", this.data.sh);
@@ -45027,7 +45417,7 @@ var PeraWalletConnect = (() => {
           this.globalData.audioController.addAudio(this);
           this.tm = data.tm ? PropertyFactory.getProp(this, data.tm, 0, globalData.frameRate, this) : { _placeholder: true };
         }
-        AudioElement.prototype.prepareFrame = function(num) {
+        AudioElement.prototype.prepareFrame = function (num) {
           this.prepareRenderableFrame(num, true);
           this.prepareProperties(num, true);
           if (!this.tm._placeholder) {
@@ -45038,7 +45428,7 @@ var PeraWalletConnect = (() => {
           }
         };
         extendPrototype([RenderableElement, BaseElement, FrameElement], AudioElement);
-        AudioElement.prototype.renderFrame = function() {
+        AudioElement.prototype.renderFrame = function () {
           if (this.isInRange && this._canPlay) {
             if (!this._isPlaying) {
               this.audio.play();
@@ -45049,34 +45439,34 @@ var PeraWalletConnect = (() => {
             }
           }
         };
-        AudioElement.prototype.show = function() {
+        AudioElement.prototype.show = function () {
         };
-        AudioElement.prototype.hide = function() {
+        AudioElement.prototype.hide = function () {
           this.audio.pause();
           this._isPlaying = false;
         };
-        AudioElement.prototype.pause = function() {
+        AudioElement.prototype.pause = function () {
           this.audio.pause();
           this._isPlaying = false;
           this._canPlay = false;
         };
-        AudioElement.prototype.resume = function() {
+        AudioElement.prototype.resume = function () {
           this._canPlay = true;
         };
-        AudioElement.prototype.setRate = function(rateValue) {
+        AudioElement.prototype.setRate = function (rateValue) {
           this.audio.rate(rateValue);
         };
-        AudioElement.prototype.volume = function(volumeValue) {
+        AudioElement.prototype.volume = function (volumeValue) {
           this.audio.volume(volumeValue);
         };
-        AudioElement.prototype.getBaseElement = function() {
+        AudioElement.prototype.getBaseElement = function () {
           return null;
         };
-        AudioElement.prototype.destroy = function() {
+        AudioElement.prototype.destroy = function () {
         };
-        AudioElement.prototype.sourceRectAtTime = function() {
+        AudioElement.prototype.sourceRectAtTime = function () {
         };
-        AudioElement.prototype.initExpressions = function() {
+        AudioElement.prototype.initExpressions = function () {
         };
         function SVGCompElement(data, globalData, comp) {
           this.layers = data.layers;
@@ -45094,12 +45484,12 @@ var PeraWalletConnect = (() => {
           this.initElement(data, globalData, comp);
         }
         extendPrototype([BaseElement, TransformElement, SVGBaseElement, HierarchyElement, FrameElement, RenderableDOMElement, ITextElement], SVGTextLottieElement);
-        SVGTextLottieElement.prototype.createContent = function() {
+        SVGTextLottieElement.prototype.createContent = function () {
           if (this.data.singleShape && !this.globalData.fontManager.chars) {
             this.textContainer = createNS("text");
           }
         };
-        SVGTextLottieElement.prototype.buildTextContents = function(textArray) {
+        SVGTextLottieElement.prototype.buildTextContents = function (textArray) {
           var i = 0;
           var len = textArray.length;
           var textContents = [];
@@ -45116,7 +45506,7 @@ var PeraWalletConnect = (() => {
           textContents.push(currentTextContent);
           return textContents;
         };
-        SVGTextLottieElement.prototype.buildNewText = function() {
+        SVGTextLottieElement.prototype.buildNewText = function () {
           var i;
           var len;
           var documentData = this.textProperty.currentData;
@@ -45240,7 +45630,7 @@ var PeraWalletConnect = (() => {
           }
           this._sizeChanged = true;
         };
-        SVGTextLottieElement.prototype.sourceRectAtTime = function() {
+        SVGTextLottieElement.prototype.sourceRectAtTime = function () {
           this.prepareFrame(this.comp.renderedFrame - this.data.st);
           this.renderInnerContent();
           if (this._sizeChanged) {
@@ -45255,7 +45645,7 @@ var PeraWalletConnect = (() => {
           }
           return this.bbox;
         };
-        SVGTextLottieElement.prototype.renderInnerContent = function() {
+        SVGTextLottieElement.prototype.renderInnerContent = function () {
           if (!this.data.singleShape) {
             this.textAnimator.getMeasures(this.textProperty.currentData, this.lettersChangedFlag);
             if (this.lettersChangedFlag || this.textAnimator.lettersChangedFlag) {
@@ -45303,16 +45693,16 @@ var PeraWalletConnect = (() => {
           this.prevViewData = [];
         }
         extendPrototype([BaseElement, TransformElement, SVGBaseElement, IShapeElement, HierarchyElement, FrameElement, RenderableDOMElement], SVGShapeElement);
-        SVGShapeElement.prototype.initSecondaryElement = function() {
+        SVGShapeElement.prototype.initSecondaryElement = function () {
         };
         SVGShapeElement.prototype.identityMatrix = new Matrix();
-        SVGShapeElement.prototype.buildExpressionInterface = function() {
+        SVGShapeElement.prototype.buildExpressionInterface = function () {
         };
-        SVGShapeElement.prototype.createContent = function() {
+        SVGShapeElement.prototype.createContent = function () {
           this.searchShapes(this.shapesData, this.itemsData, this.prevViewData, this.layerElement, 0, [], true);
           this.filterUniqueShapes();
         };
-        SVGShapeElement.prototype.filterUniqueShapes = function() {
+        SVGShapeElement.prototype.filterUniqueShapes = function () {
           var i;
           var len = this.shapes.length;
           var shape;
@@ -45337,14 +45727,14 @@ var PeraWalletConnect = (() => {
             }
           }
         };
-        SVGShapeElement.prototype.setShapesAsAnimated = function(shapes) {
+        SVGShapeElement.prototype.setShapesAsAnimated = function (shapes) {
           var i;
           var len = shapes.length;
           for (i = 0; i < len; i += 1) {
             shapes[i].setAsAnimated();
           }
         };
-        SVGShapeElement.prototype.createStyleElement = function(data, level) {
+        SVGShapeElement.prototype.createStyleElement = function (data, level) {
           var elementData;
           var styleOb = new SVGStyleData(data, level);
           var pathElement = styleOb.pElem;
@@ -45386,7 +45776,7 @@ var PeraWalletConnect = (() => {
           this.addToAnimatedContents(data, elementData);
           return elementData;
         };
-        SVGShapeElement.prototype.createGroupElement = function(data) {
+        SVGShapeElement.prototype.createGroupElement = function (data) {
           var elementData = new ShapeGroupData();
           if (data.ln) {
             elementData.gr.setAttribute("id", data.ln);
@@ -45399,13 +45789,13 @@ var PeraWalletConnect = (() => {
           }
           return elementData;
         };
-        SVGShapeElement.prototype.createTransformElement = function(data, container) {
+        SVGShapeElement.prototype.createTransformElement = function (data, container) {
           var transformProperty = TransformPropertyFactory.getTransformProperty(this, data, this);
           var elementData = new SVGTransformData(transformProperty, transformProperty.o, container);
           this.addToAnimatedContents(data, elementData);
           return elementData;
         };
-        SVGShapeElement.prototype.createShapeElement = function(data, ownTransformers, level) {
+        SVGShapeElement.prototype.createShapeElement = function (data, ownTransformers, level) {
           var ty = 4;
           if (data.ty === "rc") {
             ty = 5;
@@ -45421,7 +45811,7 @@ var PeraWalletConnect = (() => {
           this.addToAnimatedContents(data, elementData);
           return elementData;
         };
-        SVGShapeElement.prototype.addToAnimatedContents = function(data, element) {
+        SVGShapeElement.prototype.addToAnimatedContents = function (data, element) {
           var i = 0;
           var len = this.animatedContents.length;
           while (i < len) {
@@ -45436,7 +45826,7 @@ var PeraWalletConnect = (() => {
             data
           });
         };
-        SVGShapeElement.prototype.setElementStyles = function(elementData) {
+        SVGShapeElement.prototype.setElementStyles = function (elementData) {
           var arr = elementData.styles;
           var j;
           var jLen = this.stylesList.length;
@@ -45446,7 +45836,7 @@ var PeraWalletConnect = (() => {
             }
           }
         };
-        SVGShapeElement.prototype.reloadShapes = function() {
+        SVGShapeElement.prototype.reloadShapes = function () {
           this._isFirstFrame = true;
           var i;
           var len = this.itemsData.length;
@@ -45461,7 +45851,7 @@ var PeraWalletConnect = (() => {
           }
           this.renderModifiers();
         };
-        SVGShapeElement.prototype.searchShapes = function(arr, itemsData, prevViewData, container, level, transformers, render) {
+        SVGShapeElement.prototype.searchShapes = function (arr, itemsData, prevViewData, container, level, transformers, render) {
           var ownTransformers = [].concat(transformers);
           var i;
           var len = arr.length - 1;
@@ -45552,7 +45942,7 @@ var PeraWalletConnect = (() => {
             ownModifiers[i].closed = true;
           }
         };
-        SVGShapeElement.prototype.renderInnerContent = function() {
+        SVGShapeElement.prototype.renderInnerContent = function () {
           this.renderModifiers();
           var i;
           var len = this.stylesList.length;
@@ -45570,7 +45960,7 @@ var PeraWalletConnect = (() => {
             }
           }
         };
-        SVGShapeElement.prototype.renderShape = function() {
+        SVGShapeElement.prototype.renderShape = function () {
           var i;
           var len = this.animatedContents.length;
           var animatedContent;
@@ -45581,7 +45971,7 @@ var PeraWalletConnect = (() => {
             }
           }
         };
-        SVGShapeElement.prototype.destroy = function() {
+        SVGShapeElement.prototype.destroy = function () {
           this.destroyBaseElement();
           this.shapesData = null;
           this.itemsData = null;
@@ -45613,7 +46003,7 @@ var PeraWalletConnect = (() => {
             feMerge.appendChild(feMergeNode);
           }
         }
-        SVGTintFilter.prototype.renderFrame = function(forceRender) {
+        SVGTintFilter.prototype.renderFrame = function (forceRender) {
           if (forceRender || this.filterManager._mdf) {
             var colorBlack = this.filterManager.effectElements[0].p.v;
             var colorWhite = this.filterManager.effectElements[1].p.v;
@@ -45630,7 +46020,7 @@ var PeraWalletConnect = (() => {
           filter.appendChild(feColorMatrix);
           this.matrixFilter = feColorMatrix;
         }
-        SVGFillFilter.prototype.renderFrame = function(forceRender) {
+        SVGFillFilter.prototype.renderFrame = function (forceRender) {
           if (forceRender || this.filterManager._mdf) {
             var color = this.filterManager.effectElements[2].p.v;
             var opacity = this.filterManager.effectElements[6].p.v;
@@ -45647,7 +46037,7 @@ var PeraWalletConnect = (() => {
           filter.appendChild(feGaussianBlur);
           this.feGaussianBlur = feGaussianBlur;
         }
-        SVGGaussianBlurEffect.prototype.renderFrame = function(forceRender) {
+        SVGGaussianBlurEffect.prototype.renderFrame = function (forceRender) {
           if (forceRender || this.filterManager._mdf) {
             var kBlurrinessToSigma = 0.3;
             var sigma = this.filterManager.effectElements[0].p.v * kBlurrinessToSigma;
@@ -45665,7 +46055,7 @@ var PeraWalletConnect = (() => {
           this.elem = elem;
           this.paths = [];
         }
-        SVGStrokeEffect.prototype.initialize = function() {
+        SVGStrokeEffect.prototype.initialize = function () {
           var elemChildren = this.elem.layerElement.children || this.elem.layerElement.childNodes;
           var path;
           var groupPath;
@@ -45716,7 +46106,7 @@ var PeraWalletConnect = (() => {
           this.initialized = true;
           this.pathMasker = groupPath;
         };
-        SVGStrokeEffect.prototype.renderFrame = function(forceRender) {
+        SVGStrokeEffect.prototype.renderFrame = function (forceRender) {
           if (!this.initialized) {
             this.initialize();
           }
@@ -45791,7 +46181,7 @@ var PeraWalletConnect = (() => {
           feComponentTransfer.appendChild(feFuncB);
           this.feFuncB = feFuncB;
         }
-        SVGTritoneFilter.prototype.renderFrame = function(forceRender) {
+        SVGTritoneFilter.prototype.renderFrame = function (forceRender) {
           if (forceRender || this.filterManager._mdf) {
             var color1 = this.filterManager.effectElements[0].p.v;
             var color2 = this.filterManager.effectElements[1].p.v;
@@ -45833,13 +46223,13 @@ var PeraWalletConnect = (() => {
             this.feFuncBComposed = this.createFeFunc("feFuncB", feComponentTransfer);
           }
         }
-        SVGProLevelsFilter.prototype.createFeFunc = function(type, feComponentTransfer) {
+        SVGProLevelsFilter.prototype.createFeFunc = function (type, feComponentTransfer) {
           var feFunc = createNS(type);
           feFunc.setAttribute("type", "table");
           feComponentTransfer.appendChild(feFunc);
           return feFunc;
         };
-        SVGProLevelsFilter.prototype.getTableValue = function(inputBlack, inputWhite, gamma, outputBlack, outputWhite) {
+        SVGProLevelsFilter.prototype.getTableValue = function (inputBlack, inputWhite, gamma, outputBlack, outputWhite) {
           var cnt = 0;
           var segments = 256;
           var perc;
@@ -45865,7 +46255,7 @@ var PeraWalletConnect = (() => {
           }
           return table.join(" ");
         };
-        SVGProLevelsFilter.prototype.renderFrame = function(forceRender) {
+        SVGProLevelsFilter.prototype.renderFrame = function (forceRender) {
           if (forceRender || this.filterManager._mdf) {
             var val;
             var effectElements = this.filterManager.effectElements;
@@ -45937,7 +46327,7 @@ var PeraWalletConnect = (() => {
           this.originalNodeAdded = false;
           feMerge.appendChild(feMergeNode);
         }
-        SVGDropShadowEffect.prototype.renderFrame = function(forceRender) {
+        SVGDropShadowEffect.prototype.renderFrame = function (forceRender) {
           if (forceRender || this.filterManager._mdf) {
             if (forceRender || this.filterManager.effectElements[4].p._mdf) {
               this.feGaussianBlur.setAttribute("stdDeviation", this.filterManager.effectElements[4].p.v / 4);
@@ -45970,7 +46360,7 @@ var PeraWalletConnect = (() => {
           elem.matteElement.appendChild(elem.transformedElement);
           elem.baseElement = elem.matteElement;
         }
-        SVGMatte3Effect.prototype.findSymbol = function(mask) {
+        SVGMatte3Effect.prototype.findSymbol = function (mask) {
           var i = 0;
           var len = _svgMatteSymbols.length;
           while (i < len) {
@@ -45981,7 +46371,7 @@ var PeraWalletConnect = (() => {
           }
           return null;
         };
-        SVGMatte3Effect.prototype.replaceInParent = function(mask, symbolId) {
+        SVGMatte3Effect.prototype.replaceInParent = function (mask, symbolId) {
           var parentNode = mask.layerElement.parentNode;
           if (!parentNode) {
             return;
@@ -46007,7 +46397,7 @@ var PeraWalletConnect = (() => {
             parentNode.appendChild(useElem);
           }
         };
-        SVGMatte3Effect.prototype.setElementAsMask = function(elem, mask) {
+        SVGMatte3Effect.prototype.setElementAsMask = function (elem, mask) {
           if (!this.findSymbol(mask)) {
             var symbolId = createElementID();
             var masker = createNS("mask");
@@ -46029,7 +46419,7 @@ var PeraWalletConnect = (() => {
           }
           elem.setMatte(mask.layerId);
         };
-        SVGMatte3Effect.prototype.initialize = function() {
+        SVGMatte3Effect.prototype.initialize = function () {
           var ind = this.filterManager.effectElements[0].p.v;
           var elements = this.elem.comp.elements;
           var i = 0;
@@ -46042,14 +46432,14 @@ var PeraWalletConnect = (() => {
           }
           this.initialized = true;
         };
-        SVGMatte3Effect.prototype.renderFrame = function() {
+        SVGMatte3Effect.prototype.renderFrame = function () {
           if (!this.initialized) {
             this.initialize();
           }
         };
         function SVGEffects() {
         }
-        var animationManager = (function() {
+        var animationManager = (function () {
           var moduleOb = {};
           var registeredAnimations = [];
           var initTime = 0;
@@ -46268,7 +46658,7 @@ var PeraWalletConnect = (() => {
           moduleOb.getRegisteredAnimations = getRegisteredAnimations;
           return moduleOb;
         })();
-        var AnimationItem = function() {
+        var AnimationItem = function () {
           this._cbs = [];
           this.name = "";
           this.path = "";
@@ -46305,7 +46695,7 @@ var PeraWalletConnect = (() => {
           this.onSegmentComplete = this.onSegmentComplete.bind(this);
         };
         extendPrototype([BaseEvent], AnimationItem);
-        AnimationItem.prototype.setParams = function(params) {
+        AnimationItem.prototype.setParams = function (params) {
           if (params.wrapper || params.container) {
             this.wrapper = params.wrapper || params.container;
           }
@@ -46361,16 +46751,16 @@ var PeraWalletConnect = (() => {
             );
           }
         };
-        AnimationItem.prototype.onSetupError = function() {
+        AnimationItem.prototype.onSetupError = function () {
           this.trigger("data_failed");
         };
-        AnimationItem.prototype.setupAnimation = function(data) {
+        AnimationItem.prototype.setupAnimation = function (data) {
           dataManager.completeAnimation(
             data,
             this.configAnimation
           );
         };
-        AnimationItem.prototype.setData = function(wrapper, animationData2) {
+        AnimationItem.prototype.setData = function (wrapper, animationData2) {
           if (animationData2) {
             if (typeof animationData2 !== "object") {
               animationData2 = JSON.parse(animationData2);
@@ -46400,7 +46790,7 @@ var PeraWalletConnect = (() => {
           }
           this.setParams(params);
         };
-        AnimationItem.prototype.includeLayers = function(data) {
+        AnimationItem.prototype.includeLayers = function (data) {
           if (data.op > this.animationData.op) {
             this.animationData.op = data.op;
             this.totalFrames = Math.floor(data.op - this.animationData.ip);
@@ -46437,14 +46827,14 @@ var PeraWalletConnect = (() => {
             this.onSegmentComplete
           );
         };
-        AnimationItem.prototype.onSegmentComplete = function(data) {
+        AnimationItem.prototype.onSegmentComplete = function (data) {
           this.animationData = data;
           if (expressionsPlugin) {
             expressionsPlugin.initExpressions(this);
           }
           this.loadNextSegment();
         };
-        AnimationItem.prototype.loadNextSegment = function() {
+        AnimationItem.prototype.loadNextSegment = function () {
           var segments = this.animationData.segments;
           if (!segments || segments.length === 0 || !this.autoloadSegments) {
             this.trigger("data_ready");
@@ -46455,27 +46845,27 @@ var PeraWalletConnect = (() => {
           this.timeCompleted = segment.time * this.frameRate;
           var segmentPath = this.path + this.fileName + "_" + this.segmentPos + ".json";
           this.segmentPos += 1;
-          dataManager.loadData(segmentPath, this.includeLayers.bind(this), function() {
+          dataManager.loadData(segmentPath, this.includeLayers.bind(this), function () {
             this.trigger("data_failed");
           }.bind(this));
         };
-        AnimationItem.prototype.loadSegments = function() {
+        AnimationItem.prototype.loadSegments = function () {
           var segments = this.animationData.segments;
           if (!segments) {
             this.timeCompleted = this.totalFrames;
           }
           this.loadNextSegment();
         };
-        AnimationItem.prototype.imagesLoaded = function() {
+        AnimationItem.prototype.imagesLoaded = function () {
           this.trigger("loaded_images");
           this.checkLoaded();
         };
-        AnimationItem.prototype.preloadImages = function() {
+        AnimationItem.prototype.preloadImages = function () {
           this.imagePreloader.setAssetsPath(this.assetsPath);
           this.imagePreloader.setPath(this.path);
           this.imagePreloader.loadAssets(this.animationData.assets, this.imagesLoaded.bind(this));
         };
-        AnimationItem.prototype.configAnimation = function(animData) {
+        AnimationItem.prototype.configAnimation = function (animData) {
           if (!this.renderer) {
             return;
           }
@@ -46509,7 +46899,7 @@ var PeraWalletConnect = (() => {
             this.triggerConfigError(error);
           }
         };
-        AnimationItem.prototype.waitForFontsLoaded = function() {
+        AnimationItem.prototype.waitForFontsLoaded = function () {
           if (!this.renderer) {
             return;
           }
@@ -46519,14 +46909,14 @@ var PeraWalletConnect = (() => {
             setTimeout(this.waitForFontsLoaded.bind(this), 20);
           }
         };
-        AnimationItem.prototype.checkLoaded = function() {
+        AnimationItem.prototype.checkLoaded = function () {
           if (!this.isLoaded && this.renderer.globalData.fontManager.isLoaded && (this.imagePreloader.loadedImages() || this.renderer.rendererType !== "canvas") && this.imagePreloader.loadedFootages()) {
             this.isLoaded = true;
             if (expressionsPlugin) {
               expressionsPlugin.initExpressions(this);
             }
             this.renderer.initItems();
-            setTimeout(function() {
+            setTimeout(function () {
               this.trigger("DOMLoaded");
             }.bind(this), 0);
             this.gotoFrame();
@@ -46535,13 +46925,13 @@ var PeraWalletConnect = (() => {
             }
           }
         };
-        AnimationItem.prototype.resize = function() {
+        AnimationItem.prototype.resize = function () {
           this.renderer.updateContainerSize();
         };
-        AnimationItem.prototype.setSubframe = function(flag) {
+        AnimationItem.prototype.setSubframe = function (flag) {
           this.isSubframeEnabled = !!flag;
         };
-        AnimationItem.prototype.gotoFrame = function() {
+        AnimationItem.prototype.gotoFrame = function () {
           this.currentFrame = this.isSubframeEnabled ? this.currentRawFrame : ~~this.currentRawFrame;
           if (this.timeCompleted !== this.totalFrames && this.currentFrame > this.timeCompleted) {
             this.currentFrame = this.timeCompleted;
@@ -46550,7 +46940,7 @@ var PeraWalletConnect = (() => {
           this.renderFrame();
           this.trigger("drawnFrame");
         };
-        AnimationItem.prototype.renderFrame = function() {
+        AnimationItem.prototype.renderFrame = function () {
           if (this.isLoaded === false || !this.renderer) {
             return;
           }
@@ -46560,7 +46950,7 @@ var PeraWalletConnect = (() => {
             this.triggerRenderFrameError(error);
           }
         };
-        AnimationItem.prototype.play = function(name) {
+        AnimationItem.prototype.play = function (name) {
           if (name && this.name !== name) {
             return;
           }
@@ -46573,7 +46963,7 @@ var PeraWalletConnect = (() => {
             }
           }
         };
-        AnimationItem.prototype.pause = function(name) {
+        AnimationItem.prototype.pause = function (name) {
           if (name && this.name !== name) {
             return;
           }
@@ -46584,7 +46974,7 @@ var PeraWalletConnect = (() => {
             this.audioController.pause();
           }
         };
-        AnimationItem.prototype.togglePause = function(name) {
+        AnimationItem.prototype.togglePause = function (name) {
           if (name && this.name !== name) {
             return;
           }
@@ -46594,7 +46984,7 @@ var PeraWalletConnect = (() => {
             this.pause();
           }
         };
-        AnimationItem.prototype.stop = function(name) {
+        AnimationItem.prototype.stop = function (name) {
           if (name && this.name !== name) {
             return;
           }
@@ -46603,7 +46993,7 @@ var PeraWalletConnect = (() => {
           this._completedLoop = false;
           this.setCurrentRawFrameValue(0);
         };
-        AnimationItem.prototype.getMarkerData = function(markerName) {
+        AnimationItem.prototype.getMarkerData = function (markerName) {
           var marker;
           for (var i = 0; i < this.markers.length; i += 1) {
             marker = this.markers[i];
@@ -46613,7 +47003,7 @@ var PeraWalletConnect = (() => {
           }
           return null;
         };
-        AnimationItem.prototype.goToAndStop = function(value, isFrame, name) {
+        AnimationItem.prototype.goToAndStop = function (value, isFrame, name) {
           if (name && this.name !== name) {
             return;
           }
@@ -46630,7 +47020,7 @@ var PeraWalletConnect = (() => {
           }
           this.pause();
         };
-        AnimationItem.prototype.goToAndPlay = function(value, isFrame, name) {
+        AnimationItem.prototype.goToAndPlay = function (value, isFrame, name) {
           if (name && this.name !== name) {
             return;
           }
@@ -46649,7 +47039,7 @@ var PeraWalletConnect = (() => {
           }
           this.play();
         };
-        AnimationItem.prototype.advanceTime = function(value) {
+        AnimationItem.prototype.advanceTime = function (value) {
           if (this.isPaused === true || this.isLoaded === false) {
             return;
           }
@@ -46694,7 +47084,7 @@ var PeraWalletConnect = (() => {
             this.trigger("complete");
           }
         };
-        AnimationItem.prototype.adjustSegment = function(arr, offset) {
+        AnimationItem.prototype.adjustSegment = function (arr, offset) {
           this.playCount = 0;
           if (arr[1] < arr[0]) {
             if (this.frameModifier > 0) {
@@ -46723,7 +47113,7 @@ var PeraWalletConnect = (() => {
           }
           this.trigger("segmentStart");
         };
-        AnimationItem.prototype.setSegment = function(init, end) {
+        AnimationItem.prototype.setSegment = function (init, end) {
           var pendingFrame = -1;
           if (this.isPaused) {
             if (this.currentRawFrame + this.firstFrame < init) {
@@ -46739,7 +47129,7 @@ var PeraWalletConnect = (() => {
             this.goToAndStop(pendingFrame, true);
           }
         };
-        AnimationItem.prototype.playSegments = function(arr, forceFlag) {
+        AnimationItem.prototype.playSegments = function (arr, forceFlag) {
           if (forceFlag) {
             this.segments.length = 0;
           }
@@ -46759,21 +47149,21 @@ var PeraWalletConnect = (() => {
             this.play();
           }
         };
-        AnimationItem.prototype.resetSegments = function(forceFlag) {
+        AnimationItem.prototype.resetSegments = function (forceFlag) {
           this.segments.length = 0;
           this.segments.push([this.animationData.ip, this.animationData.op]);
           if (forceFlag) {
             this.checkSegments(0);
           }
         };
-        AnimationItem.prototype.checkSegments = function(offset) {
+        AnimationItem.prototype.checkSegments = function (offset) {
           if (this.segments.length) {
             this.adjustSegment(this.segments.shift(), offset);
             return true;
           }
           return false;
         };
-        AnimationItem.prototype.destroy = function(name) {
+        AnimationItem.prototype.destroy = function (name) {
           if (name && this.name !== name || !this.renderer) {
             return;
           }
@@ -46791,47 +47181,47 @@ var PeraWalletConnect = (() => {
           this.imagePreloader = null;
           this.projectInterface = null;
         };
-        AnimationItem.prototype.setCurrentRawFrameValue = function(value) {
+        AnimationItem.prototype.setCurrentRawFrameValue = function (value) {
           this.currentRawFrame = value;
           this.gotoFrame();
         };
-        AnimationItem.prototype.setSpeed = function(val) {
+        AnimationItem.prototype.setSpeed = function (val) {
           this.playSpeed = val;
           this.updaFrameModifier();
         };
-        AnimationItem.prototype.setDirection = function(val) {
+        AnimationItem.prototype.setDirection = function (val) {
           this.playDirection = val < 0 ? -1 : 1;
           this.updaFrameModifier();
         };
-        AnimationItem.prototype.setVolume = function(val, name) {
+        AnimationItem.prototype.setVolume = function (val, name) {
           if (name && this.name !== name) {
             return;
           }
           this.audioController.setVolume(val);
         };
-        AnimationItem.prototype.getVolume = function() {
+        AnimationItem.prototype.getVolume = function () {
           return this.audioController.getVolume();
         };
-        AnimationItem.prototype.mute = function(name) {
+        AnimationItem.prototype.mute = function (name) {
           if (name && this.name !== name) {
             return;
           }
           this.audioController.mute();
         };
-        AnimationItem.prototype.unmute = function(name) {
+        AnimationItem.prototype.unmute = function (name) {
           if (name && this.name !== name) {
             return;
           }
           this.audioController.unmute();
         };
-        AnimationItem.prototype.updaFrameModifier = function() {
+        AnimationItem.prototype.updaFrameModifier = function () {
           this.frameModifier = this.frameMult * this.playSpeed * this.playDirection;
           this.audioController.setRate(this.playSpeed * this.playDirection);
         };
-        AnimationItem.prototype.getPath = function() {
+        AnimationItem.prototype.getPath = function () {
           return this.path;
         };
-        AnimationItem.prototype.getAssetsPath = function(assetData) {
+        AnimationItem.prototype.getAssetsPath = function (assetData) {
           var path = "";
           if (assetData.e) {
             path = assetData.p;
@@ -46848,7 +47238,7 @@ var PeraWalletConnect = (() => {
           }
           return path;
         };
-        AnimationItem.prototype.getAssetData = function(id) {
+        AnimationItem.prototype.getAssetData = function (id) {
           var i = 0;
           var len = this.assets.length;
           while (i < len) {
@@ -46859,16 +47249,16 @@ var PeraWalletConnect = (() => {
           }
           return null;
         };
-        AnimationItem.prototype.hide = function() {
+        AnimationItem.prototype.hide = function () {
           this.renderer.hide();
         };
-        AnimationItem.prototype.show = function() {
+        AnimationItem.prototype.show = function () {
           this.renderer.show();
         };
-        AnimationItem.prototype.getDuration = function(isFrame) {
+        AnimationItem.prototype.getDuration = function (isFrame) {
           return isFrame ? this.totalFrames : this.totalFrames / this.frameRate;
         };
-        AnimationItem.prototype.trigger = function(name) {
+        AnimationItem.prototype.trigger = function (name) {
           if (this._cbs && this._cbs[name]) {
             switch (name) {
               case "enterFrame":
@@ -46907,14 +47297,14 @@ var PeraWalletConnect = (() => {
             this.onDestroy.call(this, new BMDestroyEvent(name, this));
           }
         };
-        AnimationItem.prototype.triggerRenderFrameError = function(nativeError) {
+        AnimationItem.prototype.triggerRenderFrameError = function (nativeError) {
           var error = new BMRenderFrameErrorEvent(nativeError, this.currentFrame);
           this.triggerEvent("error", error);
           if (this.onError) {
             this.onError.call(this, error);
           }
         };
-        AnimationItem.prototype.triggerConfigError = function(nativeError) {
+        AnimationItem.prototype.triggerConfigError = function (nativeError) {
           var error = new BMConfigErrorEvent(nativeError, this.currentFrame);
           this.triggerEvent("error", error);
           if (this.onError) {
@@ -47013,7 +47403,7 @@ var PeraWalletConnect = (() => {
         lottie.mute = animationManager.mute;
         lottie.unmute = animationManager.unmute;
         lottie.getRegisteredAnimations = animationManager.getRegisteredAnimations;
-        lottie.useWebWorker = function(flag) {
+        lottie.useWebWorker = function (flag) {
           _useWebWorker = flag;
         };
         lottie.setIDPrefix = setIDPrefix;
@@ -47215,7 +47605,7 @@ var PeraWalletConnect = (() => {
               const e4 = this.shadowRoot.getElementById("pera-wallet-connect-modal-desktop-mode");
               null == e4 || e4.classList.add("pera-wallet-connect-modal-desktop-mode--compact");
             }
-            const n3 = null === (e3 = this.shadowRoot) || void 0 === e3 ? void 0 : e3.querySelector(".pera-wallet-connect-modal-desktop-mode__default-view"), t2 = "true" === this.getAttribute("promote-mobile"), { webWalletOption: a2, mobileWalletOption: o3 } = (function(e4) {
+            const n3 = null === (e3 = this.shadowRoot) || void 0 === e3 ? void 0 : e3.querySelector(".pera-wallet-connect-modal-desktop-mode__default-view"), t2 = "true" === this.getAttribute("promote-mobile"), { webWalletOption: a2, mobileWalletOption: o3 } = (function (e4) {
               const n4 = `
   <div id="web-wallet-option" class="pera-wallet-accordion-item ${e4 ? "" : "pera-wallet-accordion-item--active"}  pera-wallet-accordion-item--web-wallet">
             <a class="pera-wallet-accordion-toggle">
@@ -47369,7 +47759,7 @@ var PeraWalletConnect = (() => {
             const t2 = document.createElement("style");
             t2.textContent = L, this.shadowRoot.append(k.content.cloneNode(true), t2);
             const a2 = null === (n3 = this.shadowRoot) || void 0 === n3 ? void 0 : n3.getElementById("pera-wallet-connect-modal-touch-screen-mode-launch-pera-wallet-button"), o3 = this.getAttribute("uri");
-            a2 && o3 && (a2.setAttribute("href", (function(n4) {
+            a2 && o3 && (a2.setAttribute("href", (function (n4) {
               let t3 = i(false);
               e2.isIOS() && !t3.includes("-wc") && (t3 = t3.replace("://", "-wc://"));
               let a3 = `${t3}wc?uri=${encodeURIComponent(n4)}`;
@@ -47745,7 +48135,7 @@ var PeraWalletConnect = (() => {
       var r2 = o2(t);
       var i = o2(n2);
       function s(e3, t2, n3, o3) {
-        return new (n3 || (n3 = Promise))((function(a2, r3) {
+        return new (n3 || (n3 = Promise))((function (a2, r3) {
           function i2(e4) {
             try {
               l2(o3.next(e4));
@@ -47762,7 +48152,7 @@ var PeraWalletConnect = (() => {
           }
           function l2(e4) {
             var t3;
-            e4.done ? a2(e4.value) : (t3 = e4.value, t3 instanceof n3 ? t3 : new n3((function(e5) {
+            e4.done ? a2(e4.value) : (t3 = e4.value, t3 instanceof n3 ? t3 : new n3((function (e5) {
               e5(t3);
             }))).then(i2, s2);
           }
@@ -47834,9 +48224,11 @@ var PeraWalletConnect = (() => {
               if (a2 += 1, 50 === a2) return clearInterval(r3), void n3(new l({ type: "MESSAGE_NOT_RECEIVED" }, "Couldn't open Pera Wallet, please try again."));
               o3 && (true === o3.closed && (clearInterval(r3), n3(new l({ type: "OPERATION_CANCELLED" }, "Operation cancelled by user"))), c.sendMessage({ message: { type: "TAB_OPEN" }, origin: e3, targetWindow: o3 }));
             }), 700);
-            c.setupListener({ onReceiveMessage: (e4) => {
-              "TAB_OPEN_RECEIVED" === e4.data.message.type && (clearInterval(r3), t2(o3));
-            } });
+            c.setupListener({
+              onReceiveMessage: (e4) => {
+                "TAB_OPEN_RECEIVED" === e4.data.message.type && (clearInterval(r3), t2(o3));
+              }
+            });
           } catch (e4) {
             n3(e4);
           }
@@ -47889,7 +48281,7 @@ var PeraWalletConnect = (() => {
         return t2;
       }
       function S() {
-        return (function(e3, t2 = {}) {
+        return (function (e3, t2 = {}) {
           return fetch(e3, t2).then(((e4) => e4.json())).then(((e4) => e4));
         })("https://wc.perawallet.app/config.json", { cache: "no-store" });
       }
@@ -47926,7 +48318,7 @@ var PeraWalletConnect = (() => {
       }
       function R({ method: e3, signTxnRequestParams: t2, signer: n3, chainId: o3, webWalletURL: a2, resolve: r3, reject: i2 }) {
         const d2 = M(a2);
-        !(function() {
+        !(function () {
           s(this, void 0, void 0, (function* () {
             try {
               const a3 = yield p(d2.TRANSACTION_SIGN);
@@ -47937,24 +48329,26 @@ var PeraWalletConnect = (() => {
               const s2 = setInterval((() => {
                 true === (null == a3 ? void 0 : a3.closed) && (i2(new l({ type: `${e3}_CANCELLED` }, "Transaction signing is cancelled by user.")), clearInterval(s2));
               }), 2e3);
-              c.setupListener({ onReceiveMessage: (t3) => (function({ event: e4, newPeraWalletTab: t4, method: n4, resolve: o4, reject: a4 }) {
-                switch (e4.data.message.type) {
-                  case "SIGN_TXN_CALLBACK":
-                    null == t4 || t4.close(), o4(e4.data.message.signedTxns.map(((e5) => E(e5.signedTxn))));
-                    break;
-                  case "SIGN_DATA_CALLBACK":
-                    null == t4 || t4.close(), o4(e4.data.message.signedData.map(((e5) => E(e5.signedData))));
-                    break;
-                  case "SIGN_TXN_NETWORK_MISMATCH":
-                    a4(new l({ type: `${n4}_NETWORK_MISMATCH`, detail: e4.data.message.error }, e4.data.message.error || "Network mismatch"));
-                    break;
-                  case "SIGN_TXN_CALLBACK_ERROR":
-                    null == t4 || t4.close(), a4(new l({ type: `${n4}_CANCELLED` }, e4.data.message.error));
-                    break;
-                  case "SESSION_DISCONNECTED":
-                    null == t4 || t4.close(), T(), a4(new l({ type: "SESSION_DISCONNECTED", detail: e4.data.message.error }, e4.data.message.error));
-                }
-              })({ event: t3, newPeraWalletTab: a3, method: e3, resolve: r3, reject: i2 }) });
+              c.setupListener({
+                onReceiveMessage: (t3) => (function ({ event: e4, newPeraWalletTab: t4, method: n4, resolve: o4, reject: a4 }) {
+                  switch (e4.data.message.type) {
+                    case "SIGN_TXN_CALLBACK":
+                      null == t4 || t4.close(), o4(e4.data.message.signedTxns.map(((e5) => E(e5.signedTxn))));
+                      break;
+                    case "SIGN_DATA_CALLBACK":
+                      null == t4 || t4.close(), o4(e4.data.message.signedData.map(((e5) => E(e5.signedData))));
+                      break;
+                    case "SIGN_TXN_NETWORK_MISMATCH":
+                      a4(new l({ type: `${n4}_NETWORK_MISMATCH`, detail: e4.data.message.error }, e4.data.message.error || "Network mismatch"));
+                      break;
+                    case "SIGN_TXN_CALLBACK_ERROR":
+                      null == t4 || t4.close(), a4(new l({ type: `${n4}_CANCELLED` }, e4.data.message.error));
+                      break;
+                    case "SESSION_DISCONNECTED":
+                      null == t4 || t4.close(), T(), a4(new l({ type: "SESSION_DISCONNECTED", detail: e4.data.message.error }, e4.data.message.error));
+                  }
+                })({ event: t3, newPeraWalletTab: a3, method: e3, resolve: r3, reject: i2 })
+              });
             } catch (e4) {
               i2(e4);
             }
@@ -47963,7 +48357,7 @@ var PeraWalletConnect = (() => {
       }
       function P({ webWalletURL: e3, chainId: t2, resolve: n3, reject: o3 }) {
         const a2 = M(e3);
-        return function() {
+        return function () {
           return s(this, void 0, void 0, (function* () {
             try {
               const e4 = yield p(a2.CONNECT);
@@ -47971,12 +48365,14 @@ var PeraWalletConnect = (() => {
               const i2 = setInterval((() => {
                 true === (null == e4 ? void 0 : e4.closed) && (o3(new l({ type: "CONNECT_CANCELLED" }, "Connect is cancelled by user")), clearInterval(i2), r3());
               }), 2e3);
-              c.setupListener({ onReceiveMessage: (t3) => (function({ event: e5, newPeraWalletTab: t4, resolve: n4, reject: o4 }) {
-                if (n4 && "CONNECT_CALLBACK" === e5.data.message.type) {
-                  const o5 = e5.data.message.data.addresses;
-                  y(o5, "pera-wallet-web"), n4(o5), m("pera-wallet-connect-modal-wrapper"), null == t4 || t4.close();
-                } else "CONNECT_NETWORK_MISMATCH" === e5.data.message.type && (o4(new l({ type: "CONNECT_NETWORK_MISMATCH", detail: e5.data.message.error }, e5.data.message.error || "Your wallet is connected to a different network to this dApp. Update your wallet to the correct network (MainNet or TestNet) to continue.")), m("pera-wallet-connect-modal-wrapper"), null == t4 || t4.close());
-              })({ event: t3, newPeraWalletTab: e4, resolve: n3, reject: o3 }) });
+              c.setupListener({
+                onReceiveMessage: (t3) => (function ({ event: e5, newPeraWalletTab: t4, resolve: n4, reject: o4 }) {
+                  if (n4 && "CONNECT_CALLBACK" === e5.data.message.type) {
+                    const o5 = e5.data.message.data.addresses;
+                    y(o5, "pera-wallet-web"), n4(o5), m("pera-wallet-connect-modal-wrapper"), null == t4 || t4.close();
+                  } else "CONNECT_NETWORK_MISMATCH" === e5.data.message.type && (o4(new l({ type: "CONNECT_NETWORK_MISMATCH", detail: e5.data.message.error }, e5.data.message.error || "Your wallet is connected to a different network to this dApp. Update your wallet to the correct network (MainNet or TestNet) to continue.")), m("pera-wallet-connect-modal-wrapper"), null == t4 || t4.close());
+                })({ event: t3, newPeraWalletTab: e4, resolve: n3, reject: o3 })
+              });
             } catch (e4) {
               r3(), o3(e4);
             }
@@ -47987,22 +48383,24 @@ var PeraWalletConnect = (() => {
         }
       }
       function D({ isWebWalletAvailable: e3, shouldDisplayNewBadge: t2, shouldUseSound: n3, compactMode: o3, promoteMobile: a2 }) {
-        return { open: (r3 = { isWebWalletAvailable: e3, shouldDisplayNewBadge: t2, shouldUseSound: n3, compactMode: o3, promoteMobile: a2 }, (e4) => {
-          if (!document.getElementById("pera-wallet-connect-modal-wrapper")) {
-            const t3 = h("pera-wallet-connect-modal-wrapper"), n4 = `${e4}&algorand=true`, { isWebWalletAvailable: o4, shouldDisplayNewBadge: a3, shouldUseSound: i2, compactMode: s2, promoteMobile: l2 } = r3;
-            t3.innerHTML = `<pera-wallet-connect-modal uri="${n4}" is-web-wallet-avaliable="${o4}" should-display-new-badge="${a3}" should-use-sound="${i2}" compact-mode="${s2}" promote-mobile="${l2}"></pera-wallet-connect-modal>`;
-          }
-        }), close: () => m("pera-wallet-connect-modal-wrapper") };
+        return {
+          open: (r3 = { isWebWalletAvailable: e3, shouldDisplayNewBadge: t2, shouldUseSound: n3, compactMode: o3, promoteMobile: a2 }, (e4) => {
+            if (!document.getElementById("pera-wallet-connect-modal-wrapper")) {
+              const t3 = h("pera-wallet-connect-modal-wrapper"), n4 = `${e4}&algorand=true`, { isWebWalletAvailable: o4, shouldDisplayNewBadge: a3, shouldUseSound: i2, compactMode: s2, promoteMobile: l2 } = r3;
+              t3.innerHTML = `<pera-wallet-connect-modal uri="${n4}" is-web-wallet-avaliable="${o4}" should-display-new-badge="${a3}" should-use-sound="${i2}" compact-mode="${s2}" promote-mobile="${l2}"></pera-wallet-connect-modal>`;
+            }
+          }), close: () => m("pera-wallet-connect-modal-wrapper")
+        };
         var r3;
       }
-      "undefined" != typeof window && (window.global = window, window.Buffer = window.Buffer || require_buffer2().Buffer, Promise.resolve().then((function() {
+      "undefined" != typeof window && (window.global = window, window.Buffer = window.Buffer || require_buffer2().Buffer, Promise.resolve().then((function () {
         return require_App_94e9365e();
       }))), exports.PERA_DOWNLOAD_URL = "https://perawallet.app/download/", exports.PERA_WALLET_APP_DEEP_LINK = L, exports.PERA_WALLET_CONNECT_MODAL_ID = "pera-wallet-connect-modal-wrapper", exports.PERA_WALLET_MODAL_CLASSNAME = "pera-wallet-modal", exports.PERA_WALLET_REDIRECT_MODAL_ID = "pera-wallet-redirect-modal-wrapper", exports.PERA_WALLET_SIGN_TXN_MODAL_ID = "pera-wallet-sign-txn-modal-wrapper", exports.PERA_WALLET_SIGN_TXN_TOAST_ID = "pera-wallet-sign-txn-toast-wrapper", exports.PeraWalletConnect = class {
         constructor(e3) {
           this.bridge = (null == e3 ? void 0 : e3.bridge) || "", this.connector = null, this.shouldShowSignTxnToast = void 0 === (null == e3 ? void 0 : e3.shouldShowSignTxnToast) || e3.shouldShowSignTxnToast, this.chainId = null == e3 ? void 0 : e3.chainId, this.compactMode = (null == e3 ? void 0 : e3.compactMode) || false;
         }
         get platform() {
-          return (function() {
+          return (function () {
             const e3 = N();
             let t2 = null;
             return "pera-wallet" === (null == e3 ? void 0 : e3.type) ? t2 = "mobile" : "pera-wallet-web" === (null == e3 ? void 0 : e3.type) && (t2 = "web"), t2;
@@ -48021,7 +48419,7 @@ var PeraWalletConnect = (() => {
               } catch (e4) {
               }
               const { isWebWalletAvailable: o3, bridgeURL: r3, webWalletURL: i2, shouldDisplayNewBadge: s2, shouldUseSound: c2, promoteMobile: d2 } = yield _(), u2 = P({ resolve: e3, reject: t2, webWalletURL: i2, chainId: this.chainId, isCompactMode: this.compactMode });
-              o3 && (window.onWebWalletConnect = u2), this.connector = new a.default({ bridge: this.bridge || r3 || "https://bridge.walletconnect.org", qrcodeModal: D({ isWebWalletAvailable: o3, shouldDisplayNewBadge: s2, shouldUseSound: c2, compactMode: this.compactMode, promoteMobile: d2 }) }), yield this.connector.createSession({ chainId: this.chainId || 4160 }), (function(e4, t3) {
+              o3 && (window.onWebWalletConnect = u2), this.connector = new a.default({ bridge: this.bridge || r3 || "https://bridge.walletconnect.org", qrcodeModal: D({ isWebWalletAvailable: o3, shouldDisplayNewBadge: s2, shouldUseSound: c2, compactMode: this.compactMode, promoteMobile: d2 }) }), yield this.connector.createSession({ chainId: this.chainId || 4160 }), (function (e4, t3) {
                 var n4, o4, a2, r4;
                 const i3 = document.getElementById(e4), s3 = null === (o4 = null === (n4 = null == i3 ? void 0 : i3.querySelector(e4.replace("-wrapper", ""))) || void 0 === n4 ? void 0 : n4.shadowRoot) || void 0 === o4 ? void 0 : o4.querySelector(".pera-wallet-modal"), l2 = null === (r4 = null === (a2 = null == s3 ? void 0 : s3.querySelector("pera-wallet-modal-header")) || void 0 === a2 ? void 0 : a2.shadowRoot) || void 0 === r4 ? void 0 : r4.getElementById("pera-wallet-modal-header-close-button");
                 null == l2 || l2.addEventListener("click", (() => {
@@ -48046,7 +48444,7 @@ var PeraWalletConnect = (() => {
                 const { isWebWalletAvailable: n4 } = yield _();
                 n4 ? e3(r3.accounts || []) : t2(new l({ type: "SESSION_RECONNECT", detail: "Pera Web is not available" }, "Pera Web is not available"));
               }
-              this.connector && e3(this.connector.accounts || []), this.bridge = (null === (n3 = (function() {
+              this.connector && e3(this.connector.accounts || []), this.bridge = (null === (n3 = (function () {
                 var e4;
                 const t3 = null === (e4 = b()) || void 0 === e4 ? void 0 : e4.getItem(f);
                 return t3 ? JSON.parse(t3) : null;
@@ -48104,7 +48502,7 @@ var PeraWalletConnect = (() => {
         signTransaction(e3, t2) {
           return s(this, void 0, void 0, (function* () {
             if ("mobile" === this.platform && (O() ? w() : !O() && this.shouldShowSignTxnToast && g(), !this.connector)) throw new Error("PeraWalletConnect was not initialized correctly.");
-            const n3 = e3.flatMap(((e4) => e4.map(((e5) => (function(e6, t3) {
+            const n3 = e3.flatMap(((e4) => e4.map(((e5) => (function (e6, t3) {
               let n4;
               t3 && !(e6.signers || []).includes(t3) && (n4 = []);
               const o3 = { txn: (a2 = e6.txn, Buffer.from(r2.default.encodeUnsignedTransaction(a2)).toString("base64")) };
@@ -48130,14 +48528,14 @@ var PeraWalletConnect = (() => {
             return this.signDataWithMobile({ data: o3, signer: t2, chainId: n3 });
           }));
         }
-      }, exports.closePeraWalletSignTxnToast = function() {
+      }, exports.closePeraWalletSignTxnToast = function () {
         m("pera-wallet-sign-txn-toast-wrapper");
-      }, exports.detectBrowser = function() {
+      }, exports.detectBrowser = function () {
         if (!I()) return null;
         const { userAgent: e3 } = navigator;
         let t2;
         return t2 = e3.match(/DuckDuckGo/i) ? "DuckDuckGo" : e3.match(/OPX/i) ? "Opera GX" : navigator.brave ? "Brave" : i.default.getParser(navigator.userAgent).getBrowserName(), t2;
-      }, exports.isAndroid = W, exports.isIOS = function() {
+      }, exports.isAndroid = W, exports.isIOS = function () {
         return I() && /iPhone|iPad|iPod/i.test(navigator.userAgent);
       }, exports.isMobile = O, exports.removeModalWrapperFromDOM = m;
     }
@@ -48155,7 +48553,7 @@ var PeraWalletConnect = (() => {
 
   // build-pera.mjs
   var import_connect = __toESM(require_dist2(), 1);
-  window.PeraWalletConnect = { PeraWalletConnect: import_connect.PeraWalletConnect };
+  return { PeraWalletConnect: import_connect.PeraWalletConnect };
 })();
 /*! Bundled license information:
 
