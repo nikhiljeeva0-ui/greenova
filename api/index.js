@@ -160,8 +160,4 @@ app.all('/api/*', (req, res) => {
     res.status(404).json({ error: 'API endpoint not found' });
 });
 
-// ═══════════════════════════════════════
-// Export for Vercel Serverless Functions
-// NO app.listen() — Vercel handles this!
-// ═══════════════════════════════════════
 module.exports = app;
