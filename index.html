@@ -20,6 +20,23 @@
     <!-- Particle Canvas Background -->
     <canvas id="particle-canvas"></canvas>
 
+    <!-- 🫧 CO2 Floating Bubbles Background Overlay -->
+    <div class="co2-bubbles">
+        <div class="co2-bubble" style="left: 10%; width: 40px; height: 40px; animation-duration: 8s;">CO₂</div>
+        <div class="co2-bubble"
+            style="left: 25%; width: 25px; height: 25px; animation-duration: 12s; animation-delay: 2s;">co2</div>
+        <div class="co2-bubble"
+            style="left: 50%; width: 35px; height: 35px; animation-duration: 9s; animation-delay: 4s;">CO₂</div>
+        <div class="co2-bubble"
+            style="left: 70%; width: 20px; height: 20px; animation-duration: 14s; animation-delay: 1s;">O₂</div>
+        <div class="co2-bubble"
+            style="left: 85%; width: 50px; height: 50px; animation-duration: 10s; animation-delay: 3s;">CO₂</div>
+        <div class="co2-bubble"
+            style="left: 40%; width: 30px; height: 30px; animation-duration: 11s; animation-delay: 5s;">co2</div>
+        <div class="co2-bubble"
+            style="left: 95%; width: 45px; height: 45px; animation-duration: 7s; animation-delay: 2s;">CO₂</div>
+    </div>
+
     <!-- Toast Notification Container -->
     <div id="toast-container"></div>
 
@@ -132,7 +149,7 @@
                 </div>
             </div>
 
-            <button onclick="app.showLogin()" class="btn-hero">
+            <button onclick="app.showLogin()" class="btn-primary">
                 Launch Dashboard 🚀
             </button>
         </div>
@@ -280,7 +297,7 @@
 
                 <div class="stats-grid">
                     <!-- Card 1: Electricity -->
-                    <div class="stat-card">
+                    <div class="stat-card fade-in-up" style="animation-delay: 0.1s;">
                         <div class="stat-emoji">⚡</div>
                         <span class="stat-label">Electricity Usage</span>
                         <div class="stat-value" id="electricityValue">0</div>
@@ -288,7 +305,7 @@
                     </div>
 
                     <!-- Card 2: Solar -->
-                    <div class="stat-card">
+                    <div class="stat-card fade-in-up" style="animation-delay: 0.2s;">
                         <div class="stat-emoji" style="filter: drop-shadow(0 0 10px rgba(255,215,0,0.3));">☀️</div>
                         <span class="stat-label">Solar Generation</span>
                         <div class="stat-value" id="solarValue">0</div>
@@ -296,7 +313,7 @@
                     </div>
 
                     <!-- Card 3: Carbon Saved -->
-                    <div class="stat-card">
+                    <div class="stat-card fade-in-up" style="animation-delay: 0.3s;">
                         <div class="stat-emoji" style="filter: drop-shadow(0 0 10px rgba(16,185,129,0.3));">🌱</div>
                         <span class="stat-label">Carbon Saved</span>
                         <div class="stat-value" id="carbonValue">0</div>
@@ -304,8 +321,12 @@
                     </div>
 
                     <!-- Card 4: Green Score (Circular Progress) -->
-                    <div class="stat-card">
+                    <div class="stat-card fade-in-up" style="animation-delay: 0.4s;">
                         <span class="stat-label">Overall Green Score</span>
+
+                        <!-- Floating Leaf Element -->
+                        <div class="floating-leaf" style="right: 20px; top: 20px;">🌿</div>
+
                         <div class="progress-ring">
                             <svg width="120" height="120">
                                 <circle class="bg-ring" cx="60" cy="60" r="54"></circle>
@@ -358,18 +379,23 @@
 
                             <h3 style="margin: 2rem 0 1rem; color: #fff;">📄 Proof Verification</h3>
 
-                            <div class="floating-input-group" style="margin-bottom: 0;">
-                                <label class="file-section-label">Upload Utility Bills & Solar Reports
+                            <div class="floating-input-group upload-drop-area"
+                                style="margin-bottom: 0; padding: 1.5rem;">
+                                <label class="file-section-label" style="text-align: center;">Upload Utility Bills &
+                                    &nbsp; Solar Reports
                                     (PDF, PNG, JPG)</label>
-                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                                <div
+                                    style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem;">
                                     <div>
                                         <input type="file" id="bill-upload" accept=".pdf,.png,.jpg,.jpeg"
-                                            class="floating-input" style="padding: 0.5rem;">
+                                            class="floating-input"
+                                            style="padding: 0.5rem; background: rgba(0,0,0,0.5);">
                                         <div id="bill-error" class="field-error"></div>
                                     </div>
                                     <div>
                                         <input type="file" id="solar-upload" accept=".pdf,.png,.jpg,.jpeg"
-                                            class="floating-input" style="padding: 0.5rem;">
+                                            class="floating-input"
+                                            style="padding: 0.5rem; background: rgba(0,0,0,0.5);">
                                         <div id="solar-error-file" class="field-error"></div>
                                     </div>
                                 </div>
@@ -383,7 +409,7 @@
                             </button>
 
                             <div id="loading-indicator" class="loading-indicator hidden">
-                                <span class="spinner">↻</span> Processing On-Chain...
+                                <span class="spinner">↻</span> Verifying on Algorand Blockchain...
                             </div>
                         </form>
                     </div>

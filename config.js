@@ -7,7 +7,7 @@
  */
 window.CAMPUS_CARBON_CONFIG = {
     // ═══ APP ID — Set this after deploying your smart contract ═══
-    APP_ID: 755887255,
+    APP_ID: 756081706,
 
     // Enable console logging
     DEBUG: true,

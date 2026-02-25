@@ -8,8 +8,8 @@ class CarbonState:
     solar = LocalStateValue(stack_type=TealType.uint64, descr="Solar generation kWh")
     carbon_saved = LocalStateValue(stack_type=TealType.uint64, descr="Carbon saved kg CO2")
     green_score = LocalStateValue(stack_type=TealType.uint64, descr="Green score 0-100")
-    bill_hash = LocalStateValue(stack_type=TealType.uint64, descr="Bill proof hash (first 8 bytes)")
-    solar_hash = LocalStateValue(stack_type=TealType.uint64, descr="Solar proof hash (first 8 bytes)")
+    bill_hash = LocalStateValue(stack_type=TealType.bytes, descr="Bill proof hash")
+    solar_hash = LocalStateValue(stack_type=TealType.bytes, descr="Solar proof hash")
     college_name = LocalStateValue(stack_type=TealType.bytes, descr="Campus/College name")
     tokens_earned = LocalStateValue(stack_type=TealType.uint64, descr="Carbon tokens earned")
     has_badge = LocalStateValue(stack_type=TealType.uint64, descr="1 if NFT badge earned")
@@ -22,12 +22,12 @@ class CarbonApp(Application):
 app = CarbonApp("CampusCarbonApp", state=CarbonState)
 
 
-@app.create
+@app.create(bare=True)
 def create():
     return Approve()
 
 
-@app.opt_in
+@app.opt_in(bare=True)
 def opt_in():
     """Initialize local state to zero on opt-in."""
     return Seq(
@@ -35,11 +35,12 @@ def opt_in():
         app.state.solar.set(Int(0)),
         app.state.carbon_saved.set(Int(0)),
         app.state.green_score.set(Int(0)),
-        app.state.bill_hash.set(Int(0)),
-        app.state.solar_hash.set(Int(0)),
+        app.state.bill_hash.set(Bytes("")),
+        app.state.solar_hash.set(Bytes("")),
         app.state.college_name.set(Bytes("")),
         app.state.tokens_earned.set(Int(0)),
         app.state.has_badge.set(Int(0)),
+        Approve()
     )
 
 
@@ -49,9 +50,9 @@ def submit_data(
     solar: abi.Uint64,
     carbon_saved: abi.Uint64,
     green_score: abi.Uint64,
-    bill_hash: abi.Uint64,
-    solar_hash: abi.Uint64,
-    college_name: abi.DynamicBytes,
+    bill_hash: abi.String,
+    solar_hash: abi.String,
+    college_name: abi.String,
 ):
     """Submit campus energy data with anti-cheat validation."""
     # Calculate tokens: 1 token per 100 kg CO2 saved

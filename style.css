@@ -24,13 +24,27 @@
 }
 
 body {
-    background-color: var(--bg-dark);
+    background: linear-gradient(135deg, #0f2027, #1b3a4b, #2c5364);
+    background-size: 200% 200%;
+    animation: gradientBG 15s ease infinite;
     color: var(--text-primary);
     min-height: 100vh;
     overflow-x: hidden;
-    background-image:
-        radial-gradient(circle at 15% 50%, rgba(0, 255, 136, 0.08), transparent 25%),
-        radial-gradient(circle at 85% 30%, rgba(0, 243, 255, 0.08), transparent 25%);
+    position: relative;
+}
+
+@keyframes gradientBG {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 /* Particle Canvas */
@@ -46,13 +60,19 @@ body {
 
 /* 🌀 Utilities */
 .glass-panel {
-    background: var(--bg-panel);
+    background: rgba(15, 32, 39, 0.65);
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
-    border: 1px solid var(--glass-border);
+    border: 1px solid rgba(0, 255, 136, 0.15);
     border-radius: 20px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), inset 0 0 20px rgba(0, 255, 136, 0.05);
     transition: var(--transition);
+}
+
+.glass-panel:hover {
+    transform: translateY(-5px) scale(1.02);
+    border-color: rgba(0, 255, 136, 0.4);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 255, 136, 0.2);
 }
 
 .hidden {
@@ -175,7 +195,21 @@ body {
     width: 90%;
     padding: 2.5rem;
     text-align: center;
-    animation: scaleIn 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    animation: scaleIn 0.4s cubic-bezier(0.23, 1, 0.32, 1), successPulse 2s ease-in-out infinite alternate;
+    border: 1px solid rgba(0, 255, 136, 0.4);
+    box-shadow: 0 10px 40px rgba(0, 255, 136, 0.15);
+}
+
+@keyframes successPulse {
+    0% {
+        box-shadow: 0 10px 40px rgba(0, 255, 136, 0.15);
+        border-color: rgba(0, 255, 136, 0.3);
+    }
+
+    100% {
+        box-shadow: 0 10px 50px rgba(0, 255, 136, 0.3);
+        border-color: rgba(0, 255, 136, 0.6);
+    }
 }
 
 .modal-icon {
@@ -812,6 +846,7 @@ body {
     font-weight: 600;
     background: linear-gradient(to right, #fff, #aaa);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
@@ -1001,6 +1036,7 @@ body {
     font-weight: 700;
     background: linear-gradient(135deg, #fff 30%, #aaa);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     margin: 0.5rem 0;
     letter-spacing: -1px;
@@ -1431,6 +1467,101 @@ body {
 
     100% {
         transform: rotate(360deg);
+    }
+}
+
+/* 🌿 CO2 Floating Particles CSS Animation */
+.co2-bubbles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.co2-bubble {
+    position: absolute;
+    bottom: -50px;
+    background: radial-gradient(circle, rgba(0, 255, 136, 0.2) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: floatUp infinite ease-in;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgba(0, 255, 136, 0.5);
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) scale(0.5);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-100vh) scale(1.2);
+        opacity: 0;
+    }
+}
+
+/* Floating Leaf */
+.floating-leaf {
+    position: absolute;
+    animation: leafFloat 4s ease-in-out infinite alternate;
+    font-size: 1.5rem;
+    pointer-events: none;
+    z-index: 10;
+}
+
+@keyframes leafFloat {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+
+    100% {
+        transform: translate(10px, -15px) rotate(15deg);
+    }
+}
+
+/* Upload Drop Box Glow */
+.upload-drop-area {
+    transition: var(--transition);
+    border: 2px dashed rgba(0, 255, 136, 0.3) !important;
+    border-radius: 16px !important;
+    background: rgba(0, 0, 0, 0.2) !important;
+    position: relative;
+    overflow: hidden;
+}
+
+.upload-drop-area:hover {
+    border-color: rgba(0, 255, 136, 0.8) !important;
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.2);
+    background: rgba(0, 255, 136, 0.05) !important;
+}
+
+/* Smooth Fade In for cards */
+.fade-in-up {
+    animation: fadeInUp 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 

@@ -296,6 +296,12 @@ const app = {
 
                 this.peraWallet.reconnectSession().then((accounts) => {
                     if (accounts.length) {
+                        // Set up disconnect listener on reconnect
+                        this.peraWallet.connector?.on("disconnect", () => {
+                            debugLog("Pera Wallet disconnected by user/session expiration.");
+                            this.disconnectWallet();
+                        });
+
                         this.userAddress = accounts[0];
                         debugLog('Wallet reconnected:', this.userAddress);
                         this.updateWalletUI();
@@ -303,7 +309,7 @@ const app = {
                         this.loadOnChainData();
                     }
                 }).catch((err) => {
-                    debugLog("warn", "Pera reconnect:", err.message || err);
+                    debugLog("warn", "Pera reconnect expected failure/expired session:", err.message || err);
                 });
             } else {
                 debugLog("error", "❌ Pera Wallet SDK not found! window.PeraWalletConnect =", typeof window.PeraWalletConnect, window.PeraWalletConnect);
@@ -423,6 +429,35 @@ const app = {
             reader.readAsDataURL(file);
         }
     },
+
+    // ═══════════════════════════════════════
+    // FETCH LOCAL STATE
+    // ═══════════════════════════════════════
+    async getAppLocalState(appId, address) {
+        try {
+            const accountInfo = await this.algodClient.accountInformation(address).do();
+            const appsLocal = accountInfo['apps-local-state'] || [];
+            const appState = appsLocal.find(a => a.id === appId);
+
+            if (!appState || !appState['key-value']) return {};
+
+            const formatted = {};
+            appState['key-value'].forEach(kv => {
+                const key = atob(kv.key);
+                if (kv.value.type === 1) { // bytes
+                    formatted[key] = atob(kv.value.bytes);
+                } else {
+                    formatted[key] = kv.value.uint;
+                }
+            });
+            debugLog("Fetched Local State:", formatted);
+            return formatted;
+        } catch (e) {
+            debugLog("error", "Error fetching local state:", e);
+            throw e;
+        }
+    },
+
     loadLogo() {
         const key = this.userAddress ? `logo_${this.userAddress}` : 'logo_demo';
         const saved = localStorage.getItem(key);
@@ -519,13 +554,12 @@ const app = {
             throw new Error('Invalid Algorand transaction object for wallet signing.');
         }
 
-        // @perawallet/connect@1.3.x signTransaction expects an array of
-        // SignerTransaction objects: [{ txn: Transaction }]
-        // The SDK handles encoding internally when given a Transaction object.
         try {
-            const txnsToSign = [{ txn: txn }];
+            // Pera Connect requires {txn, signers: [address]} array wrapper for optimal parsing
+            const txnGroup = [{ txn: txn, signers: [this.userAddress] }];
+
             const signedTxnArr = await withTimeout(
-                this.peraWallet.signTransaction([txnsToSign]),
+                this.peraWallet.signTransaction([txnGroup]),
                 120000,
                 'Wallet signing'
             );
@@ -545,8 +579,8 @@ const app = {
 
         // 0. Check wallet connection
         if (!this.userAddress || !this.peraWallet) {
-            showToast('warning', 'Wallet Required', 'Connect your Pera Wallet first to submit data on-chain.');
-            return;
+            await this.connectWallet();
+            if (!this.userAddress) return;
         }
         try {
             this.ensureAlgoSdkReady();
@@ -593,19 +627,19 @@ const app = {
             const carbonSaved = Math.round(result.totalCarbonSaved);
             const greenScore = Math.round(result.greenScore);
 
-            // Convert hashes to uint64 for on-chain storage
-            const billHashUint = this.hashToUint64(billHash);
-            const solarHashUint = this.hashToUint64(solarHashHex);
-
             debugLog("Submitting to blockchain:", {
                 electricity, solar, carbonSaved, greenScore,
-                billHashUint: billHashUint.toString(),
-                solarHashUint: solarHashUint.toString()
+                billHash,
+                solarHash: solarHashHex
             });
 
             // 6. Check opt-in status
-            const isOptedIn = await this.checkOptIn();
-            if (!isOptedIn) {
+            const accountInfo = await this.algodClient.accountInformation(this.userAddress).do();
+            const optedIn = accountInfo['apps-local-state']?.some(
+                (app) => app.id === this.appId
+            );
+
+            if (!optedIn) {
                 showToast('info', 'Opt-In Required', 'You need to opt-in to the smart contract first. Signing opt-in transaction...');
                 const opted = await withTimeout(this.optInToApp(), 180000, 'Opt-in flow');
                 if (!opted) {
@@ -619,11 +653,11 @@ const app = {
             // 7. Submit data to smart contract via Pera Wallet
             showToast('info', 'Sign Transaction', 'Please sign the transaction in your Pera Wallet.');
 
-            // Compute ABI method selector for submit_data(uint64,uint64,uint64,uint64,uint64,uint64,byte[])void
-            const selector = computeMethodSelector('submit_data(uint64,uint64,uint64,uint64,uint64,uint64,byte[])void');
+            // Compute ABI method selector
+            const selector = computeMethodSelector('submit_data(uint64,uint64,uint64,uint64,string,string,string)void');
 
             const collegeNameStr = this.currentCollege ? this.currentCollege.name : 'Unknown';
-            const collegeNameBytes = new TextEncoder().encode(collegeNameStr);
+            const stringType = new algosdk.ABIStringType();
 
             const appArgs = [
                 selector,
@@ -631,11 +665,9 @@ const app = {
                 algosdk.encodeUint64(Math.floor(solar)),
                 algosdk.encodeUint64(Math.floor(carbonSaved)),
                 algosdk.encodeUint64(Math.floor(greenScore)),
-                algosdk.encodeUint64(Math.floor(billHashUint)),
-                algosdk.encodeUint64(Math.floor(solarHashUint)),
-                // For dynamic bytes, We need to be careful with encoding.
-                // In simple NoOp, we can just pass the bytes.
-                collegeNameBytes
+                stringType.encode(billHash),
+                stringType.encode(solarHashHex),
+                stringType.encode(collegeNameStr)
             ];
 
             const suggestedParams = await this.algodClient.getTransactionParams().do();
@@ -659,20 +691,27 @@ const app = {
 
             // Wait for confirmation
             const confirmed = await withTimeout(
-                algosdk.waitForConfirmation(this.algodClient, txId, 8),
+                algosdk.waitForConfirmation(this.algodClient, txId, 4),
                 90000,
                 'Transaction confirmation'
             );
             debugLog("Transaction confirmed:", confirmed);
 
+            // Fetch state after confirmation
+            const appInfo = await this.algodClient.getApplicationByID(this.appId).do();
+
+            // Fetch real values from Blockchain Local State
+            const state = await this.getAppLocalState(this.appId, this.userAddress);
+
             // 8. Update local state from blockchain
-            this.data.electricity = electricity;
-            this.data.solar = solar;
-            this.data.carbonSaved = carbonSaved;
-            this.data.greenScore = greenScore;
-            this.data.electricityHash = billHash;
-            this.data.solarHash = solarHashHex;
-            this.data.collegeName = this.currentCollege ? this.currentCollege.name : 'Unknown';
+            this.data.electricity = state.electricity || electricity;
+            this.data.solar = state.solar || solar;
+            this.data.carbonSaved = state.carbon_saved || carbonSaved;
+            this.data.greenScore = state.green_score || greenScore;
+            this.data.electricityHash = state.bill_hash || billHash;
+            this.data.solarHash = state.solar_hash || solarHashHex;
+            this.data.collegeName = state.college_name || (this.currentCollege ? this.currentCollege.name : 'Unknown');
+            this.data.tokensEarned = state.tokens_earned || Math.floor(this.data.carbonSaved / 100);
 
             // Save wallet → college name mapping for leaderboard display
             if (this.userAddress && this.currentCollege) {
@@ -681,10 +720,10 @@ const app = {
 
             // 9. Show success
             this.updateDashboardUI(true);
-            this.showResultCard(billHash, solarHashHex, txId);
+            this.showResultCard(this.data.electricityHash, this.data.solarHash, txId);
             this.showDashboardTab('overview');
 
-            showToast('success', '🎉 On-Chain Verified!', `TX: ${txId.substring(0, 16)}... | Score: ${greenScore}%`);
+            showToast('success', '🎉 On-Chain Verified!', `TX: ${txId.substring(0, 16)}... | Score: ${this.data.greenScore}%`);
 
             // Reload on-chain data
             setTimeout(() => this.loadOnChainData(), 2000);
@@ -801,7 +840,7 @@ const app = {
             }
 
             await withTimeout(
-                algosdk.waitForConfirmation(this.algodClient, txId, 8),
+                algosdk.waitForConfirmation(this.algodClient, txId, 4),
                 90000,
                 'Opt-in confirmation'
             );
@@ -1173,11 +1212,7 @@ const app = {
             try {
                 await this.peraWallet.disconnect();
             } catch (_) { }
-            this.userAddress = null;
-            this.resetWalletUI();
-            this.resetData();
-            this.updateDashboardUI();
-            showToast('info', 'Disconnected', 'Wallet disconnected.');
+            this.disconnectWallet();
         } else {
             try {
                 // Clear stale session so QR modal can open reliably
@@ -1190,18 +1225,19 @@ const app = {
 
                 const accts = await withTimeout(this.peraWallet.connect(), 60000, 'Wallet connect');
                 this.userAddress = accts[0];
+
+                // Set up disconnect listener immediately after successful connect
+                this.peraWallet.connector?.on('disconnect', () => {
+                    debugLog("Pera Wallet Session disconnected/expired.");
+                    this.disconnectWallet();
+                });
+
                 this.updateWalletUI();
                 this.loadLogo();
                 showToast('success', 'Connected!', `${this.userAddress.slice(0, 6)}...${this.userAddress.slice(-4)}`);
                 // Load on-chain data for connected wallet
                 this.loadOnChainData();
 
-                // Setup disconnect listener
-                this.peraWallet.connector?.on('disconnect', () => {
-                    this.userAddress = null;
-                    this.resetWalletUI();
-                    this.resetData();
-                });
             } catch (e) {
                 debugLog("error", "Wallet connect:", e);
                 const msg = e && e.message ? e.message : String(e);
@@ -1220,6 +1256,14 @@ const app = {
                 }
             }
         }
+    },
+
+    disconnectWallet() {
+        this.userAddress = null;
+        this.resetWalletUI();
+        this.resetData();
+        this.updateDashboardUI();
+        showToast('info', 'Disconnected', 'Wallet disconnected.');
     },
     updateWalletUI() {
         const btn = document.getElementById("connectWalletBtn");

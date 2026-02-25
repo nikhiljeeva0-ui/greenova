@@ -31,11 +31,21 @@ let sessions = {};
 
 // Health check
 app.get('/api/health', (req, res) => {
+    // Check required environment variables
+    const appId = process.env.APP_ID || '';
+    const algodServer = process.env.ALGOD_SERVER || '';
+    const algodToken = process.env.ALGOD_TOKEN || '';
+
+    if (!appId || !algodServer) {
+        console.warn("WARNING: Missing essential Render environment variables (APP_ID, ALGOD_SERVER)");
+    }
+
     res.json({
         status: 'ok',
         timestamp: new Date().toISOString(),
         version: '1.0.0',
-        platform: 'vercel-serverless'
+        platform: 'vercel-serverless',
+        envConfigured: !!(appId && algodServer)
     });
 });
 
