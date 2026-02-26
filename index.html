@@ -17,8 +17,50 @@
 
 <body>
 
-    <!-- Particle Canvas Background -->
-    <canvas id="particle-canvas"></canvas>
+    <!-- Nature Animated Background -->
+    <div class="nature-bg">
+        <div class="nature-clouds">
+            <div class="nature-cloud"
+                style="top: 10%; left: -20%; width: 120px; height: 40px; animation-duration: 25s; animation-delay: 0s;">
+            </div>
+            <div class="nature-cloud"
+                style="top: 25%; left: -20%; width: 150px; height: 50px; animation-duration: 35s; animation-delay: 10s;">
+            </div>
+            <div class="nature-cloud"
+                style="top: 15%; left: -20%; width: 90px; height: 30px; animation-duration: 40s; animation-delay: 5s;">
+            </div>
+            <div class="nature-cloud"
+                style="top: 5%; left: -20%; width: 200px; height: 60px; animation-duration: 45s; animation-delay: 15s;">
+            </div>
+        </div>
+        <svg class="mountain-back" viewBox="0 0 1440 320" preserveAspectRatio="none">
+            <path fill="#CDEEDC" opacity="0.6"
+                d="M0,224L48,208C96,192,192,160,288,160C384,160,480,192,576,197.3C672,203,768,181,864,154.7C960,128,1056,96,1152,106.7C1248,117,1344,171,1392,197.3L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
+            </path>
+        </svg>
+        <svg class="mountain-front" viewBox="0 0 1440 320" preserveAspectRatio="none">
+            <path fill="#A8D5BA" opacity="0.7"
+                d="M0,256L60,229.3C120,203,240,149,360,154.7C480,160,600,224,720,245.3C840,267,960,245,1080,213.3C1200,181,1320,139,1380,117.3L1440,96L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z">
+            </path>
+        </svg>
+        <div class="trees-silhouettes">
+            <div class="tree" style="left: 10%; height: 60px; bottom: 80px;"></div>
+            <div class="tree" style="left: 25%; height: 80px; bottom: 65px;"></div>
+            <div class="tree" style="left: 45%; height: 50px; bottom: 90px;"></div>
+            <div class="tree" style="left: 70%; height: 75px; bottom: 70px;"></div>
+            <div class="tree" style="left: 85%; height: 90px; bottom: 60px;"></div>
+        </div>
+        <svg class="river" viewBox="0 0 1440 100" preserveAspectRatio="none">
+            <path fill="#D6F0FF" opacity="0.8" d="M0,50 C300,100 600,0 1440,50 L1440,100 L0,100 Z"></path>
+        </svg>
+        <div class="falling-leaves">
+            <div class="leaf" style="left: 15%; animation-duration: 12s; animation-delay: 0s;"></div>
+            <div class="leaf" style="left: 35%; animation-duration: 15s; animation-delay: 4s;"></div>
+            <div class="leaf" style="left: 55%; animation-duration: 11s; animation-delay: 2s;"></div>
+            <div class="leaf" style="left: 75%; animation-duration: 14s; animation-delay: 7s;"></div>
+            <div class="leaf" style="left: 90%; animation-duration: 13s; animation-delay: 1s;"></div>
+        </div>
+    </div>
 
     <!-- 🫧 CO2 Floating Bubbles Background Overlay -->
     <div class="co2-bubbles">
@@ -114,91 +156,186 @@
 
     <!-- 1️⃣ HOME PAGE -->
     <section id="home-page">
-        <div class="hero-glow-bg"></div>
-        <div class="hero-content">
-            <h1 class="hero-title">
-                Greenova <br>
-                <span class="hero-gradient-text">Future of Green Trust</span>
-            </h1>
-            <p class="hero-subtitle">
-                The world's first blockchain-powered sustainability verification protocol for educational institutions.
-                Track usage, Upload proofs, and Mint rewards.
-            </p>
+        <!-- Hero Section -->
+        <div class="hero-container">
+            <div class="hero-left">
+                <h1 class="hero-title">
+                    Verifiable Sustainability.<br>
+                    <span class="hero-gradient-text">On-Chain.</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Greenova empowers educational institutions to transparently track, verify, and showcase their
+                    climate impact on the Algorand blockchain.
+                </p>
 
-            <div class="hero-cards">
-                <div class="glass-panel hero-mini-card">
-                    <div class="hero-mini-icon" style="background: rgba(0,255,136,0.1);">📄</div>
-                    <div>
-                        <div class="hero-mini-label">Upload Data</div>
-                        <div class="hero-mini-value">Utility Bills</div>
-                    </div>
+                <div class="hero-actions">
+
+                    <button onclick="app.showLogin()" class="btn-secondary" style="max-width: 200px;">
+                        login in
+                    </button>
                 </div>
-                <div class="glass-panel hero-mini-card">
-                    <div class="hero-mini-icon" style="background: rgba(59,130,246,0.1);">⛓️</div>
-                    <div>
-                        <div class="hero-mini-label">Verify</div>
-                        <div class="hero-mini-value">On-Chain</div>
+            </div>
+            <div class="hero-right">
+                <div class="eco-sphere-container">
+                    <div class="eco-glow"></div>
+                    <div class="eco-sphere">
+                        <div class="sphere-texture"></div>
                     </div>
-                </div>
-                <div class="glass-panel hero-mini-card">
-                    <div class="hero-mini-icon" style="background: rgba(255,215,0,0.1);">🏆</div>
-                    <div>
-                        <div class="hero-mini-label">Earn</div>
-                        <div class="hero-mini-value">Rewards</div>
+                    <div class="orbiting-particles">
+                        <div class="orbit-particle p-1">🍃</div>
+                        <div class="orbit-particle p-2">✨</div>
+                        <div class="orbit-particle p-3">🌱</div>
+                        <div class="orbit-particle p-4">🍃</div>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <button onclick="app.showLogin()" class="btn-primary">
-                Launch Dashboard 🚀
-            </button>
+        <!-- Trust Strip -->
+        <div class="trust-strip">
+            <div class="trust-item"><span class="trust-icon">⚡</span> Built on Algorand Blockchain</div>
+            <div class="trust-item"><span class="trust-icon">📜</span> Smart Contract Verified</div>
+            <div class="trust-item"><span class="trust-icon">🔍</span> On-Chain Transparency</div>
+        </div>
+
+        <!-- Features Section -->
+        <div class="section-container" style="margin-top: 6rem;">
+            <div class="features-grid">
+                <!-- Card 1 -->
+                <div class="feature-card">
+                    <div class="feature-card-inner">
+                        <div class="feature-card-front">
+                            <div class="feature-icon">⛓️</div>
+                            <h3 class="feature-title">Blockchain Verification</h3>
+                        </div>
+                        <div class="feature-card-back">
+                            <p class="feature-desc" style="color: white;">Immutable, transparent, and instantly
+                                verifiable records on Algorand.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 2 -->
+                <div class="feature-card">
+                    <div class="feature-card-inner">
+                        <div class="feature-card-front">
+                            <div class="feature-icon">🌱</div>
+                            <h3 class="feature-title">Carbon Tracking</h3>
+                        </div>
+                        <div class="feature-card-back">
+                            <p class="feature-desc" style="color: white;">Accurately calculate your campus CO₂ reduction
+                                and energy savings.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 3 -->
+                <div class="feature-card">
+                    <div class="feature-card-inner">
+                        <div class="feature-card-front">
+                            <div class="feature-icon">�</div>
+                            <h3 class="feature-title">Smart Contracts</h3>
+                        </div>
+                        <div class="feature-card-back">
+                            <p class="feature-desc" style="color: white;">Automated Green Score calculation and instant
+                                reward token minting.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- How It Works Section -->
         <div class="section-container">
             <h2 class="section-heading">How It Works</h2>
-            <div class="features-grid">
-                <div class="glass-panel feature-card">
-                    <div class="feature-icon">📄</div>
-                    <h3 class="feature-title">1. Upload Proofs</h3>
-                    <p class="feature-desc">Submit your campus electricity bills and solar generation reports via the
-                        Dashboard.</p>
-                    <div class="feature-badge">Supported: PDF, IMG</div>
+            <div class="how-it-works-flow">
+                <div class="step-card">
+                    <div class="step-num">1</div>
+                    <h4>Upload Energy Data</h4>
+                    <p>Submit campus utility and solar generation bills.</p>
                 </div>
-                <div class="glass-panel feature-card">
-                    <div class="feature-icon">🔍</div>
-                    <h3 class="feature-title">2. Verified by Smart Contract</h3>
-                    <p class="feature-desc">Our smart contract validates your energy ratio and calculates your Green
-                        Score.</p>
+                <div class="flow-line"></div>
+                <div class="step-card">
+                    <div class="step-num">2</div>
+                    <h4>Smart Contract Verification</h4>
+                    <p>Smart contracts cryptographically hash and verify data.</p>
                 </div>
-                <div class="glass-panel feature-card">
-                    <div class="feature-icon">🎁</div>
-                    <h3 class="feature-title">3. Get Rewarded</h3>
-                    <p class="feature-desc">Automatically receive Carbon Tokens and NFT Badges in your Pera Wallet.</p>
+                <div class="flow-line"></div>
+                <div class="step-card">
+                    <div class="step-num">3</div>
+                    <h4>Generate Green Score</h4>
+                    <p>Automated algorithms derive your verified sustainability rating.</p>
+                </div>
+                <div class="flow-line"></div>
+                <div class="step-card">
+                    <div class="step-num">4</div>
+                    <h4>Record Immutable Proof</h4>
+                    <p>Mint Carbon Tokens and dynamic NFT badges.</p>
                 </div>
             </div>
         </div>
 
-        <div class="section-container">
-            <h2 class="section-heading">Reward Tiers</h2>
-            <div class="features-grid">
-                <div class="glass-panel feature-card">
-                    <div class="feature-icon">🥇</div>
-                    <h3 class="feature-title">Carbon Champion</h3>
-                    <p class="feature-desc">Gold NFT Badge & Top Leaderboard Rank</p>
+        <!-- Impact Section -->
+        <div class="section-container impact-section">
+            <h2 class="section-heading">Our Global Impact</h2>
+            <div class="impact-grid">
+                <div class="impact-stat">
+                    <div class="impact-val" id="impact-co2">42,500</div>
+                    <div class="impact-label">kg CO₂ Reduced</div>
                 </div>
-                <div class="glass-panel feature-card">
-                    <div class="feature-icon">🥈</div>
-                    <h3 class="feature-title">Green Impact Leader</h3>
-                    <p class="feature-desc">Silver NFT Badge & Verified Status</p>
+                <div class="impact-stat">
+                    <div class="impact-val" id="impact-energy">128,400</div>
+                    <div class="impact-label">kWh Verified</div>
                 </div>
-                <div class="glass-panel feature-card">
-                    <div class="feature-icon">🥉</div>
-                    <h3 class="feature-title">Sustainable Growth</h3>
-                    <p class="feature-desc">Bronze NFT Badge & Participation Certificate</p>
+                <div class="impact-stat">
+                    <div class="impact-val" id="impact-tx">1,402</div>
+                    <div class="impact-label">Txns Confirmed</div>
                 </div>
             </div>
         </div>
+
+        <!-- Premium CTA Section -->
+        <div class="section-container">
+            <div class="cta-card glass-panel">
+                <h2 class="cta-heading">Build Transparent Sustainability Today</h2>
+                <p class="cta-subtext">Join forward-thinking institutions proving their climate commitments with
+                    irrefutable cryptographic proof.</p>
+                <button onclick="app.connectWallet()" class="btn-primary btn-neon"
+                    style="margin-top: 1.5rem; max-width: 250px;">
+                    Connect Wallet 🟢
+                </button>
+            </div>
+        </div>
+
+        <!-- TECH FOOTER (Only for Home Page) -->
+        <footer class="tech-footer">
+            <div class="footer-grid">
+                <div class="footer-left">
+                    <div class="footer-logo">
+                        <span class="footer-logo-icon">⚡</span> Greenova
+                    </div>
+                    <p class="footer-desc">Blockchain-powered sustainability verification platform.</p>
+                </div>
+                <div class="footer-middle">
+                    <h4>Quick Links</h4>
+                    <a onclick="app.showHome()">Home</a>
+                    <a onclick="app.showDashboard()">Dashboard</a>
+                    <a onclick="app.showLeaderboard(true)">Leaderboard</a>
+                    <a href="#">Documentation</a>
+                </div>
+                <div class="footer-right">
+                    <h4>Contact</h4>
+                    <a href="mailto:hello@greenova.io" class="contact-email">hello@greenova.io</a>
+                    <div class="social-links">
+                        <a href="#">Twitter / X</a>
+                        <a href="#">LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-divider"></div>
+            <div class="footer-bottom">
+                <span class="secured-text">Secured & Verified on Algorand Blockchain</span>
+                <span class="copyright-text">&copy; 2026 Greenova. All rights reserved.</span>
+            </div>
+        </footer>
     </section>
 
     <!-- 2️⃣ LOGIN PAGE -->
@@ -225,6 +362,12 @@
                 </div>
                 <button type="submit" class="btn-primary" id="login-btn">Login to Dashboard</button>
             </form>
+            <div style="text-align: center; margin-top: 1.5rem;">
+                <button onclick="app.showHome()" class="btn-secondary"
+                    style="background: transparent; border: 1px solid var(--glass-border); color: var(--text-secondary); width: 100%;">
+                    ← Back to Home
+                </button>
+            </div>
         </div>
     </section>
 
@@ -265,77 +408,56 @@
 
         <!-- Main Content -->
         <main class="main-content">
+            <!-- 🟢 STATUS BAR -->
+
             <!-- Overview Tab -->
             <div id="tab-overview">
-                <div class="overview-header-group">
-                    <div class="header-content">
-                        <div class="header-left">
-                            <h2 class="page-title" style="margin-bottom: 0.2rem;">Dashboard Overview</h2>
-                            <span class="date-display" id="current-date">Today</span>
-                        </div>
-                        <button class="btn-refresh-pill" onclick="app.fetchLeaderboard()">
-                            ↻ Refresh
-                        </button>
-                    </div>
 
-                    <!-- Summary Bar -->
-                    <div class="summary-bar">
-                        <div class="summary-item">
-                            <span class="summary-label">⚡ Total Energy</span>
-                            <span class="summary-value" id="sum-energy">0 kWh</span>
-                        </div>
-                        <div class="summary-item">
-                            <span class="summary-label">☀️ Solar Ratio</span>
-                            <span class="summary-value" id="sum-solar-ratio">0%</span>
-                        </div>
-                        <div class="summary-item">
-                            <span class="summary-label">🌱 Carbon Impact</span>
-                            <span class="summary-value" id="sum-impact" style="color: var(--text-secondary);">—</span>
-                        </div>
+                <!-- Hero Score Section -->
+                <div class="hero-score-card glass-panel fade-in-up"
+                    style="margin-bottom: 2rem; padding: 3rem; text-align: center;">
+                    <h2 style="font-size: 2rem; margin-bottom: 0.5rem; color: #0B132B;">Green Sustainability Score</h2>
+                    <p style="color: var(--text-secondary); margin-bottom: 2rem;">Based on verified on-chain energy data
+                    </p>
+
+                    <div class="progress-ring" style="width: 200px; height: 200px; margin: 0 auto; position: relative;">
+                        <svg width="200" height="200">
+                            <circle class="bg-ring" cx="100" cy="100" r="90" stroke-width="12"></circle>
+                            <circle class="progress-value-ring" id="score-ring-circle" cx="100" cy="100" r="90"
+                                stroke-width="12">
+                            </circle>
+                        </svg>
+                        <div class="score-text" id="scoreValue" style="font-size: 3rem;">0%</div>
                     </div>
+                    <div class="stat-unit" id="score-status-text" style="font-size: 1.2rem; margin-top: 1rem;">—</div>
                 </div>
 
-                <div class="stats-grid">
-                    <!-- Card 1: Electricity -->
+                <!-- Metrics Grid -->
+                <div class="stats-grid" style="grid-template-columns: repeat(3, 1fr);">
+
+                    <!-- Card 1: Carbon Saved -->
                     <div class="stat-card fade-in-up" style="animation-delay: 0.1s;">
-                        <div class="stat-emoji">⚡</div>
-                        <span class="stat-label">Electricity Usage</span>
-                        <div class="stat-value" id="electricityValue">0</div>
-                        <span class="stat-unit">Kilowatt-hours (kWh)</span>
-                    </div>
-
-                    <!-- Card 2: Solar -->
-                    <div class="stat-card fade-in-up" style="animation-delay: 0.2s;">
-                        <div class="stat-emoji" style="filter: drop-shadow(0 0 10px rgba(255,215,0,0.3));">☀️</div>
-                        <span class="stat-label">Solar Generation</span>
-                        <div class="stat-value" id="solarValue">0</div>
-                        <span class="stat-unit">Kilowatt-hours (kWh)</span>
-                    </div>
-
-                    <!-- Card 3: Carbon Saved -->
-                    <div class="stat-card fade-in-up" style="animation-delay: 0.3s;">
                         <div class="stat-emoji" style="filter: drop-shadow(0 0 10px rgba(16,185,129,0.3));">🌱</div>
                         <span class="stat-label">Carbon Saved</span>
                         <div class="stat-value" id="carbonValue">0</div>
                         <span class="stat-unit">Kilograms of CO₂</span>
                     </div>
 
-                    <!-- Card 4: Green Score (Circular Progress) -->
-                    <div class="stat-card fade-in-up" style="animation-delay: 0.4s;">
-                        <span class="stat-label">Overall Green Score</span>
+                    <!-- Card 2: Energy Verified -->
+                    <div class="stat-card fade-in-up" style="animation-delay: 0.2s;">
+                        <div class="stat-emoji">⚡</div>
+                        <span class="stat-label">Energy Verified</span>
+                        <div class="stat-value" id="electricityValue">0</div>
+                        <span class="stat-unit">Kilowatt-hours (kWh)</span>
+                    </div>
 
-                        <!-- Floating Leaf Element -->
-                        <div class="floating-leaf" style="right: 20px; top: 20px;">🌿</div>
-
-                        <div class="progress-ring">
-                            <svg width="120" height="120">
-                                <circle class="bg-ring" cx="60" cy="60" r="54"></circle>
-                                <circle class="progress-value-ring" id="score-ring-circle" cx="60" cy="60" r="54">
-                                </circle>
-                            </svg>
-                            <div class="score-text" id="scoreValue">0%</div>
-                        </div>
-                        <div class="stat-unit" id="score-status-text">—</div>
+                    <!-- Card 3: Green Tokens -->
+                    <div class="stat-card fade-in-up" style="animation-delay: 0.3s;">
+                        <div class="stat-emoji" style="filter: drop-shadow(0 0 10px rgba(255,215,0,0.3));">🪙</div>
+                        <span class="stat-label">Tokens Earned</span>
+                        <div class="stat-value" id="tokensValue">0</div>
+                        <span class="stat-unit">Green Tokens (ASA)</span>
+                        <div style="display: none;" id="solarValue">0</div> <!-- preserve logic -->
                     </div>
                 </div>
             </div>
@@ -405,8 +527,23 @@
 
                             <button type="submit" class="btn-primary btn-submit" id="submit-btn">
                                 <span class="btn-text">Calculate & Mint Tokens 🌿</span>
-                                <span class="btn-spinner hidden">↻</span>
                             </button>
+
+                            <!-- Advanced Transaction Status UI -->
+                            <div id="tx-status-container" class="tx-status-card hidden">
+                                <div class="tx-status-step" id="step-sign">
+                                    <span class="step-icon">✍️</span> <span class="step-text">Awaiting Wallet
+                                        Signature...</span>
+                                </div>
+                                <div class="tx-status-step" id="step-verify">
+                                    <span class="step-icon spinner">↻</span> <span class="step-text">Verifying on
+                                        Algorand...</span>
+                                </div>
+                                <div class="tx-status-step" id="step-confirm">
+                                    <span class="step-icon">✅</span> <span class="step-text">Transaction
+                                        Confirmed!</span>
+                                </div>
+                            </div>
 
                             <div id="loading-indicator" class="loading-indicator hidden">
                                 <span class="spinner">↻</span> Verifying on Algorand Blockchain...
@@ -457,8 +594,8 @@
         </div>
 
         <div class="leaderboard-list" id="leaderboard-list">
-            <div style="text-align: center; color: var(--text-secondary); padding: 2rem;">
-                <span class="spinner">↻</span> Loading on-chain data...
+            <div style="text-align: center; color: var(--text-secondary); padding: 2rem;" id="leaderboard-loading">
+                <span class="spinner">↻</span> Fetching Blockchain Data...
             </div>
         </div>
 
@@ -469,56 +606,7 @@
         </div>
     </section>
 
-
-
-    <!-- PREMIUM FOOTER -->
-    <footer class="footer">
-        <div class="footer-grid">
-            <div class="footer-col">
-                <div class="footer-logo">
-                    <span>⚡</span> Greenova
-                </div>
-                <p class="footer-desc">
-                    Greenova is a blockchain-powered sustainability tracking system, empowering educational
-                    institutions to transparently verify and showcase their green impact.
-                </p>
-            </div>
-            <div class="footer-col">
-                <h4>Quick Links</h4>
-                <div class="footer-links">
-                    <a onclick="app.showHome()" class="footer-link">Home</a>
-                    <a onclick="app.showLogin()" class="footer-link">Login</a>
-                    <a onclick="app.showLeaderboard(true)" class="footer-link">Leaderboard</a>
-                </div>
-            </div>
-            <div class="footer-col">
-                <h4>Features</h4>
-                <div class="footer-links">
-                    <a href="#" class="footer-link">Carbon Tracking</a>
-                    <a href="#" class="footer-link">Blockchain Transparency</a>
-                    <a href="#" class="footer-link">Green Ranking</a>
-                    <a href="#" class="footer-link">Smart Contracts</a>
-                </div>
-            </div>
-            <div class="footer-col">
-                <h4>Contact</h4>
-                <div class="footer-links">
-                    <a href="mailto:contact@greenova.io" class="footer-link">contact@greenova.io</a>
-                    <a href="#" class="footer-link">Twitter / X</a>
-                    <a href="#" class="footer-link">LinkedIn</a>
-                    <a href="#" class="footer-link">GitHub</a>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <span>© 2026 Greenova. </span>
-            <span class="footer-algo-badge">
-                <span class="algo-dot"></span>
-                Powered by Algorand Blockchain
-            </span>
-        </div>
-    </footer>
-
+    <!-- External Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/algosdk@2.7.0/dist/browser/algosdk.min.js"></script>
     <script src="vendor/perawallet.js"></script>
     <script src="config.js"></script>

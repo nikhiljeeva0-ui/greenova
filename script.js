@@ -610,10 +610,30 @@ const app = {
         // 3. Show loading
         const submitBtn = document.getElementById('submit-btn');
         const loading = document.getElementById('loading-indicator');
+        const txStatusCard = document.getElementById('tx-status-container');
+
+        const setStep = (id, state) => {
+            const el = document.getElementById(id);
+            if (el) {
+                el.className = 'tx-status-step ' + state;
+                if (state === 'completed') el.querySelector('.step-icon').innerText = '✅';
+            }
+        };
+
         submitBtn.disabled = true;
         submitBtn.style.opacity = '0.5';
-        if (loading) loading.classList.remove('hidden');
-        showToast('info', 'Processing...', 'Hashing files and preparing blockchain transaction.');
+        if (txStatusCard) {
+            txStatusCard.classList.remove('hidden');
+            setStep('step-sign', 'active');
+            setStep('step-verify', '');
+            setStep('step-confirm', '');
+            if (document.querySelector('#step-sign .step-icon')) document.querySelector('#step-sign .step-icon').innerText = '✍️';
+            if (document.querySelector('#step-verify .step-icon')) {
+                document.querySelector('#step-verify .step-icon').className = 'step-icon spinner';
+                document.querySelector('#step-verify .step-icon').innerText = '↻';
+            }
+        } else if (loading) loading.classList.remove('hidden');
+        showToast('info', 'Processing...', 'Hashing files and preparing transaction.');
 
         try {
             // 4. Generate SHA-256 hashes of uploaded PDFs
@@ -680,6 +700,11 @@ const app = {
 
             // Sign via wallet with robust handling across SDK/wallet versions
             const signedBlob = await this.signTxnWithPera(appCallTxn);
+            if (txStatusCard) {
+                setStep('step-sign', 'completed');
+                setStep('step-verify', 'active');
+            }
+
             const sendResult = await withTimeout(
                 this.algodClient.sendRawTransaction(signedBlob).do(),
                 45000,
@@ -718,6 +743,13 @@ const app = {
                 this.saveCollegeMapping(this.userAddress, this.currentCollege.name);
             }
 
+            if (txStatusCard) {
+                setStep('step-verify', 'completed');
+                setStep('step-confirm', 'completed');
+            }
+
+            // Top Status Bar TX handling removed
+
             // 9. Show success
             this.updateDashboardUI(true);
             this.showResultCard(this.data.electricityHash, this.data.solarHash, txId);
@@ -744,6 +776,8 @@ const app = {
             submitBtn.disabled = false;
             submitBtn.style.opacity = '1';
             if (loading) loading.classList.add('hidden');
+            const txStatusCard = document.getElementById('tx-status-container');
+            if (txStatusCard) setTimeout(() => txStatusCard.classList.add('hidden'), 5000);
         }
     },
 
@@ -966,7 +1000,7 @@ const app = {
 
         let html = '';
         data.forEach((c, i) => {
-            let badgeStyle = 'background: rgba(255,255,255,0.1); color: #fff;';
+            let badgeStyle = '';
             let cardExtra = '';
             let medalIcon = '';
 
@@ -976,9 +1010,11 @@ const app = {
                 medalIcon = '🥇 ';
             } else if (i === 1) {
                 badgeStyle = 'background: linear-gradient(135deg, #e0e0e0, #a0a0a0); color: #000;';
+                cardExtra = 'border-color: rgba(224,224,224,0.3);';
                 medalIcon = '🥈 ';
             } else if (i === 2) {
                 badgeStyle = 'background: linear-gradient(135deg, #cd7f32, #8b4513); color: #000;';
+                cardExtra = 'border-color: rgba(205,127,50,0.3);';
                 medalIcon = '🥉 ';
             }
 
@@ -1004,15 +1040,15 @@ const app = {
     // UI & NAVIGATION
     // ═══════════════════════════════════════
     updateDashboardUI(animate = false) {
-        const animateValue = (id, start, end, duration) => {
+        const animateValue = (id, start, end, duration, suffix = '') => {
             const el = document.getElementById(id);
             if (!el) return;
-            if (!animate) { el.innerText = end; return; }
+            if (!animate) { el.innerText = end + suffix; return; }
             let ts = null;
             const step = (t) => {
                 if (!ts) ts = t;
                 const p = Math.min((t - ts) / duration, 1);
-                el.innerText = Math.floor(p * (end - start) + start);
+                el.innerText = Math.floor(p * (end - start) + start) + suffix;
                 if (p < 1) window.requestAnimationFrame(step);
             };
             window.requestAnimationFrame(step);
@@ -1020,13 +1056,11 @@ const app = {
 
         animateValue("electricityValue", 0, this.data.electricity, 1500);
         animateValue("solarValue", 0, this.data.solar, 1500);
+        animateValue("carbonValue", 0, this.data.carbonSaved, 1500);
+        animateValue("tokensValue", 0, this.data.tokensEarned || Math.floor(this.data.carbonSaved / 100), 1500);
+        animateValue("scoreValue", 0, this.data.greenScore, 1500, '%');
 
-        const cVal = document.getElementById("carbonValue");
-        if (cVal) cVal.innerText = this.data.carbonSaved;
-
-        const scoreEl = document.getElementById("scoreValue");
         const statusEl = document.getElementById("score-status-text");
-        if (scoreEl) scoreEl.innerText = `${this.data.greenScore}%`;
 
         // Circular Progress Ring
         const circle = document.getElementById("score-ring-circle");
@@ -1092,8 +1126,8 @@ const app = {
     showLogin() {
         this.closeMobileMenu(); this.hideAllSections();
         document.getElementById('login-page').classList.remove('hidden');
-        document.querySelector('.navbar').classList.remove('hidden');
-        document.querySelector('.footer').classList.remove('hidden');
+        document.querySelector('.navbar').classList.add('hidden');
+        document.querySelector('.footer').classList.add('hidden');
     },
     showDashboard() {
         this.hideAllSections();
